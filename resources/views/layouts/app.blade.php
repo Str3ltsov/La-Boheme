@@ -31,18 +31,15 @@
                 <ul class="navbar-nav me-auto">
                     @guest
                         @include('layouts.admin_dropdown')
+                    @else
+                        @auth
+                            @include('layouts.profile_dropdown')
+                        @endauth
                     @endguest
                 </ul>
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
-                    <!-- Authentication Links -->
-                    @guest
-                        @include('layouts.menu')
-                    @else
-                        @auth
-                            @include('layouts.admin_menu')
-                        @endauth
-                    @endguest
+                    @include('layouts.menu')
                 </ul>
             </div>
         </div>
