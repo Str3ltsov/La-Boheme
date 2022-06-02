@@ -13,10 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
+ * Guest
+ */
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/reservation', App\Http\Livewire\ReservationForm::class)
+    ->name('livewire.reservation.form');
 
+/*
+ * Admin
+ */
 Route::group(['prefix' => 'admin', 'middleware' => ['admin.authorization']], function () {
     Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.home');
 });
 
+/*
+ * Other
+ */
 Auth::routes();
