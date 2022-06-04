@@ -8,8 +8,17 @@ use Livewire\Component;
 
 class ReservationForm extends Component
 {
+    private ReservationService $service;
+
+    public function boot(ReservationServiceInterface $service)
+    {
+        $this->service = $service;
+    }
+
     public $reservation_type;
     public $date;
+    public $time;
+    public $number_of_people;
 
     public int $currentStep = 1;
 
@@ -45,11 +54,21 @@ class ReservationForm extends Component
             'reservation_type' => ['required'],
             'date' => ['required']
         ],
-        2 => [],
+        2 => [
+            'time' => ['required'],
+            'number_of_people' => ['required']
+        ],
         3 => [],
         4 => [],
         5 => [],
         6 => []
+    ];
+
+    public array $timeOptions = [
+        '11:00', '12:00', '13:00',
+        '14:00', '15:00', '16:00',
+        '17:00', '18:00', '19:00',
+        '20:00', '21:00', '22:00',
     ];
 
     public function goToNextStep()
@@ -65,6 +84,9 @@ class ReservationForm extends Component
 
     public function submit()
     {
+        /*
+         * Turning validationRules[] into a correct form to be read by validate() when submitting.
+         */
         $rules = collect($this->validationRules)->collapse()->toArray();
         $this->validate($rules);
 
@@ -74,11 +96,14 @@ class ReservationForm extends Component
         $this->resetValidation();
     }
 
-    public function render(ReservationServiceInterface $service)
+    public function render()
     {
         return view('livewire.reservation.form')
             ->extends('layouts.app')
             ->section('content')
-            ->with('reservationTypes', $service->getReservationTypes());
+            ->with([
+                'reservationTypes' => $this->service->getReservationTypes(),
+                //'timeSelectorOptions' => $this->service->getAvailableTimeOptions($this->timeOptions)
+            ]);
     }
 }

@@ -2,8 +2,8 @@
     <h4 class="pb-4">Paslaugos užsakymas</h4>
     <div class="card p-4">
         <div class="d-flex">
-            <h6 class="text-muted me-1">{{ $steps[$currentStep]['step'] }}</h6>
-            <h6>{{ $steps[$currentStep]['description'] }}</h6>
+            <h5 class="text-muted me-1">{{ $steps[$currentStep]['step'] }}</h5>
+            <h5>{{ $steps[$currentStep]['description'] }}</h5>
         </div>
         <div class="d-flex justify-content-center align-items-center my-3">
             <div class="d-flex flex-column w-100 me-3">

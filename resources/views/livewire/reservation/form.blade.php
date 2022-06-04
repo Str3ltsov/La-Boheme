@@ -6,6 +6,8 @@
     <form wire:submit.prevent="submit"/>
         @if ($currentStep == 1)
             @include('livewire.reservation.first_step')
+        @elseif ($currentStep == 2)
+            @include('livewire.reservation.second_step')
         @endif
     </form>
 </div>
