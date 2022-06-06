@@ -8,6 +8,8 @@
             @include('livewire.reservation.first_step')
         @elseif ($currentStep == 2)
             @include('livewire.reservation.second_step')
+        @elseif ($currentStep == 3)
+            @include('livewire.reservation.third_step')
         @endif
     </form>
 </div>

@@ -3,14 +3,60 @@
 namespace App\Services;
 
 use App\Models\Reservation;
+use App\Models\ReservationQuestion;
 use App\Models\ReservationType;
-use Illuminate\Database\Eloquent\Collection;
 
 class ReservationService implements ReservationServiceInterface
 {
-    public function getReservationTypes(): Collection
+    public function getReservationTypes()
     {
+        $data = ReservationType::all();
+
+        if ($data->isEmpty()) {
+            return back()
+                ->withErrors('Failed to retrieve reservation types.');
+        }
+
         return ReservationType::all();
+    }
+
+    public function getReservationQuestions($reservationType)
+    {
+        $data = ReservationQuestion::all()
+            ->where('reservation_type_id', $reservationType);
+
+        if ($data->isEmpty()) {
+            return back()
+                ->withErrors('Failed to retrieve reservation questions.');
+        }
+
+        return $data;
+    }
+
+    public function getValidationRules($reservationType)
+    {
+        return [
+            1 => [
+                'reservation_type' => ['required'],
+                'date' => ['required']
+            ],
+            2 => [
+                'time' => ['required'],
+                'number_of_people' => ['required']
+            ],
+            3 => [
+                'question_one_answer' => ['required'],
+                'question_two_answer' => ['required'],
+                'question_three_answer' => ['required'],
+                'question_four_answer' => ['required'],
+                'question_five_answer' => ['required'],
+                'question_six_answer' => $reservationType == 2 ? ['required'] : [],
+                'question_seven_answer' => $reservationType == 2 ? ['required'] : [],
+            ],
+            4 => [],
+            5 => [],
+            6 => []
+        ];
     }
 
     /*public function getAvailableTimeOptions($timeOptions)

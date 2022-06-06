@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
             HallSeeder::class,
             ClientSeeder::class,
             ReservationStatusSeeder::class,
-            ReservationSeeder::class
+            ReservationSeeder::class,
+            ReservationQuestionSeeder::class
         ]);
     }
 }
