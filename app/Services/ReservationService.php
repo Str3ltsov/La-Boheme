@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Employee;
 use App\Models\Reservation;
 use App\Models\ReservationQuestion;
 use App\Models\ReservationType;
@@ -17,7 +18,7 @@ class ReservationService implements ReservationServiceInterface
                 ->withErrors('Failed to retrieve reservation types.');
         }
 
-        return ReservationType::all();
+        return $data;
     }
 
     public function getReservationQuestions($reservationType)
@@ -51,12 +52,27 @@ class ReservationService implements ReservationServiceInterface
                 'question_four_answer' => ['required'],
                 'question_five_answer' => ['required'],
                 'question_six_answer' => $reservationType == 2 ? ['required'] : [],
-                'question_seven_answer' => $reservationType == 2 ? ['required'] : [],
+                'question_seven_answer' => $reservationType == 2 ? ['required'] : []
             ],
-            4 => [],
+            4 => [
+                'employee_waiter' => ['required'],
+                'employee_bartender' => ['required']
+            ],
             5 => [],
             6 => []
         ];
+    }
+
+    public function getEmployees()
+    {
+        $data = Employee::all();
+
+        if ($data->isEmpty()) {
+            return back()
+                ->withErrors('Failed to retrieve employees.');
+        }
+
+        return $data;
     }
 
     /*public function getAvailableTimeOptions($timeOptions)

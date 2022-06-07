@@ -22,7 +22,9 @@ class DatabaseSeeder extends Seeder
             ClientSeeder::class,
             ReservationStatusSeeder::class,
             ReservationSeeder::class,
-            ReservationQuestionSeeder::class
+            ReservationQuestionSeeder::class,
+            EmployeeTypeSeeder::class,
+            EmployeeSeeder::class
         ]);
     }
 }

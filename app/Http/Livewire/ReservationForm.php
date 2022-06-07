@@ -9,17 +9,25 @@ use Livewire\Component;
 class ReservationForm extends Component
 {
     private ReservationService $service;
-    private array $validationRules;
 
     public function boot(ReservationServiceInterface $service)
     {
         $this->service = $service;
     }
 
+    /*
+     * Step 1 properties
+     */
     public $reservation_type;
     public $date;
+    /*
+     * Step 2 properties
+     */
     public $time;
     public $number_of_people;
+    /*
+     * Step 3 properties
+     */
     public $question_one_answer;
     public $question_two_answer;
     public $question_three_answer;
@@ -33,6 +41,11 @@ class ReservationForm extends Component
     public $question_four_comment;
     public $question_five_comment;
     public $question_six_comment;
+    /*
+     * Step 4 properties
+     */
+    public $employee_waiter;
+    public $employee_bartender;
 
     public int $currentStep = 1;
 
@@ -107,7 +120,8 @@ class ReservationForm extends Component
             ->section('content')
             ->with([
                 'reservationTypes' => $this->service->getReservationTypes(),
-                'reservationQuestions' => $this->service->getReservationQuestions($this->reservation_type)
+                'reservationQuestions' => $this->service->getReservationQuestions($this->reservation_type),
+                'employees' => $this->service->getEmployees()
                 //'timeSelectorOptions' => $this->service->getAvailableTimeOptions($this->timeOptions)
             ]);
     }
