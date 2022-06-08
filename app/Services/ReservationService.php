@@ -58,7 +58,11 @@ class ReservationService implements ReservationServiceInterface
                 'employee_waiter' => ['required'],
                 'employee_bartender' => ['required']
             ],
-            5 => [],
+            5 => [
+                'client_name' => ['required'],
+                'client_email' => ['required', 'email'],
+                'client_phone_number' => ['required']
+            ],
             6 => []
         ];
     }

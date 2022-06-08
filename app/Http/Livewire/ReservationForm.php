@@ -46,8 +46,15 @@ class ReservationForm extends Component
      */
     public $employee_waiter;
     public $employee_bartender;
+    /*
+     * Step 5 properties
+     */
+    public $client_name;
+    public $client_email;
+    public $client_phone_number;
+    public $client_additional_info;
 
-    public int $currentStep = 1;
+    public int $currentStep = 5;
 
     public array $steps = [
         1 => [
