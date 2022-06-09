@@ -14,6 +14,8 @@
             @include('livewire.reservation.fourth_step')
         @elseif ($currentStep == 5)
             @include('livewire.reservation.fifth_step')
+        @elseif ($currentStep == 6)
+            @include('livewire.reservation.sixth_step')
         @endif
     </form>
 </div>

@@ -10,7 +10,7 @@
                 <h5>Padavėjai</h5>
                 @forelse ($employees as $employee)
                     @if ($employee->employee_type_id == 1)
-                        @include('livewire.reservation.employees_one')
+                        @include('livewire.reservation.waiters')
                     @endif
                 @empty
                     <div class="d-flex flex-column justify-content-center">
@@ -22,7 +22,7 @@
                 <h5>Barmenai</h5>
                 @forelse ($employees as $employee)
                     @if ($employee->employee_type_id == 2)
-                        @include('livewire.reservation.employees_two')
+                        @include('livewire.reservation.bartenders')
                     @endif
                 @empty
                     <div class="form-control d-flex flex-column justify-content-center align-items-center">

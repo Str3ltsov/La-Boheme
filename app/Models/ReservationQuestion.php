@@ -15,21 +15,16 @@ class ReservationQuestion extends Model
 
     protected $fillable = [
         'question',
-        'can_comment',
-        'comment_placeholder',
         'reservation_type_id'
     ];
 
     protected $casts = [
         'name' => 'string',
-        'can_comment' => 'boolean',
-        'comment_placeholder' => 'string',
         'reservation_type_id' => 'integer'
     ];
 
     public static array $rules = [
         'name' => 'required',
-        'can_comment' => 'required|boolean',
         'reservation_type_id' => 'required|integer'
     ];
 

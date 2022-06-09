@@ -12,8 +12,8 @@ class ReservationQuestionAnswer extends Model
     public $table = 'reservation_question_answers';
 
     protected $fillable = [
-        'reservation_question',
-        'reservation',
+        'reservation_question_id',
+        'reservation_id',
         'answer',
         'comment'
     ];
