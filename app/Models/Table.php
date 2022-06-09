@@ -12,23 +12,18 @@ class Table extends Model
     public $table = 'tables';
 
     protected $fillable = [
-        'reservation_type_id',
+        'available',
         'created_at',
         'updated_at'
     ];
 
     protected $casts = [
-        'reservation_type_id' => 'integer',
+        'available' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime'
     ];
 
     public static array $rules = [
-        'reservation_type_id' => 'required|integer'
+        'available' => 'required|boolean'
     ];
-
-    public function reservationType()
-    {
-        return $this->hasOne(ReservationType::class, 'reservation_type_id');
-    }
 }

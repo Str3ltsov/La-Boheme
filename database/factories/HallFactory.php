@@ -28,7 +28,7 @@ class HallFactory extends Factory
         $dateTime = $faker->dateTimeThisMonth()->format('Y-m-d H:i:s');
 
         return [
-            'reservation_type_id' => rand(1, 2),
+            'available' => $faker->boolean(100),
             'created_at' => $dateTime,
             'updated_at' => $dateTime
         ];

@@ -101,7 +101,9 @@ class ReservationForm extends Component
     public function goToNextStep()
     {
         $validationRules = $this->service->getValidationRules($this->reservation_type);
+
         $this->validate($validationRules[$this->currentStep]);
+
         $this->currentStep++;
     }
 
@@ -120,26 +122,40 @@ class ReservationForm extends Component
         $this->validate($rules);
 
         /*
-         * Creating instance of client with reservation
+         * Creating instance of client
          */
-        $dateAndTime = $this->service->combineDateAndTime($this->date, $this->time);
         $client = $this->service->createClient(
             $this->client_name,
             $this->client_email,
             $this->client_phone_number,
             $this->client_additional_info
         );
+
+        /*
+         * Creating instance of reservation
+         */
+        $tables = $this->service->getTableIds();
+
+        $halls = $this->service->getHallIds();
+
+        $dateAndTime = $this->service->combineDateAndTime($this->date, $this->time);
+
         $reservation = $this->service->createReservation(
+            $tables,
+            $halls,
             $dateAndTime,
             $this->number_of_people,
             $this->reservation_type,
             $client
         );
 
+        $this->service->updateTableOrHallToUnavailable($reservation);
+
         /*
          * Creating instances of reservation question answers
          */
         $questions = $this->service->getReservationQuestions($this->reservation_type);
+
         $answersAndComments = $this->service->getAnswersAndComments(
             $this->question_one_answer,
             $this->question_one_comment,
@@ -155,6 +171,7 @@ class ReservationForm extends Component
             $this->question_six_comment,
             $this->question_seven_answer,
         );
+
         $this->service->createReservationQuestionAnswers(
             $reservation,
             $questions,
@@ -168,7 +185,9 @@ class ReservationForm extends Component
             $this->employee_waiter,
             $this->employee_bartender
         );
+
         $this->service->createReservationEmployees($reservation, $chosenEmployees);
+
         $this->service->updateChosenEmployeesToUnavailable($chosenEmployees);
 
         /*
@@ -177,7 +196,9 @@ class ReservationForm extends Component
         $this->reset();
         $this->resetValidation();
 
-        return redirect()->route('home')->with('success', 'Successfully created reservation.');
+        return redirect()
+            ->route('reservation.saved')
+            ->with('success', 'Successfully saved reservation.');
     }
 
     public function render()
@@ -189,7 +210,6 @@ class ReservationForm extends Component
                 'reservationTypes' => $this->service->getReservationTypes(),
                 'reservationQuestions' => $this->service->getReservationQuestions($this->reservation_type),
                 'employees' => $this->service->getEmployees()
-                //'timeSelectorOptions' => $this->service->getAvailableTimeOptions($this->timeOptions)
             ]);
     }
 }

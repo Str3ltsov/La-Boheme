@@ -53,7 +53,7 @@
         </div>
         <div class="d-flex justify-content-end" style="gap: 10px;">
             <button wire:click="goToPreviousStep" type="button" class="btn btn-secondary">Atgal</button>
-            <button wire:click="submit" type="button" class="btn btn-primary">Toliau</button>
+            <button wire:click="submit" type="submit" class="btn btn-primary">Toliau</button>
         </div>
     </div>
 </div>

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('tables', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('reservation_type_id')->constrained();
+            $table->boolean('available')->default(true);
             $table->timestamps();
         });
     }
