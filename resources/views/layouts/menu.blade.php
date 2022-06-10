@@ -8,6 +8,8 @@
     <a class="nav-link" href="{{ route('home') }}">{{ __('Kontaktai') }}</a>
 </li>
 <li class="nav-item mx-2">
-    <a class="nav-link btn btn-outline-secondary" href="{{ route('home') }}">{{ __('Rezervacija') }}</a>
+    <a class="nav-link btn btn-outline-secondary" href="{{ route('livewire.reservation') }}">
+        {{ __('Rezervacija') }}
+    </a>
 </li>
 

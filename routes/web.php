@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Livewire\ReservationForm;
+use App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +18,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+/*
+ * Guest
+ */
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/reservation', ReservationForm::class)->name('livewire.reservation');
+Route::view('/reservation/saved', 'reservation_saved')->name('reservation.saved');
 
+/*
+ * Admin
+ */
 Route::group(['prefix' => 'admin', 'middleware' => ['admin.authorization']], function () {
-    Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.home');
+    Route::get('/', [Admin\HomeController::class, 'index'])->name('admin.home');
 });
 
+/*
+ * Other
+ */
 Auth::routes();
