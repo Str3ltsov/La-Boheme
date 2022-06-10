@@ -11,8 +11,13 @@
             <div class="card p-4">
                 <div>
                     @if (session()->has('success'))
-                        <div class="alert alert-success" id="success">
+                        <div class="alert alert-success" id="message">
                             {{ session()->get('success') }}
+                        </div>
+                    @endif
+                    @if (session()->has('error'))
+                        <div class="alert alert-danger" id="message">
+                            {{ session()->get('error') }}
                         </div>
                     @endif
                 </div>
@@ -45,7 +50,7 @@
 @push('scripts')
     <script>
         setTimeout(function() {
-            document.getElementById('success').style.display = 'none';
+            document.getElementById('message').style.display = 'none';
         }, 3000);
 
         function closeWindow() {

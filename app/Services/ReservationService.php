@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Mail\ReservationSentMail;
 use App\Models\Client;
 use App\Models\Employee;
 use App\Models\Hall;
@@ -14,6 +15,8 @@ use App\Models\Table;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Mail\SentMessage;
 
 class ReservationService implements ReservationServiceInterface
 {
@@ -257,7 +260,7 @@ class ReservationService implements ReservationServiceInterface
         return $answersAndComments;
     }
 
-    public function getReservationQuestions($reservationType): array|RedirectResponse
+    public function getReservationQuestions($reservationType): array|RedirectResponse|null
     {
         if ($reservationType != null) {
             $reservationQuestions = ReservationQuestion::all()
@@ -275,6 +278,7 @@ class ReservationService implements ReservationServiceInterface
 
             return $reservationQuestions;
         }
+        return null;
     }
 
     public function createReservationQuestionAnswers($reservation, $questions, $answersAndComments)
@@ -345,5 +349,14 @@ class ReservationService implements ReservationServiceInterface
             $employee->available = false;
             $employee->save();
         }
+    }
+
+    public function sendReservationSentEmail($client): ?SentMessage
+    {
+        if (class_exists(ReservationSentMail::class)) {
+            return Mail::to($client->email)->send(new ReservationSentMail());
+        }
+
+        return null;
     }
 }

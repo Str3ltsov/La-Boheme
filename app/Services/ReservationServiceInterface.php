@@ -41,4 +41,5 @@ interface ReservationServiceInterface
     public function getChosenEmployees($waiter, $bartender);
     public function createReservationEmployees($reservation, $chosenEmployees);
     public function updateChosenEmployeesToUnavailable($chosenEmployees);
+    public function sendReservationSentEmail($client);
 }

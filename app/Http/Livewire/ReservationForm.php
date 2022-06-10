@@ -191,6 +191,11 @@ class ReservationForm extends Component
         $this->service->updateChosenEmployeesToUnavailable($chosenEmployees);
 
         /*
+         * Send email
+         */
+        $this->service->sendReservationSentEmail($client);
+
+        /*
          * Resetting
          */
         $this->reset();
