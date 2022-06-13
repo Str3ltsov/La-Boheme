@@ -38,7 +38,7 @@ class ReservationService implements ReservationServiceInterface
         $validationRules = [
             1 => [
                 'reservation_type' => ['required'],
-                'date' => ['required']
+                'date' => ['required', 'date']
             ],
             2 => [
                 'time' => ['required'],
@@ -92,8 +92,7 @@ class ReservationService implements ReservationServiceInterface
         return $employees;
     }
 
-    public function createClient($name, $email, $phoneNumber, $additionalInfo)
-    : Client|RedirectResponse
+    public function createClient($name, $email, $phoneNumber, $additionalInfo): Client|RedirectResponse
     {
         $client = Client::create([
             'name' => $name,
@@ -140,25 +139,16 @@ class ReservationService implements ReservationServiceInterface
         return $halls;
     }
 
-    public function combineDateAndTime($date, $time): string
-    {
-        return date('Y-m-d H:i:s', strtotime("$date $time"));
-    }
-
     public function createReservation(
-        $tables,
-        $halls,
-        $dateAndTime,
-        $numberOfPeople,
-        $reservationTypeId,
-        $client
+        $tables, $halls, $startDatetime, $numberOfPeople, $reservationTypeId, $client
     ): Reservation|RedirectResponse
     {
         $randomTable = rand(1, count($tables));
         $randomHalls = rand(1, count($halls));
 
         $reservation = Reservation::create([
-            'date_and_time' => $dateAndTime,
+            'start_datetime' => $startDatetime,
+            'end_datetime' => NULL,
             'number_of_people' => $numberOfPeople,
             'reservation_type_id' => $reservationTypeId,
             'table_id' => $reservationTypeId == 1 ? $randomTable : NULL,
@@ -179,7 +169,7 @@ class ReservationService implements ReservationServiceInterface
         }
     }
 
-    public function updateTableOrHallToUnavailable($reservation)
+    /*public function updateTableOrHallToUnavailable($reservation)
     {
         if ($reservation->reservation_type_id == 1) {
             $table = Table::find($reservation->table_id);
@@ -205,7 +195,7 @@ class ReservationService implements ReservationServiceInterface
             $hall->available = false;
             $hall->save();
         }
-    }
+    }*/
 
     public function getAnswersAndComments(
         $questionOneAnswer,
@@ -260,9 +250,9 @@ class ReservationService implements ReservationServiceInterface
         return $answersAndComments;
     }
 
-    public function getReservationQuestions($reservationType): array|RedirectResponse|null
+    public function getReservationQuestions($reservationType): array|RedirectResponse
     {
-        if ($reservationType != null) {
+        if (!is_null($reservationType)) {
             $reservationQuestions = ReservationQuestion::all()
                 ->where('reservation_type_id', $reservationType);
 
@@ -278,7 +268,6 @@ class ReservationService implements ReservationServiceInterface
 
             return $reservationQuestions;
         }
-        return null;
     }
 
     public function createReservationQuestionAnswers($reservation, $questions, $answersAndComments)
@@ -335,7 +324,7 @@ class ReservationService implements ReservationServiceInterface
         }
     }
 
-    public function updateChosenEmployeesToUnavailable($chosenEmployees)
+    /*public function updateChosenEmployeesToUnavailable($chosenEmployees)
     {
         for ($i = 1; $i <= count($chosenEmployees); $i++) {
             $employee = Employee::find($chosenEmployees[$i]);
@@ -349,7 +338,7 @@ class ReservationService implements ReservationServiceInterface
             $employee->available = false;
             $employee->save();
         }
-    }
+    }*/
 
     public function sendReservationSentEmail($client): ?SentMessage
     {

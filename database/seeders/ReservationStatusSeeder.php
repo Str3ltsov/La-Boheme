@@ -18,7 +18,8 @@ class ReservationStatusSeeder extends Seeder
         DB::table('reservation_statuses')->insert([
             ['name' => 'Vykdomas'],
             ['name' => 'Patvirtintas'],
-            ['name' => 'Nutrauktas']
+            ['name' => 'Nutrauktas'],
+            ['name' => 'Neatvykimas']
         ]);
     }
 }
