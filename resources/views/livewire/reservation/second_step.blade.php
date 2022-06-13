@@ -10,8 +10,8 @@
                 <h6 class="fw-bolder mb-2 text-uppercase">laikas</h6>
                 <select wire:model.lazy="time" class="form-select fs-5 w-25" name="time">
                     <option value="" selected></option>
-                    @forelse ($timeOptions as $option)
-                        <option value="{{ $option }}">{{ $option }}</option>
+                    @forelse ($times as $time)
+                        <option value="{{ $time }}">{{ $time }}</option>
                     @empty
                         <option value="">No times available</option>
                     @endforelse

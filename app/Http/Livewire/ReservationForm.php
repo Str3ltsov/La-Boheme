@@ -8,10 +8,13 @@ use App\Models\Reservation;
 use App\Models\Table;
 use App\Services\ReservationService;
 use App\Services\ReservationServiceInterface;
+use App\Traits\UseDatesTimes;
 use Livewire\Component;
 
 class ReservationForm extends Component
 {
+    use UseDatesTimes;
+
     private ReservationService $service;
 
     public function boot(ReservationServiceInterface $service)
@@ -91,19 +94,24 @@ class ReservationForm extends Component
         ]
     ];
 
-    public array $timeOptions = [
-        '11:00', '12:00', '13:00',
-        '14:00', '15:00', '16:00',
-        '17:00', '18:00', '19:00',
-        '20:00', '21:00', '22:00',
-    ];
+    public array $times = [];
+
+    public function addTimesAndGoToNextStep()
+    {
+        $weekdayTimes = $this->getWeekdayTimes();
+        $weekendTimes = $this->getWeekendTimes();
+        $times = $this->getTimesBasedOnDay($this->date, $weekdayTimes, $weekendTimes);
+        $unavailableDateTimes = $this->getUnavailableDateTimes();
+
+        $this->times = $this->getAvailableTimesByDate($unavailableDateTimes, $this->date, $times);
+        $this->goToNextStep();
+    }
 
     public function goToNextStep()
     {
         $validationRules = $this->service->getValidationRules($this->reservation_type);
 
         $this->validate($validationRules[$this->currentStep]);
-
         $this->currentStep++;
     }
 
@@ -119,6 +127,7 @@ class ReservationForm extends Component
          */
         $validationRules = $this->service->getValidationRules($this->reservation_type);
         $rules = $this->service->makeRulesReadableByValidate($validationRules);
+
         $this->validate($rules);
 
         /*
@@ -135,27 +144,21 @@ class ReservationForm extends Component
          * Creating instance of reservation
          */
         $tables = $this->service->getTableIds();
-
         $halls = $this->service->getHallIds();
-
-        $dateAndTime = $this->service->combineDateAndTime($this->date, $this->time);
-
+        $startDatetime = $this->combineDateAndTime($this->date, $this->time);
         $reservation = $this->service->createReservation(
             $tables,
             $halls,
-            $dateAndTime,
+            $startDatetime,
             $this->number_of_people,
             $this->reservation_type,
             $client
         );
 
-        $this->service->updateTableOrHallToUnavailable($reservation);
-
         /*
          * Creating instances of reservation question answers
          */
         $questions = $this->service->getReservationQuestions($this->reservation_type);
-
         $answersAndComments = $this->service->getAnswersAndComments(
             $this->question_one_answer,
             $this->question_one_comment,
@@ -188,8 +191,6 @@ class ReservationForm extends Component
 
         $this->service->createReservationEmployees($reservation, $chosenEmployees);
 
-        $this->service->updateChosenEmployeesToUnavailable($chosenEmployees);
-
         /*
          * Send email
          */
@@ -212,8 +213,8 @@ class ReservationForm extends Component
             ->extends('layouts.app')
             ->section('content')
             ->with([
+                'unavailableDateTimes' => $this->getUnavailableDateTimes(),
                 'reservationTypes' => $this->service->getReservationTypes(),
-                'reservationQuestions' => $this->service->getReservationQuestions($this->reservation_type),
                 'employees' => $this->service->getEmployees()
             ]);
     }
