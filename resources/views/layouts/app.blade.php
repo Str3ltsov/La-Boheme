@@ -7,8 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -36,7 +35,7 @@
                         @include('layouts.admin_dropdown')
                     @else
                         @auth
-                            @include('layouts.profile_dropdown')
+                            @include('layouts.admin_profile_dropdown')
                         @endauth
                     @endguest
                 </ul>
@@ -50,6 +49,10 @@
     <main class="py-4">
         @yield('content')
     </main>
+    <footer class="d-flex flex-column justify-content-center align-items-center">
+        <span>PHP version: {{ phpversion() }}</span>
+        <span>Laravel version: {{ app()->version() }}</span>
+    </footer>
 </div>
 @stack('scripts')
 @livewireScripts

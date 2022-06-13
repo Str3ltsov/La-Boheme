@@ -61,7 +61,7 @@ class ReservationFactory extends Factory
             'end_datetime' => $endDateTime,
             'rating' => NULL,
             'client_id' => self::$client_id++,
-            'reservation_status_id' => rand(1, 3),
+            'reservation_status_id' => rand(1, 4),
             'created_at' => $dateTime,
             'updated_at' => $dateTime
         ];

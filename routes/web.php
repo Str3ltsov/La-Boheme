@@ -1,11 +1,10 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Http\Livewire\ReservationForm;
 use App\Http\Controllers\Admin;
+use App\Http\Livewire\ReservationForm;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,15 +20,23 @@ use App\Http\Controllers;
 /*
  * Guest
  */
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/reservation', ReservationForm::class)->name('livewire.reservation');
-Route::view('/reservation/saved', 'reservation_saved')->name('reservation.saved');
+Route::get('/', [HomeController::class, 'index'])
+    ->name('home');
+Route::get('/reservation', ReservationForm::class)
+    ->name('livewire.reservation');
+Route::view('/reservation/saved', 'reservation_saved')
+    ->name('reservation.saved');
 
 /*
  * Admin
  */
 Route::group(['prefix' => 'admin', 'middleware' => ['admin.authorization']], function () {
-    Route::get('/', [Admin\HomeController::class, 'index'])->name('admin.home');
+    Route::get('/', [Admin\HomeController::class, 'index'])
+        ->name('admin.home');
+    Route::get('/reservations', [Admin\ReservationsController::class, 'index'])
+        ->name('admin.reservations');
+    Route::put('/reservations', [Admin\ReservationsController::class, 'updateReservationStatus'])
+        ->name('admin.reservations.updateReservationStatus');
 });
 
 /*
