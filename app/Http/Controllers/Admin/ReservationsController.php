@@ -26,8 +26,13 @@ class ReservationsController extends Controller
     public function updateReservationStatus(UpdateReservationStatusRequest $request)
     {
         $reservationId = $this->service->getReservationId($request);
+        $reservationStatus = $this->service->getReservationStatusFromRequest($request);
 
-        $this->service->updateReservationStatus($request, $reservationId);
+        $this->service->updateReservationStatus($reservationStatus, $reservationId);
+
+        $client = $this->service->getClientEmailFromReservation($reservationId);
+
+        $this->service->sendReservationStatusUpdateEmail($client, $reservationStatus);
 
         return redirect()
             ->route('admin.reservations')
