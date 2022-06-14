@@ -9,5 +9,5 @@
     3. Paspausti šią nuorodą.
 
     Pagarbiai,
-    {{ config('app.name') }}
+    reservacijos@laboheme.lt
 @endcomponent

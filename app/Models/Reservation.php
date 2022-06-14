@@ -51,28 +51,28 @@ class Reservation extends Model
         'reservation_status_id' => 'required|integer',
     ];
 
-    public function reservationType()
+    public function type()
     {
-        return $this->hasOne(ReservationType::class, 'reservation_type_id');
+        return $this->hasOne(ReservationType::class, 'id', 'reservation_type_id');
     }
 
     public function table()
     {
-        return $this->hasOne(Table::class, 'table_id');
+        return $this->hasOne(Table::class, 'id', 'table_id');
     }
 
     public function hall()
     {
-        return $this->hasOne(Hall::class, 'hall_id');
+        return $this->hasOne(Hall::class, 'id', 'hall_id');
     }
 
     public function client()
     {
-        return $this->hasOne(Client::class, 'client_id');
+        return $this->hasOne(Client::class, 'id', 'client_id');
     }
 
-    public function reservationStatus()
+    public function status()
     {
-        return $this->hasOne(ReservationStatus::class, 'reservation_status_id');
+        return $this->hasOne(ReservationStatus::class, 'id', 'reservation_status_id');
     }
 }
