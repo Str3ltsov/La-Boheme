@@ -2,11 +2,18 @@
 
 namespace App\Traits;
 
-use App\Models\Reservation;
+use App\Models\HallUnavailableDate;
+use App\Models\HallUnavailableDateTime;
+use App\Models\TableUnavailableDate;
+use App\Models\TableUnavailableDateTime;
+use Illuminate\Http\RedirectResponse;
 use DateTime;
 
 trait UseDatesTimes {
-    public function getWeekdayTimes(): array
+    /*
+     * Retrieve times depending on the day of the week
+     */
+    private function getWeekdayTimes(): array
     {
         $weekdayTimes = [
             '17:00', '18:00', '19:00', '20:00',
@@ -20,7 +27,7 @@ trait UseDatesTimes {
         return $weekdayTimes;
     }
 
-    public function getWeekendTimes(): array
+    private function getWeekendTimes(): array
     {
         $weekendTimes = [
             '12:00', '13:00', '14:00', '15:00',
@@ -36,32 +43,76 @@ trait UseDatesTimes {
         return $weekendTimes;
     }
 
-    public function getTimesBasedOnDay(string $date, array $weekdayTimes, array $weekendTimes): array
+    public function getTimesBasedOnDay(string $date): array
     {
         $weekend = date('N', strtotime($date));
 
         if ($weekend >= 6) {
-            return $weekendTimes;
+            return $this->getWeekendTimes();
         }
 
-        return $weekdayTimes;
+        return $this->getWeekdayTimes();
     }
 
+    /*
+     * Combine separate date and time inputs into one datetime
+     */
     public function combineDateAndTime(string $date, string $time): null|string
     {
         return date('Y-m-d H:i:s', strtotime("$date $time"));
     }
 
-    public function getUnavailableDateTimes(): array
+    /*
+     * Retrieve unavailable times depending on the date selected
+     */
+    private function getTableUnavailableDateTimesArray(): array|RedirectResponse
     {
-        return [];
+        $tableUnavailableDateTimes = TableUnavailableDateTime::select('unavailable_datetime')
+            ->get();
+
+        if ($tableUnavailableDateTimes->isEmpty()) {
+            return redirect()
+                ->route('home')
+                ->with('error', 'Failed to retrieve table unavailable datetimes');
+        }
+
+        return $tableUnavailableDateTimes->toArray();
+    }
+
+    private function getHallUnavailableDateTimesArray(): array|RedirectResponse
+    {
+        $hallUnavailableDateTimes = HallUnavailableDateTime::select('unavailable_datetime')
+            ->get();
+
+        if ($hallUnavailableDateTimes->isEmpty()) {
+            return redirect()
+                ->route('home')
+                ->with('error', 'Failed to retrieve hall unavailable datetimes');
+        }
+
+        return $hallUnavailableDateTimes->toArray();
+    }
+
+    public function getUnavailableDateTimesByReservationType(int $reservationType)
+    {
+        if ($reservationType == 1) {
+            return $this->getTableUnavailableDateTimesArray();
+        }
+        else if ($reservationType == 2) {
+            return $this->getHallUnavailableDateTimesArray();
+        }
+
+        return redirect()
+            ->route('home')
+            ->with('error', 'Failed to retrieve unavailable datetimes by reservation type');
     }
 
     public function getAvailableTimesByDate(array $unavailableDateTimes, string $date, array $times): array
     {
         for ($i = 0; $i < count($unavailableDateTimes); $i++) {
-            if ($unavailableDateTimes[$i]->format('Y-m-d') == $date) {
-                if (($key = array_search($unavailableDateTimes[$i]->format('H:i'), $times)) !== false) {
+            $unavailableDateTime = date_create($unavailableDateTimes[$i]['unavailable_datetime']);
+            if ($unavailableDateTime->format('Y-m-d') == $date) {
+                if (($key = array_search($unavailableDateTime->format('H:i'), $times)) !== false) {
                     unset($times[$key]);
                 }
             }
@@ -70,11 +121,62 @@ trait UseDatesTimes {
         return $times;
     }
 
-    /*public function pushNewUnavailableDateTime(string $dateTime, array $unavailableDateTimes): array
+    /*
+     * Retrieve unavailable dates depending on the reservation type selected
+     */
+    private function getTableUnavailableDatesArray(): array|RedirectResponse
     {
-        $dateTime = DateTime::createFromFormat('Y-m-d H:i', $dateTime);
-        $unavailableDateTimes[] = $dateTime;
+        $tableUnavailableDates = TableUnavailableDate::select('unavailable_date')
+            ->get();
 
-        return $unavailableDateTimes;
-    }*/
+        if ($tableUnavailableDates->isEmpty()) {
+            return redirect()
+                ->route('home')
+                ->with('error', 'Failed to retrieve table unavailable dates');
+        }
+
+        return $tableUnavailableDates->toArray();
+    }
+
+    private function getHallUnavailableDatesArray(): array|RedirectResponse
+    {
+        $hallUnavailableDates = HallUnavailableDate::select('unavailable_date')
+            ->get();
+
+        if ($hallUnavailableDates->isEmpty()) {
+            return redirect()
+                ->route('home')
+                ->with('error', 'Failed to retrieve hall unavailable dates');
+        }
+
+        return $hallUnavailableDates->toArray();
+    }
+
+    public function getUnavailableDatesByReservationType(int $reservationType): array|RedirectResponse
+    {
+        if ($reservationType == 1) {
+            return $this->getTableUnavailableDatesArray();
+        }
+        else if ($reservationType == 2) {
+            return $this->getHallUnavailableDatesArray();
+        }
+
+        return redirect()
+            ->route('home')
+            ->with('error', 'Failed to retrieve unavailable dates by reservation type');
+    }
+
+    public function getUnavailableDates(array $unavailableDates): array
+    {
+        $newUnavailableDates = [];
+
+        for ($i = 0; $i < count($unavailableDates); $i++) {
+            $newUnavailableDates[] = date(
+                'Y-m-d',
+                strtotime($unavailableDates[$i]['unavailable_date'])
+            );
+        }
+
+        return $newUnavailableDates;
+    }
 }

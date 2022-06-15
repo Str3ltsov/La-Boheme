@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Api\ReservationFormApiController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +19,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/admin', function (Request $request) {
     return $request->user();
 });
+
+Route::apiResource('unavailable_dates', ReservationFormApiController::class)->only(['show']);

@@ -98,13 +98,18 @@ class ReservationForm extends Component
 
     public function addTimesAndGoToNextStep()
     {
-        $weekdayTimes = $this->getWeekdayTimes();
-        $weekendTimes = $this->getWeekendTimes();
-        $times = $this->getTimesBasedOnDay($this->date, $weekdayTimes, $weekendTimes);
-        $unavailableDateTimes = $this->getUnavailableDateTimes();
+        /*
+         * Going to next step
+         */
+        $this->goToNextStep();
+
+        /*
+         * Adding available times depending on the day of week.
+         */
+        $unavailableDateTimes = $this->getUnavailableDateTimesByReservationType($this->reservation_type);
+        $times = $this->getTimesBasedOnDay($this->date);
 
         $this->times = $this->getAvailableTimesByDate($unavailableDateTimes, $this->date, $times);
-        $this->goToNextStep();
     }
 
     public function goToNextStep()
@@ -213,7 +218,6 @@ class ReservationForm extends Component
             ->extends('layouts.app')
             ->section('content')
             ->with([
-                'unavailableDateTimes' => $this->getUnavailableDateTimes(),
                 'reservationTypes' => $this->service->getReservationTypes(),
                 'employees' => $this->service->getEmployees()
             ]);

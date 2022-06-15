@@ -16,6 +16,7 @@
                                 type="radio"
                                 name="reservation"
                                 value="{{ $reservationType->id }}"
+                                onclick="fetchUnavailableDates({{ $reservationType->id }})"
                             >
                             <label class="form-check-label fs-5">{{ $reservationType->name }}</label>
                         </div>
@@ -54,18 +55,30 @@
 @push('scripts')
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script>
-        $(function() {
-            $('#date_picker').datepicker({
-                minDate: '{{ now()->toDateString() }}',
-                maxDate: '+3M',
-                dateFormat: 'yy-mm-dd',
-                beforeShowDay: function(date) {
-                    const dateToString = jQuery.datepicker.formatDate('yy-mm-dd', date);
-                    const array = @json($unavailableDateTimes);
-                    return [array.indexOf(dateToString) === -1]
-                }
+        async function fetchUnavailableDates(reservationType) {
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/api/v1/unavailable_dates/${reservationType}`)
+                const unavailableDates = await response.json();
+                getDatePickerWithUnavailableDates(unavailableDates);
+            }
+            catch (error) {
+                console.error(error);
+            }
+        }
+
+        function getDatePickerWithUnavailableDates(unavailableDates) {
+            $(() => {
+                $('#date_picker').datepicker({
+                    minDate: '{{ now()->toDateString() }}',
+                    maxDate: '+3M',
+                    dateFormat: 'yy-mm-dd',
+                    beforeShowDay: date => {
+                        const dateToString = jQuery.datepicker.formatDate('yy-mm-dd', date);
+                        return [unavailableDates.indexOf(dateToString) === -1]
+                    }
+                });
             });
-        });
+        }
     </script>
 @endpush
 
