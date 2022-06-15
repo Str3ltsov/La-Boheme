@@ -57,7 +57,8 @@
     <script>
         async function fetchUnavailableDates(reservationType) {
             try {
-                const response = await fetch(`http://127.0.0.1:8000/api/v1/unavailable_dates/${reservationType}`)
+                const response =
+                    await fetch(`{{ env('APP_URL') }}:{{ env('APP_PORT') }}/api/v1/unavailable_dates/${reservationType}`)
                 const unavailableDates = await response.json();
                 getDatePickerWithUnavailableDates(unavailableDates);
             }
