@@ -27,7 +27,7 @@ class TableUnavailableDateTime extends Model
 
     public static array $rules = [
         'table_id' => 'required|integer',
-        'unavailable_datetime' => 'required|date_format:Y-m-d H:i',
+        'unavailable_datetime' => 'required|date',
     ];
 
     public function table()
