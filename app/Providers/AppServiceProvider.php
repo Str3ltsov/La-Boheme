@@ -6,6 +6,8 @@ use App\Services\ReservationsService;
 use App\Services\ReservationsServiceInterface;
 use App\Services\ReservationService;
 use App\Services\ReservationServiceInterface;
+use App\Services\TablesService;
+use App\Services\TablesServiceInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             ReservationsServiceInterface::class,
             ReservationsService::class
+        );
+        $this->app->bind(
+            TablesServiceInterface::class,
+            TablesService::class
         );
     }
 
