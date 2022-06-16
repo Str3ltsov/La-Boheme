@@ -28,8 +28,8 @@ class ReservationQuestion extends Model
         'reservation_type_id' => 'required|integer'
     ];
 
-    public function reservationType()
+    public function type()
     {
-        return $this->hasOne(ReservationType::class, 'reservation_type_id');
+        return $this->hasOne(ReservationType::class, 'id', 'reservation_type_id');
     }
 }

@@ -8,27 +8,35 @@
                 <th scope="col">Data ir laikas</th>
                 <th scope="col">Zmoniu sk.</th>
                 <th scope="col">Patvirtinimas</th>
+                <th scope="col">Veiksmai</th>
             </tr>
         </thead>
         <tbody>
-            @forelse ($reservations as $reservation)
+            @forelse ($reservations ?? [] as $reservation)
                 <tr>
-                    <td>{{ $reservation->name }}</td>
-                    <td>{{ $reservation->email }}</td>
-                    <td>{{ $reservation->phone_number }}</td>
-                    <td data-class-name="priority">{{ $reservation->start_datetime }}</td>
-                    <td>{{ $reservation->number_of_people }}</td>
+                    <td>{{ $reservation->name ?? '-' }}</td>
+                    <td>{{ $reservation->email ?? '-' }}</td>
+                    <td>{{ $reservation->phone_number ?? '-' }}</td>
+                    <td data-class-name="priority">{{ $reservation->start_datetime ?? '-' }}</td>
+                    <td>{{ $reservation->number_of_people ?? '-' }}</td>
                     <td>
                         @if ($reservation->status->id == 1)
                             @include('admin.reservations.form')
                         @else
-                            <span>Reservacijos statusas yra: {{ $reservation->status->name }}</span>
+                            <span>Reservacijos statusas yra: {{ $reservation->status->name ?? '-' }}</span>
                         @endif
+                    </td>
+                    <td>
+                        <div class="d-flex">
+                            <a class="btn btn-primary" href="{{ route('admin.reservations.show', $reservation->id) }}">
+                                Detaliai
+                            </a>
+                        </div>
                     </td>
                 </tr>
             @empty
                 <tr>
-                    <td>No reservations available</td>
+                    <td>No reservations found</td>
                 </tr>
             @endforelse
         </tbody>
@@ -40,6 +48,7 @@
             <th scope="col">Data ir laikas</th>
             <th scope="col">Zmoniu sk.</th>
             <th scope="col">Patvirtinimas</th>
+            <th scope="col">Veiksmai</th>
         </tr>
         </tfoot>
     </table>
