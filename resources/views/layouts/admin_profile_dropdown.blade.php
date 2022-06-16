@@ -13,6 +13,9 @@
         <a class="dropdown-item" href="{{ route('admin.tables') }}">
             {{ __('Tables') }}
         </a>
+        <a class="dropdown-item" href="{{ route('admin.halls') }}">
+            {{ __('Halls') }}
+        </a>
         <a class="dropdown-item" href="{{ route('logout') }}"
            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             {{ __('Logout') }}

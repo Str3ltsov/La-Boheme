@@ -68,6 +68,31 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.authorization']], fun
         ->name('admin.tables.createUnavailableDateTime');
     Route::delete('/tables/{table}/delete_unavailable_datetime', [Admin\TablesController::class, 'deleteUnavailableDateTime'])
         ->name('admin.tables.deleteUnavailableDateTime');
+    /*
+     * Halls
+     */
+    Route::get('/halls', [Admin\HallsController::class, 'index'])
+        ->name('admin.halls');
+    Route::post('/halls/create', [Admin\HallsController::class, 'create'])
+        ->name('admin.halls.create');
+    Route::get('/halls/{hall}', [Admin\HallsController::class, 'show'])
+        ->name('admin.halls.show');
+    Route::delete('/halls/{hall}', [Admin\HallsController::class, 'destroy'])
+        ->name('admin.halls.destroy');
+    /*
+     * Hall unavailable dates
+     */
+    Route::post('/halls/{hall}/create_unavailable_date', [Admin\HallsController::class, 'createUnavailableDate'])
+        ->name('admin.halls.createUnavailableDate');
+    Route::delete('/halls/{hall}/delete_unavailable_date', [Admin\HallsController::class, 'deleteUnavailableDate'])
+        ->name('admin.halls.deleteUnavailableDate');
+    /*
+     * Hall unavailable date times
+     */
+    Route::post('/halls/{hall}/create_unavailable_datetime', [Admin\HallsController::class, 'createUnavailableDateTime'])
+        ->name('admin.halls.createUnavailableDateTime');
+    Route::delete('/halls/{hall}/delete_unavailable_datetime', [Admin\HallsController::class, 'deleteUnavailableDateTime'])
+        ->name('admin.halls.deleteUnavailableDateTime');
 });
 
 /*

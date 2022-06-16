@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\HallsService;
+use App\Services\HallsServiceInterface;
 use App\Services\ReservationsService;
 use App\Services\ReservationsServiceInterface;
 use App\Services\ReservationService;
@@ -30,6 +32,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             TablesServiceInterface::class,
             TablesService::class
+        );
+        $this->app->bind(
+            HallsServiceInterface::class,
+            HallsService::class
         );
     }
 
