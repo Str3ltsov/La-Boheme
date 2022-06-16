@@ -31,13 +31,13 @@ class ReservationQuestionAnswer extends Model
         'answer' => 'required|boolean'
     ];
 
-    public function reservationQuestions()
+    public function question()
     {
-        return $this->hasMany(ReservationQuestion::class, 'reservation_question_id');
+        return $this->hasMany(ReservationQuestion::class, 'id', 'reservation_question_id');
     }
 
     public function reservation()
     {
-        return $this->hasOne(Reservation::class, 'reservation_id');
+        return $this->hasOne(Reservation::class, 'id', 'reservation_id');
     }
 }

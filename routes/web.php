@@ -41,6 +41,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.authorization']], fun
      */
     Route::get('/reservations', [Admin\ReservationsController::class, 'index'])
         ->name('admin.reservations');
+    Route::get('/reservations/{reservation}', [Admin\ReservationsController::class, 'show'])
+        ->name('admin.reservations.show');
     Route::put('/reservations', [Admin\ReservationsController::class, 'updateReservationStatus'])
         ->name('admin.reservations.updateReservationStatus');
     /*

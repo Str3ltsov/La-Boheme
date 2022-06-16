@@ -23,9 +23,20 @@ class ReservationsController extends Controller
             ->with('reservations', $this->service->getReservationsWithClients());
     }
 
+    public function show($id)
+    {
+        return view('admin.reservations.show')
+            ->with([
+                'reservation' => $this->service->getReservationById($id),
+                'reservationEmployees' => $this->service->getReservationEmployeesByReservationId($id),
+                'reservationQuestionsAnswers' =>
+                    $this->service->getReservationQuestionsAnswersByReservationId($id)
+            ]);
+    }
+
     public function updateReservationStatus(UpdateReservationStatusRequest $request)
     {
-        $reservationId = $this->service->getReservationId($request);
+        $reservationId = $this->service->getReservationIdFromRequest($request);
         $reservationStatus = $this->service->getReservationStatusFromRequest($request);
 
         $this->service->updateReservationStatus($reservationStatus, $reservationId);

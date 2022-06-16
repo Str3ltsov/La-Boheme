@@ -37,8 +37,8 @@ class Employee extends Model
         'employee_type_id' => 'required|integer'
     ];
 
-    public function employeeType()
+    public function type()
     {
-        return $this->hasOne(EmployeeType::class, 'employee_type_id');
+        return $this->hasOne(EmployeeType::class, 'id', 'employee_type_id');
     }
 }
