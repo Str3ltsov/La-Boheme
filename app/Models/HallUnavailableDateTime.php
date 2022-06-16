@@ -27,7 +27,7 @@ class HallUnavailableDateTime extends Model
 
     public static array $rules = [
         'hall_id' => 'required|integer',
-        'unavailable_datetime' => 'required|date_format:Y-m-d H:i',
+        'unavailable_datetime' => 'required|date',
     ];
 
     public function hall()
