@@ -7,9 +7,9 @@
                 <h5 class="text-muted me-1">{{ $steps[$currentStep]['step'] }}</h5>
                 <h5>{{ $steps[$currentStep]['description'] }}</h5>
             </div>
-            @if ($reservation_type == 1)
+            @if ($reservation_type == \App\Helpers\Constants::reservationTypeTable)
                 @include('livewire.reservation.questions_one')
-            @elseif ($reservation_type == 2)
+            @elseif ($reservation_type == \App\Helpers\Constants::reservationTypeHall)
                 @include('livewire.reservation.questions_two')
             @endif
             <div class="d-flex justify-content-end" style="gap: 10px;">

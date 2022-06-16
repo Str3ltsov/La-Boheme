@@ -20,4 +20,5 @@ Route::middleware('auth:sanctum')->get('/admin', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('unavailable_dates', ReservationFormApiController::class)->only(['show']);
+Route::apiResource('unavailable_dates', ReservationFormApiController::class)
+    ->only(['show']);

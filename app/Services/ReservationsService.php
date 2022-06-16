@@ -2,11 +2,11 @@
 
 namespace App\Services;
 
+use App\Helpers\Constants;
 use App\Mail\ReservationStatusUpdateMail;
 use App\Models\Client;
 use App\Models\Employee;
 use App\Models\Reservation;
-
 use App\Models\ReservationQuestion;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
@@ -110,7 +110,7 @@ class ReservationsService implements ReservationsServiceInterface
         if (is_null($reservationId)) {
             return redirect()
                 ->route('admin.reservations')
-                ->with('error', "Failed to retrieve id of reservation");
+                ->with('error', "Failed to find reservation id from request");
         }
 
         return $reservationId;
@@ -144,7 +144,7 @@ class ReservationsService implements ReservationsServiceInterface
         if (empty($client)) {
             return redirect()
                 ->route('admin.reservations')
-                ->with('error', "Failed to retrieve client email from reservation");
+                ->with('error', "Failed to find client email from reservation");
         }
 
         return $client;
@@ -159,17 +159,17 @@ class ReservationsService implements ReservationsServiceInterface
         ];
 
         if (class_exists(ReservationStatusUpdateMail::class)) {
-            if ($reservationStatus == 2) {
+            if ($reservationStatus == Constants::reservationStatusInAccepted) {
                 return Mail::to($client->email)->send(
                     new ReservationStatusUpdateMail($statusMessage['acceptedStatus'])
                 );
             }
-            else if ($reservationStatus == 3) {
+            else if ($reservationStatus == Constants::reservationStatusInDeclined) {
                 return Mail::to($client->email)->send(
                     new ReservationStatusUpdateMail($statusMessage['declinedStatus'])
                 );
             }
-            else if ($reservationStatus == 4) {
+            else if ($reservationStatus == Constants::reservationStatusInAbsent) {
                 return Mail::to($client->email)->send(
                     new ReservationStatusUpdateMail($statusMessage['absentStatus'])
                 );

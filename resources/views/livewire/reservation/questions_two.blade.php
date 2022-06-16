@@ -64,7 +64,7 @@
                 value="Ne"
             >
         </div>
-        @error('question_four_answer')
+        @error('question_there_answer')
             <span class="text-danger">{{ $message }}</span>
         @enderror
         <textarea
@@ -95,7 +95,7 @@
                 value="Ne"
             >
         </div>
-        @error('question_five_answer')
+        @error('question_four_answer')
             <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
@@ -122,7 +122,7 @@
                 <p class="mx-3 my-0">Nurodykite, kiek vaikiškiškų kėdučių
                     reikės jei į klausimą atsakėte taip:</p>
                 <input
-                    wire:model.lazy="question_four_comment"
+                    wire:model.lazy="question_five_comment"
                     type="text"
                     class="form-control w-25"
                     name="questionFourComment"

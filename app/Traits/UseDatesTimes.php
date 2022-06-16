@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Helpers\Constants;
 use App\Models\HallUnavailableDate;
 use App\Models\HallUnavailableDateTime;
 use App\Models\TableUnavailableDate;
@@ -95,10 +96,10 @@ trait UseDatesTimes {
 
     public function getUnavailableDateTimesByReservationType(int $reservationType)
     {
-        if ($reservationType == 1) {
+        if ($reservationType == Constants::reservationTypeTable) {
             return $this->getTableUnavailableDateTimesArray();
         }
-        else if ($reservationType == 2) {
+        else if ($reservationType == Constants::reservationTypeHall) {
             return $this->getHallUnavailableDateTimesArray();
         }
 
@@ -154,10 +155,10 @@ trait UseDatesTimes {
 
     public function getUnavailableDatesByReservationType(int $reservationType): array|RedirectResponse
     {
-        if ($reservationType == 1) {
+        if ($reservationType == Constants::reservationTypeTable) {
             return $this->getTableUnavailableDatesArray();
         }
-        else if ($reservationType == 2) {
+        else if ($reservationType == Constants::reservationTypeHall) {
             return $this->getHallUnavailableDatesArray();
         }
 

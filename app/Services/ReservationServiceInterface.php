@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Models\Client;
 use App\Models\Reservation;
-
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Mail\SentMessage;
 use Illuminate\Database\Eloquent\Collection;
@@ -12,35 +11,40 @@ use Illuminate\Database\Eloquent\Collection;
 interface ReservationServiceInterface
 {
     public function getReservationTypes(): Collection|RedirectResponse;
-    public function getValidationRules($reservationType): array|RedirectResponse;
-    public function makeRulesReadableByValidate($validationRules): array;
+    public function getValidationRules(mixed $reservationType): array|RedirectResponse;
+    public function makeRulesReadableByValidate(array $validationRules): array;
     public function getEmployees(): Collection|RedirectResponse;
-    public function createClient($name, $email, $phoneNumber, $additionalInfo): Client|RedirectResponse;
+    public function createClient(string $name, string $email, string $phoneNumber, string $additionalInfo)
+    : Client|RedirectResponse;
     public function getTableIds(): Collection|RedirectResponse;
     public function getHallIds(): Collection|RedirectResponse;
     public function createReservation(
-        $tables, $halls, $startDatetime, $numberOfPeople, $reservationTypeId, $client
+        mixed $tables,
+        mixed $halls,
+        string $startDatetime,
+        int $numberOfPeople,
+        int $reservationType,
+        object $client
     ): Reservation|RedirectResponse;
-    //public function updateTableOrHallToUnavailable($reservation);
     public function getAnswersAndComments(
-        $questionOneAnswer,
-        $questionOneComment,
-        $questionTwoAnswer,
-        $questionTwoComment,
-        $questionThreeAnswer,
-        $questionThreeComment,
-        $questionFourAnswer,
-        $questionFourComment,
-        $questionFiveAnswer,
-        $questionFiveComment,
-        $questionSixAnswer,
-        $questionSixComment,
-        $questionSevenAnswer
+        mixed $questionOneAnswer,
+        mixed $questionOneComment,
+        mixed $questionTwoAnswer,
+        mixed $questionTwoComment,
+        mixed $questionThreeAnswer,
+        mixed $questionThreeComment,
+        mixed $questionFourAnswer,
+        mixed $questionFourComment,
+        mixed $questionFiveAnswer,
+        mixed $questionFiveComment,
+        mixed $questionSixAnswer,
+        mixed $questionSixComment,
+        mixed $questionSevenAnswer
     ): array|RedirectResponse;
-    public function getReservationQuestions($reservationType): array|RedirectResponse;
-    public function createReservationQuestionAnswers($reservation, $questions, $answersAndComments);
+    public function getReservationQuestions(int $reservationType): array|RedirectResponse;
+    public function createReservationQuestionAnswers(object $reservation, mixed $questions, array $answersAndComments)
+    : int|RedirectResponse;
     public function getChosenEmployees($waiter, $bartender): array|RedirectResponse;
-    public function createReservationEmployees($reservation, $chosenEmployees);
-    //public function updateChosenEmployeesToUnavailable($chosenEmployees);
-    public function sendReservationSentEmail($client): ?SentMessage;
+    public function createReservationEmployees(object $reservation, array $chosenEmployees): int|RedirectResponse;
+    public function sendReservationSentEmail(object $client): ?SentMessage;
 }

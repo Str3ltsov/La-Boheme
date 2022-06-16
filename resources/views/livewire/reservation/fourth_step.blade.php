@@ -8,20 +8,20 @@
         <div class="d-flex justify-content-center align-items-start my-3">
             <div class="d-flex flex-column w-100 me-3" style="gap: 15px">
                 <h5>Padavėjai</h5>
-                @forelse ($employees as $employee)
-                    @if ($employee->employee_type_id == 1)
+                @forelse ($employees ?? [] as $employee)
+                    @if ($employee->employee_type_id == \App\Helpers\Constants::employeeTypeWaiter)
                         @include('livewire.reservation.waiters')
                     @endif
                 @empty
                     <div class="d-flex flex-column justify-content-center">
-                        <p>No employees available</p>
+                        <p>No employees found</p>
                     </div>
                 @endforelse
             </div>
             <div class="d-flex flex-column w-100 me-3" style="gap: 15px">
                 <h5>Barmenai</h5>
-                @forelse ($employees as $employee)
-                    @if ($employee->employee_type_id == 2)
+                @forelse ($employees ?? [] as $employee)
+                    @if ($employee->employee_type_id == \App\Helpers\Constants::employeeTypeBartender)
                         @include('livewire.reservation.bartenders')
                     @endif
                 @empty

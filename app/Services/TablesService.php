@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Models\Reservation;
 use App\Models\Table;
 use App\Models\TableUnavailableDate;
 use App\Models\TableUnavailableDateTime;

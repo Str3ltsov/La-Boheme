@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Reservation extends Model
 {
@@ -51,27 +52,27 @@ class Reservation extends Model
         'reservation_status_id' => 'required|integer',
     ];
 
-    public function type()
+    public function type(): HasOne
     {
         return $this->hasOne(ReservationType::class, 'id', 'reservation_type_id');
     }
 
-    public function table()
+    public function table(): HasOne
     {
         return $this->hasOne(Table::class, 'id', 'table_id');
     }
 
-    public function hall()
+    public function hall(): HasOne
     {
         return $this->hasOne(Hall::class, 'id', 'hall_id');
     }
 
-    public function client()
+    public function client(): HasOne
     {
         return $this->hasOne(Client::class, 'id', 'client_id');
     }
 
-    public function status()
+    public function status(): HasOne
     {
         return $this->hasOne(ReservationStatus::class, 'id', 'reservation_status_id');
     }

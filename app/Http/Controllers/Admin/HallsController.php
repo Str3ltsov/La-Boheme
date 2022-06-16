@@ -10,6 +10,10 @@ use App\Http\Requests\DeleteHallUnavailableDateTimeRequest;
 use App\Services\HallsService;
 use App\Services\HallsServiceInterface;
 use App\Traits\UseDatesTimes;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 
 class HallsController extends Controller
 {
@@ -23,13 +27,13 @@ class HallsController extends Controller
         $this->service = $service;
     }
 
-    public function index()
+    public function index(): Factory|View|Application
     {
         return view('admin.halls.index')
             ->with('halls', $this->service->getHalls());
     }
 
-    public function show($id)
+    public function show($id): Factory|View|Application
     {
         return view('admin.halls.show')
             ->with([
@@ -39,7 +43,7 @@ class HallsController extends Controller
             ]);
     }
 
-    public function create()
+    public function create(): RedirectResponse
     {
         $this->service->createHall();
 
@@ -48,7 +52,7 @@ class HallsController extends Controller
             ->with('success', 'Successfully created a new hall');
     }
 
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
         $this->service->deleteHall($id);
 
@@ -57,7 +61,7 @@ class HallsController extends Controller
             ->with('success', "Successfully deleted hall $id");
     }
 
-    public function createUnavailableDate(CreateHallUnavailableDateRequest $request)
+    public function createUnavailableDate(CreateHallUnavailableDateRequest $request): RedirectResponse
     {
         $this->service->createHallUnavailableDate($request);
 
@@ -66,7 +70,7 @@ class HallsController extends Controller
             ->with('success', "Successfully created new date");
     }
 
-    public function deleteUnavailableDate(DeleteHallUnavailableDateRequest $request)
+    public function deleteUnavailableDate(DeleteHallUnavailableDateRequest $request): RedirectResponse
     {
         $this->service->deleteHallUnavailableDate($request);
 
@@ -75,7 +79,7 @@ class HallsController extends Controller
             ->with('success', "Successfully deleted hall unavailable date");
     }
 
-    public function createUnavailableDateTime(CreateHallUnavailableDateTimeRequest $request)
+    public function createUnavailableDateTime(CreateHallUnavailableDateTimeRequest $request): RedirectResponse
     {
         $this->service->createHallUnavailableDateTime($request);
 
@@ -84,7 +88,7 @@ class HallsController extends Controller
             ->with('success', "Successfully created new date time");
     }
 
-    public function deleteUnavailableDateTime(DeleteHallUnavailableDateTimeRequest $request)
+    public function deleteUnavailableDateTime(DeleteHallUnavailableDateTimeRequest $request): RedirectResponse
     {
         $this->service->deleteHallUnavailableDateTime($request);
 

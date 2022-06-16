@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class ReservationQuestionAnswer extends Model
 {
@@ -31,12 +32,12 @@ class ReservationQuestionAnswer extends Model
         'answer' => 'required|boolean'
     ];
 
-    public function question()
+    public function question(): HasOne
     {
-        return $this->hasMany(ReservationQuestion::class, 'id', 'reservation_question_id');
+        return $this->hasOne(ReservationQuestion::class, 'id', 'reservation_question_id');
     }
 
-    public function reservation()
+    public function reservation(): HasOne
     {
         return $this->hasOne(Reservation::class, 'id', 'reservation_id');
     }

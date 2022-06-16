@@ -10,10 +10,10 @@
                 <h6 class="fw-bolder mb-2 text-uppercase">laikas</h6>
                 <select wire:model.lazy="time" class="form-select fs-5 w-25" name="time">
                     <option value="" selected></option>
-                    @forelse ($times as $time)
+                    @forelse ($times ?? [] as $time)
                         <option value="{{ $time }}">{{ $time }}</option>
                     @empty
-                        <option value="">No times available</option>
+                        <option value="" disabled>No times found</option>
                     @endforelse
                 </select>
                 @error('time')
@@ -25,7 +25,7 @@
                 <input
                     wire:model.lazy="number_of_people"
                     type="number"
-                    @if ($reservation_type == 1)
+                    @if ($reservation_type == \App\Helpers\Constants::reservationTypeTable)
                         min="1"
                         max="8"
                     @else

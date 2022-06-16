@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class HallUnavailableDateTime extends Model
 {
@@ -30,7 +31,7 @@ class HallUnavailableDateTime extends Model
         'unavailable_datetime' => 'required|date',
     ];
 
-    public function hall()
+    public function hall(): HasOne
     {
         return $this->hasOne(Hall::class, 'id', 'hall_id');
     }

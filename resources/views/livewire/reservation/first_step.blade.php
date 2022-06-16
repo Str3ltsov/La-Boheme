@@ -7,7 +7,7 @@
         </div>
         <div class="d-flex justify-content-center align-items-center my-3">
             <div class="d-flex flex-column w-100 me-3">
-                @forelse ($reservationTypes as $reservationType)
+                @forelse ($reservationTypes ?? [] as $reservationType)
                     <div class="form-control d-flex flex-column justify-content-center align-items-center mt-3">
                         <div>
                             <input
@@ -27,7 +27,7 @@
                     @enderror
                 @empty
                     <div class="form-control d-flex flex-column justify-content-center align-items-center">
-                        <p>No reservation types</p>
+                        <p>No reservation types found</p>
                     </div>
                 @endforelse
             </div>
