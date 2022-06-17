@@ -2,13 +2,13 @@
     <table class="table table-striped display" id="reservations_table">
         <thead>
             <tr>
-                <th scope="col">Vardas</th>
-                <th scope="col">El. pastas</th>
-                <th scope="col">Telefonas</th>
-                <th scope="col">Data ir laikas</th>
-                <th scope="col">Zmoniu sk.</th>
-                <th scope="col">Patvirtinimas</th>
-                <th scope="col">Veiksmai</th>
+                <th scope="col">{{ __('Vardas') }}</th>
+                <th scope="col">{{ __('El. pastas') }}</th>
+                <th scope="col">{{ __('Telefonas') }}</th>
+                <th scope="col">{{ __('Data ir laikas') }}</th>
+                <th scope="col">{{ __('Zmoniu sk.') }}</th>
+                <th scope="col">{{ __('Patvirtinimas') }}</th>
+                <th scope="col">{{ __('Veiksmai') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -23,32 +23,32 @@
                         @if ($reservation->status->id == 1)
                             @include('admin.reservations.form')
                         @else
-                            <span>Reservacijos statusas yra: {{ $reservation->status->name ?? '-' }}</span>
+                            <span>{{ __('Reservacijos statusas yra') }}: {{ $reservation->status->name ?? '-' }}</span>
                         @endif
                     </td>
                     <td>
                         <div class="d-flex">
                             <a class="btn btn-primary" href="{{ route('admin.reservations.show', $reservation->id) }}">
-                                Detaliai
+                                {{ __('Detaliai') }}
                             </a>
                         </div>
                     </td>
                 </tr>
             @empty
                 <tr>
-                    <td>No reservations found</td>
+                    <td>{{ __('No reservations found') }}</td>
                 </tr>
             @endforelse
         </tbody>
         <tfoot>
         <tr>
-            <th scope="col">Vardas</th>
-            <th scope="col">El. pastas</th>
-            <th scope="col">Telefonas</th>
-            <th scope="col">Data ir laikas</th>
-            <th scope="col">Zmoniu sk.</th>
-            <th scope="col">Patvirtinimas</th>
-            <th scope="col">Veiksmai</th>
+            <th scope="col">{{ __('Vardas') }}</th>
+            <th scope="col">{{ __('El. pastas') }}</th>
+            <th scope="col">{{ __('Telefonas') }}</th>
+            <th scope="col">{{ __('Data ir laikas') }}</th>
+            <th scope="col">{{ __('Zmoniu sk.') }}</th>
+            <th scope="col">{{ __('Patvirtinimas') }}</th>
+            <th scope="col">{{ __('Veiksmai') }}</th>
         </tr>
         </tfoot>
     </table>

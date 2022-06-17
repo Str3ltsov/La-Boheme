@@ -1,6 +1,6 @@
  <div class="d-flex flex-column justify-content-center h-100">
         <h4 class="pb-4">
-            {{ $reservation_type == 1 ? 'Staliuko rezervacija' : 'Šventės organizavimo paslauga'}}
+            {{ $reservation_type == 1 ? __('Staliuko rezervacija') : __('Šventės organizavimo paslauga')}}
         </h4>
         <div class="card p-4">
             <div class="d-flex">
@@ -13,8 +13,8 @@
                 @include('livewire.reservation.questions_two')
             @endif
             <div class="d-flex justify-content-end" style="gap: 10px;">
-                <button wire:click="goToPreviousStep" type="button" class="btn btn-secondary">Atgal</button>
-                <button wire:click="goToNextStep" type="button" class="btn btn-primary">Toliau</button>
+                <button wire:click="goToPreviousStep" type="button" class="btn btn-secondary">{{ __('Atgal') }}</button>
+                <button wire:click="goToNextStep" type="button" class="btn btn-primary">{{ __('Toliau') }}</button>
             </div>
         </div>
  </div>

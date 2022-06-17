@@ -3,30 +3,30 @@
 @section('content')
     <div class="container">
         <div class="d-flex flex-column justify-content-center align-items-center h-100 p-4">
-            <h1 class="fw-bolder">Paslaugos užsakymas</h1>
-            <p class="fs-5">Staliuko rezervacija ar šventės užsakymas</p>
+            <h1 class="fw-bolder">{{ __('Paslaugos užsakymas') }}</h1>
+            <p class="fs-5">{{ __('Staliuko rezervacija ar šventės užsakymas') }}</p>
         </div>
         <div class="d-flex flex-column justify-content-center h-100">
-            <h4 class="pb-4">Administratoriaus paskyra</h4>
+            <h4 class="pb-4">{{ __('Administratoriaus paskyra') }}</h4>
             <div>
                 @include('admin.reservations.messages')
             </div>
             <div class="card p-4">
                 <div class="d-flex justify-content-between">
-                    <h5 class="m-1">Paslauga: {{ $reservation->id }}</h5>
-                    <a class="btn btn-primary" href="{{ route('admin.reservations') }}">Atgal</a>
+                    <h5 class="m-1">{{ __('Paslauga') }}: {{ $reservation->id }}</h5>
+                    <a class="btn btn-primary" href="{{ route('admin.reservations') }}">{{ __('Atgal') }}</a>
                 </div>
                 <div class="d-flex justify-content-center align-items-baseline my-3">
                     <div class="d-flex flex-column w-100 me-3">
-                        <h5>Paslauga</h5>
+                        <h5>{{ __('Paslauga') }}</h5>
                         <div class="d-flex" style="gap: 20px">
                             <div class="d-flex flex-column">
-                                <span>Pradžios data ir  laikas:</span>
-                                <span>Pabaigos data ir laikas:</span>
-                                <span>Žmonių skaičius:</span>
-                                <span>Įvertinimas:</span>
-                                <span>Tipas:</span>
-                                <span>Statusas:</span>
+                                <span>{{ __('Pradžios data ir  laikas') }}:</span>
+                                <span>{{ __('Pabaigos data ir laikas') }}:</span>
+                                <span>{{ __('Žmonių skaičius') }}:</span>
+                                <span>{{ __('Įvertinimas') }}:</span>
+                                <span>{{ __('Tipas') }}:</span>
+                                <span>{{ __('Statusas') }}:</span>
                             </div>
                             <div class="d-flex flex-column">
                                 <span>{{ $reservation->start_datetime ?? '-' }}</span>
@@ -39,13 +39,13 @@
                         </div>
                     </div>
                     <div class="d-flex flex-column w-100 me-3">
-                        <h5>Klientas</h5>
+                        <h5>{{ __('Klientas') }}</h5>
                         <div class="d-flex" style="gap: 20px">
                             <div class="d-flex flex-column">
-                                <span>Vardas:</span>
-                                <span>El. paštas:</span>
-                                <span>Telefono numeris:</span>
-                                <span>Papildoma informacija:</span>
+                                <span>{{ __('Vardas') }}:</span>
+                                <span>{{ __('El. paštas') }}:</span>
+                                <span>{{ __('Telefonas') }}:</span>
+                                <span>{{ __('Papildoma informacija') }}:</span>
                             </div>
                             <div class="d-flex flex-column">
                                 <span>{{ $reservation->client->name ?? '-' }}</span>
@@ -56,20 +56,20 @@
                         </div>
                     </div>
                     <div class="d-flex flex-column w-100 me-3">
-                        <h5>Darbuotojai</h5>
+                        <h5>{{ __('Darbuotojai') }}</h5>
                         <div class="d-flex" style="gap: 20px">
                             <div class="d-flex flex-column">
                                 @forelse( $reservationEmployees ?? [] as $reservationEmployee)
                                     <span>{{ $reservationEmployee->type->name ?? '-' }}:</span>
                                 @empty
-                                    <span>No reservation employee types found</span>
+                                    <span>{{ __('No reservation employee types found') }}</span>
                                 @endforelse
                             </div>
                             <div class="d-flex flex-column">
                                 @forelse( $reservationEmployees ?? [] as $reservationEmployee)
                                     <span>{{ $reservationEmployee->name ?? '-' }}</span>
                                 @empty
-                                    <span>No reservation employee names found</span>
+                                    <span>{{ __('No reservation employee names found') }}</span>
                                 @endforelse
                             </div>
                         </div>
@@ -77,27 +77,27 @@
                 </div>
                 <div class="d-flex justify-content-center align-items-baseline my-3">
                     <div class="d-flex flex-column w-100 me-3">
-                        <h5>Klausimų atsakymai</h5>
+                        <h5>{{ __('Klausimų atsakymai') }}</h5>
                         <div class="d-flex" style="gap: 20px">
                             <div class="d-flex flex-column">
                                 @forelse( $reservationQuestionsAnswers ?? [] as $reservationQuestion )
-                                    <span>{{ $reservationQuestion->question ?? '-' }} :</span>
+                                    <span>{{ __($reservationQuestion->question) ?? '-' }} :</span>
                                 @empty
-                                    <span>No reservation questions found</span>
+                                    <span>{{ __('No reservation questions found') }}</span>
                                 @endforelse
                             </div>
                             <div class="d-flex flex-column">
                                 @forelse( $reservationQuestionsAnswers ?? [] as $reservationQuestionAnswer )
                                     <span>{{ $reservationQuestionAnswer->answer ?? '-' }}</span>
                                 @empty
-                                    <span>No reservation question answers found</span>
+                                    <span>{{ __('No reservation question answers found') }}</span>
                                 @endforelse
                             </div>
                             <div class="d-flex flex-column">
                                 @forelse( $reservationQuestionsAnswers ?? [] as $reservationQuestionComment )
                                     <span>{{ $reservationQuestionComment->comment ?? '-' }}</span>
                                 @empty
-                                    <span>No reservation question comments found</span>
+                                    <span>{{ __('No reservation question comments found') }}</span>
                                 @endforelse
                             </div>
                         </div>

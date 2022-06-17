@@ -21,7 +21,8 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        {{ __('You are logged in!') }}
+                        <p>{{ __('Dabar esate prisijungę!') }}</p>
+                        <p>{{ __('Norėdami pradėti, spustelėkite savo varda.') }}</p>
                     </div>
                 </div>
             </div>

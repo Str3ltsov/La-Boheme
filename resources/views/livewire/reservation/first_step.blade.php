@@ -1,5 +1,5 @@
 <div class="d-flex flex-column justify-content-center h-100">
-    <h4 class="pb-4">Paslaugos užsakymas</h4>
+    <h4 class="pb-4">{{ __('Paslaugos užsakymas') }}</h4>
     <div class="card p-4">
         <div class="d-flex">
             <h5 class="text-muted me-1">{{ $steps[$currentStep]['step'] }}</h5>
@@ -18,20 +18,21 @@
                                 value="{{ $reservationType->id }}"
                                 onclick="fetchUnavailableDates({{ $reservationType->id }})"
                             >
-                            <label class="form-check-label fs-5">{{ $reservationType->name }}</label>
+                            <label class="form-check-label fs-5">{{ __($reservationType->name) }}</label>
                         </div>
-                        <p class="m-0">{{ $reservationType->description }}</p>
+                        <p class="m-0">{{ __($reservationType->description) }}</p>
                     </div>
                     @error('reservation_type')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 @empty
                     <div class="form-control d-flex flex-column justify-content-center align-items-center">
-                        <p>No reservation types found</p>
+                        <p>{{ __('No reservation types found') }}</p>
                     </div>
                 @endforelse
             </div>
             <div class="w-100">
+                <label class="form-check-label fs-5">{{ __('Data') }}:</label>
                 <input
                     wire:model="date"
                     type="text" class="form-control datepicker fs-5"
@@ -47,7 +48,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-end">
-            <button wire:click="addTimesAndGoToNextStep" type="button" class="btn btn-primary">Toliau</button>
+            <button wire:click="addTimesAndGoToNextStep" type="button" class="btn btn-primary">{{ __('Toliau') }}</button>
         </div>
     </div>
 </div>

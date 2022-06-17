@@ -5,20 +5,20 @@
     </a>
     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="{{ route('admin.home') }}">
-            {{ __('Home') }}
+            {{ __('Namo') }}
         </a>
         <a class="dropdown-item" href="{{ route('admin.reservations') }}">
-            {{ __('Reservation') }}
+            {{ __('Reservacijos') }}
         </a>
         <a class="dropdown-item" href="{{ route('admin.tables') }}">
-            {{ __('Tables') }}
+            {{ __('Stalos') }}
         </a>
         <a class="dropdown-item" href="{{ route('admin.halls') }}">
-            {{ __('Halls') }}
+            {{ __('Salės') }}
         </a>
         <a class="dropdown-item" href="{{ route('logout') }}"
            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            {{ __('Logout') }}
+            {{ __('Atsijungti') }}
         </a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
             @csrf

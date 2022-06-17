@@ -1,8 +1,8 @@
 <div class="d-flex flex-column justify-content-center align-items-center my-3">
     <div class="d-flex flex-column w-100 py-3">
-        <p>1. Ar svečių tarpe yra veganų, alergiškų ar tam tikrų produktų netoleruojančių žmonių?</p>
+        <p>{{ __('1. Ar svečių tarpe yra veganų, alergiškų ar tam tikrų produktų netoleruojančių žmonių?') }}</p>
         <div class="d-flex align-items-center mb-3">
-            <label class="form-check-label">Taip</label>
+            <label class="form-check-label">{{ __('Taip') }}</label>
             <input
                 wire:model.lazy="question_one_answer"
                 class="form-check-input mx-2"
@@ -10,7 +10,7 @@
                 name="questionOneAnswer"
                 value="Taip"
             >
-            <label class="form-check-label">Ne</label>
+            <label class="form-check-label">{{ __('Ne') }}</label>
             <input
                 wire:model.lazy="question_one_answer"
                 class="form-check-input mx-2"
@@ -31,10 +31,9 @@
         ></textarea>
     </div>
     <div class="d-flex flex-column w-100 py-3">
-        <p>2. Ar meniu turėtų sudaryti 3 patiekalų vakarienė
-            pirmasis patiekalas, karštasis patiekalas, desertas)?</p>
+        <p>{{ __('2. Ar meniu turėtų sudaryti 3 patiekalų vakarienė pirmasis patiekalas, karštasis patiekalas, desertas?') }}</p>
         <div class="d-flex align-items-center mb-3">
-            <label class="form-check-label">Taip</label>
+            <label class="form-check-label">{{ __('Taip') }}</label>
             <input
                 wire:model.lazy="question_two_answer"
                 class="form-check-input mx-2"
@@ -42,7 +41,7 @@
                 name="questionTwoAnswer"
                 value="Taip"
             >
-            <label class="form-check-label">Ne</label>
+            <label class="form-check-label">{{ __('Ne') }}</label>
             <input
                 wire:model.lazy="question_two_answer"
                 class="form-check-input mx-2"
@@ -63,9 +62,9 @@
         ></textarea>
     </div>
     <div class="d-flex flex-column w-100 py-3">
-        <p>3. Ar reikalinga erdvės, stalo dekoravimo paslauga?</p>
+        <p>{{ __('3. Ar reikalinga erdvės, stalo dekoravimo paslauga?') }}</p>
         <div class="d-flex align-items-center mb-3">
-            <label class="form-check-label">Taip</label>
+            <label class="form-check-label">{{ __('Taip') }}</label>
             <input
                 wire:model.lazy="question_three_answer"
                 class="form-check-input mx-2"
@@ -73,7 +72,7 @@
                 name="questionThreeAnswer"
                 value="Taip"
             >
-            <label class="form-check-label">Ne</label>
+            <label class="form-check-label">{{ __('Ne') }}</label>
             <input
                 wire:model.lazy="question_three_answer"
                 class="form-check-input mx-2"
@@ -87,9 +86,9 @@
         @enderror
     </div>
     <div class="d-flex flex-column w-100 py-3">
-        <p>4. Ar reikalinga vaikiška kėdutė?</p>
+        <p>{{ __('4. Ar reikalinga vaikiška kėdutė?') }}</p>
         <div class="d-flex align-items-center mb-3">
-            <label class="form-check-label">Taip</label>
+            <label class="form-check-label">{{ __('Taip') }}</label>
             <input
                 wire:model.lazy="question_four_answer"
                 class="form-check-input mx-2"
@@ -97,7 +96,7 @@
                 name="questionFourAnswer"
                 value="Taip"
             >
-            <label class="form-check-label">Ne</label>
+            <label class="form-check-label">{{ __('Ne') }}</label>
             <input
                 wire:model.lazy="question_four_answer"
                 class="form-check-input mx-2"
@@ -106,7 +105,7 @@
                 value="Ne"
             >
             <div class="d-flex justify-content-center align-items-center">
-                <p class="mx-3 my-0">Nurodykite, kiek vaikiškiškų kėdučių reikės jei į klausimą atsakėte taip:</p>
+                <p class="mx-3 my-0">{{ __('Nurodykite, kiek vaikiškiškų kėdučių reikės jei į klausimą atsakėte taip:') }}</p>
                 <input
                     wire:model.lazy="question_four_comment"
                     type="text"
@@ -120,9 +119,9 @@
         @enderror
     </div>
     <div class="d-flex flex-column w-100 py-3">
-        <p>5. Ar svečių tarpe yra vaikų, kuriems reiktų siūlyti „vaikiškus“ patiekalus?</p>
+        <p>{{ __('5. Ar svečių tarpe yra vaikų, kuriems reiktų siūlyti „vaikiškus“ patiekalus?') }}</p>
         <div class="d-flex align-items-center mb-3">
-            <label class="form-check-label">Taip</label>
+            <label class="form-check-label">{{ __('Taip') }}</label>
             <input
                 wire:model.lazy="question_five_answer"
                 class="form-check-input mx-2"
@@ -130,7 +129,7 @@
                 name="questionFiveAnswer"
                 value="Taip"
             >
-            <label class="form-check-label">Ne</label>
+            <label class="form-check-label">{{ __('Ne') }}</label>
             <input
                 wire:model.lazy="question_five_answer"
                 class="form-check-input mx-2"
