@@ -4,7 +4,7 @@
     ]) !!}
     <input type="hidden" name="hall_id" value="{{ $hall->id }}">
     <div class="w-100 d-flex align-items-center my-3">
-        <label for="unavailable_date" class="form-label w-25">Select date:</label>
+        <label for="unavailable_date" class="form-label w-25">{{ __('Data') }}:</label>
         <input
             type="text" class="form-control datepicker fs-5"
             autocomplete="off" name="unavailable_date"
@@ -16,9 +16,9 @@
     </div>
     <div class="d-flex justify-content-end align-items-center mt-2" style="gap: 10px">
         <button type="reset" class="btn btn-secondary" onclick="document.location='{{ redirect()->back() }}'">
-            Nuvalyti
+            {{ __('Nuvalyti') }}
         </button>
-        {!! Form::button('Sukurti', [
+        {!! Form::button(__('Sukurti'), [
             'type' => 'submit',
             'class' => 'btn btn-success'
             ]) !!}

@@ -22,7 +22,7 @@
         @if ($employee->available)
             {{ $employee->name }}
         @else
-            {{ $employee->name}} (užimtas)
+            {{ $employee->name}} {{ __('(užimtas)') }}
         @endif
     </label>
 </div>

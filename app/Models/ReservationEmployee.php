@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ReservationEmployee extends Model
 {
@@ -32,13 +34,13 @@ class ReservationEmployee extends Model
         'employee_id' => 'required|integer'
     ];
 
-    public function reservation()
+    public function reservation(): HasOne
     {
-        return $this->hasOne(Reservation::class, 'reservation_id');
+        return $this->hasOne(Reservation::class, 'id', 'reservation_id');
     }
 
-    public function employee()
+    public function employee(): HasMany
     {
-        return $this->hasMany(Employee::class, 'employee_id');
+        return $this->hasMany(Employee::class, 'id', 'employee_id');
     }
 }

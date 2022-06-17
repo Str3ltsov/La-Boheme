@@ -2,10 +2,10 @@
     <table class="table table-striped display">
         <thead>
         <tr>
-            <th class="w-25" scope="col">Datos laikas</th>
-            <th class="w-25" scope="col">Sukurtas</th>
-            <th class="w-25" scope="col">Atnaujintas</th>
-            <th class="w-auto">Veiksmai</th>
+            <th class="w-25" scope="col">{{ __('Datos laikas') }}</th>
+            <th class="w-25" scope="col">{{ __('Sukurtas') }}</th>
+            <th class="w-25" scope="col">{{ __('Atnaujintas') }}</th>
+            <th class="w-auto">{{ __('Veiksmai') }}</th>
         </tr>
         </thead>
         <tbody>
@@ -20,7 +20,7 @@
                         'method' => 'delete'
                         ]) !!}
                         {{ Form::hidden('unavailable_datetime_id', $unavailable_datetime->id) }}
-                        {!! Form::button('Ištrinti', [
+                        {!! Form::button(__('Ištrinti'), [
                             'type' => 'submit',
                             'class' => 'btn btn-danger',
                             'onclick' => "return confirm('Ar jus tikrai norite?')"
@@ -30,16 +30,17 @@
             </tr>
         @empty
             <tr>
-                <td colspan="4">No unavailable date times found</td>
+                <td colspan="4">{{ __('No unavailable date times found') }}</td>
             </tr>
         @endforelse
         </tbody>
         <tfoot>
         <tr>
-            <th class="w-25" scope="col">Datos laikas</th>
-            <th class="w-25" scope="col">Sukurtas</th>
-            <th class="w-25" scope="col">Atnaujintas</th>
-            <th class="w-auto">Veiksmai</th>
+        <tr>
+            <th class="w-25" scope="col">{{ __('Datos laikas') }}</th>
+            <th class="w-25" scope="col">{{ __('Sukurtas') }}</th>
+            <th class="w-25" scope="col">{{ __('Atnaujintas') }}</th>
+            <th class="w-auto">{{ __('Veiksmai') }}</th>
         </tr>
         </tfoot>
     </table>

@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateReservationStatusRequest;
 use App\Services\ReservationsService;
 use App\Services\ReservationsServiceInterface;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 
 class ReservationsController extends Controller
 {
@@ -17,13 +21,13 @@ class ReservationsController extends Controller
         $this->service = $service;
     }
 
-    public function index()
+    public function index(): Factory|View|Application
     {
         return view('admin.reservations.index')
             ->with('reservations', $this->service->getReservationsWithClients());
     }
 
-    public function show($id)
+    public function show($id): Factory|View|Application
     {
         return view('admin.reservations.show')
             ->with([
@@ -34,7 +38,7 @@ class ReservationsController extends Controller
             ]);
     }
 
-    public function updateReservationStatus(UpdateReservationStatusRequest $request)
+    public function updateReservationStatus(UpdateReservationStatusRequest $request): RedirectResponse
     {
         $reservationId = $this->service->getReservationIdFromRequest($request);
         $reservationStatus = $this->service->getReservationStatusFromRequest($request);

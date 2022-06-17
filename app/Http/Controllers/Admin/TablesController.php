@@ -10,6 +10,10 @@ use App\Http\Requests\DeleteTableUnavailableDateTimeRequest;
 use App\Services\TablesService;
 use App\Services\TablesServiceInterface;
 use App\Traits\UseDatesTimes;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 
 class TablesController extends Controller
 {
@@ -23,13 +27,13 @@ class TablesController extends Controller
         $this->service = $service;
     }
 
-    public function index()
+    public function index(): Factory|View|Application
     {
         return view('admin.tables.index')
             ->with('tables', $this->service->getTables());
     }
 
-    public function show($id)
+    public function show($id): Factory|View|Application
     {
         return view('admin.tables.show')
             ->with([
@@ -39,7 +43,7 @@ class TablesController extends Controller
             ]);
     }
 
-    public function create()
+    public function create(): RedirectResponse
     {
         $this->service->createTable();
 
@@ -48,7 +52,7 @@ class TablesController extends Controller
             ->with('success', 'Successfully created a new table');
     }
 
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
         $this->service->deleteTable($id);
 
@@ -57,7 +61,7 @@ class TablesController extends Controller
             ->with('success', "Successfully deleted table $id");
     }
 
-    public function createUnavailableDate(CreateTableUnavailableDateRequest $request)
+    public function createUnavailableDate(CreateTableUnavailableDateRequest $request): RedirectResponse
     {
         $this->service->createTableUnavailableDate($request);
 
@@ -66,7 +70,7 @@ class TablesController extends Controller
             ->with('success', "Successfully created new date");
     }
 
-    public function deleteUnavailableDate(DeleteTableUnavailableDateRequest $request)
+    public function deleteUnavailableDate(DeleteTableUnavailableDateRequest $request): RedirectResponse
     {
         $this->service->deleteTableUnavailableDate($request);
 
@@ -75,7 +79,7 @@ class TablesController extends Controller
             ->with('success', "Successfully deleted table unavailable date");
     }
 
-    public function createUnavailableDateTime(CreateTableUnavailableDateTimeRequest $request)
+    public function createUnavailableDateTime(CreateTableUnavailableDateTimeRequest $request): RedirectResponse
     {
         $this->service->createTableUnavailableDateTime($request);
 
@@ -84,7 +88,7 @@ class TablesController extends Controller
             ->with('success', "Successfully created new date time");
     }
 
-    public function deleteUnavailableDateTime(DeleteTableUnavailableDateTimeRequest $request)
+    public function deleteUnavailableDateTime(DeleteTableUnavailableDateTimeRequest $request): RedirectResponse
     {
         $this->service->deleteTableUnavailableDateTime($request);
 

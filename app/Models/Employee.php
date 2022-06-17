@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Employee extends Model
 {
@@ -37,7 +38,7 @@ class Employee extends Model
         'employee_type_id' => 'required|integer'
     ];
 
-    public function type()
+    public function type(): HasOne
     {
         return $this->hasOne(EmployeeType::class, 'id', 'employee_type_id');
     }

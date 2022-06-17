@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Helpers\Constants;
 use App\Mail\ReservationSentMail;
 use App\Models\Client;
 use App\Models\Employee;
@@ -27,13 +28,13 @@ class ReservationService implements ReservationServiceInterface
         if ($reservationTypes->isEmpty()) {
             return redirect()
                 ->route('home')
-                ->with('error', 'Failed to retrieve reservation types');
+                ->with('error', 'Failed to find reservation types');
         }
 
         return $reservationTypes;
     }
 
-    public function getValidationRules($reservationType): array|RedirectResponse
+    public function getValidationRules(mixed $reservationType): array|RedirectResponse
     {
         $validationRules = [
             1 => [
@@ -50,8 +51,8 @@ class ReservationService implements ReservationServiceInterface
                 'question_three_answer' => ['required'],
                 'question_four_answer' => ['required'],
                 'question_five_answer' => ['required'],
-                'question_six_answer' => $reservationType == 2 ? ['required'] : [],
-                'question_seven_answer' => $reservationType == 2 ? ['required'] : []
+                'question_six_answer' => $reservationType == Constants::reservationTypeHall ? ['required'] : [],
+                'question_seven_answer' => $reservationType == Constants::reservationTypeHall ? ['required'] : []
             ],
             4 => [
                 'employee_waiter' => ['required'],
@@ -68,13 +69,13 @@ class ReservationService implements ReservationServiceInterface
         if (empty($validationRules)) {
             return redirect()
                 ->route('home')
-                ->with('error', 'Failed to retrieve validation rules');
+                ->with('error', 'Failed to find validation rules');
         }
 
         return $validationRules;
     }
 
-    public function makeRulesReadableByValidate($validationRules): array
+    public function makeRulesReadableByValidate(array $validationRules): array
     {
         return collect($validationRules)->collapse()->toArray();
     }
@@ -86,13 +87,14 @@ class ReservationService implements ReservationServiceInterface
         if ($employees->isEmpty()) {
             return redirect()
                 ->route('home')
-                ->with('error', 'Failed to retrieve employees');
+                ->with('error', 'Failed to find employees');
         }
 
         return $employees;
     }
 
-    public function createClient($name, $email, $phoneNumber, $additionalInfo): Client|RedirectResponse
+    public function createClient(string $name, string $email, string $phoneNumber, string $additionalInfo)
+    : Client|RedirectResponse
     {
         $client = Client::create([
             'name' => $name,
@@ -133,14 +135,14 @@ class ReservationService implements ReservationServiceInterface
         if ($halls->isEmpty()) {
             return redirect()
                 ->route('home')
-                ->with('error', 'Failed to retrieve halls');
+                ->with('error', 'Failed to find halls ids');
         }
 
         return $halls;
     }
 
     public function createReservation(
-        $tables, $halls, $startDatetime, $numberOfPeople, $reservationTypeId, $client
+        mixed $tables, mixed $halls, string $startDatetime, int $numberOfPeople, int $reservationType, object $client
     ): Reservation|RedirectResponse
     {
         $randomTable = rand(1, count($tables));
@@ -150,11 +152,11 @@ class ReservationService implements ReservationServiceInterface
             'start_datetime' => $startDatetime,
             'end_datetime' => NULL,
             'number_of_people' => $numberOfPeople,
-            'reservation_type_id' => $reservationTypeId,
-            'table_id' => $reservationTypeId == 1 ? $randomTable : NULL,
-            'hall_id' => $reservationTypeId == 2 ? $randomHalls : NULL,
+            'reservation_type_id' => $reservationType,
+            'table_id' => $reservationType == Constants::reservationTypeTable ? $randomTable : NULL,
+            'hall_id' => $reservationType == Constants::reservationTypeHall ? $randomHalls : NULL,
             'client_id' => $client->id,
-            'reservation_status_id' => 1,
+            'reservation_status_id' => Constants::reservationStatusInProgress,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -169,48 +171,20 @@ class ReservationService implements ReservationServiceInterface
         }
     }
 
-    /*public function updateTableOrHallToUnavailable($reservation)
-    {
-        if ($reservation->reservation_type_id == 1) {
-            $table = Table::find($reservation->table_id);
-
-            if (empty($table)) {
-                return redirect()
-                    ->route('home')
-                    ->with('error', 'Failed to find table by id');
-            }
-
-            $table->available = false;
-            $table->save();
-        }
-        else if ($reservation->reservation_type_id == 2) {
-            $hall = Hall::find($reservation->hall_id);
-
-            if (empty($hall)) {
-                return redirect()
-                    ->route('home')
-                    ->with('error', 'Failed to find hall by id');
-            }
-
-            $hall->available = false;
-            $hall->save();
-        }
-    }*/
-
     public function getAnswersAndComments(
-        $questionOneAnswer,
-        $questionOneComment,
-        $questionTwoAnswer,
-        $questionTwoComment,
-        $questionThreeAnswer,
-        $questionThreeComment,
-        $questionFourAnswer,
-        $questionFourComment,
-        $questionFiveAnswer,
-        $questionFiveComment,
-        $questionSixAnswer,
-        $questionSixComment,
-        $questionSevenAnswer
+        mixed $questionOneAnswer,
+        mixed $questionOneComment,
+        mixed $questionTwoAnswer,
+        mixed $questionTwoComment,
+        mixed $questionThreeAnswer,
+        mixed $questionThreeComment,
+        mixed $questionFourAnswer,
+        mixed $questionFourComment,
+        mixed $questionFiveAnswer,
+        mixed $questionFiveComment,
+        mixed $questionSixAnswer,
+        mixed $questionSixComment,
+        mixed $questionSevenAnswer
     ): array|RedirectResponse
     {
         $answersAndComments = [
@@ -244,22 +218,22 @@ class ReservationService implements ReservationServiceInterface
         if (empty($answersAndComments)) {
             return redirect()
                 ->route('home')
-                ->with('error', 'Failed to retrieve validation rules');
+                ->with('error', 'Failed to find validation rules');
         }
 
         return $answersAndComments;
     }
 
-    public function getReservationQuestions($reservationType): array|RedirectResponse
+    public function getReservationQuestions(int $reservationType): array|RedirectResponse
     {
-        if (!is_null($reservationType)) {
+        if (!$reservationType == null) {
             $reservationQuestions = ReservationQuestion::all()
                 ->where('reservation_type_id', $reservationType);
 
             if ($reservationQuestions->isEmpty()) {
                 return redirect()
                     ->route('home')
-                    ->with('error', 'Failed to retrieve reservation questions');
+                    ->with('error', 'Failed to find reservation questions');
             }
 
             $reservationQuestions = $reservationQuestions->toArray();
@@ -268,9 +242,12 @@ class ReservationService implements ReservationServiceInterface
 
             return $reservationQuestions;
         }
+
+        return [];
     }
 
-    public function createReservationQuestionAnswers($reservation, $questions, $answersAndComments)
+    public function createReservationQuestionAnswers(object $reservation, mixed $questions, array $answersAndComments)
+    : int|RedirectResponse
     {
         for ($i = 1; $i <= count($questions); $i++) {
             $reservationQuestionAnswer = ReservationQuestionAnswer::create([
@@ -288,6 +265,8 @@ class ReservationService implements ReservationServiceInterface
                     ->with('error', 'Failed to create reservation question answer');
             }
         }
+
+        return 0;
     }
 
     public function getChosenEmployees($waiter, $bartender): array|RedirectResponse
@@ -300,13 +279,13 @@ class ReservationService implements ReservationServiceInterface
         if (empty($chosenEmployees)) {
             return redirect()
                 ->route('home')
-                ->with('error', 'Failed to retrieve validation rules');
+                ->with('error', 'Failed to find chosen employees');
         }
 
         return $chosenEmployees;
     }
 
-    public function createReservationEmployees($reservation, $chosenEmployees)
+    public function createReservationEmployees(object $reservation, array $chosenEmployees): int|RedirectResponse
     {
         for ($i = 1; $i <= count($chosenEmployees); $i++) {
             $reservationEmployee = ReservationEmployee::create([
@@ -322,25 +301,11 @@ class ReservationService implements ReservationServiceInterface
                     ->with('error', 'Failed to create reservation employee');
             }
         }
+
+        return 0;
     }
 
-    /*public function updateChosenEmployeesToUnavailable($chosenEmployees)
-    {
-        for ($i = 1; $i <= count($chosenEmployees); $i++) {
-            $employee = Employee::find($chosenEmployees[$i]);
-
-            if (empty($employee)) {
-                return redirect()
-                    ->route('home')
-                    ->with('error', 'Failed to find employee by id');
-            }
-
-            $employee->available = false;
-            $employee->save();
-        }
-    }*/
-
-    public function sendReservationSentEmail($client): ?SentMessage
+    public function sendReservationSentEmail(object $client): ?SentMessage
     {
         if (class_exists(ReservationSentMail::class)) {
             return Mail::to($client->email)->send(new ReservationSentMail());

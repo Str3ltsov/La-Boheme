@@ -2,10 +2,10 @@
     <table class="table table-striped display" id="halls_table">
         <thead>
         <tr>
-            <th class="w-25" scope="col">Id</th>
-            <th class="w-25" scope="col">Sukurtas</th>
-            <th class="w-25" scope="col">Atnaujintas</th>
-            <th class="w-auto" scope="col">Veiksmai</th>
+            <th class="w-25" scope="col">{{ __('Id') }}</th>
+            <th class="w-25" scope="col">{{ __('Sukurtas') }}</th>
+            <th class="w-25" scope="col">{{ __('Atnaujintas') }}</th>
+            <th class="w-auto" scope="col">{{ __('Veiksmai') }}</th>
         </tr>
         </thead>
         <tbody>
@@ -16,22 +16,24 @@
                 <td class="w-25" >{{ $hall->updated_at ?? null}}</td>
                 <td class="w-auto">
                     <div class="d-flex">
-                        <a class="btn btn-primary" href="{{ route('admin.halls.show', [$hall->id]) }}">Detaliai</a>
+                        <a class="btn btn-primary" href="{{ route('admin.halls.show', [$hall->id]) }}">
+                            {{ __('Detaliai') }}
+                        </a>
                     </div>
                 </td>
             </tr>
         @empty
             <tr>
-                <td colspan="4">No halls found</td>
+                <td colspan="4">{{ __('No halls found') }}</td>
             </tr>
         @endforelse
         </tbody>
         <tfoot>
         <tr>
-            <th class="w-25" scope="col">Id</th>
-            <th class="w-25" scope="col">Sukurtas</th>
-            <th class="w-25" scope="col">Atnaujintas</th>
-            <th class="w-auto" scope="col">Veiksmai</th>
+            <th class="w-25" scope="col">{{ __('Id') }}</th>
+            <th class="w-25" scope="col">{{ __('Sukurtas') }}</th>
+            <th class="w-25" scope="col">{{ __('Atnaujintas') }}</th>
+            <th class="w-auto" scope="col">{{ __('Veiksmai') }}</th>
         </tr>
         </tfoot>
     </table>

@@ -11,6 +11,13 @@
                         </div>
                     @endif
                 </div>
+                <div class="card">
+                    <div class="card-header">{{ __('Prietaisų skydelis') }}</div>
+                    <div class="card-body">
+                        <p>{{ __('Jei norite rezervuoti, paspauskite ant Rezervacija.') }}</p>
+                        <p>{{ __('Galite prisijungti kaip administratorius su parametrais: andtaress2@gmail.com, caveman123') }}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

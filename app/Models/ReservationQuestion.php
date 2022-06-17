@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class ReservationQuestion extends Model
 {
@@ -28,7 +29,7 @@ class ReservationQuestion extends Model
         'reservation_type_id' => 'required|integer'
     ];
 
-    public function type()
+    public function type(): HasOne
     {
         return $this->hasOne(ReservationType::class, 'id', 'reservation_type_id');
     }
