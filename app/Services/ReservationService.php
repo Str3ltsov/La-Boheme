@@ -93,6 +93,17 @@ class ReservationService implements ReservationServiceInterface
         return $employees;
     }
 
+    public function getEmployeeNames(int $waiter, int $bartender): array
+    {
+        $waiterName = Employee::select('name')->where('id', $waiter)->first();
+        $bartenderName = Employee::select('name')->where('id', $bartender)->first();
+
+        return [
+            $waiter => $waiterName->name,
+            $bartender => $bartenderName->name
+        ];
+    }
+
     public function createClient(string $name, string $email, string $phoneNumber, string $additionalInfo)
     : Client|RedirectResponse
     {
