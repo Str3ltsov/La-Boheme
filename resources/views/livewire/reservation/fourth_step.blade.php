@@ -33,7 +33,7 @@
         </div>
         <div class="d-flex justify-content-end" style="gap: 10px;">
             <button wire:click="goToPreviousStep" type="button" class="btn btn-secondary">{{ __('Atgal') }}</button>
-            <button wire:click="goToNextStep" type="button" class="btn btn-primary">{{ __('Toliau') }}</button>
+            <button wire:click="goToFifthStepWithEmployeeNames" type="button" class="btn btn-primary">{{ __('Toliau') }}</button>
         </div>
     </div>
 </div>

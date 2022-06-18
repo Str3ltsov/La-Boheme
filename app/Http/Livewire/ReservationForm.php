@@ -95,6 +95,22 @@ class ReservationForm extends Component
     ];
 
     public array $times = [];
+    public array $employeeNames = [];
+
+    public function goToFifthStepWithEmployeeNames()
+    {
+        /*
+         * Going to next step
+         */
+        $this->goToNextStep();
+
+        /*
+         * Getting employee names using their ids
+         */
+        $this->employeeNames = $this->service->getEmployeeNames(
+            $this->employee_waiter, $this->employee_bartender
+        );
+    }
 
     public function addTimesAndGoToNextStep()
     {
