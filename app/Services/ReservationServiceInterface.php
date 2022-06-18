@@ -14,10 +14,11 @@ interface ReservationServiceInterface
     public function getValidationRules(mixed $reservationType): array|RedirectResponse;
     public function makeRulesReadableByValidate(array $validationRules): array;
     public function getEmployees(): Collection|RedirectResponse;
+    public function getEmployeeNames(int $waiter, int $bartender): array;
     public function createClient(string $name, string $email, string $phoneNumber, string $additionalInfo)
     : Client|RedirectResponse;
-    public function getTableIds(): Collection|RedirectResponse;
-    public function getHallIds(): Collection|RedirectResponse;
+    public function getTables(): Collection|RedirectResponse;
+    public function getHalls(): Collection|RedirectResponse;
     public function createReservation(
         mixed $tables,
         mixed $halls,
@@ -44,7 +45,7 @@ interface ReservationServiceInterface
     public function getReservationQuestions(int $reservationType): array|RedirectResponse;
     public function createReservationQuestionAnswers(object $reservation, mixed $questions, array $answersAndComments)
     : int|RedirectResponse;
-    public function getChosenEmployees($waiter, $bartender): array|RedirectResponse;
+    public function getChosenEmployees(int $waiter, int $bartender): array|RedirectResponse;
     public function createReservationEmployees(object $reservation, array $chosenEmployees): int|RedirectResponse;
     public function sendReservationSentEmail(object $client): ?SentMessage;
 }

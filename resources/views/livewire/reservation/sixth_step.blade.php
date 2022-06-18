@@ -21,11 +21,11 @@
                 </div>
                 <div class="d-flex" style="gap: 10px">
                     <span>{{ __('Padavėja') }}:</span>
-                    <span>{{ $employee_waiter }}</span>
+                    <span>{{ $employeeNames[$employee_waiter] }}</span>
                 </div>
                 <div class="d-flex" style="gap: 10px">
                     <span>{{ __('Barmenas') }}:</span>
-                    <span>{{ $employee_bartender }}</span>
+                    <span>{{ $employeeNames[$employee_bartender] }}</span>
                 </div>
             </div>
             <div class="mt-3">

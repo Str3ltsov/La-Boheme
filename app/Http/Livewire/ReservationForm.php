@@ -95,8 +95,24 @@ class ReservationForm extends Component
     ];
 
     public array $times = [];
+    public array $employeeNames = [];
 
-    public function addTimesAndGoToNextStep()
+    public function goToFifthStepWithEmployeeNames()
+    {
+        /*
+         * Going to next step
+         */
+        $this->goToNextStep();
+
+        /*
+         * Getting employee names using their ids
+         */
+        $this->employeeNames = $this->service->getEmployeeNames(
+            $this->employee_waiter, $this->employee_bartender
+        );
+    }
+
+    public function goToSecondStepWithTimes()
     {
         /*
          * Going to next step
@@ -148,8 +164,8 @@ class ReservationForm extends Component
         /*
          * Creating instance of reservation
          */
-        $tables = $this->service->getTableIds();
-        $halls = $this->service->getHallIds();
+        $tables = $this->service->getTables();
+        $halls = $this->service->getHalls();
         $startDatetime = $this->combineDateAndTime($this->date, $this->time);
         $reservation = $this->service->createReservation(
             $tables,
@@ -209,7 +225,7 @@ class ReservationForm extends Component
 
         return redirect()
             ->route('reservation.saved')
-            ->with('success', 'Successfully saved reservation.');
+            ->with('success', __('messages.successSavedReservation'));
     }
 
     public function render()
