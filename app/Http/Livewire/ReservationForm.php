@@ -16,10 +16,12 @@ class ReservationForm extends Component
     use UseDatesTimes;
 
     private ReservationService $service;
+    private array $employees = [];
 
     public function boot(ReservationServiceInterface $service)
     {
         $this->service = $service;
+        $this->employees = $this->service->getRandomEmployees();
     }
 
     /*
@@ -51,8 +53,8 @@ class ReservationForm extends Component
     /*
      * Step 4 properties
      */
-    public $employee_waiter;
-    public $employee_bartender;
+    //public $employee_waiter;
+    //public $employee_bartender;
     /*
      * Step 5 properties
      */
@@ -69,48 +71,44 @@ class ReservationForm extends Component
 
     public array $steps = [
         1 => [
-            'step' => '1/6',
+            'step' => '1/5',
             'description' => 'Pasirinkite paslaugos tipą ir datą'
         ],
         2 => [
-            'step' => '2/6',
+            'step' => '2/5',
             'description' => 'Pasirinkti laiką ir žmonių skaičių'
         ],
         3 => [
-            'step' => '3/6',
+            'step' => '3/5',
             'description' => 'Užpildykite papildomą informaciją'
         ],
-        4 => [
+        /*4 => [
             'step' => '4/6',
             'description' => 'Pasirinkite jūs aptarnausiantį personalą'
-        ],
-        5 => [
-            'step' => '5/6',
+        ],*/
+        4 => [
+            'step' => '4/5',
             'description' => 'Užpildykite kontaktinę informaciją'
         ],
-        6 => [
-            'step' => '6/6',
+        5 => [
+            'step' => '5/5',
             'description' => 'Paslaugos patvirtinimas'
         ]
     ];
 
     public array $times = [];
-    public array $employeeNames = [];
+    //public array $employeeNames = [];
 
-    public function goToFifthStepWithEmployeeNames()
+    /*public function goToFifthStepWithEmployeeNames()
     {
-        /*
-         * Going to next step
-         */
+        //Going to next step
         $this->goToNextStep();
 
-        /*
-         * Getting employee names using their ids
-         */
+        //Getting employee names using their ids
         $this->employeeNames = $this->service->getEmployeeNames(
             $this->employee_waiter, $this->employee_bartender
         );
-    }
+    }*/
 
     public function addTimesAndGoToNextStep()
     {
@@ -205,12 +203,12 @@ class ReservationForm extends Component
         /*
          * Creating instances of reservation employees
          */
-        $chosenEmployees = $this->service->getChosenEmployees(
+        /*$chosenEmployees = $this->service->getChosenEmployees(
             $this->employee_waiter,
             $this->employee_bartender
-        );
+        );*/
 
-        $this->service->createReservationEmployees($reservation, $chosenEmployees);
+        $this->service->createReservationEmployees($reservation, $this->employees);
 
         /*
          * Send email
@@ -235,7 +233,7 @@ class ReservationForm extends Component
             ->section('content')
             ->with([
                 'reservationTypes' => $this->service->getReservationTypes(),
-                'employees' => $this->service->getEmployees()
+                'employees' => $this->employees
             ]);
     }
 }

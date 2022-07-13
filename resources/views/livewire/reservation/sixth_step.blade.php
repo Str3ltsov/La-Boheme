@@ -21,11 +21,11 @@
                 </div>
                 <div class="d-flex" style="gap: 10px">
                     <span>{{ __('Padavėja') }}:</span>
-                    <span>{{ $employeeNames[$employee_waiter] }}</span>
+                    <span>{{ $employees[\App\Helpers\Constants::employeeTypeWaiter]['name'] }}</span>
                 </div>
                 <div class="d-flex" style="gap: 10px">
                     <span>{{ __('Barmenas') }}:</span>
-                    <span>{{ $employeeNames[$employee_bartender] }}</span>
+                    <span>{{ $employees[\App\Helpers\Constants::employeeTypeBartender]['name'] }}</span>
                 </div>
             </div>
             <div class="mt-3">
@@ -51,9 +51,10 @@
                 <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
-        <div class="d-flex justify-content-end" style="gap: 10px;">
+        <div class="d-flex justify-content-end" id="button-div" style="gap: 10px;">
             <button wire:click="goToPreviousStep" type="button" class="btn btn-secondary">{{ __('Atgal') }}</button>
             <button wire:click="submit" type="submit" class="btn btn-primary">{{ __('Toliau') }}</button>
         </div>
     </div>
 </div>
+

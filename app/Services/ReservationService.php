@@ -54,16 +54,16 @@ class ReservationService implements ReservationServiceInterface
                 'question_six_answer' => $reservationType == Constants::reservationTypeHall ? ['required'] : [],
                 'question_seven_answer' => $reservationType == Constants::reservationTypeHall ? ['required'] : []
             ],
-            4 => [
+            /*4 => [
                 'employee_waiter' => ['required'],
                 'employee_bartender' => ['required']
-            ],
-            5 => [
+            ],*/
+            4 => [
                 'client_name' => ['required'],
                 'client_email' => ['required', 'email'],
                 'client_phone_number' => ['required']
             ],
-            6 => ['accept' => ['required']]
+            5 => ['accept' => ['required']]
         ];
 
         if (empty($validationRules)) {
@@ -93,7 +93,7 @@ class ReservationService implements ReservationServiceInterface
         return $employees;
     }
 
-    public function getEmployeeNames(int $waiter, int $bartender): array
+    /*public function getEmployeeNames(int $waiter, int $bartender): array
     {
         $waiterName = Employee::select('name')->where('id', $waiter)->first();
         $bartenderName = Employee::select('name')->where('id', $bartender)->first();
@@ -102,7 +102,7 @@ class ReservationService implements ReservationServiceInterface
             $waiter => $waiterName->name,
             $bartender => $bartenderName->name
         ];
-    }
+    }*/
 
     public function createClient(string $name, string $email, string $phoneNumber, string $additionalInfo)
     : Client|RedirectResponse
@@ -280,7 +280,7 @@ class ReservationService implements ReservationServiceInterface
         return 0;
     }
 
-    public function getChosenEmployees($waiter, $bartender): array|RedirectResponse
+    /*public function getChosenEmployees($waiter, $bartender): array|RedirectResponse
     {
         $chosenEmployees = [
             1 => $waiter,
@@ -294,6 +294,31 @@ class ReservationService implements ReservationServiceInterface
         }
 
         return $chosenEmployees;
+    }*/
+
+    public function getRandomEmployees(): array|RedirectResponse
+    {
+        $waiter = Employee::select('id' ,'name')
+            ->where('employee_type_id', Constants::employeeTypeWaiter)
+            ->inRandomOrder()
+            ->first();
+        $bartender = Employee::select('id' ,'name')
+            ->where('employee_type_id', Constants::employeeTypeBartender)
+            ->inRandomOrder()
+            ->first();
+
+        $randomEmployees = [
+            Constants::employeeTypeWaiter => $waiter,
+            Constants::employeeTypeBartender => $bartender
+        ];
+
+        if (empty($randomEmployees)) {
+            return redirect()
+                ->route('home')
+                ->with('error', 'Failed to find random employees');
+        }
+
+        return $randomEmployees;
     }
 
     public function createReservationEmployees(object $reservation, array $chosenEmployees): int|RedirectResponse
@@ -301,7 +326,7 @@ class ReservationService implements ReservationServiceInterface
         for ($i = 1; $i <= count($chosenEmployees); $i++) {
             $reservationEmployee = ReservationEmployee::create([
                 'reservation_id' => $reservation->id,
-                'employee_id' => $chosenEmployees[$i],
+                'employee_id' => $chosenEmployees[$i]['id'],
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
