@@ -16,11 +16,16 @@ class ReservationForm extends Component
     use UseDatesTimes;
 
     private ReservationService $service;
-    private array $employees = [];
 
     public function boot(ReservationServiceInterface $service)
     {
         $this->service = $service;
+    }
+
+    public array $employees = [];
+
+    public function mount()
+    {
         $this->employees = $this->service->getRandomEmployees();
     }
 

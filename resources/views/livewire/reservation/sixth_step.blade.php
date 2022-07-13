@@ -51,7 +51,7 @@
                 <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
-        <div class="d-flex justify-content-end" id="button-div" style="gap: 10px;">
+        <div class="d-flex justify-content-end" style="gap: 10px;">
             <button wire:click="goToPreviousStep" type="button" class="btn btn-secondary">{{ __('Atgal') }}</button>
             <button wire:click="submit" type="submit" class="btn btn-primary">{{ __('Toliau') }}</button>
         </div>

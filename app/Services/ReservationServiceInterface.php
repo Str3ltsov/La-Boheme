@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 interface ReservationServiceInterface
 {
+    public function getRandomEmployees(): array|RedirectResponse;
     public function getReservationTypes(): Collection|RedirectResponse;
     public function getValidationRules(mixed $reservationType): array|RedirectResponse;
     public function makeRulesReadableByValidate(array $validationRules): array;
@@ -46,7 +47,6 @@ interface ReservationServiceInterface
     public function createReservationQuestionAnswers(object $reservation, mixed $questions, array $answersAndComments)
     : int|RedirectResponse;
     //public function getChosenEmployees($waiter, $bartender): array|RedirectResponse;
-    public function getRandomEmployees(): array|RedirectResponse;
     public function createReservationEmployees(object $reservation, array $chosenEmployees): int|RedirectResponse;
     public function sendReservationSentEmail(object $client): ?SentMessage;
 }

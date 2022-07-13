@@ -21,6 +21,31 @@ use Illuminate\Mail\SentMessage;
 
 class ReservationService implements ReservationServiceInterface
 {
+    public function getRandomEmployees(): array|RedirectResponse
+    {
+        $waiter = Employee::select('id' ,'name')
+            ->where('employee_type_id', Constants::employeeTypeWaiter)
+            ->inRandomOrder()
+            ->first();
+        $bartender = Employee::select('id' ,'name')
+            ->where('employee_type_id', Constants::employeeTypeBartender)
+            ->inRandomOrder()
+            ->first();
+
+        $randomEmployees = [
+            Constants::employeeTypeWaiter => $waiter,
+            Constants::employeeTypeBartender => $bartender
+        ];
+
+        if (empty($randomEmployees)) {
+            return redirect()
+                ->route('home')
+                ->with('error', 'Failed to find random employees');
+        }
+
+        return $randomEmployees;
+    }
+
     public function getReservationTypes(): Collection|RedirectResponse
     {
         $reservationTypes = ReservationType::all();
@@ -295,31 +320,6 @@ class ReservationService implements ReservationServiceInterface
 
         return $chosenEmployees;
     }*/
-
-    public function getRandomEmployees(): array|RedirectResponse
-    {
-        $waiter = Employee::select('id' ,'name')
-            ->where('employee_type_id', Constants::employeeTypeWaiter)
-            ->inRandomOrder()
-            ->first();
-        $bartender = Employee::select('id' ,'name')
-            ->where('employee_type_id', Constants::employeeTypeBartender)
-            ->inRandomOrder()
-            ->first();
-
-        $randomEmployees = [
-            Constants::employeeTypeWaiter => $waiter,
-            Constants::employeeTypeBartender => $bartender
-        ];
-
-        if (empty($randomEmployees)) {
-            return redirect()
-                ->route('home')
-                ->with('error', 'Failed to find random employees');
-        }
-
-        return $randomEmployees;
-    }
 
     public function createReservationEmployees(object $reservation, array $chosenEmployees): int|RedirectResponse
     {
