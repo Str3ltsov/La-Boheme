@@ -21,11 +21,11 @@
                 </div>
                 <div class="d-flex" style="gap: 10px">
                     <span>{{ __('Padavėja') }}:</span>
-                    <span>{{ $employeeNames[$employee_waiter] }}</span>
+                    <span>{{ $employees[\App\Helpers\Constants::employeeTypeWaiter]['name'] }}</span>
                 </div>
                 <div class="d-flex" style="gap: 10px">
                     <span>{{ __('Barmenas') }}:</span>
-                    <span>{{ $employeeNames[$employee_bartender] }}</span>
+                    <span>{{ $employees[\App\Helpers\Constants::employeeTypeBartender]['name'] }}</span>
                 </div>
             </div>
             <div class="mt-3">
@@ -57,3 +57,4 @@
         </div>
     </div>
 </div>
+
