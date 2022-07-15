@@ -18,8 +18,8 @@ interface ReservationServiceInterface
     //public function getEmployeeNames(int $waiter, int $bartender): array;
     public function createClient(string $name, string $email, string $phoneNumber, string $additionalInfo)
     : Client|RedirectResponse;
-    public function getTableIds(): Collection|RedirectResponse;
-    public function getHallIds(): Collection|RedirectResponse;
+    public function getTables(): Collection|RedirectResponse;
+    public function getHalls(): Collection|RedirectResponse;
     public function createReservation(
         mixed $tables,
         mixed $halls,
