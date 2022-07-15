@@ -7,12 +7,19 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+    <script src="{{ asset('bootstrap-5.0.2-dist/js/bootstrap.bundle.js') }}"></script>
+    <script src="{{ asset('jquery/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('jquery-ui-1.13.2.custom/jquery-ui.js') }}"></script>
+    <script src="{{ asset('DataTables/DataTables-1.12.1/js/jquery.dataTables.js') }}"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('jquery-ui-1.13.2.custom/jquery-ui.css') }}" rel="stylesheet">
+    <link href="{{ asset('Datatables/DataTables-1.12.1/css/jquery.dataTables.css') }}" rel="stylesheet">
+    <link href="{{ asset('fontawesome-free-6.1.1-web/css/all.css') }}" rel="stylesheet">
     @stack('css')
     @livewireStyles
 </head>
