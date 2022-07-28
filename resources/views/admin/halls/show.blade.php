@@ -1,50 +1,55 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="d-flex flex-column justify-content-center align-items-center h-100 p-4">
-            <h1 class="fw-bolder">{{ __('Paslaugos užsakymas') }}</h1>
-            <p class="fs-5">{{ __('Staliuko rezervacija ar šventės užsakymas') }}</p>
+    <div>
+        <div class="d-flex flex-column justify-content-center align-items-center text-center p-5" style="height: 300px; gap: 10px">
+            <h1 class="text-light" id="cormorant">{{ __('Administratoriaus paskyra') }}</h1>
+            <h1 class="text-light" id="cormorant">{{ __('Salės') }}</h1>
         </div>
-        <div class="d-flex flex-column justify-content-center h-100">
-            <h4 class="pb-4">{{ __('Administratoriaus paskyra') }}</h4>
-            <div>
-                @include('admin.halls.messages')
-            </div>
-            <div class="card p-4">
-                <div class="d-flex justify-content-center align-items-center my-3">
-                    <div class="d-flex flex-column w-100 me-3 ">
-                        <h5>{{ __('Sukurti nepasiekiamą datą') }}</h5>
-                        @include('admin.halls.unavailable_date_form')
+        <img src="/images/grunge-dark-temp.png" alt="grunge-dark-temp"
+             style="width: 100%; display: flex; align-items: flex-end">
+        <div class="d-flex flex-column justify-content-start"
+             style="background-color: #0F0E0F; min-height: 65vh; padding: 0 2em">
+            <div class="d-flex flex-column justify-content-center
+            align-items-center bg-transparent p-4" id="cormorant">
+                <div class="d-flex flex-column justify-content-center align-items-center my-3 p-5 text-light"
+                     style="font-size: 1.2em; background-color: #151515; width: clamp(400px, 100%, 1200px)">
+                    <div class="w-100">
+                        @include('admin.halls.messages')
                     </div>
-                    <div class="d-flex flex-column w-100 me-3">
-                        <h5>{{ __('Sukurti nepasiekiamos datos laiką') }}</h5>
-                        @include('admin.halls.unavailable_datetime_form')
+                    <div class="p-4 w-100">
+                        <div class="d-flex flex-lg-row flex-column justify-content-center align-items-center my-3" style="gap: 15px">
+                            <div class="d-flex flex-column w-100 my-3">
+                                <h4>{{ __('Sukurti nepasiekiamą datą') }}</h4>
+                                @include('admin.halls.unavailable_date_form')
+                            </div>
+                            <div class="d-flex flex-column w-100 my-3">
+                                <h4>{{ __('Sukurti nepasiekiamos datos laiką') }}</h4>
+                                @include('admin.halls.unavailable_datetime_form')
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="card p-4">
-                <div class="d-flex justify-content-between">
-                    <h5 class="m-1">{{ __('Salės Id') }}: {{ $hall->id }}</h5>
-                    <div class="d-flex" style="gap: 10px">
-                        <a class="btn btn-primary" href="{{ route('admin.halls') }}">Atgal</a>
-                        {!! Form::open(['route' => ['admin.halls.destroy', $hall->id], 'method' => 'delete']) !!}
-                            {!! Form::button(__('Ištrinti'), [
-                                'type' => 'submit',
-                                'class' => 'btn btn-danger',
-                                'onclick' => "return confirm('Ar jus tikrai norite?')"
-                                ]) !!}
-                        {!! Form::close() !!}
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center align-items-center my-3">
-                    <div class="d-flex flex-column w-100 me-3">
-                        <h5 class="m-1">{{ __('Nepasiekiamos datos laikai') }}</h5>
-                        @include('admin.halls.unavailable_dates')
-                    </div>
-                    <div class="d-flex flex-column w-100 me-3">
-                        <h5 class="m-1">{{ __('Nepasiekiamos datos laikai') }}</h5>
-                        @include('admin.halls.unavailable_datetimes')
+                    <div class="p-4 w-100">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h4 class="m-1">{{ __('Salės Id') }}: {{ $hall->id ?? '?'}}</h4>
+                            <div class="d-flex" style="gap: 10px">
+                                <a class="fw-bold fs-4 text-center" href="{{ route('admin.halls') }}"
+                                   style="background-color: #C19F5F; border: none; border-radius: 17.5px;
+                               color: black; padding: 10px 0; width: 150px; text-decoration: none">
+                                    {{ __('Atgal') }}
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-lg-row flex-column justify-content-center align-items-start my-3" style="gap: 15px">
+                            <div class="d-flex flex-column w-100">
+                                <h4 class="m-1">{{ __('Nepasiekiamos datos laikai') }}</h4>
+                                @include('admin.halls.unavailable_dates')
+                            </div>
+                            <div class="d-flex flex-column w-100">
+                                <h4 class="m-1">{{ __('Nepasiekiamos datos laikai') }}</h4>
+                                @include('admin.halls.unavailable_datetimes')
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

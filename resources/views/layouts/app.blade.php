@@ -18,48 +18,18 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('jquery-ui-1.13.2.custom/jquery-ui.css') }}" rel="stylesheet">
-    <link href="{{ asset('Datatables/DataTables-1.12.1/css/jquery.dataTables.css') }}" rel="stylesheet">
+    <link href="{{ asset('DataTables/DataTables-1.12.1/css/jquery.dataTables.css') }}" rel="stylesheet">
     <link href="{{ asset('fontawesome-free-6.1.1-web/css/all.css') }}" rel="stylesheet">
-    @stack('css')
+    @stack('styles')
     @livewireStyles
 </head>
 <body>
-<div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav me-auto">
-                    @guest
-                        @include('layouts.admin_dropdown')
-                    @else
-                        @auth
-                            @include('layouts.admin_profile_dropdown')
-                        @endauth
-                    @endguest
-                </ul>
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ms-auto">
-                    @include('layouts.menu')
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <main class="py-4">
+<div id="app" class="d-flex flex-column min-vh-100">
+    @include('layouts.navbar')
+    <main>
         @yield('content')
     </main>
-    <footer class="d-flex flex-column justify-content-center align-items-center">
-        <span>PHP version: {{ phpversion() }}</span>
-        <span>Laravel version: {{ app()->version() }}</span>
-    </footer>
+    @include('layouts.footer')
 </div>
 @stack('scripts')
 @livewireScripts
