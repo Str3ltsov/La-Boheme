@@ -32,7 +32,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="4">{{ __('No halls found') }}</td>
+                <td colspan="4">{{ __('Nerasta salių') }}</td>
             </tr>
         @endforelse
         </tbody>

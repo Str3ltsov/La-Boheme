@@ -32,7 +32,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="4">{{ __('No tables found') }}</td>
+                <td colspan="4">{{ __('Nerasta lentelių') }}</td>
             </tr>
         @endforelse
         </tbody>

@@ -31,7 +31,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="4">{{ __('No unavailable dates found') }}</td>
+                <td colspan="4">{{ __('Nerasta nepasiekiamų datų') }}</td>
             </tr>
         @endforelse
         </tbody>

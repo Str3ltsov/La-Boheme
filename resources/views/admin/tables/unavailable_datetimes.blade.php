@@ -31,7 +31,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="4">{{ __('No unavailable date times found') }}</td>
+                <td colspan="4">{{ __('Nerasta nepasiekiamų datos laikų') }}</td>
             </tr>
         @endforelse
         </tbody>

@@ -35,7 +35,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td>{{ __('No reservations found') }}</td>
+                    <td>{{ __('Nerasta rezervacijų') }}</td>
                 </tr>
             @endforelse
         </tbody>

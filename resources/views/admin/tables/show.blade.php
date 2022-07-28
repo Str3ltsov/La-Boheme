@@ -31,7 +31,7 @@
                     </div>
                     <div class="p-4 w-100">
                         <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h4 class="m-1">{{ __('Stalos Id') }}: {{ $table->id }}</h4>
+                            <h4 class="m-1">{{ __('Stalos Id') }}: {{ $table->id ?? '?'}}</h4>
                             <div class="d-flex" style="gap: 10px">
                                 <a class="fw-bold fs-4 text-center" href="{{ route('admin.tables') }}"
                                    style="background-color: #C19F5F; border: none; border-radius: 17.5px;

@@ -15,7 +15,7 @@
                 <div class="d-flex flex-column justify-content-center align-items-start
                 p-5 fs-5 mb-5 text-light" style="font-size: 1.1em; background-color: #151515; width: clamp(300px, 100%, 1200px)">
                     <div class="d-flex flex-column justify-content-center align-items-start my-3 fs-4 w-100">
-                        <h3 class="text-light">{{ __('Reservacija:') }} {{$reservation->id}}</h3>
+                        <h3 class="text-light">{{ __('Reservacija:') }} {{$reservation->id ?? '?'}}</h3>
                         <div class="d-flex flex-md-row flex-column my-3 w-100">
                             <div class="d-flex flex-column w-100 me-3 my-3 my-lg-0">
                                 <h5>{{ __('Paslauga') }}</h5>
@@ -96,7 +96,7 @@
                                             <span style="width: clamp(250px, 100%, 500px)">{{ $reservationQuestion->comment ?? '-' }}</span>
                                         </div>
                                     @empty
-                                        <span>{{ __('No reservation questions found') }}</span>
+                                        <span>{{ __('Nerasta rezervavimo klausimų') }}</span>
                                     @endforelse
                                 </div>
                             </div>
