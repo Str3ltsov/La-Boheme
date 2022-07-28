@@ -53,7 +53,7 @@ class ReservationService implements ReservationServiceInterface
         if ($reservationTypes->isEmpty()) {
             return redirect()
                 ->route('home')
-                ->with('error', __('messages.errorReservationTypes'));
+                ->with('error', 'Failed to find reservation types');
         }
 
         return $reservationTypes;
@@ -68,7 +68,8 @@ class ReservationService implements ReservationServiceInterface
             ],
             2 => [
                 'time' => ['required'],
-                'number_of_people' => ['required']
+                'number_of_people' => $reservationType == Constants::reservationTypeHall ?
+                    ['required', 'numeric', 'min:8'] : ['required', 'numeric', 'min:1', 'max:8']
             ],
             3 => [
                 'question_one_answer' => ['required'],
@@ -94,7 +95,7 @@ class ReservationService implements ReservationServiceInterface
         if (empty($validationRules)) {
             return redirect()
                 ->route('home')
-                ->with('error', __('messages.errorValidationRules'));
+                ->with('error', 'Failed to find validation rules');
         }
 
         return $validationRules;
@@ -112,7 +113,7 @@ class ReservationService implements ReservationServiceInterface
         if ($employees->isEmpty()) {
             return redirect()
                 ->route('home')
-                ->with('error', __('messsages.errorEmployees'));
+                ->with('error', 'Failed to find employees');
         }
 
         return $employees;
@@ -147,7 +148,7 @@ class ReservationService implements ReservationServiceInterface
         else {
             return redirect()
                 ->route('home')
-                ->with('error', __('messages.errorCreateClient'));
+                ->with('error', 'Failed to create client');
         }
     }
 
@@ -158,7 +159,7 @@ class ReservationService implements ReservationServiceInterface
         if ($tables->isEmpty()) {
             return redirect()
                 ->route('home')
-                ->with('error', __('messages.errorTables'));
+                ->with('error', 'Failed to find tables');
         }
 
         return $tables;
@@ -171,7 +172,7 @@ class ReservationService implements ReservationServiceInterface
         if ($halls->isEmpty()) {
             return redirect()
                 ->route('home')
-                ->with('error', __('messages.errorHalls'));
+                ->with('error', 'Failed to find halls');
         }
 
         return $halls;
@@ -203,7 +204,7 @@ class ReservationService implements ReservationServiceInterface
         else {
             return redirect()
                 ->route('home')
-                ->with('error', __('messages.errorCreateReservation'));
+                ->with('error', 'Failed to create reservation');
         }
     }
 
@@ -254,7 +255,7 @@ class ReservationService implements ReservationServiceInterface
         if (empty($answersAndComments)) {
             return redirect()
                 ->route('home')
-                ->with('error', __('messages.errorAnswersAndComments'));
+                ->with('error', 'Failed to find reservation question answer and/or comments');
         }
 
         return $answersAndComments;
@@ -269,7 +270,7 @@ class ReservationService implements ReservationServiceInterface
             if ($reservationQuestions->isEmpty()) {
                 return redirect()
                     ->route('home')
-                    ->with('error', __('messages.errorReservationQuestions'));
+                    ->with('error', 'Failed to find reservation questions');
             }
 
             $reservationQuestions = $reservationQuestions->toArray();
@@ -298,7 +299,7 @@ class ReservationService implements ReservationServiceInterface
             if (!$reservationQuestionAnswer->wasRecentlyCreated) {
                 return redirect()
                     ->route('home')
-                    ->with('error', __('messages.errorCreateReservationQuestionAnswers'));
+                    ->with('error', 'Failed to create reservation question answer and/or comment');
             }
         }
 
@@ -315,7 +316,7 @@ class ReservationService implements ReservationServiceInterface
         if (empty($chosenEmployees)) {
             return redirect()
                 ->route('home')
-                ->with('error', __('messages.errorChosenEmployees'));
+                ->with('error', 'Failed to find chosen employees');
         }
 
         return $chosenEmployees;
@@ -334,7 +335,7 @@ class ReservationService implements ReservationServiceInterface
             if (!$reservationEmployee->wasRecentlyCreated) {
                 return redirect()
                     ->route('home')
-                    ->with('error', __('messages.errorCreateReservationEmployees'));
+                    ->with('error', 'Failed to create reservation employees');
             }
         }
 

@@ -8,18 +8,41 @@ use App\Models\HallUnavailableDateTime;
 use App\Models\TableUnavailableDate;
 use App\Models\TableUnavailableDateTime;
 use Illuminate\Http\RedirectResponse;
-use DateTime;
 
 trait UseDatesTimes {
     /*
      * Retrieve times depending on the day of the week
      */
+    private string $dayOfTheWeek;
+
+    public function getDayOfTheWeek(string $date): void
+    {
+        $dayOfTheWeek = date('N', strtotime($date));
+
+        $this->dayOfTheWeek = $dayOfTheWeek;
+    }
+
+    private function getTimes(int $loopTimes, array $times, string $firstTime): array
+    {
+        for ($i = 0; $i < $loopTimes; $i++) {
+            $firstTime = date('H:i', strtotime($firstTime. '+15 minutes'));
+            $times[$i] = $firstTime;
+        }
+
+        return $times;
+    }
+
     private function getWeekdayTimes(): array
     {
-        $weekdayTimes = [
-            '17:00', '18:00', '19:00', '20:00',
-            '21:00', '22:00', '23:00', '24:00'
-        ];
+        $weekdayTimes = [];
+        static $firstTime = '17:00';
+
+        if ($this->dayOfTheWeek == 1) {
+            $weekdayTimes = $this->getTimes(20, $weekdayTimes, $firstTime);
+        }
+        else {
+            $weekdayTimes = $this->getTimes(28, $weekdayTimes, $firstTime);
+        }
 
         if (empty($weekdayTimes)) {
             return [];
@@ -30,12 +53,15 @@ trait UseDatesTimes {
 
     private function getWeekendTimes(): array
     {
-        $weekendTimes = [
-            '12:00', '13:00', '14:00', '15:00',
-            '16:00', '17:00', '18:00', '19:00',
-            '20:00', '21:00', '22:00', '23:00',
-            '24:00'
-        ];
+        $weekendTimes = [];
+        static $firstTime = '11:00';
+
+        if ($this->dayOfTheWeek == 6) {
+            $weekendTimes = $this->getTimes(52, $weekendTimes, $firstTime);
+        }
+        else {
+            $weekendTimes = $this->getTimes(44, $weekendTimes, $firstTime);
+        }
 
         if (empty($weekendTimes)) {
             return [];
@@ -44,11 +70,9 @@ trait UseDatesTimes {
         return $weekendTimes;
     }
 
-    public function getTimesBasedOnDay(string $date): array
+    public function getTimesBasedOnDay(): array
     {
-        $weekend = date('N', strtotime($date));
-
-        if ($weekend >= 6) {
+        if ($this->dayOfTheWeek >= 6) {
             return $this->getWeekendTimes();
         }
 
@@ -94,7 +118,7 @@ trait UseDatesTimes {
         return $hallUnavailableDateTimes->toArray();
     }
 
-    public function getUnavailableDateTimesByReservationType(int $reservationType)
+    public function getUnavailableDateTimesByReservationType(int $reservationType): array|RedirectResponse
     {
         if ($reservationType == Constants::reservationTypeTable) {
             return $this->getTableUnavailableDateTimesArray();

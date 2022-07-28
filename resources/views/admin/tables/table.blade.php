@@ -1,11 +1,11 @@
 <div class="table table-responsive">
-    <table class="table table-striped display" id="tables_table">
+    <table class="table display text-light mb-3" id="tables_table">
         <thead>
         <tr>
             <th class="w-25" scope="col">{{ __('Id') }}</th>
             <th class="w-25" scope="col">{{ __('Sukurtas') }}</th>
             <th class="w-25" scope="col">{{ __('Atnaujintas') }}</th>
-            <th class="w-auto" scope="col">{{ __('Veiksmai') }}</th>
+            <th class="w-auto" scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -15,10 +15,18 @@
                 <td class="w-25" >{{ $table->created_at ?? null}}</td>
                 <td class="w-25" >{{ $table->updated_at ?? null}}</td>
                 <td class="w-auto">
-                    <div class="d-flex">
-                        <a class="btn btn-primary" href="{{ route('admin.tables.show', [$table->id]) }}">
-                            {{ __('Detailiai') }}
+                    <div class="d-flex align-items-center" style="gap: 20px">
+                        <a href="{{ route('admin.tables.show', $table->id) }}" class="fw-bold text-light"
+                           style="background-color: transparent;
+                           color: black; text-decoration: none">
+                            <i class="fa-solid fa-eye"></i>
                         </a>
+                        {!! Form::open(['route' => ['admin.tables.destroy', $table->id], 'method' => 'delete']) !!}
+                            <button type="submit", class="fw-bold fs-4 text-center text-light" style="background-color: transparent;
+                                        border: none; text-decoration: none">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        {!! Form::close() !!}
                     </div>
                 </td>
             </tr>
@@ -33,7 +41,7 @@
             <th class="w-25" scope="col">{{ __('Id') }}</th>
             <th class="w-25" scope="col">{{ __('Sukurtas') }}</th>
             <th class="w-25" scope="col">{{ __('Atnaujintas') }}</th>
-            <th class="w-auto" scope="col">{{ __('Veiksmai') }}</th>
+            <th class="w-auto" scope="col"></th>
         </tr>
         </tfoot>
     </table>

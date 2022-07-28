@@ -115,7 +115,7 @@ class ReservationForm extends Component
         );
     }*/
 
-    public function goToSecondStepWithTimes()
+    public function addTimesAndGoToNextStep()
     {
         /*
          * Going to next step
@@ -126,7 +126,9 @@ class ReservationForm extends Component
          * Adding available times depending on the day of week.
          */
         $unavailableDateTimes = $this->getUnavailableDateTimesByReservationType($this->reservation_type);
-        $times = $this->getTimesBasedOnDay($this->date);
+
+        $this->getDayOfTheWeek($this->date);
+        $times = $this->getTimesBasedOnDay();
 
         $this->times = $this->getAvailableTimesByDate($unavailableDateTimes, $this->date, $times);
     }
@@ -228,7 +230,7 @@ class ReservationForm extends Component
 
         return redirect()
             ->route('reservation.saved')
-            ->with('success', __('messages.successSavedReservation'));
+            ->with('success', __('Successfully saved reservation'));
     }
 
     public function render()
