@@ -1,5 +1,5 @@
-<div class="table table-responsive overflow-hidden">
-    <table class="table table-striped display" id="reservations_table">
+<div class="table table-responsive">
+    <table class="table display text-light mb-3" id="reservations_table">
         <thead>
             <tr>
                 <th scope="col">{{ __('Vardas') }}</th>
@@ -8,12 +8,12 @@
                 <th scope="col">{{ __('Data ir laikas') }}</th>
                 <th scope="col">{{ __('Zmoniu sk.') }}</th>
                 <th scope="col">{{ __('Patvirtinimas') }}</th>
-                <th scope="col">{{ __('Veiksmai') }}</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
             @forelse ($reservations ?? [] as $reservation)
-                <tr>
+                <tr id="row_link" data-href='url://'>
                     <td>{{ $reservation->name ?? '-' }}</td>
                     <td>{{ $reservation->email ?? '-' }}</td>
                     <td>{{ $reservation->phone_number ?? '-' }}</td>
@@ -27,16 +27,15 @@
                         @endif
                     </td>
                     <td>
-                        <div class="d-flex">
-                            <a class="btn btn-primary" href="{{ route('admin.reservations.show', $reservation->id) }}">
-                                {{ __('Detaliai') }}
-                            </a>
-                        </div>
+                        <a href="{{ route('admin.reservations.show', $reservation->id) }}" class="fw-bold text-light"
+                           style="text-decoration: none">
+                            <i class="fa-solid fa-eye"></i>
+                        </a>
                     </td>
                 </tr>
             @empty
                 <tr>
-                    <td>{{ __('No reservations found') }}</td>
+                    <td>{{ __('Nerasta rezervacijų') }}</td>
                 </tr>
             @endforelse
         </tbody>
@@ -48,7 +47,7 @@
             <th scope="col">{{ __('Data ir laikas') }}</th>
             <th scope="col">{{ __('Zmoniu sk.') }}</th>
             <th scope="col">{{ __('Patvirtinimas') }}</th>
-            <th scope="col">{{ __('Veiksmai') }}</th>
+            <th scope="col"></th>
         </tr>
         </tfoot>
     </table>

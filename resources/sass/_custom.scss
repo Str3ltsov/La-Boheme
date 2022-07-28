@@ -1,0 +1,68 @@
+// App Styling
+#app {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.7)
+    ), url('/images/Kiemelis-vakare.jpeg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    #meniu {
+        &::after {
+            content: '+';
+            color: #C19F5F;
+            margin-left: 5px;
+        }
+    }
+
+    #cormorant {
+        font-family: $font-family-cormorant;
+    }
+
+    input[type="date"]::-webkit-inner-spin-button,
+    input[type="date"]::-webkit-calendar-picker-indicator,
+    input[type="datetime-local"]::-webkit-inner-spin-button,
+    input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+    }
+
+    textarea::placeholder,
+    input::placeholder {
+        color: #BBBBBB;
+        opacity: 1;
+    }
+
+    #reservations_table_filter,
+    #reservations_table_length,
+    #reservations_table_info,
+    #reservations_table_length select,
+    #reservations_table_filter input,
+    #tables_table_filter,
+    #tables_table_length,
+    #tables_table_info,
+    #tables_table_length select,
+    #tables_table_filter input,
+    #halls_table_filter,
+    #halls_table_length,
+    #halls_table_info,
+    #halls_table_length select,
+    #halls_table_filter input {
+        color: #FFFFFF;
+    }
+
+    #reservations_table_paginate a,
+    #tables_table_paginate a,
+    #halls_table_paginate a {
+        background: #BBBBBB;
+    }
+
+    .dropdown-item {
+        &:hover {
+            background: #444444;
+        }
+    }
+}

@@ -20,8 +20,7 @@ use Illuminate\Support\Facades\Route;
 /*
  * Guest
  */
-Route::get('/', [HomeController::class, 'index'])
-    ->name('home');
+Route::redirect('/', '/reservation');
 Route::get('/reservation', ReservationForm::class)
     ->name('livewire.reservation');
 Route::view('/reservation/saved', 'reservation_saved')

@@ -1,5 +1,5 @@
 @if($errors->any())
-    <div class="alert alert-danger">
+    <div class="alert alert-danger" id="message">
         <ul class="list-unstyled">
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -16,3 +16,11 @@
         {{ session()->get('error') }}
     </div>
 @endif
+
+@push('scripts')
+    <script>
+        setTimeout(function() {
+            document.getElementById('message').style.display = 'none';
+        }, 3000);
+    </script>
+@endpush
