@@ -49,7 +49,7 @@ class TablesController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', 'Successfully created a new table');
+            ->with('success', __('Successfully created a new table'));
     }
 
     public function destroy($id): RedirectResponse
@@ -58,7 +58,7 @@ class TablesController extends Controller
 
         return redirect()
             ->route('admin.tables')
-            ->with('success', "Successfully deleted table $id");
+            ->with('success', __('Successfully deleted table'));
     }
 
     public function createUnavailableDate(CreateTableUnavailableDateRequest $request): RedirectResponse
@@ -67,7 +67,7 @@ class TablesController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', "Successfully created new date");
+            ->with('success', __('Successfully created new date'));
     }
 
     public function deleteUnavailableDate(DeleteTableUnavailableDateRequest $request): RedirectResponse
@@ -76,7 +76,7 @@ class TablesController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', "Successfully deleted table unavailable date");
+            ->with('success', __('Successfully deleted table unavailable date'));
     }
 
     public function createUnavailableDateTime(CreateTableUnavailableDateTimeRequest $request): RedirectResponse
@@ -85,7 +85,7 @@ class TablesController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', "Successfully created new date time");
+            ->with('success', __('Successfully created new date time'));
     }
 
     public function deleteUnavailableDateTime(DeleteTableUnavailableDateTimeRequest $request): RedirectResponse
@@ -94,6 +94,6 @@ class TablesController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', "Successfully deleted table unavailable date time");
+            ->with('success', __('Successfully deleted table unavailable date time'));
     }
 }

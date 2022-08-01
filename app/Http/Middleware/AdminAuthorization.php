@@ -21,7 +21,7 @@ class AdminAuthorization
             return $next($request);
         }
 
-        return redirect('/')
-            ->with('error', 'You are not authorized to enter admin route.');
+        return redirect('/login')
+            ->with('error', __('Unauthorized access to this route'));
     }
 }

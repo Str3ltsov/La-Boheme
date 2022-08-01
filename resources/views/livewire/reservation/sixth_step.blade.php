@@ -43,7 +43,7 @@ my-3 p-5 fs-4 text-light" style="font-size: 1.1em; background-color: #151515; ma
             value="{{ true }}"
         >
         <label for="Accept" class="form-check-label">
-            <span>{{ __('Visos teisės saugomos 2022 La Boheme.') }}</span>
+            <span>{{ __('Sutinku su svetainės privatumo politika') }}</span>
             <a class="text-reset text-decoration-none" href="#">
                 <span style="color: #C19F5F">{{ __('Privatumo politika') }}</span>
             </a>

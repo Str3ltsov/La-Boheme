@@ -98,7 +98,7 @@ trait UseDatesTimes {
         if ($tableUnavailableDateTimes->isEmpty()) {
             return redirect()
                 ->route('home')
-                ->with('error', 'Failed to retrieve table unavailable datetimes');
+                ->with('error', __('Failed to retrieve table unavailable datetimes'));
         }
 
         return $tableUnavailableDateTimes->toArray();
@@ -112,7 +112,7 @@ trait UseDatesTimes {
         if ($hallUnavailableDateTimes->isEmpty()) {
             return redirect()
                 ->route('home')
-                ->with('error', 'Failed to retrieve hall unavailable datetimes');
+                ->with('error', __('Failed to retrieve hall unavailable datetimes'));
         }
 
         return $hallUnavailableDateTimes->toArray();
@@ -129,7 +129,7 @@ trait UseDatesTimes {
 
         return redirect()
             ->route('home')
-            ->with('error', 'Failed to retrieve unavailable datetimes by reservation type');
+            ->with('error', __('Failed to retrieve unavailable datetimes by reservation type'));
     }
 
     public function getAvailableTimesByDate(array $unavailableDateTimes, string $date, array $times): array
@@ -157,7 +157,7 @@ trait UseDatesTimes {
         if ($tableUnavailableDates->isEmpty()) {
             return redirect()
                 ->route('home')
-                ->with('error', 'Failed to retrieve table unavailable dates');
+                ->with('error', __('Failed to retrieve table unavailable dates'));
         }
 
         return $tableUnavailableDates->toArray();
@@ -171,7 +171,7 @@ trait UseDatesTimes {
         if ($hallUnavailableDates->isEmpty()) {
             return redirect()
                 ->route('home')
-                ->with('error', 'Failed to retrieve hall unavailable dates');
+                ->with('error', __('Failed to retrieve hall unavailable dates'));
         }
 
         return $hallUnavailableDates->toArray();
@@ -188,7 +188,7 @@ trait UseDatesTimes {
 
         return redirect()
             ->route('home')
-            ->with('error', 'Failed to retrieve unavailable dates by reservation type');
+            ->with('error', __('Failed to retrieve unavailable dates by reservation type'));
     }
 
     public function getUnavailableDates(array $unavailableDates): array

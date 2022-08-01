@@ -17,7 +17,7 @@ class TablesService implements TablesServiceInterface
         if ($tables->isEmpty()) {
             return redirect()
                 ->route('admin.tables')
-                ->with('error', 'Failed to find tables');
+                ->with('error', __('Failed to find tables'));
         }
 
         return $tables;
@@ -36,7 +36,7 @@ class TablesService implements TablesServiceInterface
         else {
             return redirect()
                 ->route('admin.tables')
-                ->with('error', 'Failed to create a new table');
+                ->with('error', __('Failed to create a new table'));
         }
     }
 
@@ -47,7 +47,7 @@ class TablesService implements TablesServiceInterface
         if (empty($table)) {
             return redirect()
                 ->route('admin.tables')
-                ->with('error', "Failed to find table by id");
+                ->with('error', __('Failed to find table by id'));
         }
 
         return $table;
@@ -60,7 +60,7 @@ class TablesService implements TablesServiceInterface
         if (empty($table)) {
             return redirect()
                 ->route('admin.tables.show')
-                ->with('error', "Failed to find table by id");
+                ->with('error', __('Failed to find table by id'));
         }
 
         $table->delete();
@@ -107,7 +107,7 @@ class TablesService implements TablesServiceInterface
         else {
             return redirect()
                 ->route('admin.tables.show')
-                ->with('error', 'Failed to create a new date');
+                ->with('error', __('Failed to create a new date'));
         }
     }
 
@@ -119,7 +119,7 @@ class TablesService implements TablesServiceInterface
         if (empty($tableUnavailableDate)) {
             return redirect()
                 ->back()
-                ->with('error', "Failed to find table unavailable date by id");
+                ->with('error', __('Failed to find table unavailable date by id'));
         }
 
         $tableUnavailableDate->delete();
@@ -143,7 +143,7 @@ class TablesService implements TablesServiceInterface
         else {
             return redirect()
                 ->route('admin.tables.show')
-                ->with('error', 'Failed to create a new date time');
+                ->with('error', __('Failed to create a new date time'));
         }
     }
 
@@ -155,7 +155,7 @@ class TablesService implements TablesServiceInterface
         if (empty($tableUnavailableDateTime)) {
             return redirect()
                 ->back()
-                ->with('error', "Failed to find table unavailable date time by id");
+                ->with('error', __('Failed to find table unavailable date time by id'));
         }
 
         $tableUnavailableDateTime->delete();

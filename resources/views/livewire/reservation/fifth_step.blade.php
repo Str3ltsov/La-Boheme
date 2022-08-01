@@ -10,7 +10,7 @@ align-items-center my-3 text-light w-100" style="gap: 20px">
             placeholder="{{ __('Vardas') }}"
         >
         @error('client_name')
-            <span class="text-danger mt-1">{{ $message }}</span>
+            <span class="text-danger mt-1 fs-5">{{ $message }}</span>
         @enderror
     </div>
     <div class="d-flex flex-column justify-content-center align-items-center w-100">
@@ -23,7 +23,7 @@ align-items-center my-3 text-light w-100" style="gap: 20px">
             placeholder="{{ __('El. pašto adresas') }}"
         >
         @error('client_email')
-            <span class="text-danger mt-1">{{ $message }}</span>
+            <span class="text-danger mt-1 fs-5">{{ $message }}</span>
         @enderror
     </div>
     <div class="d-flex flex-column justify-content-center align-items-center w-100">
@@ -36,7 +36,7 @@ align-items-center my-3 text-light w-100" style="gap: 20px">
             placeholder="{{ __('Telefonas') }}"
         >
         @error('client_phone_number')
-            <span class="text-danger mt-1">{{ $message }}</span>
+            <span class="text-danger mt-1 fs-5">{{ $message }}</span>
         @enderror
     </div>
     <div class="d-flex flex-column justify-content-center align-items-center w-100">
@@ -48,9 +48,6 @@ align-items-center my-3 text-light w-100" style="gap: 20px">
             style="border-radius: 15px; border-color: #C19F5F; width: clamp(200px, 100%, 500px)"
             placeholder="{{ __('Papildoma informacija') }}"
         ></textarea>
-        @error('client_additional_information')
-            <span class="text-danger">{{ $message }}</span>
-        @enderror
     </div>
     <div class="d-flex justify-content-end mt-4" style="gap: 20px;">
         <button wire:click="goToPreviousStep" type="button" class="fw-bold fs-4"

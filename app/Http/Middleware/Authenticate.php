@@ -15,7 +15,8 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
-            return route('livewire.reservation');
+            session()->flash('error', __('Unauthorized access to this route'));
+            return route('login');
         }
     }
 }
