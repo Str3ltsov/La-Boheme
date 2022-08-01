@@ -1,5 +1,5 @@
 <div class="d-flex flex-column justify-content-center align-items-center
-my-3 text-light p-5" style="font-size: 1.3em; background-color: #151515; width: clamp(400px, 100%, 1100px)">
+my-3 text-light p-4" style="font-size: 1.3em; background-color: #151515; width: clamp(350px, 100%, 1100px)">
     <div class="d-flex flex-column w-100 py-3">
         <p>{{ __('1. Ar svečių tarpe yra veganų, alergiškų ar tam tikrų produktų netoleruojančių žmonių?') }}</p>
         <div class="d-flex align-items-center mb-3">
@@ -29,11 +29,11 @@ my-3 text-light p-5" style="font-size: 1.3em; background-color: #151515; width: 
             class="form-control bg-transparent text-light fs-5"
             style="border-radius: 15px; border-color: #C19F5F"
             name="questionOneComment"
-            placeholder="Nurodykite kiekį ir alegiškus produktus jei į klausimą atsakėte taip."
+            placeholder="Nurodykite kiekį ir alergiškus produktus, jei į klausimą atsakėte taip."
         ></textarea>
     </div>
     <div class="d-flex flex-column w-100 py-3">
-        <p>{{ __('2. Ar meniu turėtų sudaryti 3 patiekalų vakarienė pirmasis patiekalas, karštasis patiekalas, desertas?') }}</p>
+        <p>{{ __('2. Ar meniu turėtų sudaryti 3 patiekalų vakarienė (pirmasis patiekalas, karštasis patiekalas, desertas)?') }}</p>
         <div class="d-flex align-items-center mb-3">
             <label class="form-check-label">{{ __('Taip') }}</label>
             <input
@@ -61,7 +61,7 @@ my-3 text-light p-5" style="font-size: 1.3em; background-color: #151515; width: 
             class="form-control bg-transparent text-light fs-5"
             style="border-radius: 15px; border-color: #C19F5F"
             name="questionTwoComment"
-            placeholder="Nurodykite kitus poreikius jei į klausimą atsakėte ne."
+            placeholder="Nurodykite kitus poreikius, jei į klausimą atsakėte ne."
         ></textarea>
     </div>
     <div class="d-flex flex-column w-100 py-3">
@@ -111,7 +111,7 @@ my-3 text-light p-5" style="font-size: 1.3em; background-color: #151515; width: 
                 >
             </div>
             <div class="d-flex justify-content-start align-items-start" style="gap: 10px">
-                <p class="my-0">{{ __('Nurodykite, kiek vaikiškiškų kėdučių reikės jei į klausimą atsakėte taip:') }}</p>
+                <p class="my-0">{{ __('Nurodykite, kiek vaikiškiškų kėdučių reikės, jei į klausimą atsakėte taip:') }}</p>
                 <input
                     wire:model.lazy="question_four_comment"
                     type="number"
@@ -157,7 +157,7 @@ my-3 text-light p-5" style="font-size: 1.3em; background-color: #151515; width: 
             class="form-control bg-transparent text-light fs-5"
             style="border-radius: 15px; border-color: #C19F5F"
             name="questionFiveComment"
-            placeholder="Nurodykite vaikų kiekį ir patiekalus jei į klausimą atsakėte taip."
+            placeholder="Nurodykite vaikų kiekį ir patiekalus, jei į klausimą atsakėte taip."
         ></textarea>
     </div>
     <div class="d-flex justify-content-end mt-4" style="gap: 20px;">

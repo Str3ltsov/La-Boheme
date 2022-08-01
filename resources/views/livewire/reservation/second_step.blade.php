@@ -2,7 +2,7 @@
 align-items-center my-3 text-light" style="gap: 10px">
     <div class="d-flex flex-column justify-content-center align-items-center w-100 p-3">
         <select wire:model.lazy="time" class="form-select fs-4 bg-transparent text-light" name="time"
-                style="width: 300px; border-radius: 15px; border-color: #C19F5F; min-width: 300px; max-width: 400px;">
+                style="border-radius: 15px; border-color: #C19F5F; width: clamp(300px, 100%, 400px)">
             <option value="" selected>{{ __('Pasirinkite laiką') }}</option>
             @forelse ($times ?? [] as $time)
                 <option value="{{ $time }}">{{ $time }}</option>
@@ -11,7 +11,7 @@ align-items-center my-3 text-light" style="gap: 10px">
             @endforelse
         </select>
         @error('time')
-            <span class="text-danger">{{ $message }}</span>
+            <span class="text-danger fs-5">{{ $message }}</span>
         @enderror
     </div>
     <div class="d-flex flex-column justify-content-center align-items-center w-100 p-3">
@@ -31,7 +31,7 @@ align-items-center my-3 text-light" style="gap: 10px">
             oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"
         >
         @error('number_of_people')
-            <span class="text-danger">{{ $message }}</span>
+            <span class="text-danger fs-5">{{ $message }}</span>
         @enderror
     </div>
     <div class="d-flex justify-content-end mt-4" style="gap: 20px;">

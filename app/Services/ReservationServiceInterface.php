@@ -16,7 +16,7 @@ interface ReservationServiceInterface
     public function makeRulesReadableByValidate(array $validationRules): array;
     public function getEmployees(): Collection|RedirectResponse;
     //public function getEmployeeNames(int $waiter, int $bartender): array;
-    public function createClient(string $name, string $email, string $phoneNumber, string $additionalInfo)
+    public function createClient(string $name, string $email, string $phoneNumber, string|null $additionalInfo)
     : Client|RedirectResponse;
     public function getTables(): Collection|RedirectResponse;
     public function getHalls(): Collection|RedirectResponse;

@@ -49,7 +49,7 @@ class HallsController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', 'Successfully created a new hall');
+            ->with('success', __('Successfully created a new hall'));
     }
 
     public function destroy($id): RedirectResponse
@@ -58,7 +58,7 @@ class HallsController extends Controller
 
         return redirect()
             ->route('admin.halls')
-            ->with('success', "Successfully deleted hall $id");
+            ->with('success', __('Successfully deleted hall'));
     }
 
     public function createUnavailableDate(CreateHallUnavailableDateRequest $request): RedirectResponse
@@ -67,7 +67,7 @@ class HallsController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', "Successfully created new date");
+            ->with('success', __('Successfully created new date'));
     }
 
     public function deleteUnavailableDate(DeleteHallUnavailableDateRequest $request): RedirectResponse
@@ -76,7 +76,7 @@ class HallsController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', "Successfully deleted hall unavailable date");
+            ->with('success', __('Successfully deleted hall unavailable date'));
     }
 
     public function createUnavailableDateTime(CreateHallUnavailableDateTimeRequest $request): RedirectResponse
@@ -85,7 +85,7 @@ class HallsController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', "Successfully created new date time");
+            ->with('success', __('Successfully created new date time'));
     }
 
     public function deleteUnavailableDateTime(DeleteHallUnavailableDateTimeRequest $request): RedirectResponse
@@ -94,6 +94,6 @@ class HallsController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', "Successfully deleted hall unavailable date time");
+            ->with('success', __('Successfully deleted hall unavailable date time'));
     }
 }

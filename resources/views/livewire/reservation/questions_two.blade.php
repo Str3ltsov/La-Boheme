@@ -1,5 +1,5 @@
 <div class="d-flex flex-column justify-content-center align-items-center
-my-3 text-light p-5" style="font-size: 1.3em; background-color: #151515; width: clamp(400px, 100%, 1100px)">
+my-3 text-light p-5" style="font-size: 1.3em; background-color: #151515; width: clamp(350px, 100%, 1100px)">
     <div class="d-flex flex-column w-100 py-3">
         <p>{{ __('1. Pageidavimai stalo/salės išdėstymui') }}</p>
         <textarea
@@ -10,7 +10,7 @@ my-3 text-light p-5" style="font-size: 1.3em; background-color: #151515; width: 
             name="questionOneAnswer"
         ></textarea>
         @error('question_one_answer')
-            <span class="text-danger">{{ $message }}</span>
+            <span class="text-danger mt-3">{{ $message }}</span>
         @enderror
     </div>
     <div class="d-flex flex-column w-100 py-3">
@@ -42,7 +42,7 @@ my-3 text-light p-5" style="font-size: 1.3em; background-color: #151515; width: 
             class="form-control bg-transparent text-light fs-5"
             style="border-radius: 15px; border-color: #C19F5F"
             name="questionTwoComment"
-            placeholder="{{ __('Nurodykite kiekį ir alegiškus produktus jei į klausimą atsakėte taip.') }}"
+            placeholder="{{ __('Nurodykite kiekį ir alergiškus produktus, jei į klausimą atsakėte taip.') }}"
         ></textarea>
     </div>
     <div class="d-flex flex-column w-100 py-3">
@@ -74,7 +74,7 @@ my-3 text-light p-5" style="font-size: 1.3em; background-color: #151515; width: 
             class="form-control bg-transparent text-light fs-5"
             style="border-radius: 15px; border-color: #C19F5F"
             name="questionOneComment"
-            placeholder="{{ __('Nurodykite kitus poreikius jei į klausimą atsakėte ne.') }}"
+            placeholder="{{ __('Nurodykite kitus poreikius, jei į klausimą atsakėte ne.') }}"
         ></textarea>
     </div>
     <div class="d-flex flex-column w-100 py-3">
@@ -124,7 +124,7 @@ my-3 text-light p-5" style="font-size: 1.3em; background-color: #151515; width: 
                 >
             </div>
             <div class="d-flex justify-content-start align-items-start" style="gap: 10px">
-                <p class="my-0">{{ __('Nurodykite, kiek vaikiškiškų kėdučių reikės jei į klausimą atsakėte taip:') }}</p>
+                <p class="my-0">{{ __('Nurodykite, kiek vaikiškiškų kėdučių reikės, jei į klausimą atsakėte taip:') }}</p>
                 <input
                     wire:model.lazy="question_five_comment"
                     type="number"
@@ -161,7 +161,7 @@ my-3 text-light p-5" style="font-size: 1.3em; background-color: #151515; width: 
             >
         </div>
         @error('question_six_answer')
-            <span class="text-danger">{{ $message }}</span>
+            <span class="text-danger mb-3">{{ $message }}</span>
         @enderror
         <textarea
             wire:model.lazy="question_six_comment"
@@ -169,7 +169,7 @@ my-3 text-light p-5" style="font-size: 1.3em; background-color: #151515; width: 
             class="form-control bg-transparent text-light fs-5"
             style="border-radius: 15px; border-color: #C19F5F"
             name="questionSixComment"
-            placeholder="{{ __('Nurodykite vaikų kiekį ir patiekalus jei į klausimą atsakėte taip.') }}"
+            placeholder="{{ __('Nurodykite vaikų kiekį ir patiekalus, jei į klausimą atsakėte taip.') }}"
         ></textarea>
     </div>
     <div class="d-flex flex-column w-100 py-3">

@@ -21,9 +21,9 @@
                         </a>
                     </div>
                 </div>
-                <div class="d-flex flex-column justify-content-center align-items-start w-auto mx-5 mx-lg-auto" style="gap: 10px">
-                    <div class="d-flex mx-3" style="color: #C19F5F; gap: 10px;">
-                        <i class="fa-solid fa-phone-flip"></i>
+                <div class="d-flex flex-column justify-content-center align-items-start w-auto mx-auto px-2" style="gap: 10px">
+                    <div class="d-flex align-items-center mx-3" style="color: #C19F5F; gap: 10px;">
+                        <i class="fa-solid fa-phone-flip fs-5"></i>
                         <div class="d-flex flex-column align-items-start">
                                 <span style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.7em">
                                     {{ __('Rezervuoti staliuką') }}
@@ -33,8 +33,8 @@
                             </a>
                         </div>
                     </div>
-                    <div class="d-flex mx-3" style="color: #C19F5F; gap: 10px;">
-                        <i class="fa-solid fa-wine-glass"></i>
+                    <div class="d-flex align-items-center mx-3" style="color: #C19F5F; gap: 10px;">
+                        <i class="fa-solid fa-wine-glass fs-5"></i>
                         <div class="d-flex flex-column align-items-start">
                                 <span style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.7em">
                                     {{ __('Renginių organizavimas') }}
@@ -44,8 +44,8 @@
                             </a>
                         </div>
                     </div>
-                    <div class="d-flex mx-3" style="color: #C19F5F; gap: 10px;">
-                        <i class="fa-solid fa-question"></i>
+                    <div class="d-flex align-items-center mx-3" style="color: #C19F5F; gap: 10px;">
+                        <i class="fa-solid fa-question fs-5"></i>
                         <div class="d-flex flex-column align-items-start">
                                 <span style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.7em">
                                     {{ __('Klausimai ir pasiūlymai') }}
@@ -55,8 +55,8 @@
                             </a>
                         </div>
                     </div>
-                    <div class="d-flex mx-3" style="color: #C19F5F; gap: 10px;">
-                        <i class="fa-solid fa-wine-bottle"></i>
+                    <div class="d-flex align-items-center mx-3" style="color: #C19F5F; gap: 10px;">
+                        <i class="fa-solid fa-wine-bottle fs-5"></i>
                         <div class="d-flex flex-column align-items-start text-start">
                                 <span style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.7em">
                                     {{ __('Didmeninė ir mažmeninė prekyba gėrimais') }}
@@ -69,7 +69,7 @@
                 </div>
                 <div class="d-flex flex-column justify-content-center align-items-start w-auto mx-auto" style="gap: 10px">
                     <div class="d-flex" style="gap: 10px">
-                        <i class="fa-regular fa-clock" style="color: #C19F5F"></i>
+                        <i class="fa-regular fa-clock fs-5" style="color: #C19F5F"></i>
                         <div class="d-flex flex-column align-items-start">
                                 <span style="letter-spacing: 5px; text-transform: uppercase; color: #C19F5F; font-size: 0.7em">
                                     {{ __('Darbo laikas') }}

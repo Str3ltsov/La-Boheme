@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Helpers\Constants;
 use App\Models\Client;
 use App\Models\Hall;
 use App\Models\Reservation;
@@ -102,9 +103,35 @@ class ReservationForm extends Component
     ];
 
     public array $times = [];
-    //public array $employeeNames = [];
 
-    /*public function goToFifthStepWithEmployeeNames()
+    protected function messages()
+    {
+        return [
+            'reservation_type.required' => 'Nepasirinkote paslaugos tipo',
+            'date.required' => 'Nepasirinkote datos',
+            'time.required' => 'Nepasirinkote laiko',
+            'number_of_people.required' => 'Nenurodėte žmonių skaičiaus',
+            'number_of_people.min' => $this->reservation_type == Constants::reservationTypeHall ?
+                'Žmonių skaičius turi būti didesnis negu 8' : 'Žmonių skaičius turi būti bent 1',
+            'number_of_people.max' => 'Žmonių skaičius turi būti mažesnis negu 8',
+            'question_one_answer.required' => 'Reikalaujama užpildyti',
+            'question_two_answer.required' => 'Reikalaujama užpildyti',
+            'question_three_answer.required' => 'Reikalaujama užpildyti',
+            'question_four_answer.required' => 'Reikalaujama užpildyti',
+            'question_five_answer.required' => 'Reikalaujama užpildyti',
+            'question_six_answer.required' => 'Reikalaujama užpildyti',
+            'question_seven_answer.required' => 'Reikalaujama užpildyti',
+            'client_name.required' => 'Nenurodėte vardo',
+            'client_email.required' => 'Nenurodėte el. pašto adreso',
+            'client_email.email' => 'Nurodėte negaliojantį el. pašto adreso formatu',
+            'client_phone_number.required' => 'Nenurodėte telefono numerio',
+            'accept.required' => 'Nepažymėjote, kad sutikote su svetainės privatumo politiką'
+        ];
+    }
+
+    /*public array $employeeNames = [];
+
+    public function goToFifthStepWithEmployeeNames()
     {
         //Going to next step
         $this->goToNextStep();
@@ -220,7 +247,7 @@ class ReservationForm extends Component
         /*
          * Send email
          */
-        $this->service->sendReservationSentEmail($client);
+        //$this->service->sendReservationSentEmail($client);
 
         /*
          * Resetting

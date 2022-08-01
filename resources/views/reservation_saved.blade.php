@@ -15,16 +15,7 @@
                 <div class="d-flex flex-column justify-content-center align-items-start
                 my-3 p-5 fs-5 text-light" style="font-size: 1.1em; background-color: #151515; max-width: 800px">
                     <div class="w-100">
-                        @if (session()->has('success'))
-                            <div class="alert alert-success" id="message">
-                                {{ session()->get('success') }}
-                            </div>
-                        @endif
-                        @if (session()->has('error'))
-                            <div class="alert alert-danger" id="message">
-                                {{ session()->get('error') }}
-                            </div>
-                        @endif
+                        @include('flash_message')
                     </div>
                     <div class="d-flex flex-column justify-content-center align-items-start my-3 fs-5">
                         <div class="d-flex flex-column" style="gap: 10px;">
@@ -59,10 +50,6 @@
 
 @push('scripts')
     <script>
-        setTimeout(function() {
-            document.getElementById('message').style.display = 'none';
-        }, 3000);
-
         function closeWindow() {
             window.location.href = "{{ route('livewire.reservation')}}";
         }

@@ -24,7 +24,7 @@ align-items-center my-3 text-light" style="gap: 50px">
                     </div>
                 </label>
                 @error('reservation_type')
-                    <span class="text-danger">{{ $message }}</span>
+                    <span class="text-danger fs-5">{{ $message }}</span>
                 @enderror
             </div>
             @empty
@@ -46,7 +46,7 @@ align-items-center my-3 text-light" style="gap: 50px">
             onkeydown="return false"
         >
         @error('date')
-            <span class="text-danger">{{ $message }}</span>
+            <span class="text-danger fs-5">{{ $message }}</span>
         @enderror
     </div>
     <div class="d-flex" style="gap: 10px;">

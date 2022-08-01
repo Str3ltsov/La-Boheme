@@ -15,7 +15,7 @@
                 <div class="d-flex flex-column justify-content-center align-items-center my-3 p-5 text-light"
                      style="font-size: 1.2em; background-color: #151515; width: clamp(400px, 100%, 1200px)">
                     <div class="w-100">
-                        @include('admin.halls.messages')
+                        @include('flash_message')
                     </div>
                     <div class="p-4 w-100">
                         <div class="d-flex flex-lg-row flex-column justify-content-center align-items-center my-3" style="gap: 15px">
