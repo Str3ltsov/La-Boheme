@@ -49,6 +49,6 @@ class ReservationsController extends Controller
 
         return redirect()
             ->route('admin.reservations')
-            ->with('success', __('Successfully updated reservation status'));
+            ->with('success', __('Užsakymo būsena sėkmingai atnaujinta'));
     }
 }

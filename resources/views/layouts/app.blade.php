@@ -25,11 +25,11 @@
 </head>
 <body>
 <div id="app" class="d-flex flex-column min-vh-100">
-    @include('layouts.navbar')
+    {{--@include('layouts.navbar')--}}
     <main>
         @yield('content')
     </main>
-    @include('layouts.footer')
+    {{--@include('layouts.footer')--}}
 </div>
 @stack('scripts')
 @livewireScripts

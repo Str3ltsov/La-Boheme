@@ -1550,11 +1550,6 @@ a.ui-button:active,
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/images/Kiemelis-vakare.jpeg") no-repeat center center fixed;
   background-size: cover;
 }
-#app #meniu::after {
-  content: "+";
-  color: #C19F5F;
-  margin-left: 5px;
-}
 #app #cormorant {
   font-family: "Cormorant", serif;
 }
@@ -1565,17 +1560,20 @@ a.ui-button:active,
   filter: invert(1);
 }
 #app textarea::-moz-placeholder, #app input::-moz-placeholder {
-  color: #BBBBBB;
+  color: #EEEEEE;
   opacity: 1;
 }
 #app textarea:-ms-input-placeholder, #app input:-ms-input-placeholder {
-  color: #BBBBBB;
+  color: #EEEEEE;
   opacity: 1;
 }
 #app textarea::placeholder,
 #app input::placeholder {
-  color: #BBBBBB;
+  color: #EEEEEE;
   opacity: 1;
+}
+#app option[value=""][selected] {
+  display: none;
 }
 #app #reservations_table_filter,
 #app #reservations_table_length,
@@ -1599,8 +1597,39 @@ a.ui-button:active,
 #app #halls_table_paginate a {
   background: #BBBBBB;
 }
-#app .dropdown-item:hover {
-  background: #444444;
+#app .fade-in {
+  -webkit-animation: FadeIn 300ms linear;
+          animation: FadeIn 300ms linear;
+}
+@-webkit-keyframes FadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes FadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+#app .btn-hover-focus {
+  transition: opacity 300ms ease;
+  opacity: 1;
+}
+#app .btn-hover-focus:hover, #app .btn-hover-focus:focus {
+  opacity: 0.75;
+}
+#app .input-hover-focus {
+  border: 2px solid #C19F5F;
+  transition: border 300ms ease;
+}
+#app .input-hover-focus:hover, #app .input-hover-focus:focus {
+  border: 2px solid #BBBBBB;
 }
 
 /*!

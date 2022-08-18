@@ -27,7 +27,7 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{ route('admin.reservations.show', $reservation->id) }}" class="fw-bold text-light"
+                        <a href="{{ route('admin.reservations.show', $reservation->id) }}" class="fw-bold text-light btn-hover-focus"
                            style="text-decoration: none">
                             <i class="fa-solid fa-eye"></i>
                         </a>

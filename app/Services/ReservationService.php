@@ -18,6 +18,9 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Mail\SentMessage;
+use Illuminate\Http\Response;
+
+use Illuminate\Support\Facades\Cookie;
 
 class ReservationService implements ReservationServiceInterface
 {
@@ -39,8 +42,8 @@ class ReservationService implements ReservationServiceInterface
 
         if (empty($randomEmployees)) {
             return redirect()
-                ->route('home')
-                ->with('error', __('Failed to find random employees'));
+                ->route('livewire.reservation')
+                ->with('error', __('Nepavyko gauti atsitiktinių darbuotojų'));
         }
 
         return $randomEmployees;
@@ -52,8 +55,8 @@ class ReservationService implements ReservationServiceInterface
 
         if ($reservationTypes->isEmpty()) {
             return redirect()
-                ->route('home')
-                ->with('error', __('Failed to find reservation types'));
+                ->route('livewire.reservation')
+                ->with('error', __('Nepavyko gauti rezervacijos tipų'));
         }
 
         return $reservationTypes;
@@ -67,9 +70,10 @@ class ReservationService implements ReservationServiceInterface
                 'date' => ['required', 'date']
             ],
             2 => [
-                'time' => ['required'],
+                'time_from' => ['required'],
+                'time_to' => ['required'],
                 'number_of_people' => $reservationType == Constants::reservationTypeHall ?
-                    ['required', 'numeric', 'min:8'] : ['required', 'numeric', 'min:1', 'max:8']
+                    ['required', 'numeric', 'min:9'] : ['required', 'numeric', 'min:1', 'max:8']
             ],
             3 => [
                 'question_one_answer' => ['required'],
@@ -94,8 +98,8 @@ class ReservationService implements ReservationServiceInterface
 
         if (empty($validationRules)) {
             return redirect()
-                ->route('home')
-                ->with('error', __('Failed to find validation rules'));
+                ->route('livewire.reservation')
+                ->with('error', __('Nepavyko gauti patvirtinimo taisyklių'));
         }
 
         return $validationRules;
@@ -112,8 +116,8 @@ class ReservationService implements ReservationServiceInterface
 
         if ($employees->isEmpty()) {
             return redirect()
-                ->route('home')
-                ->with('error', __('Failed to find employees'));
+                ->route('livewire.reservation')
+                ->with('error', __('Failed to get employees'));
         }
 
         return $employees;
@@ -147,8 +151,8 @@ class ReservationService implements ReservationServiceInterface
         }
         else {
             return redirect()
-                ->route('home')
-                ->with('error', __('Failed to create client'));
+                ->route('livewire.reservation')
+                ->with('error', __('Nepavyko sukurti kliento'));
         }
     }
 
@@ -158,8 +162,8 @@ class ReservationService implements ReservationServiceInterface
 
         if ($tables->isEmpty()) {
             return redirect()
-                ->route('home')
-                ->with('error', __('Failed to find tables'));
+                ->route('livewire.reservation')
+                ->with('error', __('Nepavyko gauti stalų'));
         }
 
         return $tables;
@@ -171,15 +175,15 @@ class ReservationService implements ReservationServiceInterface
 
         if ($halls->isEmpty()) {
             return redirect()
-                ->route('home')
-                ->with('error', __('Failed to find halls'));
+                ->route('livewire.reservation')
+                ->with('error', __('Nepavyko gauti salių'));
         }
 
         return $halls;
     }
 
     public function createReservation(
-        mixed $tables, mixed $halls, string $startDatetime, int $numberOfPeople, int $reservationType, object $client
+        mixed $tables, mixed $halls, string $startDatetime, string $endDatetime, int $numberOfPeople, int $reservationType, object $client
     ): Reservation|RedirectResponse
     {
         $randomTable = rand(1, count($tables));
@@ -187,7 +191,7 @@ class ReservationService implements ReservationServiceInterface
 
         $reservation = Reservation::create([
             'start_datetime' => $startDatetime,
-            'end_datetime' => NULL,
+            'end_datetime' => $endDatetime,
             'number_of_people' => $numberOfPeople,
             'reservation_type_id' => $reservationType,
             'table_id' => $reservationType == Constants::reservationTypeTable ? $randomTable : NULL,
@@ -203,8 +207,8 @@ class ReservationService implements ReservationServiceInterface
         }
         else {
             return redirect()
-                ->route('home')
-                ->with('error', __('Failed to create reservation'));
+                ->route('livewire.reservation')
+                ->with('error', __('Nepavyko sukurti rezervacijos'));
         }
     }
 
@@ -254,8 +258,8 @@ class ReservationService implements ReservationServiceInterface
 
         if (empty($answersAndComments)) {
             return redirect()
-                ->route('home')
-                ->with('error', __('Failed to find reservation question answer and/or comments'));
+                ->route('livewire.reservation')
+                ->with('error', __('Nepavyko gauti atsakymų ir komentarų į rezervacijos klausimus'));
         }
 
         return $answersAndComments;
@@ -270,7 +274,7 @@ class ReservationService implements ReservationServiceInterface
             if ($reservationQuestions->isEmpty()) {
                 return redirect()
                     ->route('home')
-                    ->with('error', __('Failed to find reservation questions'));
+                    ->with('error', __('Nepavyko gauti rezervacijos klausimų'));
             }
 
             $reservationQuestions = $reservationQuestions->toArray();
@@ -290,7 +294,9 @@ class ReservationService implements ReservationServiceInterface
             $reservationQuestionAnswer = ReservationQuestionAnswer::create([
                 'reservation_question_id' => $questions[$i]['id'],
                 'reservation_id' => $reservation->id,
-                'answer' => $answersAndComments[$i]['answer'],
+                'answer' => $i == 4 && $reservation->reservation_type_id == Constants::reservationTypeHall
+                    ? implode(', ', $answersAndComments[$i]['answer'])
+                    : $answersAndComments[$i]['answer'],
                 'comment' => $answersAndComments[$i]['comment'] ?? NULL,
                 'created_at' => now(),
                 'updated_at' => now()
@@ -298,8 +304,8 @@ class ReservationService implements ReservationServiceInterface
 
             if (!$reservationQuestionAnswer->wasRecentlyCreated) {
                 return redirect()
-                    ->route('home')
-                    ->with('error', __('Failed to create reservation question answer and/or comment'));
+                    ->route('livewire.reservation')
+                    ->with('error', __('Nepavyko sukurti rezervacijos klausimo atsakymų'));
             }
         }
 
@@ -315,7 +321,7 @@ class ReservationService implements ReservationServiceInterface
 
         if (empty($chosenEmployees)) {
             return redirect()
-                ->route('home')
+                ->route('livewire.reservation')
                 ->with('error', 'Failed to find chosen employees');
         }
 
@@ -334,8 +340,8 @@ class ReservationService implements ReservationServiceInterface
 
             if (!$reservationEmployee->wasRecentlyCreated) {
                 return redirect()
-                    ->route('home')
-                    ->with('error', __('Failed to create reservation employees'));
+                    ->route('livewire.reservation')
+                    ->with('error', __('Nepavyko sukurti rezervacijos darbuotojų'));
             }
         }
 

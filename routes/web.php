@@ -21,10 +21,9 @@ use Illuminate\Support\Facades\Route;
  * Guest
  */
 Route::redirect('/', '/reservation');
-Route::get('/reservation', ReservationForm::class)
-    ->name('livewire.reservation');
-Route::view('/reservation/saved', 'reservation_saved')
-    ->name('reservation.saved');
+Route::get('/reservation', ReservationForm::class)->name('livewire.reservation');
+Route::view('/reservation/success', 'reservation_success')->name('reservation.success');
+Route::view('/private_policy', 'private_policy')->name('privatePolicy');
 
 /*
  * Admin

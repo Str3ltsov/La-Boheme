@@ -2,7 +2,7 @@
     <table class="table display text-light" id="halls_table">
         <thead>
         <tr>
-            <th class="w-25" scope="col">{{ __('Id') }}</th>
+            <th class="w-25" scope="col">{{ __('ID') }}</th>
             <th class="w-25" scope="col">{{ __('Sukurtas') }}</th>
             <th class="w-25" scope="col">{{ __('Atnaujintas') }}</th>
             <th class="w-auto" scope="col"></th>
@@ -16,13 +16,13 @@
                 <td class="w-25" >{{ $hall->updated_at ?? null}}</td>
                 <td class="w-auto">
                     <div class="d-flex align-items-center" style="gap: 20px">
-                        <a href="{{ route('admin.halls.show', $hall->id) }}" class="fw-bold text-light"
+                        <a href="{{ route('admin.halls.show', $hall->id) }}" class="fw-bold text-light btn-hover-focus"
                            style="background-color: transparent;
                            color: black; text-decoration: none">
                             <i class="fa-solid fa-eye"></i>
                         </a>
                         {!! Form::open(['route' => ['admin.halls.destroy', $hall->id], 'method' => 'delete']) !!}
-                            <button type="submit", class="fw-bold fs-4 text-center text-light" style="background-color: transparent;
+                            <button type="submit", class="fw-bold fs-4 text-center text-light btn-hover-focus" style="background-color: transparent;
                                     border: none; text-decoration: none">
                                 <i class="fa-solid fa-trash-can"></i>
                             </button>
