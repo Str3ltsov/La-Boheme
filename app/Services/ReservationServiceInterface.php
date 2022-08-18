@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Client;
 use App\Models\Reservation;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use Illuminate\Mail\SentMessage;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -24,6 +25,7 @@ interface ReservationServiceInterface
         mixed $tables,
         mixed $halls,
         string $startDatetime,
+        string $endDatetime,
         int $numberOfPeople,
         int $reservationType,
         object $client

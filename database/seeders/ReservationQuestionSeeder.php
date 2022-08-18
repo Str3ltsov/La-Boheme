@@ -20,15 +20,15 @@ class ReservationQuestionSeeder extends Seeder
              * "Staliuko rezervacija" questions.
              */
             [
-                'question' => 'Ar svečių tarpe yra veganų, alergiškų ar tam tikrų produktų netoleruojančių žmonių?',
+                'question' => 'Vaikiška kėdutė',
                 'reservation_type_id' => 1
             ],
             [
-                'question' => 'Ar meniu turėtų sudaryti 3 patiekalų vakarienė (pirmasis patiekalas, karštasis patiekalas, desertas)?',
+                'question' => 'Veganai',
                 'reservation_type_id' => 1
             ],
             [
-                'question' => 'Ar reikalinga erdvės, stalo dekoravimo paslauga?',
+                'question' => 'Gliuteno netoleruojantys',
                 'reservation_type_id' => 1
             ],
             [
@@ -43,7 +43,7 @@ class ReservationQuestionSeeder extends Seeder
              * "Šventės organizavimo paslauga" questions.
              */
             [
-                'question' => 'Pageidavimai stalo/salės išdėstymui',
+                'question' => 'Rezervacijos pobūdis:',
                 'reservation_type_id' => 2
             ],
             [
@@ -55,11 +55,11 @@ class ReservationQuestionSeeder extends Seeder
                 'reservation_type_id' => 2
             ],
             [
-                'question' => 'Ar reikalinga erdvės, stalo dekoravimo paslauga?',
+                'question' => 'Kokius gėrimus pasiūlyti Jūsų renginiui?',
                 'reservation_type_id' => 2
             ],
             [
-                'question' => 'Ar reikalinga vaikiška kėdutė?',
+                'question' => 'Ar svečių tarpe bus veganų ar tam tikrų produktų netoleruojančių žmonių?',
                 'reservation_type_id' => 2
             ],
             [

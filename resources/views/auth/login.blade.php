@@ -8,7 +8,7 @@
         <img src="/images/grunge-dark-temp.png" alt="grunge-dark-temp"
              style="width: 100%; display: flex; align-items: flex-end">
         <div class="d-flex flex-column justify-content-start"
-             style="background-color: #0F0E0F; min-height: 65vh; padding: 0 2em">
+             style="background-color: #0F0E0F; min-height: 85vh; padding: 0 2em">
             <div class="d-flex flex-column justify-content-center
             align-items-center bg-transparent p-4" id="cormorant">
                 <div class="d-flex flex-column justify-content-center align-items-center
@@ -59,7 +59,7 @@
                                 </div>
                             </div>
                             <div class="d-flex align-items-center w-100" style="gap: 20px">
-                                    <button type="submit" class="fw-bold fs-4"
+                                    <button type="submit" class="fw-bold fs-4 btn-hover-focus"
                                             style="background-color: #C19F5F; border: none; border-radius: 17.5px;
                                             color: black; padding: 10px; width: 130px;">
                                         {{ __('Prisijungti') }}

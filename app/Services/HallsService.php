@@ -17,7 +17,7 @@ class HallsService implements HallsServiceInterface
         if ($halls->isEmpty()) {
             return redirect()
                 ->route('admin.halls')
-                ->with('error', __('Failed to find halls'));
+                ->with('error', __('Failed to get halls'));
         }
 
         return $halls;
@@ -47,7 +47,7 @@ class HallsService implements HallsServiceInterface
         if (empty($hall)) {
             return redirect()
                 ->route('admin.halls')
-                ->with('error', __('Failed to find hall by id'));
+                ->with('error', __('Failed to get hall by id'));
         }
 
         return $hall;
@@ -60,7 +60,7 @@ class HallsService implements HallsServiceInterface
         if (empty($hall)) {
             return redirect()
                 ->route('admin.halls.show')
-                ->with('error', __('Failed to find hall by id'));
+                ->with('error', __('Failed to get hall by id'));
         }
 
         $hall->delete();
@@ -95,7 +95,7 @@ class HallsService implements HallsServiceInterface
         else {
             return redirect()
                 ->route('admin.halls.show')
-                ->with('error', __('Failed to create a new date'));
+                ->with('error', __('Failed to create a unavailable new date'));
         }
     }
 
@@ -107,7 +107,7 @@ class HallsService implements HallsServiceInterface
         if (empty($hallUnavailableDate)) {
             return redirect()
                 ->back()
-                ->with('error', __('Failed to find hall unavailable date by id'));
+                ->with('error', __('Failed to get hall unavailable date by id'));
         }
 
         $hallUnavailableDate->delete();
@@ -142,7 +142,7 @@ class HallsService implements HallsServiceInterface
         else {
             return redirect()
                 ->route('admin.halls.show')
-                ->with('error', __('Failed to create a new date time'));
+                ->with('error', __('Failed to create a new unavailable date time'));
         }
     }
 
@@ -154,7 +154,7 @@ class HallsService implements HallsServiceInterface
         if (empty($hallUnavailableDate)) {
             return redirect()
                 ->back()
-                ->with('error', __('Failed to find hall unavailable date time by id'));
+                ->with('error', __('Failed to get hall unavailable date time by id'));
         }
 
         $hallUnavailableDate->delete();

@@ -15,17 +15,17 @@ trait UseDatesTimes {
      */
     private string $dayOfTheWeek;
 
-    public function getDayOfTheWeek(string $date): void
+    public function setAndGetDayOfTheWeek(string $date): void
     {
-        $dayOfTheWeek = date('N', strtotime($date));
-
-        $this->dayOfTheWeek = $dayOfTheWeek;
+        $this->dayOfTheWeek = date('N', strtotime($date));
     }
 
-    private function getTimes(int $loopTimes, array $times, string $firstTime): array
+    private function createAndGetTimes(int $loopTimes, array $times, string $firstTime): array
     {
         for ($i = 0; $i < $loopTimes; $i++) {
-            $firstTime = date('H:i', strtotime($firstTime. '+15 minutes'));
+            if ($i != 0) {
+                $firstTime = date('H:i', strtotime($firstTime . '+15 minutes'));
+            }
             $times[$i] = $firstTime;
         }
 
@@ -38,10 +38,10 @@ trait UseDatesTimes {
         static $firstTime = '17:00';
 
         if ($this->dayOfTheWeek == 1) {
-            $weekdayTimes = $this->getTimes(20, $weekdayTimes, $firstTime);
+            $weekdayTimes = $this->createAndGetTimes(21, $weekdayTimes, $firstTime);
         }
         else {
-            $weekdayTimes = $this->getTimes(28, $weekdayTimes, $firstTime);
+            $weekdayTimes = $this->createAndGetTimes(29, $weekdayTimes, $firstTime);
         }
 
         if (empty($weekdayTimes)) {
@@ -57,10 +57,10 @@ trait UseDatesTimes {
         static $firstTime = '11:00';
 
         if ($this->dayOfTheWeek == 6) {
-            $weekendTimes = $this->getTimes(52, $weekendTimes, $firstTime);
+            $weekendTimes = $this->createAndGetTimes(53, $weekendTimes, $firstTime);
         }
         else {
-            $weekendTimes = $this->getTimes(44, $weekendTimes, $firstTime);
+            $weekendTimes = $this->createAndGetTimes(45, $weekendTimes, $firstTime);
         }
 
         if (empty($weekendTimes)) {
@@ -77,6 +77,25 @@ trait UseDatesTimes {
         }
 
         return $this->getWeekdayTimes();
+    }
+
+    /*
+     * Removing end times from array which come before selected start time
+     */
+    public function removeEndTimesBeforeAndAfterStartTime(int $reservationType, array $startTimes, string $startTime): array
+    {
+        $endTimes = [];
+
+        if (in_array($startTime, $startTimes)) {
+            if ($startTime < '21:00' && $reservationType == Constants::reservationTypeTable) {
+                $endTimes = array_slice($startTimes, array_search($startTime, $startTimes) + 1, 10);
+            }
+            else {
+                $endTimes = array_slice($startTimes, array_search($startTime, $startTimes) + 1);
+            }
+        }
+
+        return $endTimes;
     }
 
     /*
@@ -97,8 +116,8 @@ trait UseDatesTimes {
 
         if ($tableUnavailableDateTimes->isEmpty()) {
             return redirect()
-                ->route('home')
-                ->with('error', __('Failed to retrieve table unavailable datetimes'));
+                ->route('livewire.reservation')
+                ->with('error', __('Failed to get table unavailable date times'));
         }
 
         return $tableUnavailableDateTimes->toArray();
@@ -111,8 +130,8 @@ trait UseDatesTimes {
 
         if ($hallUnavailableDateTimes->isEmpty()) {
             return redirect()
-                ->route('home')
-                ->with('error', __('Failed to retrieve hall unavailable datetimes'));
+                ->route('livewire.reservation')
+                ->with('error', __('Failed to get hall unavailable date times'));
         }
 
         return $hallUnavailableDateTimes->toArray();
@@ -128,8 +147,8 @@ trait UseDatesTimes {
         }
 
         return redirect()
-            ->route('home')
-            ->with('error', __('Failed to retrieve unavailable datetimes by reservation type'));
+            ->route('livewire.reservation')
+            ->with('error', __('Failed to get unavailable date times by reservation type'));
     }
 
     public function getAvailableTimesByDate(array $unavailableDateTimes, string $date, array $times): array
@@ -156,8 +175,8 @@ trait UseDatesTimes {
 
         if ($tableUnavailableDates->isEmpty()) {
             return redirect()
-                ->route('home')
-                ->with('error', __('Failed to retrieve table unavailable dates'));
+                ->route('livewire.reservation')
+                ->with('error', __('Failed to get table unavailable dates'));
         }
 
         return $tableUnavailableDates->toArray();
@@ -170,8 +189,8 @@ trait UseDatesTimes {
 
         if ($hallUnavailableDates->isEmpty()) {
             return redirect()
-                ->route('home')
-                ->with('error', __('Failed to retrieve hall unavailable dates'));
+                ->route('livewire.reservation')
+                ->with('error', __('Failed to get hall unavailable dates'));
         }
 
         return $hallUnavailableDates->toArray();
@@ -187,8 +206,8 @@ trait UseDatesTimes {
         }
 
         return redirect()
-            ->route('home')
-            ->with('error', __('Failed to retrieve unavailable dates by reservation type'));
+            ->route('livewire.reservation')
+            ->with('error', __('Failed to get unavailable dates by reservation type'));
     }
 
     public function getUnavailableDates(array $unavailableDates): array

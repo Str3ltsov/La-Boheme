@@ -22,6 +22,6 @@ class AdminAuthorization
         }
 
         return redirect('/login')
-            ->with('error', __('Unauthorized access to this route'));
+            ->with('error', __('Neteisėta prieiga prie šio maršruto'));
     }
 }

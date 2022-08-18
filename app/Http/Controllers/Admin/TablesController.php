@@ -67,7 +67,7 @@ class TablesController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', __('Successfully created new date'));
+            ->with('success', __('Successfully created a new unavailable date'));
     }
 
     public function deleteUnavailableDate(DeleteTableUnavailableDateRequest $request): RedirectResponse
@@ -76,7 +76,7 @@ class TablesController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', __('Successfully deleted table unavailable date'));
+            ->with('success', __('Successfully deleted unavailable date'));
     }
 
     public function createUnavailableDateTime(CreateTableUnavailableDateTimeRequest $request): RedirectResponse
@@ -85,7 +85,7 @@ class TablesController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', __('Successfully created new date time'));
+            ->with('success', __('Successfully created new unavailable date time'));
     }
 
     public function deleteUnavailableDateTime(DeleteTableUnavailableDateTimeRequest $request): RedirectResponse
@@ -94,6 +94,6 @@ class TablesController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', __('Successfully deleted table unavailable date time'));
+            ->with('success', __('Successfully deleted unavailable date time'));
     }
 }

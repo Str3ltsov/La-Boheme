@@ -67,7 +67,7 @@ class HallsController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', __('Successfully created new date'));
+            ->with('success', __('Successfully created new unavailable date'));
     }
 
     public function deleteUnavailableDate(DeleteHallUnavailableDateRequest $request): RedirectResponse
@@ -76,7 +76,7 @@ class HallsController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', __('Successfully deleted hall unavailable date'));
+            ->with('success', __('Successfully deleted unavailable date'));
     }
 
     public function createUnavailableDateTime(CreateHallUnavailableDateTimeRequest $request): RedirectResponse
@@ -85,7 +85,7 @@ class HallsController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', __('Successfully created new date time'));
+            ->with('success', __('Successfully created new unavailable date time'));
     }
 
     public function deleteUnavailableDateTime(DeleteHallUnavailableDateTimeRequest $request): RedirectResponse
@@ -94,6 +94,6 @@ class HallsController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', __('Successfully deleted hall unavailable date time'));
+            ->with('success', __('Successfully deleted unavailable date time'));
     }
 }
