@@ -13,7 +13,7 @@
             <div class="d-flex flex-column justify-content-center
             align-items-center bg-transparent p-4" id="cormorant">
                 <div class="d-flex flex-column justify-content-center align-items-start
-                my-3 p-5 fs-5 text-light" style="font-size: 1.1em; background-color: #151515; max-width: 800px">
+                my-3 p-4 fs-5 text-light" style="font-size: 1.1em; background-color: #151515; max-width: 800px">
                     <div class="w-100">
                         @include('flash_message')
                     </div>

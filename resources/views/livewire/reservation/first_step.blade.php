@@ -43,6 +43,7 @@ align-items-center my-3 text-light fade-in" style="gap: 50px">
             id="date_picker" placeholder="{{ __('Pasirinkite datą') }}"
             onchange="this.dispatchEvent(new InputEvent('input'))"
             onkeydown="return false"
+            readonly
         >
         @error('date')
             <span class="text-danger fs-5">{{ $message }}</span>

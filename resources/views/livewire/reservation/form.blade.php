@@ -3,7 +3,7 @@
         <div class="d-flex flex-column justify-content-center"
              style="background-color: #0F0E0F; min-height: 100vh; padding: 2em">
             <div class="d-flex flex-column justify-content-center
-            align-items-center bg-transparent p-4 fade-in" id="cormorant">
+            align-items-center bg-transparent p-3 fade-in" id="cormorant">
                 <div class="w-50">
                     @include('flash_message')
                 </div>
@@ -73,7 +73,7 @@
                     maxDate: '+3M',
                     dateFormat: 'yy-mm-dd',
                     beforeShowDay: date => {
-                        $(".ui-datepicker").css('font-size', 23);
+                        $(".ui-datepicker").css('font-size', 21);
                         const dateToString = jQuery.datepicker.formatDate('yy-mm-dd', date);
                         return [unavailableDates.indexOf(dateToString) === -1]
                     }

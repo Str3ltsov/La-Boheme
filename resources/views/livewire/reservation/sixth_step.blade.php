@@ -1,5 +1,5 @@
 <div class="d-flex flex-column justify-content-center align-items-start
-    my-3 p-5 fs-4 text-light fade-in" style="font-size: 1.1em; background-color: #151515; max-width: 800px">
+    my-3 px-3 px-lg-5 py-5 fs-4 text-light fade-in" style="font-size: 1.1em; background-color: #151515; max-width: 800px">
     <div>
         {{--
         <div class="d-flex" style="gap: 10px">
@@ -24,7 +24,7 @@
         </div>
         --}}
     </div>
-    <div class="d-flex fade-in" style="gap: 10px">
+    <div class="d-flex justify-content-center align-items-center fade-in" style="gap: 10px">
         <input
             wire:model.lazy="accept"
             type="checkbox"
