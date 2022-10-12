@@ -49,17 +49,14 @@ class ReservationForm extends Component
      */
     public $question_one_answer;
     public $question_two_answer;
-    public $question_three_answer;
-    public $question_four_answer = [];
+    public $question_three_answer = [];
+    public $question_four_answer;
     public $question_five_answer;
-    public $question_six_answer;
-    public $question_seven_answer;
     public $question_one_comment;
     public $question_two_comment;
     public $question_three_comment;
     public $question_four_comment;
     public $question_five_comment;
-    public $question_six_comment;
     /*
      * Step 4 properties
      */
@@ -85,16 +82,15 @@ class ReservationForm extends Component
             'time_from.required' => 'Nepasirinkote pradžios laiko',
             'time_to.required' => 'Nepasirinkote pabaigos laiko',
             'number_of_people.required' => 'Nenurodėte žmonių skaičiaus',
-            'number_of_people.min' => $this->reservation_type == Constants::reservationTypeHall ?
-                'Žmonių skaičius turi būti didesnis negu 8' : 'Žmonių skaičius turi būti bent 1',
+            'number_of_people.min' => $this->reservation_type == Constants::reservationTypeHall
+                ? 'Žmonių skaičius turi būti didesnis negu 8'
+                : 'Žmonių skaičius turi būti bent 1',
             'number_of_people.max' => 'Žmonių skaičius turi būti mažesnis negu 8',
             'question_one_answer.required' => 'Reikalaujama užpildyti',
             'question_two_answer.required' => 'Reikalaujama užpildyti',
             'question_three_answer.required' => 'Reikalaujama užpildyti',
             'question_four_answer.required' => 'Reikalaujama užpildyti',
             'question_five_answer.required' => 'Reikalaujama užpildyti',
-            'question_six_answer.required' => 'Reikalaujama užpildyti',
-            'question_seven_answer.required' => 'Reikalaujama užpildyti',
             'client_name.required' => 'Nenurodėte vardo',
             'client_email.required' => 'Nenurodėte el. pašto adreso',
             'client_email.email' => 'Nurodėte negaliojantį el. pašto adreso formatu',
@@ -241,9 +237,6 @@ class ReservationForm extends Component
             $this->question_four_comment,
             $this->question_five_answer,
             $this->question_five_comment,
-            $this->question_six_answer,
-            $this->question_six_comment,
-            $this->question_seven_answer,
         );
 
         $this->service->createReservationQuestionAnswers(

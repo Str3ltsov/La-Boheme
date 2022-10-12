@@ -40,10 +40,7 @@ interface ReservationServiceInterface
         mixed $questionFourAnswer,
         mixed $questionFourComment,
         mixed $questionFiveAnswer,
-        mixed $questionFiveComment,
-        mixed $questionSixAnswer,
-        mixed $questionSixComment,
-        mixed $questionSevenAnswer
+        mixed $questionFiveComment
     ): array|RedirectResponse;
     public function getReservationQuestions(int $reservationType): array|RedirectResponse;
     public function createReservationQuestionAnswers(object $reservation, mixed $questions, array $answersAndComments)

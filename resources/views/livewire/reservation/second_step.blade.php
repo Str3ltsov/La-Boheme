@@ -1,6 +1,6 @@
 <div class="d-flex flex-column justify-content-center
 align-items-center my-3 text-light fade-in" style="gap: 10px">
-    <div class="d-flex flex-column justify-content-center align-items-center w-100 p-3">
+    <div class="d-flex flex-column justify-content-center align-items-center w-100 p-2">
         <select wire:model.lazy="time_from" class="form-select fs-4
                 bg-transparent input-hover-focus text-light py-2 ps-3 fade-in"
                 name="time_from" style="border-radius: 15px; width: clamp(300px, 100%, 400px)"
@@ -17,7 +17,7 @@ align-items-center my-3 text-light fade-in" style="gap: 10px">
             <span class="text-danger fs-5 fade-in">{{ $message }}</span>
         @enderror
     </div>
-    <div class="d-flex flex-column justify-content-center align-items-center w-100 p-3">
+    <div class="d-flex flex-column justify-content-center align-items-center w-100 p-2">
         <select wire:model.lazy="time_to" class="form-select fs-4
                 bg-transparent input-hover-focus text-light py-2 ps-3 fade-in"
                 name="time_to" id="time_to_selector" style="border-radius: 15px; width: clamp(300px, 100%, 400px)">
@@ -32,7 +32,7 @@ align-items-center my-3 text-light fade-in" style="gap: 10px">
         <span class="text-danger fs-5 fade-in">{{ $message }}</span>
         @enderror
     </div>
-    <div class="d-flex flex-column justify-content-center align-items-center w-100 p-3">
+    <div class="d-flex flex-column justify-content-center align-items-center w-100 p-2">
         <input
             wire:model.lazy="number_of_people" type="number"
             @if ($reservation_type == \App\Helpers\Constants::reservationTypeTable)
@@ -50,7 +50,7 @@ align-items-center my-3 text-light fade-in" style="gap: 10px">
             <span class="text-danger fs-5 fade-in">{{ $message }}</span>
         @enderror
     </div>
-    <div class="d-flex justify-content-end mt-4" style="gap: 20px;">
+    <div class="d-flex justify-content-end mt-2 mt-md-4" style="gap: 20px;">
         <button wire:click="goToPreviousStep" type="button" class="fw-bold fs-4 btn-hover-focus"
                 style="background-color: #BBBBBB; border: none; border-radius: 17.5px;
                 color: black; padding: 10px 0; width: 120px">

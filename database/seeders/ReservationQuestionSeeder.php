@@ -47,10 +47,6 @@ class ReservationQuestionSeeder extends Seeder
                 'reservation_type_id' => 2
             ],
             [
-                'question' => 'Ar svečių tarpe yra veganų, alergiškų ar tam tikrų produktų netoleruojančių žmonių?',
-                'reservation_type_id' => 2
-            ],
-            [
                 'question' => 'Ar meniu turėtų sudaryti 3 patiekalų vakarienė (pirmasis patiekalas, karštasis patiekalas, desertas)?',
                 'reservation_type_id' => 2
             ],
@@ -64,10 +60,6 @@ class ReservationQuestionSeeder extends Seeder
             ],
             [
                 'question' => 'Ar svečių tarpe yra vaikų, kuriems reiktų siūlyti „vaikiškus“ patiekalus?',
-                'reservation_type_id' => 2
-            ],
-            [
-                'question' => 'Ar reikalinga atskira garso įranga?',
                 'reservation_type_id' => 2
             ]
         ]);

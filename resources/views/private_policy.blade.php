@@ -2,13 +2,8 @@
 
 @section('content')
     <div>
-        <div class="d-flex flex-column justify-content-center align-items-center text-center text-light p-5" id="cormorant" style="height: 300px">
-            <h1>{{ __('Privatumo politika') }}</h1>
-        </div>
-        <img src="/images/grunge-dark-temp.png" alt="grunge-dark-temp"
-             style="width: 100%; display: flex; align-items: flex-end">
         <div class="d-flex flex-column justify-content-start"
-             style="background-color: #0F0E0F; min-height: 85vh; padding: 0 2em">
+             style="background-color: #0F0E0F; min-height: 100vh; padding: 0 2em">
             <div class="d-flex flex-column justify-content-center
             align-items-center bg-transparent p-4" id="cormorant">
                 <div class="d-flex flex-column justify-content-center align-items-start

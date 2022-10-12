@@ -7,17 +7,20 @@
                 <div class="w-50">
                     @include('flash_message')
                 </div>
-                <div class="d-flex justify-content-center text-center text-light mb-5">
-                    <h1 style="font-size: 5em">{{ __('Rezervuok') }}</h1>
+                <div class="d-flex justify-content-center text-center text-light">
+                    <h1 style="font-size: 3.5em">{{ __('Rezervuok') }}</h1>
+                </div>
+                <div class="mb-4 mb-md-5">
+                    <img src="{{ asset('images/logodidelisbaltas.png') }}" alt="logo" width="300"/>
                 </div>
                 @if ($currentStep == 1)
-                    <div class="d-flex justify-content-center text-center text-light mb-5">
+                    <div class="d-flex justify-content-center text-center text-light mb-2 mb-md-4">
                         <h3>
                             {{ __('Prašome atsakyti į kelis klausimus, kad pateiktume Jūsų poreikius atitinkantį pasiūlymą') }}
                         </h3>
                     </div>
                 @endif
-                <div class="d-flex justify-content-center text-center text-light mb-4">
+                <div class="d-flex justify-content-center text-center text-light mb-2 mb-md-4 mt-1">
                     <h3 class="me-2">{{ $steps[$currentStep]['step'] }}</h3>
                     <h3>{{ $steps[$currentStep]['description'] }}</h3>
                 </div>
