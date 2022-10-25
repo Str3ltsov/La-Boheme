@@ -21,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        //Binding interfaces with service classes
         $this->app->bind(
             ReservationServiceInterface::class,
             ReservationService::class
@@ -37,6 +38,11 @@ class AppServiceProvider extends ServiceProvider
             HallsServiceInterface::class,
             HallsService::class
         );
+
+        //Changes public path to htdocs in production
+        /*$this->app->bind('path.public', function() {
+           return base_path('htdocs');
+        });*/
     }
 
     /**

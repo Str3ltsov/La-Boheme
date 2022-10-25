@@ -75,9 +75,9 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
                     class="form-check-input"
                     type="radio"
                     name="questionTwoAnswer"
-                    value="Stovimas"
+                    value="Taip"
                 >
-                <label class="form-check-label ms-2">{{ __('Stovimas') }}</label>
+                <label class="form-check-label ms-2">{{ __('Taip') }}</label>
             </div>
             <div class="my-1">
                 <input
@@ -85,19 +85,9 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
                     class="form-check-input"
                     type="radio"
                     name="questionTwoAnswer"
-                    value="Sėdimas"
+                    value="Ne"
                 >
-                <label class="form-check-label ms-2">{{ __('Sėdimas') }}</label>
-            </div>
-            <div class="my-1">
-                <input
-                    wire:model.lazy="question_two_answer"
-                    class="form-check-input"
-                    type="radio"
-                    name="questionTwoAnswer"
-                    value="Gėrimų degustacija"
-                >
-                <label class="form-check-label ms-2">{{ __('Gėrimų degustacija') }}</label>
+                <label class="form-check-label ms-2">{{ __('Ne') }}</label>
             </div>
         </div>
         @error('question_two_answer')
@@ -105,7 +95,7 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
         @enderror
     </div>
     <div class="d-flex flex-column w-100 py-3">
-        <p>{{ __('Ar reikalinga erdvės, stalo dekoravimo paslauga?') }}</p>
+        <p>{{ __('Pažymėkite renginio tipą') }}</p>
         <div class="d-flex flex-column mb-2">
             <div class="my-1">
                 <input
@@ -113,9 +103,9 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
                     class="form-check-input"
                     type="radio"
                     name="questionThreeAnswer"
-                    value="Vakarienė"
+                    value="Stovimas"
                 >
-                <label class="form-check-label ms-2">{{ __('Vakarienė') }}</label>
+                <label class="form-check-label ms-2">{{ __('Stovimas') }}</label>
             </div>
             <div class="my-1">
                 <input
@@ -123,22 +113,24 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
                     class="form-check-input"
                     type="radio"
                     name="questionThreeAnswer"
-                    value="Tik užkandžiai"
+                    value="Sėdimas"
                 >
-                <label class="form-check-label ms-2">{{ __('Tik užkandžiai') }}</label>
+                <label class="form-check-label ms-2">{{ __('Sėdimas') }}</label>
+            </div>
+            <div class="my-1">
+                <input
+                    wire:model.lazy="question_three_answer"
+                    class="form-check-input"
+                    type="radio"
+                    name="questionThreeAnswer"
+                    value="Gėrimų degustacija"
+                >
+                <label class="form-check-label ms-2">{{ __('Gėrimų degustacija') }}</label>
             </div>
         </div>
         @error('question_three_answer')
-            <span class="text-danger mb-3 fade-in">{{ $message }}</span>
+        <span class="text-danger mb-3 fade-in">{{ $message }}</span>
         @enderror
-        <textarea
-            wire:model.lazy="question_three_comment"
-            rows="4"
-            class="form-control bg-transparent text-light fs-5 input-hover-focus"
-            style="border-radius: 15px"
-            name="questionThreeComment"
-            placeholder="Papildomi komentarai"
-        ></textarea>
     </div>
     <div class="d-flex flex-column w-100 py-3">
         <p>{{ __('Kokius gėrimus pasiūlyti Jūsų renginiui?') }}</p>
@@ -227,7 +219,7 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
             rows="4"
             class="form-control bg-transparent text-light fs-5 input-hover-focus"
             style="border-radius: 15px"
-            name="questionFiveComment"
+            name="questionFourComment"
             placeholder="Papildomi komentara"
         ></textarea>
     </div>
@@ -294,34 +286,6 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
             name="questionSixComment"
             placeholder="{{ __('Nurodykite vaikų kiekį ir patiekalus, jei į klausimą atsakėte taip.') }}"
         ></textarea>
-    </div>
-    <div class="d-flex flex-column w-100 py-3">
-        <p>{{ __('Ar reikalinga atskira garso įranga?') }}</p>
-        <div class="d-flex flex-column mb-3">
-            <div class="my-1">
-                <input
-                    wire:model.lazy="question_seven_answer"
-                    class="form-check-input mx-2"
-                    type="radio"
-                    name="questionSevenAnswer"
-                    value="Taip"
-                >
-                <label class="form-check-label">{{ __('Taip') }}</label>
-            </div>
-            <div class="my-1">
-                <input
-                    wire:model.lazy="question_seven_answer"
-                    class="form-check-input mx-2"
-                    type="radio"
-                    name="questionSevenAnswer"
-                    value="Ne"
-                >
-                <label class="form-check-label">{{ __('Ne') }}</label>
-            </div>
-        </div>
-        @error('question_seven_answer')
-        <span class="text-danger fade-in">{{ $message }}</span>
-        @enderror
     </div>
     <div class="d-flex justify-content-end mt-4" style="gap: 20px;">
         <button wire:click="goToPreviousStep" type="button" class="fw-bold fs-4 btn-hover-focus"

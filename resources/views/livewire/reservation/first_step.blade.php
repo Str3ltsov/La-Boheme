@@ -1,11 +1,11 @@
 <div class="d-flex flex-column justify-content-center
-align-items-center my-3 text-light fade-in" style="gap: 50px">
+align-items-center my-3 text-light fade-in">
     <div class="d-sm-block d-md-flex d-lg-flex" style="gap: 50px">
         @forelse ($reservationTypes ?? [] as $reservationType)
-            <div class="d-flex flex-column justify-content-center align-items-center mb-3">
+            <div class="d-flex flex-column justify-content-center align-items-center @if ($loop->first) mb-4 mb-md-0 @endif">
                 <label class="w-100">
                     <div class="form-control bg-transparent d-flex justify-content-center
-                    align-items-center py-3 px-5 text-light input-hover-focus "
+                    align-items-center py-2 px-4 text-light input-hover-focus "
                          style="border-radius: 20px; min-width: 300px; max-width: 400px">
                         <input
                             wire:model.lazy="reservation_type"
@@ -32,7 +32,7 @@ align-items-center my-3 text-light fade-in" style="gap: 50px">
                 </div>
         @endforelse
     </div>
-    <div class="d-flex flex-column justify-content-center align-items-center">
+    <div class="d-flex flex-column justify-content-center align-items-center mb-4 mb-md-5 mt-4 mt-md-5">
         <input
             wire:model="date" type="text"
             class="form-control datepicker fs-4 text-light bg-transparent text-center py-2 input-hover-focus fade-in"

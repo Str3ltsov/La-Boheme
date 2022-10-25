@@ -2,14 +2,8 @@
 
 @section('content')
     <div>
-        <div class="d-flex flex-column justify-content-center align-items-center text-center text-light p-5" style="height: 300px">
-            <h1 id="cormorant">{{ __('Paslaugos užsakymas') }}</h1>
-            <h1 id="cormorant">{{ __('Staliuko rezervacija ar šventės užsakymas') }}</h1>
-        </div>
-        <img src="/images/grunge-dark-temp.png" alt="grunge-dark-temp"
-             style="width: 100%; display: flex; align-items: flex-end">
-        <div class="d-flex flex-column justify-content-start"
-             style="background-color: #0F0E0F; min-height: 85vh; padding: 0 2em">
+        <div class="d-flex flex-column justify-content-center align-items-center"
+             style="background-color: #0F0E0F; min-height: 100vh; padding: 0 2em">
             <div class="d-flex flex-column justify-content-center
             align-items-center bg-transparent p-4" id="cormorant">
                 <div class="d-flex flex-column justify-content-center align-items-start
@@ -32,7 +26,7 @@
                         <button type="button" class="fw-bold fs-4 btn-hover-focus" onclick="closeWindow()"
                                 style="background-color: #C19F5F; border: none; border-radius: 17.5px;
                                 color: black; padding: 10px 0; width: 170px">
-                            {{ __('Uždaryti langą') }}
+                            {{ __('Uždaryti') }}
                         </button>
                     </div>
                 </div>

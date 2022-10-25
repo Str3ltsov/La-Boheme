@@ -76,13 +76,12 @@ class ReservationService implements ReservationServiceInterface
                     ['required', 'numeric', 'min:9'] : ['required', 'numeric', 'min:1', 'max:8']
             ],
             3 => [
-                'question_one_answer' => ['required'],
-                'question_two_answer' => ['required'],
-                'question_three_answer' => ['required'],
-                'question_four_answer' => ['required'],
-                'question_five_answer' => ['required'],
-                'question_six_answer' => $reservationType == Constants::reservationTypeHall ? ['required'] : [],
-                'question_seven_answer' => $reservationType == Constants::reservationTypeHall ? ['required'] : []
+                'question_one_answer' => $reservationType == Constants::reservationTypeHall ? ['required'] : [],
+                'question_two_answer' => $reservationType == Constants::reservationTypeHall ? ['required'] : [],
+                'question_three_answer' => $reservationType == Constants::reservationTypeHall ? ['required'] : [],
+                'question_four_answer' => $reservationType == Constants::reservationTypeHall ? ['required'] : [],
+                'question_five_answer' => $reservationType == Constants::reservationTypeHall ? ['required'] : [],
+                'question_six_answer' => $reservationType == Constants::reservationTypeHall ? ['required'] : []
             ],
             /*4 => [
                 'employee_waiter' => ['required'],
@@ -224,8 +223,7 @@ class ReservationService implements ReservationServiceInterface
         mixed $questionFiveAnswer,
         mixed $questionFiveComment,
         mixed $questionSixAnswer,
-        mixed $questionSixComment,
-        mixed $questionSevenAnswer
+        mixed $questionSixComment
     ): array|RedirectResponse
     {
         $answersAndComments = [
@@ -252,8 +250,7 @@ class ReservationService implements ReservationServiceInterface
             6 => [
                 'answer' => $questionSixAnswer,
                 'comment' => $questionSixComment
-            ],
-            7 => ['answer' => $questionSevenAnswer]
+            ]
         ];
 
         if (empty($answersAndComments)) {
@@ -294,9 +291,11 @@ class ReservationService implements ReservationServiceInterface
             $reservationQuestionAnswer = ReservationQuestionAnswer::create([
                 'reservation_question_id' => $questions[$i]['id'],
                 'reservation_id' => $reservation->id,
-                'answer' => $i == 4 && $reservation->reservation_type_id == Constants::reservationTypeHall
+                'answer' => $i == 4
+                    && $reservation->reservation_type_id == Constants::reservationTypeHall
                     ? implode(', ', $answersAndComments[$i]['answer'])
-                    : $answersAndComments[$i]['answer'],
+                    : $answersAndComments[$i]['answer']
+                    ?? __('Neatsakė'),
                 'comment' => $answersAndComments[$i]['comment'] ?? NULL,
                 'created_at' => now(),
                 'updated_at' => now()

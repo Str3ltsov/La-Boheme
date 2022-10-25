@@ -49,7 +49,7 @@ align-items-center my-3 text-light w-100 fade-in" style="gap: 20px">
             placeholder="{{ __('Papildoma informacija') }}"
         ></textarea>
     </div>
-    <div class="d-flex justify-content-end mt-4" style="gap: 20px;">
+    <div class="d-flex justify-content-end mt-2 mt-md4" style="gap: 20px;">
         <button wire:click="goToPreviousStep" type="button" class="fw-bold fs-4 btn-hover-focus"
                 style="background-color: #BBBBBB; border: none; border-radius: 17.5px;
                 color: black; padding: 10px 0; width: 120px">
