@@ -35,10 +35,10 @@ class ReservationQuestionSeeder extends Seeder
                 'question' => 'Ar reikalinga vaikiška kėdutė?',
                 'reservation_type_id' => 1
             ],
-            [
+            /*[
                 'question' => 'Ar svečių tarpe yra vaikų, kuriems reiktų siūlyti „vaikiškus“ patiekalus?',
                 'reservation_type_id' => 1
-            ],
+            ],*/
             /*
              * "Šventės organizavimo paslauga" questions.
              */
@@ -48,6 +48,10 @@ class ReservationQuestionSeeder extends Seeder
             ],
             [
                 'question' => 'Ar meniu turėtų sudaryti 3 patiekalų vakarienė (pirmasis patiekalas, karštasis patiekalas, desertas)?',
+                'reservation_type_id' => 2
+            ],
+            [
+                'question' => 'Pažymėkite renginio tipą',
                 'reservation_type_id' => 2
             ],
             [

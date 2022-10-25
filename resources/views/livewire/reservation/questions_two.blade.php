@@ -75,33 +75,61 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
                     class="form-check-input"
                     type="radio"
                     name="questionTwoAnswer"
+                    value="Taip"
+                >
+                <label class="form-check-label ms-2">{{ __('Taip') }}</label>
+            </div>
+            <div class="my-1">
+                <input
+                    wire:model.lazy="question_two_answer"
+                    class="form-check-input"
+                    type="radio"
+                    name="questionTwoAnswer"
+                    value="Ne"
+                >
+                <label class="form-check-label ms-2">{{ __('Ne') }}</label>
+            </div>
+        </div>
+        @error('question_two_answer')
+            <span class="text-danger mb-3 fade-in">{{ $message }}</span>
+        @enderror
+    </div>
+    <div class="d-flex flex-column w-100 py-3">
+        <p>{{ __('Pažymėkite renginio tipą') }}</p>
+        <div class="d-flex flex-column mb-2">
+            <div class="my-1">
+                <input
+                    wire:model.lazy="question_three_answer"
+                    class="form-check-input"
+                    type="radio"
+                    name="questionThreeAnswer"
                     value="Stovimas"
                 >
                 <label class="form-check-label ms-2">{{ __('Stovimas') }}</label>
             </div>
             <div class="my-1">
                 <input
-                    wire:model.lazy="question_two_answer"
+                    wire:model.lazy="question_three_answer"
                     class="form-check-input"
                     type="radio"
-                    name="questionTwoAnswer"
+                    name="questionThreeAnswer"
                     value="Sėdimas"
                 >
                 <label class="form-check-label ms-2">{{ __('Sėdimas') }}</label>
             </div>
             <div class="my-1">
                 <input
-                    wire:model.lazy="question_two_answer"
+                    wire:model.lazy="question_three_answer"
                     class="form-check-input"
                     type="radio"
-                    name="questionTwoAnswer"
+                    name="questionThreeAnswer"
                     value="Gėrimų degustacija"
                 >
                 <label class="form-check-label ms-2">{{ __('Gėrimų degustacija') }}</label>
             </div>
         </div>
-        @error('question_two_answer')
-            <span class="text-danger mb-3 fade-in">{{ $message }}</span>
+        @error('question_three_answer')
+        <span class="text-danger mb-3 fade-in">{{ $message }}</span>
         @enderror
     </div>
     <div class="d-flex flex-column w-100 py-3">
@@ -111,7 +139,7 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
             <div class="d-flex flex-column">
                 <div class="my-1">
                     <input
-                        wire:model.lazy="question_three_answer"
+                        wire:model.lazy="question_four_answer"
                         class="form-check-input"
                         type="checkbox"
                         name="questionFourAnswerOne"
@@ -121,7 +149,7 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
                 </div>
                 <div class="my-1">
                     <input
-                        wire:model.lazy="question_three_answer"
+                        wire:model.lazy="question_four_answer"
                         class="form-check-input"
                         type="checkbox"
                         name="questionFourAnswerTwo"
@@ -131,7 +159,7 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
                 </div>
                 <div class="my-1">
                     <input
-                        wire:model.lazy="question_three_answer"
+                        wire:model.lazy="question_four_answer"
                         class="form-check-input"
                         type="checkbox"
                         name="questionFourAnswerThree"
@@ -141,7 +169,7 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
                 </div>
                 <div class="my-1">
                     <input
-                        wire:model.lazy="question_three_answer"
+                        wire:model.lazy="question_four_answer"
                         class="form-check-input"
                         type="checkbox"
                         name="questionFourAnswerFour"
@@ -151,7 +179,7 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
                 </div>
                 <div class="my-1">
                     <input
-                        wire:model.lazy="question_three_answer"
+                        wire:model.lazy="question_four_answer"
                         class="form-check-input"
                         type="checkbox"
                         name="questionFourAnswerFive"
@@ -161,7 +189,7 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
                 </div>
                 <div class="my-1">
                     <input
-                        wire:model.lazy="question_three_answer"
+                        wire:model.lazy="question_four_answer"
                         class="form-check-input"
                         type="checkbox"
                         name="questionFourAnswerSix"
@@ -183,15 +211,15 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
                 >
             </div>--}}
         </div>
-        @error('question_three_answer')
+        @error('question_four_answer')
             <span class="text-danger mb-3 fade-in">{{ $message }}</span>
         @enderror
         <textarea
-            wire:model.lazy="question_three_comment"
+            wire:model.lazy="question_four_comment"
             rows="4"
             class="form-control bg-transparent text-light fs-5 input-hover-focus"
             style="border-radius: 15px"
-            name="questionFiveComment"
+            name="questionFourComment"
             placeholder="Papildomi komentara"
         ></textarea>
     </div>
@@ -200,26 +228,26 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
         <div class="d-flex flex-column mb-2">
             <div class="my-1">
                 <input
-                    wire:model.lazy="question_four_answer"
+                    wire:model.lazy="question_five_answer"
                     class="form-check-input"
                     type="radio"
-                    name="questionFourAnswer"
+                    name="questionFiveAnswer"
                     value="Taip"
                 >
                 <label class="form-check-label ms-2">{{ __('Taip') }}</label>
             </div>
             <div class="my-1">
                 <input
-                    wire:model.lazy="question_four_answer"
+                    wire:model.lazy="question_five_answer"
                     class="form-check-input"
                     type="radio"
-                    name="questionFourAnswer"
+                    name="questionFiveAnswer"
                     value="Ne"
                 >
                 <label class="form-check-label ms-2">{{ __('Ne') }}</label>
             </div>
         </div>
-        @error('question_four_answer')
+        @error('question_five_answer')
             <span class="text-danger mb-3 fade-in">{{ $message }}</span>
         @enderror
     </div>
@@ -228,34 +256,34 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
         <div class="d-flex flex-column mb-3">
             <div class="my-1">
                 <input
-                    wire:model.lazy="question_five_answer"
+                    wire:model.lazy="question_six_answer"
                     class="form-check-input mx-2"
                     type="radio"
-                    name="questionFiveAnswer"
+                    name="questionSixAnswer"
                     value="Taip"
                 >
                 <label class="form-check-label">{{ __('Taip') }}</label>
             </div>
             <div class="my-1">
                 <input
-                    wire:model.lazy="question_five_answer"
+                    wire:model.lazy="question_six_answer"
                     class="form-check-input mx-2"
                     type="radio"
-                    name="questionFiveAnswer"
+                    name="questionSixAnswer"
                     value="Ne"
                 >
                 <label class="form-check-label">{{ __('Ne') }}</label>
             </div>
         </div>
-        @error('question_five_answer')
+        @error('question_six_answer')
         <span class="text-danger mb-3 fade-in">{{ $message }}</span>
         @enderror
         <textarea
-            wire:model.lazy="question_five_comment"
+            wire:model.lazy="question_six_comment"
             rows="4"
             class="form-control bg-transparent text-light fs-5 input-hover-focus"
             style="border-radius: 15px"
-            name="questionGiveComment"
+            name="questionSixComment"
             placeholder="{{ __('Nurodykite vaikų kiekį ir patiekalus, jei į klausimą atsakėte taip.') }}"
         ></textarea>
     </div>

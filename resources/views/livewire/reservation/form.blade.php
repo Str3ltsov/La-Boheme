@@ -8,10 +8,10 @@
                     @include('flash_message')
                 </div>
                 <div class="d-flex justify-content-center text-center text-light">
-                    <h1 style="font-size: 3.5em">{{ __('Rezervuok') }}</h1>
+                    <h1 style="font-size: 3em">{{ __('Rezervuok') }}</h1>
                 </div>
                 <div class="mb-4 mb-md-5">
-                    <img src="{{ asset('images/logodidelisbaltas.png') }}" alt="logo" width="300"/>
+                    <img src="{{ asset('images/logodidelisbaltas.png') }}" alt="logo" width="200"/>
                 </div>
                 @if ($currentStep == 1)
                     <div class="d-flex justify-content-center text-center text-light mb-2 mb-md-4">

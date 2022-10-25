@@ -8,13 +8,15 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
                 name="checkAllQuestionCheckbox"
                 value="true"
                 onclick="checkAllQuestions();"
+                wire:model.lazy="isChecked"
                 @if ($isChecked) checked @endif
             >
             <label for="checkAllQuestions" class="form-check-label">
                 {{ __('Neturiu specialių pageidavimų') }}
             </label>
         </div>
-        <button wire:click="setIsCheckedToTrueAndGoToNextStep" type="button" class="fw-bold fs-4" id="test_reservation"
+        <button wire:click="goToNextStep" type="button"
+                class="fw-bold fs-4 @if ($isChecked) d-block @else d-none @endif" id="test_reservation"
                 style="background-color: #C19F5F; border: none; border-radius: 17.5px; color: black; padding: 10px 0; width: 210px">
             {{ __('Tęsti rezervaciją') }}
         </button>
@@ -44,9 +46,23 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
                 <label class="form-check-label">{{ __('Ne') }}</label>
             </div>
         </div>
-        @error('question_one_answer')
+        <button wire:click="goToNextStep" type="button"
+                class="fw-bold fs-4
+                    @if ($question_one_answer
+                        && !$question_two_answer
+                        && !$question_three_answer
+                        && !$question_four_answer
+                        && !$isChecked)
+                        d-block
+                    @else
+                        d-none
+                    @endif"
+                style="background-color: #C19F5F; border: none; border-radius: 17.5px; color: black; padding: 10px 0; width: 210px">
+            {{ __('Tęsti rezervaciją') }}
+        </button>
+        {{--@error('question_one_answer')
             <span class="text-danger mb-3">{{ $message }}</span>
-        @enderror
+        @enderror--}}
     </div>
     <div class="d-flex flex-column w-100 py-3">
         <p>{{ __('Veganai') }}</p>
@@ -72,9 +88,23 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
                 <label class="form-check-label">{{ __('Ne') }}</label>
             </div>
         </div>
-        @error('question_two_answer')
+        <button wire:click="goToNextStep" type="button"
+                class="fw-bold fs-4
+                    @if ($question_two_answer
+                        && !$question_one_answer
+                        && !$question_three_answer
+                        && !$question_four_answer
+                        && !$isChecked)
+                        d-block
+                    @else
+                        d-none
+                    @endif"
+                style="background-color: #C19F5F; border: none; border-radius: 17.5px; color: black; padding: 10px 0; width: 210px">
+            {{ __('Tęsti rezervaciją') }}
+        </button>
+        {{--@error('question_two_answer')
             <span class="text-danger mb-3">{{ $message }}</span>
-        @enderror
+        @enderror--}}
     </div>
     <div class="d-flex flex-column w-100 py-3">
         <p>{{ __('Gliuteno netoleruojantys') }}</p>
@@ -100,9 +130,9 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
                 <label class="form-check-label">{{ __('Ne') }}</label>
             </div>
         </div>
-        @error('question_three_answer')
+        {{--@error('question_three_answer')
             <span class="text-danger mb-3">{{ $message }}</span>
-        @enderror
+        @enderror--}}
         <textarea
             wire:model.lazy="question_three_comment"
             rows="4"
@@ -111,6 +141,20 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
             name="questionThreeComment"
             placeholder="Papildomi komentarai"
         ></textarea>
+        <button wire:click="goToNextStep" type="button"
+                class="fw-bold fs-4 mt-3
+                    @if ($question_three_answer
+                        && !$question_one_answer
+                        && !$question_two_answer
+                        && !$question_four_answer
+                        && !$isChecked)
+                        d-block
+                    @else
+                        d-none
+                    @endif"
+                style="background-color: #C19F5F; border: none; border-radius: 17.5px; color: black; padding: 10px 0; width: 210px">
+            {{ __('Tęsti rezervaciją') }}
+        </button>
     </div>
     <div class="d-flex flex-column w-100 py-3">
         <p>{{ __('Ar reikalinga vaikiška kėdutė?') }}</p>
@@ -150,12 +194,26 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
                     onkeydown="return false"
                 >
             </div>
+            <button wire:click="goToNextStep" type="button"
+                    class="fw-bold fs-4 mt-4
+                    @if ($question_four_answer
+                        && !$question_one_answer
+                        && !$question_two_answer
+                        && !$question_three_answer
+                        && !$isChecked)
+                        d-block
+                    @else
+                        d-none
+                    @endif"
+                    style="background-color: #C19F5F; border: none; border-radius: 17.5px; color: black; padding: 10px 0; width: 210px">
+                {{ __('Tęsti rezervaciją') }}
+            </button>
         </div>
-        @error('question_four_answer')
+        {{--@error('question_four_answer')
             <span class="text-danger mt-2">{{ $message }}</span>
-        @enderror
+        @enderror--}}
     </div>
-    <div class="d-flex flex-column w-100 py-3">
+    {{--<div class="d-flex flex-column w-100 py-3">
         <p>{{ __('Ar svečių tarpe yra vaikų, kuriems reiktų siūlyti „vaikiškus“ patiekalus?') }}</p>
         <div class="d-flex flex-column mb-3">
             <div class="my-q">
@@ -190,30 +248,17 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
             name="questionFiveComment"
             placeholder="Nurodykite vaikų kiekį ir patiekalus, jei į klausimą atsakėte taip."
         ></textarea>
-    </div>
+    </div>--}}
     <div class="d-flex justify-content-end mt-4" style="gap: 20px;">
         <button wire:click="goToPreviousStep" type="button" class="fw-bold fs-4"
                 style="background-color: #BBBBBB; border: none; border-radius: 17.5px;
                 color: black; padding: 10px 0; width: 120px">
             {{ __('Atgal') }}
         </button>
-        <button wire:click="setIsCheckedToTrueAndGoToNextStep" type="button" class="fw-bold fs-4"
+        <button wire:click="goToNextStep" type="button" class="fw-bold fs-4"
                 style="background-color: #C19F5F; border: none; border-radius: 17.5px;
-                color: black; padding: 10px 0; width: 120px">
+                color: black; padding: 10px 0; width: 120px" id="goToNextStepButton">
             {{ __('Toliau') }}
         </button>
     </div>
 </div>
-
-<script>
-    const checkbox = document.querySelector('input[name="checkAllQuestionCheckbox"]');
-
-    let testReservationButton = document.getElementById('test_reservation');
-    testReservationButton.style.display = 'none';
-
-    if (checkbox.checked) testReservationButton.style.display = 'block';
-
-    @if ($isChecked)
-        testReservationButton.style.display = 'block'
-    @endif
-</script>
