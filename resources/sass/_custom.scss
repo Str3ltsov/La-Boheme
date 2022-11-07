@@ -11,14 +11,6 @@
     -o-background-size: cover;
     background-size: cover;
 
-    #meniu {
-        &::after {
-            content: '+';
-            color: #C19F5F;
-            margin-left: 5px;
-        }
-    }
-
     #cormorant {
         font-family: $font-family-cormorant;
     }
@@ -32,8 +24,12 @@
 
     textarea::placeholder,
     input::placeholder {
-        color: #BBBBBB;
+        color: #EEEEEE;
         opacity: 1;
+    }
+
+    option[value=""][selected] {
+        display: none;
     }
 
     #reservations_table_filter,
@@ -57,12 +53,38 @@
     #reservations_table_paginate a,
     #tables_table_paginate a,
     #halls_table_paginate a {
-        background: #BBBBBB;
+        background: $secondary-color;
     }
 
-    .dropdown-item {
-        &:hover {
-            background: #444444;
+    .fade-in {
+        animation: FadeIn 300ms linear;
+
+        @keyframes FadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    }
+
+    .btn-hover-focus {
+        transition: opacity 300ms ease;
+        opacity: 1;
+
+        &:hover, &:focus {
+            opacity: .75;
+        }
+    }
+
+    .input-hover-focus {
+        border: 2px solid $primary-color;
+        transition: border 300ms ease;
+
+        &:hover, &:focus {
+            border: 2px solid $secondary-color;
         }
     }
 }

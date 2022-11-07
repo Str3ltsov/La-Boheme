@@ -10,7 +10,7 @@
         </a>
         <a class="dropdown-item" href="{{ route('admin.tables') }}"
            style="color: {{ request()->is('admin/tables') ? '#C19F5F' : '#FFFFFF' }}">
-            {{ __('Stalos') }}
+            {{ __('Stalai') }}
         </a>
         <a class="dropdown-item" href="{{ route('admin.halls') }}"
            style="color: {{ request()->is('admin/halls') ? '#C19F5F' : '#FFFFFF' }}">

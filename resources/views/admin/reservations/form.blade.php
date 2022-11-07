@@ -19,7 +19,7 @@
         <div>
             {!! Form::button(__('Patvirtinti'), [
             'type' => 'submit',
-            'class' => 'fw-bold',
+            'class' => 'fw-bold btn-hover-focus',
             'style' => 'background-color: #C19F5F; border: none; border-radius: 17.5px; color: black; padding: 10px 0; width: 100px',
             'onclick' => __("return confirm('Ar jus tikrai norite tai padaryti?')")
             ]) !!}

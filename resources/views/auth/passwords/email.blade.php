@@ -16,8 +16,9 @@
                     <div class="d-flex flex-column justify-content-center align-items-center my-3 fs-4 w-100">
                         <div>
                             @if (session('status'))
-                                <div class="alert alert-success" role="alert">
-                                    {{ session('status') }}
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>{{ session('status') }}</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             @endif
                         </div>

@@ -9,13 +9,13 @@
         <img src="/images/grunge-dark-temp.png" alt="grunge-dark-temp"
              style="width: 100%; display: flex; align-items: flex-end">
         <div class="d-flex flex-column justify-content-start"
-             style="background-color: #0F0E0F; min-height: 65vh; padding: 0 2em">
+             style="background-color: #0F0E0F; min-height: 85vh; padding: 0 2em">
             <div class="d-flex flex-column justify-content-center
             align-items-center bg-transparent p-4" id="cormorant">
                 <div class="d-flex flex-column justify-content-center align-items-center my-3 text-light p-5"
                      style="font-size: 1.3em; background-color: #151515; width: clamp(400px, 100%, 1200px)">
                     <div class="w-100">
-                        @include('admin.reservations.messages')
+                        @include('flash_message')
                     </div>
                     @include('admin.reservations.table')
                 </div>

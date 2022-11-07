@@ -49,7 +49,7 @@ class ReservationsService implements ReservationsServiceInterface
         if (empty($reservation)) {
             return redirect()
                 ->route('admin.reservations')
-                ->with('error', 'Failed to find reservation by id');
+                ->with('error', __('Failed to get reservation by id'));
         }
 
         return $reservation;
@@ -110,7 +110,7 @@ class ReservationsService implements ReservationsServiceInterface
         if (is_null($reservationId)) {
             return redirect()
                 ->route('admin.reservations')
-                ->with('error', "Failed to find reservation id from request");
+                ->with('error', __('Failed to get reservation id from request'));
         }
 
         return $reservationId;
@@ -144,7 +144,7 @@ class ReservationsService implements ReservationsServiceInterface
         if (empty($client)) {
             return redirect()
                 ->route('admin.reservations')
-                ->with('error', "Failed to find client email from reservation");
+                ->with('error', __('Failed to get client email from reservation'));
         }
 
         return $client;

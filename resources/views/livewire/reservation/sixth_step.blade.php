@@ -1,6 +1,7 @@
 <div class="d-flex flex-column justify-content-center align-items-start
-my-3 p-5 fs-4 text-light" style="font-size: 1.1em; background-color: #151515; max-width: 800px">
+    my-3 px-3 px-lg-5 py-5 fs-4 text-light fade-in" style="font-size: 1.1em; background-color: #151515; max-width: 800px">
     <div>
+        {{--
         <div class="d-flex" style="gap: 10px">
             <span>{{ __('Data') }}:</span>
             <span>{{ $date ?? '-' }}</span>
@@ -13,7 +14,6 @@ my-3 p-5 fs-4 text-light" style="font-size: 1.1em; background-color: #151515; ma
             <span>{{ __('Žmonių skaičius') }}:</span>
             <span>{{ $number_of_people ?? '-' }}</span>
         </div>
-        {{--
         <div class="d-flex" style="gap: 10px">
             <span>{{ __('Padavėja') }}:</span>
             <span>{{ $employees[\App\Helpers\Constants::employeeTypeWaiter]['name'] ?? '-' }}</span>
@@ -24,16 +24,7 @@ my-3 p-5 fs-4 text-light" style="font-size: 1.1em; background-color: #151515; ma
         </div>
         --}}
     </div>
-    <div class="mt-3">
-        @if ($reservation_type == \App\Helpers\Constants::reservationTypeHall)
-            <p>
-                {{ __('Paslaugos patvirtinimas yra apmokestinamas 10 Eur.
-                       Ši suma atšaukus paslaugą yra negrąžinama,
-                       kitu atveju bus įtraukta į bendrą sąskaitą viešnagės metu.') }}
-            </p>
-        @endif
-    </div>
-    <div class="d-flex" style="gap: 10px">
+    <div class="d-flex justify-content-center align-items-center fade-in" style="gap: 10px">
         <input
             wire:model.lazy="accept"
             type="checkbox"
@@ -43,27 +34,23 @@ my-3 p-5 fs-4 text-light" style="font-size: 1.1em; background-color: #151515; ma
             value="{{ true }}"
         >
         <label for="Accept" class="form-check-label">
-            <span>{{ __('Visos teisės saugomos 2022 La Boheme.') }}</span>
-            <a class="text-reset text-decoration-none" href="#">
-                <span style="color: #C19F5F">{{ __('Privatumo politika') }}</span>
-            </a>
+            <span>{{ __('Sutinku su svetainės privatumo politika') }}</span>
+            <span style="color: #C19F5F; cursor: pointer" onclick="window.open('/private_policy', '_blank')">{{ __('Privatumo politika') }}</span>
         </label>
     </div>
     @error('accept')
-        <span class="text-danger">{{ $message }}</span>
+        <span class="text-danger my-2 fade-in">{{ $message }}</span>
     @enderror
-    <div class="d-flex justify-content-center align-items-center mt-4 w-100" style="gap: 20px;">
-        <button wire:click="goToPreviousStep" type="button" class="fw-bold fs-4"
+    <div class="d-flex flex-column flex-md-row justify-content-center align-items-center mt-5 w-100 fade-in" style="gap: 20px;">
+        <button wire:click="goToPreviousStep" type="button" class="fw-bold fs-4 btn-hover-focus"
                 style="background-color: #BBBBBB; border: none; border-radius: 17.5px;
-                color: black; padding: 10px 0; width: 120px">
-            <i class="fa-solid fa-arrow-left"></i>
+                color: black; padding: 10px 0; width: clamp(220px, 100%, 230px)">
             {{ __('Atgal') }}
         </button>
-        <button wire:click="submit" type="submit" class="fw-bold fs-4"
+        <button wire:click="submit" type="submit" class="fw-bold fs-4 btn-hover-focus"
                 style="background-color: #C19F5F; border: none; border-radius: 17.5px;
-               color: black; padding: 10px 0; width: 150px">
-            {{ __('Užsisakyti') }}
-            <i class="fa-solid fa-arrow-right"></i>
+               color: black; padding: 10px 0; width: clamp(220px, 100%, 230px)">
+            {{ __('Pateikti užklausą') }}
         </button>
     </div>
 </div>

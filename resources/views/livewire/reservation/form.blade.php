@@ -1,28 +1,26 @@
 <div>
-    <div class="d-flex flex-column justify-content-center align-items-center text-center p-5" style="height: 300px">
-        <h1 class="text-light" id="cormorant">{{ __('Paslaugos užsakymas') }}</h1>
-        <h1 class="text-light" id="cormorant">{{ __('Staliuko rezervacija ar šventės užsakymas') }}</h1>
-    </div>
-    <form wire:submit.prevent="submit"/>
-        <img src="/images/grunge-dark-temp.png" alt="grunge-dark-temp"
-             style="width: 100%; display: flex; align-items: flex-end">
-        <div class="d-flex flex-column justify-content-start"
-             style="background-color: #0F0E0F; min-height: 65vh; padding: 0 2em">
+    <form wire:submit.prevent="submit">
+        <div class="d-flex flex-column justify-content-center"
+             style="background-color: #0F0E0F; min-height: 100vh; padding: 2em">
             <div class="d-flex flex-column justify-content-center
-            align-items-center bg-transparent p-4" id="cormorant">
-                <div class="w-100">
-                    @if (session()->has('success'))
-                        <div class="alert alert-success" id="message">
-                            {{ session()->get('success') }}
-                        </div>
-                    @endif
-                    @if (session()->has('error'))
-                        <div class="alert alert-danger" id="message">
-                            {{ session()->get('error') }}
-                        </div>
-                    @endif
+            align-items-center bg-transparent p-3 fade-in" id="cormorant">
+                <div class="w-50">
+                    @include('flash_message')
                 </div>
-                <div class="d-flex justify-content-center text-light mb-4" >
+                <div class="d-flex justify-content-center text-center text-light">
+                    <h1 style="font-size: 3em">{{ __('Rezervuok') }}</h1>
+                </div>
+                <div class="mb-4 mb-md-5">
+                    <img src="{{ asset('images/logodidelisbaltas.png') }}" alt="logo" width="200"/>
+                </div>
+                @if ($currentStep == 1)
+                    <div class="d-flex justify-content-center text-center text-light mb-2 mb-md-4">
+                        <h3>
+                            {{ __('Prašome atsakyti į kelis klausimus, kad pateiktume Jūsų poreikius atitinkantį pasiūlymą') }}
+                        </h3>
+                    </div>
+                @endif
+                <div class="d-flex justify-content-center text-center text-light mb-2 mb-md-4 mt-1">
                     <h3 class="me-2">{{ $steps[$currentStep]['step'] }}</h3>
                     <h3>{{ $steps[$currentStep]['description'] }}</h3>
                 </div>
@@ -32,6 +30,10 @@
                     @include('livewire.reservation.second_step')
                 @elseif ($currentStep == 3)
                     @include('livewire.reservation.third_step')
+                {{--
+                @elseif($currentStep == 4)
+                    @include('livewire.reservation.fourth_step')
+                --}}
                 @elseif ($currentStep == 4)
                     @include('livewire.reservation.fifth_step')
                 @elseif ($currentStep == 5)
@@ -41,3 +43,69 @@
         </div>
     </form>
 </div>
+
+@push('scripts')
+    <script>
+        $(() => {
+            $('#date_picker').hide();
+        });
+
+        async function fetchUnavailableDates(reservationType) {
+            try {
+                const response =
+                    await fetch(`{{ env('APP_URL') }}:{{ env('APP_PORT') }}/api/v1/unavailable_dates/${reservationType}`)
+                const unavailableDates = await response.json();
+
+                showDatePicker();
+                getDatePickerWithUnavailableDates(unavailableDates);
+            }
+            catch (error) {
+                console.error(error);
+            }
+        }
+
+        function showDatePicker() {
+            if ($('#reservation_type').is(':checked')) $('#date_picker').show();
+        }
+
+        function getDatePickerWithUnavailableDates(unavailableDates) {
+            $(() => {
+                $('#date_picker').datepicker({
+                    showButtonPanel: true,
+                    minDate: '{{ now()->toDateString() }}',
+                    maxDate: '+3M',
+                    dateFormat: 'yy-mm-dd',
+                    beforeShowDay: date => {
+                        $(".ui-datepicker").css('font-size', 21);
+                        const dateToString = jQuery.datepicker.formatDate('yy-mm-dd', date);
+                        return [unavailableDates.indexOf(dateToString) === -1]
+                    }
+                });
+            });
+        }
+
+        function checkAllQuestions() {
+            const checkbox = document.querySelector('input[name="checkAllQuestionCheckbox"]');
+            const radioButtons = document.querySelectorAll('input[value="Ne"]');
+
+            let questionAnswers = [
+                'question_one_answer',
+                'question_two_answer',
+                'question_three_answer',
+                'question_four_answer',
+                'question_five_answer'
+            ];
+
+            for (let i = 0; i < radioButtons.length; i++) {
+                if (checkbox.checked) {
+                    @this.set(questionAnswers[i], radioButtons[i].value);
+                    radioButtons[i].checked = true;
+                }
+                else {
+                    @this.set(questionAnswers[i], null);
+                    radioButtons[i].checked = false;
+                }
+            }
+        }
+    </script>
+@endpush

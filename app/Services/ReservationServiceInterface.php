@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Client;
 use App\Models\Reservation;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use Illuminate\Mail\SentMessage;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -16,7 +17,7 @@ interface ReservationServiceInterface
     public function makeRulesReadableByValidate(array $validationRules): array;
     public function getEmployees(): Collection|RedirectResponse;
     //public function getEmployeeNames(int $waiter, int $bartender): array;
-    public function createClient(string $name, string $email, string $phoneNumber, string $additionalInfo)
+    public function createClient(string $name, string $email, string $phoneNumber, string|null $additionalInfo)
     : Client|RedirectResponse;
     public function getTables(): Collection|RedirectResponse;
     public function getHalls(): Collection|RedirectResponse;
@@ -24,6 +25,7 @@ interface ReservationServiceInterface
         mixed $tables,
         mixed $halls,
         string $startDatetime,
+        string $endDatetime,
         int $numberOfPeople,
         int $reservationType,
         object $client
@@ -40,8 +42,7 @@ interface ReservationServiceInterface
         mixed $questionFiveAnswer,
         mixed $questionFiveComment,
         mixed $questionSixAnswer,
-        mixed $questionSixComment,
-        mixed $questionSevenAnswer
+        mixed $questionSixComment
     ): array|RedirectResponse;
     public function getReservationQuestions(int $reservationType): array|RedirectResponse;
     public function createReservationQuestionAnswers(object $reservation, mixed $questions, array $answersAndComments)

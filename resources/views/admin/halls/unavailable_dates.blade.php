@@ -20,7 +20,7 @@
                         'method' => 'delete'
                         ]) !!}
                         {{ Form::hidden('unavailable_date_id', $unavailable_date->id) }}
-                        <button type="submit", class="fw-bold fs-5 text-center text-light"
+                        <button type="submit", class="fw-bold fs-5 text-center text-light btn-hover-focus"
                                 style="background-color: transparent; border: none; border-radius: 17.5px; color: black;
                                 padding: 10px 0; width: 50px; text-decoration: none"
                                 onclick="return confirm('Ar jus tikrai norite?')">

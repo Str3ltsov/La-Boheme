@@ -9,13 +9,13 @@
         <img src="/images/grunge-dark-temp.png" alt="grunge-dark-temp"
              style="width: 100%; display: flex; align-items: flex-end">
         <div class="d-flex flex-column justify-content-start"
-             style="background-color: #0F0E0F; min-height: 65vh; padding: 0 2em">
+             style="background-color: #0F0E0F; min-height: 85vh; padding: 0 2em">
             <div class="d-flex flex-column justify-content-center
             align-items-center bg-transparent p-4" id="cormorant">
                 <div class="d-flex flex-column justify-content-center align-items-center my-3 p-4 text-light"
                      style="font-size: 1.3em; background-color: #151515; width: clamp(400px, 100%, 1200px)">
                     <div class="w-100">
-                        @include('admin.tables.messages')
+                        @include('flash_message')
                     </div>
                     <div class="p-4 w-100">
                         <div class="d-flex flex-lg-row flex-column justify-content-center align-items-center my-3 fs-4" style="gap: 15px">
@@ -33,7 +33,7 @@
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h4 class="m-1">{{ __('Stalos Id') }}: {{ $table->id ?? '?'}}</h4>
                             <div class="d-flex" style="gap: 10px">
-                                <a class="fw-bold fs-4 text-center" href="{{ route('admin.tables') }}"
+                                <a class="fw-bold fs-4 text-center btn-hover-focus" href="{{ route('admin.tables') }}"
                                    style="background-color: #C19F5F; border: none; border-radius: 17.5px;
                                color: black; padding: 10px 0; width: 150px; text-decoration: none">
                                     {{ __('Atgal') }}

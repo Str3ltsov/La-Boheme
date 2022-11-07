@@ -9,7 +9,7 @@
         <img src="/images/grunge-dark-temp.png" alt="grunge-dark-temp"
              style="width: 100%; display: flex; align-items: flex-end">
         <div class="d-flex flex-column justify-content-start"
-             style="background-color: #0F0E0F; min-height: 65vh; padding: 0 2em">
+             style="background-color: #0F0E0F; min-height: 85vh; padding: 0 2em">
             <div class="d-flex flex-column justify-content-center
             align-items-center bg-transparent" id="cormorant">
                 <div class="d-flex flex-column justify-content-center align-items-start
@@ -21,23 +21,23 @@
                                 <h5>{{ __('Paslauga') }}</h5>
                                 <div class="d-flex flex-column" style="gap: 10px">
                                     <div class="d-flex flex-lg-row flex-column">
-                                        <span style="width: clamp(250px, 100%, 500px)">{{ __('Pradžios data ir  laikas') }}:</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #BBBBBB">{{ __('Pradžios data ir  laikas') }}:</span>
                                         <span style="width: clamp(250px, 100%, 500px)">{{ $reservation->start_datetime ?? '-' }}</span>
                                     </div>
                                     <div class="d-flex flex-lg-row flex-column">
-                                        <span style="width: clamp(250px, 100%, 500px)">{{ __('Pabaigos data ir laikas') }}:</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #BBBBBB">{{ __('Pabaigos data ir laikas') }}:</span>
                                         <span style="width: clamp(250px, 100%, 500px)">{{ $reservation->end_datetime ?? '-' }}</span>
                                     </div>
                                     <div class="d-flex flex-lg-row flex-column">
-                                        <span style="width: clamp(250px, 100%, 500px)">{{ __('Žmonių skaičius') }}:</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #BBBBBB">{{ __('Žmonių skaičius') }}:</span>
                                         <span style="width: clamp(250px, 100%, 500px)">{{ $reservation->number_of_people ?? '-' }}</span>
                                     </div>
                                     <div class="d-flex flex-lg-row flex-column">
-                                        <span style="width: clamp(250px, 100%, 500px)">{{ __('Reservacijos tipas') }}:</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #BBBBBB">{{ __('Reservacijos tipas') }}:</span>
                                         <span style="width: clamp(250px, 100%, 500px)">{{ $reservation->type->name ?? '-' }}</span>
                                     </div>
                                     <div class="d-flex flex-lg-row flex-column">
-                                        <span style="width: clamp(250px, 100%, 500px)">{{ __('Statusas') }}:</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #BBBBBB">{{ __('Statusas') }}:</span>
                                         <span style="width: clamp(250px, 100%, 500px)">{{ $reservation->status->name ?? '-' }}</span>
                                     </div>
                                 </div>
@@ -46,19 +46,19 @@
                                 <h5>{{ __('Klientas') }}</h5>
                                 <div class="d-flex flex-column" style="gap: 10px">
                                     <div class="d-flex flex-lg-row flex-column">
-                                        <span style="width: clamp(250px, 100%, 500px)">{{ __('Vardas') }}:</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #BBBBBB">{{ __('Vardas') }}:</span>
                                         <span style="width: clamp(250px, 100%, 500px)">{{ $reservation->client->name ?? '-' }}</span>
                                     </div>
                                     <div class="d-flex flex-lg-row flex-column">
-                                        <span style="width: clamp(250px, 100%, 500px)">{{ __('El. paštas') }}:</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #BBBBBB">{{ __('El. paštas') }}:</span>
                                         <span style="width: clamp(250px, 100%, 500px)">{{ $reservation->client->email ?? '-' }}</span>
                                     </div>
                                     <div class="d-flex flex-lg-row flex-column">
-                                        <span style="width: clamp(250px, 100%, 500px)">{{ __('Telefonas') }}:</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #BBBBBB">{{ __('Telefonas') }}:</span>
                                         <span style="width: clamp(250px, 100%, 500px)">{{ $reservation->client->phone_number ?? '-' }}</span>
                                     </div>
                                     <div class="d-flex flex-lg-row flex-column">
-                                        <span style="width: clamp(250px, 100%, 500px)">{{ __('Papildoma informacija') }}:</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #BBBBBB">{{ __('Papildoma informacija') }}:</span>
                                         <span style="width: clamp(250px, 100%, 500px)">{{ $reservation->client->additional_information ?? '-' }}</span>
                                     </div>
                                 </div>
@@ -91,7 +91,7 @@
                                 <div class="d-flex flex-column" style="gap: 20px">
                                     @forelse( $reservationQuestionsAnswers ?? [] as $reservationQuestion )
                                         <div class="d-flex flex-lg-row flex-column my-3 my-lg-0" style="gap: 20px; word-break: break-word">
-                                            <span style="width: clamp(250px, 100%, 500px)">{{ __($reservationQuestion->question) ?? '-' }} :</span>
+                                            <span style="width: clamp(250px, 100%, 500px); color: #BBBBBB">{{ __($reservationQuestion->question) ?? '-' }} :</span>
                                             <span style="width: clamp(250px, 100%, 500px)">{{ $reservationQuestion->answer ?? '-' }}</span>
                                             <span style="width: clamp(250px, 100%, 500px)">{{ $reservationQuestion->comment ?? '-' }}</span>
                                         </div>
@@ -104,7 +104,7 @@
                     </div>
                     <div class="d-flex justify-content-center align-items-center w-100 mt-4" style="gap: 20px;">
                         <div class="d-flex justify-content-center align-items-center">
-                            <a class="fw-bold fs-4 text-center" href="{{ route('admin.reservations') }}"
+                            <a class="fw-bold fs-4 text-center btn-hover-focus" href="{{ route('admin.reservations') }}"
                                style="background-color: #C19F5F; border: none; border-radius: 17.5px;
                                color: black; padding: 10px 0; width: 150px; text-decoration: none">
                                 {{ __('Atgal') }}

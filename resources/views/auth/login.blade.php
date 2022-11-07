@@ -8,11 +8,14 @@
         <img src="/images/grunge-dark-temp.png" alt="grunge-dark-temp"
              style="width: 100%; display: flex; align-items: flex-end">
         <div class="d-flex flex-column justify-content-start"
-             style="background-color: #0F0E0F; min-height: 65vh; padding: 0 2em">
+             style="background-color: #0F0E0F; min-height: 85vh; padding: 0 2em">
             <div class="d-flex flex-column justify-content-center
             align-items-center bg-transparent p-4" id="cormorant">
                 <div class="d-flex flex-column justify-content-center align-items-center
                 my-1 fs-5 text-light" style="font-size: 1.1em; width: clamp(300px, 100%, 600px)">
+                    <div class="w-100">
+                        @include('flash_message')
+                    </div>
                     <div class="d-flex flex-column justify-content-center align-items-center my-3 fs-4 w-100">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
@@ -55,19 +58,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mb-0">
-                                <div>
-                                    <button type="submit" class="fw-bold fs-4"
+                            <div class="d-flex align-items-center w-100" style="gap: 20px">
+                                    <button type="submit" class="fw-bold fs-4 btn-hover-focus"
                                             style="background-color: #C19F5F; border: none; border-radius: 17.5px;
-                                            color: black; padding: 10px 0; width: 110px">
+                                            color: black; padding: 10px; width: 130px;">
                                         {{ __('Prisijungti') }}
                                     </button>
                                     @if (Route::has('password.request'))
-                                        <a class="btn btn-link fs-4" href="{{ route('password.request') }}" style="color: #C19F5F">
+                                        <a class="btn btn-link fs-3 p-0 text-start" href="#{{-- route('password.request') --}}" style="color: #C19F5F">
                                             {{ __('Pamiršai slaptažodį?') }}
                                         </a>
                                     @endif
-                                </div>
                             </div>
                         </form>
                     </div>

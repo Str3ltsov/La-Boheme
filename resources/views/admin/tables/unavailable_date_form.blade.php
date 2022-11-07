@@ -16,14 +16,14 @@
         >
     </div>
     <div class="d-flex justify-content-end align-items-center mt-2" style="gap: 10px">
-        <button type="reset" class="fw-bold fs-4 text-center py-2 px-4"
+        <button type="reset" class="fw-bold fs-4 text-center py-2 px-4 btn-hover-focus"
                 style="background-color: #BBBBBB; border: none; border-radius: 17.5px"
                 onclick="document.location='{{ redirect()->back() }}'">
             {{ __('Nuvalyti') }}
         </button>
         {!! Form::button(__('Sukurti'), [
             'type' => 'submit',
-            'class' => 'fw-bold fs-4 text-center py-2 px-4',
+            'class' => 'fw-bold fs-4 text-center py-2 px-4 btn-hover-focus',
             'style' => 'background-color: #C19F5F; border: none; border-radius: 17.5px'
             ]) !!}
     </div>
