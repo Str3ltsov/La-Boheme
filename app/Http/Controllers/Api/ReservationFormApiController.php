@@ -29,7 +29,7 @@ class ReservationFormApiController extends Controller
             return response()
                 ->json([
                     'status' => response()->status(),
-                    'error' => $exception->getMessage()
+                    'message' => $exception->getMessage()
                 ])
                 ->header('Content-Type', 'text/plain');
         }

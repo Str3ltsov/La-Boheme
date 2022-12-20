@@ -59,16 +59,16 @@
                                 </div>
                             </div>
                             <div class="d-flex align-items-center w-100" style="gap: 20px">
-                                    <button type="submit" class="fw-bold fs-4 btn-hover-focus"
+                                    <button type="submit" class="fw-bold fs-4 btn-hover-focus col-12"
                                             style="background-color: #C19F5F; border: none; border-radius: 17.5px;
-                                            color: black; padding: 10px; width: 130px;">
+                                            color: black; padding: 10px;">
                                         {{ __('Prisijungti') }}
                                     </button>
-                                    @if (Route::has('password.request'))
-                                        <a class="btn btn-link fs-3 p-0 text-start" href="#{{-- route('password.request') --}}" style="color: #C19F5F">
-                                            {{ __('Pamiršai slaptažodį?') }}
-                                        </a>
-                                    @endif
+{{--                                    @if (Route::has('password.request'))--}}
+{{--                                        <a class="btn btn-link fs-3 p-0 text-start" href="{{ route('password.request') }}" style="color: #C19F5F">--}}
+{{--                                            {{ __('Pamiršai slaptažodį?') }}--}}
+{{--                                        </a>--}}
+{{--                                    @endif--}}
                             </div>
                         </form>
                     </div>

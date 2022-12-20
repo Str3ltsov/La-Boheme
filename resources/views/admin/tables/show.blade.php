@@ -29,6 +29,7 @@
                             </div>
                         </div>
                     </div>
+                    <div class="w-100 bg-dark" style="height: 1px"></div>
                     <div class="p-4 w-100">
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h4 class="m-1">{{ __('Stalos Id') }}: {{ $table->id ?? '?'}}</h4>

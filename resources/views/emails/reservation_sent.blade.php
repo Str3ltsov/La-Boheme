@@ -9,5 +9,5 @@
     3. Paspausti šią nuorodą.
 
     Pagarbiai,
-    reservacijos@laboheme.lt
+    info@laboheme.lt
 @endcomponent

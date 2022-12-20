@@ -22,15 +22,15 @@ class ReservationForm extends Component
         $this->session = $session;
     }
 
-    public array $employees = [];
+    //public array $employees = [];
     public int $currentStep = 1;
     public array $startTimes = [];
     public array $endTimes = [];
     public bool $isChecked = false;
 
-    public function mount(SessionManager $session)
+    public function mount()
     {
-        $this->employees = $this->service->getRandomEmployees();
+        //$this->employees = $this->service->getRandomEmployees();
     }
 
     /*
@@ -252,7 +252,7 @@ class ReservationForm extends Component
             $this->employee_bartender
         );*/
 
-        $this->service->createReservationEmployees($reservation, $this->employees);
+        //$this->service->createReservationEmployees($reservation, $this->employees);
 
         /*
          * Send email
@@ -283,7 +283,7 @@ class ReservationForm extends Component
             ->with([
                 'steps' => $this->steps(),
                 'reservationTypes' => $this->service->getReservationTypes(),
-                'employees' => $this->employees
+                //'employees' => $this->employees
             ]);
     }
 }

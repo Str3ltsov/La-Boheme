@@ -25,10 +25,10 @@ class DatabaseSeeder extends Seeder
             HallUnavailableDateTimeSeeder::class,
             ClientSeeder::class,
             ReservationStatusSeeder::class,
-            ReservationSeeder::class,
+            //ReservationSeeder::class,
             ReservationQuestionSeeder::class,
             EmployeeTypeSeeder::class,
-            EmployeeSeeder::class
+            //EmployeeSeeder::class
         ]);
     }
 }

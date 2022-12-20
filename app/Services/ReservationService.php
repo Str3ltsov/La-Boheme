@@ -347,12 +347,12 @@ class ReservationService implements ReservationServiceInterface
         return 0;
     }
 
-    public function sendReservationSentEmail(object $client): ?SentMessage
+    public function sendReservationSentEmail(object $client): SentMessage|RedirectResponse
     {
         if (class_exists(ReservationSentMail::class)) {
             return Mail::to($client->email)->send(new ReservationSentMail());
         }
 
-        return null;
+        return back()->with('error', __('Nepavyko išsiųsti laiško'));
     }
 }

@@ -29,11 +29,12 @@
                             </div>
                         </div>
                     </div>
+                    <div class="w-100 bg-dark" style="height: 1px"></div>
                     <div class="p-4 w-100">
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h4 class="m-1">{{ __('Salės Id') }}: {{ $hall->id ?? '?'}}</h4>
                             <div class="d-flex" style="gap: 10px">
-                                <a class="fw-bold fs-4 text-center" href="{{ route('admin.halls') }}"
+                                <a class="fw-bold fs-4 text-center btn-hover-focus" href="{{ route('admin.halls') }}"
                                    style="background-color: #C19F5F; border: none; border-radius: 17.5px;
                                color: black; padding: 10px 0; width: 150px; text-decoration: none">
                                     {{ __('Atgal') }}

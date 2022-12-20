@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'La-Boheme'),
+    'name' => env('APP_NAME', 'Rezervuok - La Boheme'),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://pug.lt'),
+    'url' => env('APP_URL', 'https://rezervuok.laboheme.lt'),
 
     'asset_url' => env('ASSET_URL'),
 

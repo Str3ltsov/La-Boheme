@@ -52,15 +52,17 @@
 
         async function fetchUnavailableDates(reservationType) {
             try {
-                const response =
-                    await fetch(`{{ env('APP_URL') }}:{{ env('APP_PORT') }}/api/v1/unavailable_dates/${reservationType}`)
+                const response = await fetch(`{{ env('APP_URL') }}/api/v1/unavailable_dates/${reservationType}`)
                 const unavailableDates = await response.json();
 
                 showDatePicker();
                 getDatePickerWithUnavailableDates(unavailableDates);
             }
-            catch (error) {
-                console.error(error);
+            catch ({ status, message }) {
+                console.log(`
+                    Status: ${status}\n
+                    Message: ${message}
+                `);
             }
         }
 

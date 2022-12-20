@@ -4,5 +4,5 @@
     {{ $message }}
 
     Pagarbiai,
-    reservacijos@laboheme.lt
+    info@laboheme.lt
 @endcomponent
