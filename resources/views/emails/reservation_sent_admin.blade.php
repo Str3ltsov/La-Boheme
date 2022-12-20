@@ -1,7 +1,7 @@
 @component('mail::message')
     Sveiki,
 
-    {{ $message }}
+    Išsiųstas naujas paslaugų užsakymas.
 
     Pagarbiai,
     {{ env('MAIL_FROM_ADDRESS') }}

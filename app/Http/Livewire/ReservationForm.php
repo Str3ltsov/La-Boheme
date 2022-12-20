@@ -27,6 +27,10 @@ class ReservationForm extends Component
     public array $startTimes = [];
     public array $endTimes = [];
     public bool $isChecked = false;
+    public array $adminEmails = [
+        'info' => 'info@laboheme.lt',
+        'events' => 'events@laboheme.lt'
+    ];
 
     public function mount()
     {
@@ -255,9 +259,11 @@ class ReservationForm extends Component
         //$this->service->createReservationEmployees($reservation, $this->employees);
 
         /*
-         * Send email
+         * Send emails
          */
-        //$this->service->sendReservationSentEmail($client);
+        $this->service->sendReservationSentEmail($client);
+        $this->service->sendReservationSentForAdminsEmail($this->adminEmails['info']);
+        $this->service->sendReservationSentForAdminsEmail($this->adminEmails['events']);
 
         /*
          * Add reservation type cookie

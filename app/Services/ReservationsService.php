@@ -150,7 +150,7 @@ class ReservationsService implements ReservationsServiceInterface
         return $client;
     }
 
-    public function sendReservationStatusUpdateEmail(object $client, int $reservationStatus): ?SentMessage
+    public function sendReservationStatusUpdateEmail(object $client, int $reservationStatus): SentMessage|RedirectResponse
     {
         $statusMessage = [
             'acceptedStatus' => 'Jūsų paslaugos statusas tapo patvirtintas.',
@@ -164,18 +164,18 @@ class ReservationsService implements ReservationsServiceInterface
                     new ReservationStatusUpdateMail($statusMessage['acceptedStatus'])
                 );
             }
-            else if ($reservationStatus == Constants::reservationStatusInDeclined) {
+            if ($reservationStatus == Constants::reservationStatusInDeclined) {
                 return Mail::to($client->email)->send(
                     new ReservationStatusUpdateMail($statusMessage['declinedStatus'])
                 );
             }
-            else if ($reservationStatus == Constants::reservationStatusInAbsent) {
+            if ($reservationStatus == Constants::reservationStatusInAbsent) {
                 return Mail::to($client->email)->send(
                     new ReservationStatusUpdateMail($statusMessage['absentStatus'])
                 );
             }
         }
 
-        return null;
+        return back()->with('error', __('Nepavyko išsiųsti laiško'));
     }
 }

@@ -8,6 +8,6 @@
     2. Parašyti el. laišką info@laboheme.lt
     3. Paspausti šią nuorodą.
 
-    Pagarbiai,
-    info@laboheme.lt
+    Pagarbiai,<br/>
+    {{ env('MAIL_FROM_ADDRESS') }}
 @endcomponent
