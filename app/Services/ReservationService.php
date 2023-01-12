@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Helpers\Constants;
+use App\Mail\ReservationSentAdminMail;
 use App\Mail\ReservationSentMail;
 use App\Models\Client;
 use App\Models\Employee;
@@ -347,12 +348,22 @@ class ReservationService implements ReservationServiceInterface
         return 0;
     }
 
-    public function sendReservationSentEmail(object $client): ?SentMessage
+    public function sendReservationSentEmail(object $client): SentMessage|RedirectResponse
     {
         if (class_exists(ReservationSentMail::class)) {
             return Mail::to($client->email)->send(new ReservationSentMail());
         }
 
-        return null;
+        return back()
+            ->with('error', __('Nepavyko išsiųsti laiško el. adresui').' '.$client->email);
+    }
+
+    public function sendReservationSentForAdminsEmail(string $email): SentMessage|RedirectResponse
+    {
+        if (class_exists(ReservationSentAdminMail::class)) {
+            return Mail::to($email)->send(new ReservationSentAdminMail());
+        }
+
+        return back()->with('error', __('Nepavyko išsiųsti laiško el. adresui').' '.$email);
     }
 }

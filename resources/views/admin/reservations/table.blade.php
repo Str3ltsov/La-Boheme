@@ -35,7 +35,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td>{{ __('Nerasta rezervacijų') }}</td>
+                    <td colspan="7">{{ __('Nerasta rezervacijų') }}</td>
                 </tr>
             @endforelse
         </tbody>

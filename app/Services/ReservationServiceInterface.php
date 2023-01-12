@@ -49,5 +49,6 @@ interface ReservationServiceInterface
     : int|RedirectResponse;
     //public function getChosenEmployees($waiter, $bartender): array|RedirectResponse;
     public function createReservationEmployees(object $reservation, array $chosenEmployees): int|RedirectResponse;
-    public function sendReservationSentEmail(object $client): ?SentMessage;
+    public function sendReservationSentEmail(object $client): SentMessage|RedirectResponse;
+    public function sendReservationSentForAdminsEmail(string $email): SentMessage|RedirectResponse;
 }
