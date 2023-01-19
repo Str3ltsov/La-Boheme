@@ -2,11 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Fiztren;
 use App\Models\Table;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class TableSeeder extends Seeder
+class FiztrenSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +16,6 @@ class TableSeeder extends Seeder
      */
     public function run()
     {
-        Table::factory()->count(10)->create();
+        Fiztren::factory()->count(10)->create();
     }
 }

@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Table extends Model
+class Fiztren extends Model
 {
     use HasFactory;
 
-    public $table = 'tables';
+    public $table = 'fiztren';
 
     protected $fillable = [
         'available',

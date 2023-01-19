@@ -6,33 +6,33 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class HallUnavailableDate extends Model
+class VyrtrenUnavailableDate extends Model
 {
     use HasFactory;
 
-    public $table = 'hall_unavailable_dates';
+    public $table = 'vyrtren_unavailable_dates';
 
     protected $fillable = [
-        'hall_id',
+        'vyrtren_id',
         'unavailable_date',
         'created_at',
         'updated_at'
     ];
 
     protected $casts = [
-        'hall_id' => 'integer',
+        'vyrtren_id' => 'integer',
         'unavailable_date' => 'date',
         'created_at' => 'datetime',
         'updated_at' => 'datetime'
     ];
 
     public static array $rules = [
-        'hall_id' => 'required|integer',
+        'vyrtren_id' => 'required|integer',
         'unavailable_date' => 'required|date_format:Y-m-d'
     ];
 
-    public function hall(): HasOne
+    public function vyrtren(): HasOne
     {
-        return $this->hasOne(Hall::class, 'id', 'hall_id');
+        return $this->hasOne(Hall::class, 'id', 'vyrtren_id');
     }
 }

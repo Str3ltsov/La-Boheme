@@ -17,12 +17,16 @@ class ReservationTypeSeeder extends Seeder
     {
         DB::table('reservation_types')->insert([
             [
-                'name' => 'Staliuko rezervacija',
-                'description' => '(iki 8 žmonų)'
+                'name' => 'Vyr. trenerio',
+                'description' => 'Vyriausias treneris'
             ],
             [
-                'name' => 'Šventės užsakymas',
-                'description' => '(daugiau nei 8 žmonės)'
+                'name' => 'Vyr. trenerio assistento',
+                'description' => 'Vyriausio trenerio asistentas'
+            ],
+            [
+            'name' => 'Vyr. trenerio assistento',
+            'description' => 'Vyriausio trenerio asistentas'
             ]
         ]);
     }

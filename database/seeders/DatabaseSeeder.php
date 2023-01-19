@@ -17,10 +17,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdminSeeder::class,
             ReservationTypeSeeder::class,
-            TableSeeder::class,
+            FiztrenSeeder::class,
             TableUnavailableDateSeeder::class,
             TableUnavailableDateTimeSeeder::class,
-            HallSeeder::class,
+            VyrtrenSeeder::class,
+            VyrtrenassSeeder::class,
             HallUnavailableDateSeeder::class,
             HallUnavailableDateTimeSeeder::class,
             ClientSeeder::class,

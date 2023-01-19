@@ -3,8 +3,8 @@
 namespace App\Services;
 
 use App\Models\Table;
-use App\Models\TableUnavailableDate;
-use App\Models\TableUnavailableDateTime;
+use App\Models\VyrtrenassUnavailableDate;
+use App\Models\VyrtrenassUnavailableDateTime;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 
@@ -16,9 +16,9 @@ interface TablesServiceInterface
     public function deleteTable(int $id): int|RedirectResponse;
     public function getTableUnavailableDates(int $id): Collection|RedirectResponse;
     public function getTableUnavailableDateTimes(int $id): Collection|RedirectResponse;
-    public function createTableUnavailableDate(object $request): TableUnavailableDate|RedirectResponse;
+    public function createTableUnavailableDate(object $request): VyrtrenassUnavailableDate|RedirectResponse;
     public function deleteTableUnavailableDate(object $request): int|RedirectResponse;
     public function createTableUnavailableDateTime(object $request)
-    : TableUnavailableDateTime|RedirectResponse;
+    : VyrtrenassUnavailableDateTime|RedirectResponse;
     public function deleteTableUnavailableDateTime(object $request): int|RedirectResponse;
 }

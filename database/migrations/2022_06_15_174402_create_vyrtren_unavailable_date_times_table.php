@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('table_unavailable_dates', function (Blueprint $table) {
+        Schema::create('vyrtren_unavailable_date_times', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('table_id')->constrained();
-            $table->date('unavailable_date');
+            $table->foreignId('vyrtren_id')->references("id")->on("vyrtren");
+            $table->datetime('unavailable_datetime');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_unavailable_dates');
+        Schema::dropIfExists('vyrtren_unavailable_date_times');
     }
 };

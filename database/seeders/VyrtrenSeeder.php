@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Hall;
+use App\Models\Vyrtren;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class HallSeeder extends Seeder
+class VyrtrenSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class HallSeeder extends Seeder
      */
     public function run()
     {
-        Hall::factory()->count(2)->create();
+        Vyrtren::factory()->count(2)->create();
     }
 }

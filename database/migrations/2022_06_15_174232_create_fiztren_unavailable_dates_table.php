@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('halls', function (Blueprint $table) {
+        Schema::create('fiztren_unavailable_dates', function (Blueprint $table) {
             $table->id();
-            $table->boolean('available')->default(true);
+            $table->foreignId('fiztren_id')->references("id")->on("fiztren");
+            $table->date('unavailable_date');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('halls');
+        Schema::dropIfExists('fiztren_unavailable_dates');
     }
 };

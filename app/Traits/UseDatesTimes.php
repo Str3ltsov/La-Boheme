@@ -5,8 +5,8 @@ namespace App\Traits;
 use App\Helpers\Constants;
 use App\Models\HallUnavailableDate;
 use App\Models\HallUnavailableDateTime;
-use App\Models\TableUnavailableDate;
-use App\Models\TableUnavailableDateTime;
+use App\Models\VyrtrenassUnavailableDate;
+use App\Models\VyrtrenassUnavailableDateTime;
 use Illuminate\Http\RedirectResponse;
 
 trait UseDatesTimes {
@@ -111,7 +111,7 @@ trait UseDatesTimes {
      */
     private function getTableUnavailableDateTimesArray(): array|RedirectResponse
     {
-        $tableUnavailableDateTimes = TableUnavailableDateTime::select('unavailable_datetime')
+        $tableUnavailableDateTimes = VyrtrenassUnavailableDateTime::select('unavailable_datetime')
             ->get();
 
         if ($tableUnavailableDateTimes->isEmpty()) {
@@ -170,7 +170,7 @@ trait UseDatesTimes {
      */
     private function getTableUnavailableDatesArray(): array|RedirectResponse
     {
-        $tableUnavailableDates = TableUnavailableDate::select('unavailable_date')
+        $tableUnavailableDates = VyrtrenassUnavailableDate::select('unavailable_date')
             ->get();
 
         if ($tableUnavailableDates->isEmpty()) {

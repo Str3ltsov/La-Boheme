@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Models\TableUnavailableDate;
+use App\Models\VyrtrenassUnavailableDate;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateTableUnavailableDateRequest extends FormRequest
@@ -24,6 +24,6 @@ class CreateTableUnavailableDateRequest extends FormRequest
      */
     public function rules()
     {
-        return TableUnavailableDate::$rules;
+        return VyrtrenassUnavailableDate::$rules;
     }
 }

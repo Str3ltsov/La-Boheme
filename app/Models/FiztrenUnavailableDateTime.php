@@ -6,33 +6,33 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class TableUnavailableDateTime extends Model
+class FiztrenUnavailableDateTime extends Model
 {
     use HasFactory;
 
-    public $table = 'table_unavailable_date_times';
+    public $table = 'fiztren_unavailable_date_times';
 
     protected $fillable = [
-        'table_id',
+        'fiztren_id',
         'unavailable_datetime',
         'created_at',
         'updated_at'
     ];
 
     protected $casts = [
-        'table_id' => 'integer',
+        'fiztren_id' => 'integer',
         'unavailable_datetime' => 'datetime',
         'created_at' => 'datetime',
         'updated_at' => 'datetime'
     ];
 
     public static array $rules = [
-        'table_id' => 'required|integer',
+        'fiztren_id' => 'required|integer',
         'unavailable_datetime' => 'required|date',
     ];
 
-    public function table(): HasOne
+    public function fiztren(): HasOne
     {
-        return $this->hasOne(Table::class, 'id', 'table_id');
+        return $this->hasOne(Fiztren::class, 'id', 'fiztren_id');
     }
 }

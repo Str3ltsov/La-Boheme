@@ -18,8 +18,9 @@ class Reservation extends Model
         'number_of_people',
         'rating',
         'reservation_type_id',
-        'table_id',
-        'hall_id',
+        "fiztren_id",
+         "vyrtren_id",
+         "vyrtrenass",
         'client_id',
         'reservation_status_id',
         'created_at',
@@ -32,8 +33,9 @@ class Reservation extends Model
         'number_of_people' => 'integer',
         'rating' => 'double',
         'reservation_type_id' => 'integer',
-        'table_id' => 'integer',
-        'hall_id' => 'integer',
+        "fiztren_id",
+        "vyrtren_id",
+        "vyrtrenass",
         'client_id' => 'integer',
         'reservation_status_id' => 'integer',
         'created_at' => 'datetime',
@@ -46,8 +48,9 @@ class Reservation extends Model
         'number_of_people' => 'required|integer',
         'rating' => 'nullable|numeric',
         'reservation_type_id' => 'required|integer',
-        'table_id' => 'nullable|integer',
-        'hall_id' => 'nullable|integer',
+        "fiztren_id",
+        "vyrtren_id",
+        "vyrtrenass_id",
         'client_id' => 'required|integer',
         'reservation_status_id' => 'required|integer',
     ];
@@ -57,16 +60,19 @@ class Reservation extends Model
         return $this->hasOne(ReservationType::class, 'id', 'reservation_type_id');
     }
 
-    public function table(): HasOne
+    public function vyrtren(): HasOne
     {
-        return $this->hasOne(Table::class, 'id', 'table_id');
+        return $this->hasOne(Virtren::class, 'id', 'vyrtren_id');
     }
 
-    public function hall(): HasOne
+    public function vyrtrenass(): HasOne
     {
-        return $this->hasOne(Hall::class, 'id', 'hall_id');
+        return $this->hasOne(Vyrtrenass::class, 'id', 'vyrtrenass_id');
     }
-
+    public function fiztren(): HasOne
+    {
+        return $this->hasOne(Fiztren::class, 'id', 'fiztren_id');
+    }
     public function client(): HasOne
     {
         return $this->hasOne(Client::class, 'id', 'client_id');

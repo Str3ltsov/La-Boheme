@@ -3,8 +3,8 @@
 namespace App\Services;
 
 use App\Models\Table;
-use App\Models\TableUnavailableDate;
-use App\Models\TableUnavailableDateTime;
+use App\Models\VyrtrenassUnavailableDate;
+use App\Models\VyrtrenassUnavailableDateTime;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 
@@ -70,7 +70,7 @@ class TablesService implements TablesServiceInterface
 
     public function getTableUnavailableDates(int $id): Collection
     {
-        return TableUnavailableDate::select(
+        return VyrtrenassUnavailableDate::select(
             'id',
             'unavailable_date',
             'created_at',
@@ -82,7 +82,7 @@ class TablesService implements TablesServiceInterface
 
     public function getTableUnavailableDateTimes(int $id): Collection
     {
-        return TableUnavailableDateTime::select(
+        return VyrtrenassUnavailableDateTime::select(
             'id',
             'unavailable_datetime',
             'created_at',
@@ -92,9 +92,9 @@ class TablesService implements TablesServiceInterface
             ->get();
     }
 
-    public function createTableUnavailableDate(object $request): TableUnavailableDate|RedirectResponse
+    public function createTableUnavailableDate(object $request): VyrtrenassUnavailableDate|RedirectResponse
     {
-        $tableUnavailableDate = TableUnavailableDate::firstOrCreate([
+        $tableUnavailableDate = VyrtrenassUnavailableDate::firstOrCreate([
             'table_id' => $request->validated('table_id'),
             'unavailable_date' => $request->validated('unavailable_date'),
             'created_at' => now(),
@@ -114,7 +114,7 @@ class TablesService implements TablesServiceInterface
     public function deleteTableUnavailableDate(object $request): int|RedirectResponse
     {
         $id = $request->validated('unavailable_date_id');
-        $tableUnavailableDate = TableUnavailableDate::find($id);
+        $tableUnavailableDate = VyrtrenassUnavailableDate::find($id);
 
         if (empty($tableUnavailableDate)) {
             return redirect()
@@ -128,9 +128,9 @@ class TablesService implements TablesServiceInterface
     }
 
     public function createTableUnavailableDateTime(object $request)
-    : TableUnavailableDateTime|RedirectResponse
+    : VyrtrenassUnavailableDateTime|RedirectResponse
     {
-        $tableUnavailableDateTime = TableUnavailableDateTime::firstOrCreate([
+        $tableUnavailableDateTime = VyrtrenassUnavailableDateTime::firstOrCreate([
             'table_id' => $request->validated('table_id'),
             'unavailable_datetime' => $request->validated('unavailable_datetime'),
             'created_at' => now(),
@@ -150,7 +150,7 @@ class TablesService implements TablesServiceInterface
     public function deleteTableUnavailableDateTime(object $request): int|RedirectResponse
     {
         $id = $request->validated('unavailable_datetime_id');
-        $tableUnavailableDateTime = TableUnavailableDateTime::find($id);
+        $tableUnavailableDateTime = VyrtrenassUnavailableDateTime::find($id);
 
         if (empty($tableUnavailableDateTime)) {
             return redirect()

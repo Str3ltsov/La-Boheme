@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\TableUnavailableDateTime;
+use App\Models\VyrtrenassUnavailableDateTime;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,6 +15,6 @@ class TableUnavailableDateTimeSeeder extends Seeder
      */
     public function run()
     {
-        TableUnavailableDateTime::factory()->count(5)->create();
+        VyrtrenassUnavailableDateTime::factory()->count(5)->create();
     }
 }

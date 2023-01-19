@@ -3,15 +3,15 @@
 namespace Database\Factories;
 
 use App\Models\Table;
-use App\Models\TableUnavailableDateTime;
+use App\Models\VyrtrenassUnavailableDateTime;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\TableUnavailableDateTime>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\VyrtrenassUnavailableDateTime>
  */
 class TableUnavailableDateTimeFactory extends Factory
 {
-    protected $model = TableUnavailableDateTime::class;
+    protected $model = VyrtrenassUnavailableDateTime::class;
 
     public function definition()
     {
