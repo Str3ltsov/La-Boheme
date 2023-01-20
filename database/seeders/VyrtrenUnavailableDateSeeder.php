@@ -2,11 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Fiztren;
+use App\Models\VyrtrenassUnavailableDate;
+use App\Models\VyrtrenUnavailableDate;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class FiztrenSeeder extends Seeder
+class VyrtrenUnavailableDateSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +16,6 @@ class FiztrenSeeder extends Seeder
      */
     public function run()
     {
-        Fiztren::factory()->count(10)->create();
+        VyrtrenUnavailableDate::factory()->count(5)->create();
     }
 }

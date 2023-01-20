@@ -28,8 +28,8 @@ class ReservationForm extends Component
     public array $endTimes = [];
     public bool $isChecked = false;
     public array $adminEmails = [
-        'info' => 'info@laboheme.lt',
-        'events' => 'events@laboheme.lt'
+        'info' => 'info@mbm2pries2.lt',
+        'events' => 'events@mbm2pries2.lt'
     ];
 
     public function mount()
@@ -88,9 +88,9 @@ class ReservationForm extends Component
             'time_from.required' => 'Nepasirinkote pradžios laiko',
             'time_to.required' => 'Nepasirinkote pabaigos laiko',
             'number_of_people.required' => 'Nenurodėte žmonių skaičiaus',
-            'number_of_people.min' => $this->reservation_type == Constants::reservationTypeHall
-                ? 'Žmonių skaičius turi būti didesnis negu 8'
-                : 'Žmonių skaičius turi būti bent 1',
+//            'number_of_people.min' => $this->reservation_type == Constants::reservationTypeHall
+//                ? 'Žmonių skaičius turi būti didesnis negu 8'
+//                : 'Žmonių skaičius turi būti bent 1',
             'number_of_people.max' => 'Žmonių skaičius turi būti mažesnis negu 8',
             'question_one_answer.required' => 'Reikalaujama užpildyti',
             'question_two_answer.required' => 'Reikalaujama užpildyti',
@@ -106,6 +106,17 @@ class ReservationForm extends Component
         ];
     }
 
+    public function chooseDesc($rezType) {
+        switch ($rezType){
+            case Constants::reservationTypeVyrtren :
+                return 'Padėkite mums geriau išrinkti Jums vyriausią trenerį';
+            case Constants::reservationTypeVyrtrenass :
+                return "Padėkite mums geriau išrinkti Jums vyriausio trenerio asistentą";
+            case Constants::reservationTypeFiztren:
+                return 'Padėkite mums geriau išrinkti Jums fizinio pasirengimo trenerį';;
+        }
+    }
+
     protected function steps()
     {
         return [
@@ -113,25 +124,23 @@ class ReservationForm extends Component
                 'step' => '1/5',
                 'description' => 'Pasirinkite paslaugos tipą ir datą'
             ],
+//            2 => [
+//                'step' => '2/5',
+//                'description' => 'Pasirinkti laiką ir žmonių skaičių'
+//            ],
             2 => [
-                'step' => '2/5',
-                'description' => 'Pasirinkti laiką ir žmonių skaičių'
-            ],
-            3 => [
                 'step' => '3/5',
-                'description' => $this->reservation_type == Constants::reservationTypeTable
-                    ? 'Padėkite mums labiau pasiruošti Jūsų apsilankymui'
-                    : 'Prašome pateikti informaciją apie planuojamą renginį, kad galėtume Jums pateikti kuo aiškesnį pasiūlymą'
+                'description' => $this->chooseDesc($this->reservation_type),
             ],
             /*4 => [
                 'step' => '4/6',
                 'description' => 'Pasirinkite jūs aptarnausiantį personalą'
             ],*/
-            4 => [
+            3 => [
                 'step' => '4/5',
                 'description' => 'Užpildykite kontaktinę informaciją'
             ],
-            5 => [
+            4 => [
                 'step' => '5/5',
                 'description' => 'Mano rezervacija'
             ]

@@ -9,7 +9,7 @@ class Vyrtrenass extends Model
 {
     use HasFactory;
 
-    public $table = 'fiztrenass';
+    public $table = 'vyrtrenass';
 
     protected $fillable = [
         'available',

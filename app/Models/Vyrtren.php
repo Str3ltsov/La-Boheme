@@ -9,7 +9,7 @@ class Vyrtren extends Model
 {
     use HasFactory;
 
-    public $table = 'vytren';
+    public $table = 'vyrtren';
 
     protected $fillable = [
         'available',

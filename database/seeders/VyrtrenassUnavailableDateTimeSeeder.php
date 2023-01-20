@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\HallUnavailableDate;
+use App\Models\VyrtrenassUnavailableDateTime;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class HallUnavailableDateSeeder extends Seeder
+class VyrtrenassUnavailableDateTimeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class HallUnavailableDateSeeder extends Seeder
      */
     public function run()
     {
-        HallUnavailableDate::factory()->count(5)->create();
+        VyrtrenassUnavailableDateTime::factory()->count(5)->create();
     }
 }

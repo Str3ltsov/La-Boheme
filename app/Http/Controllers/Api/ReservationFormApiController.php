@@ -19,6 +19,11 @@ class ReservationFormApiController extends Controller
     {
         try {
             $unavailableDates = $this->getUnavailableDatesByReservationType($id);
+            //proverka, esli pustye daty, daty brat tolko vperiod
+            if (!is_array($unavailableDates) || empty($unavailableDates) ){
+                $newUnavailableDates = array();
+            }
+
             $newUnavailableDates = $this->getUnavailableDates($unavailableDates);
 
             return response()

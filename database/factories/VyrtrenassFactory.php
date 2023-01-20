@@ -3,19 +3,20 @@
 namespace Database\Factories;
 
 use App\Models\Table;
+use App\Models\Vyrtrenass;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Table>
  */
-class TableFactory extends Factory
+class VyrtrenassFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Table::class;
+    protected $model = Vyrtrenass::class;
 
     /**
      * Define the model's default state.

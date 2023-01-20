@@ -2,16 +2,16 @@
 
 namespace Database\Factories;
 
-use App\Models\Hall;
-use App\Models\HallUnavailableDate;
+use App\Models\Vyrtren;
+use App\Models\VyrtrenUnavailableDate;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\HallUnavailableDate>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\VyrtrenassUnavailableDate>
  */
-class HallUnavailableDateFactory extends Factory
+class VyrtrenUnavailableDateFactory extends Factory
 {
-    protected $model = HallUnavailableDate::class;
+    protected $model = VyrtrenUnavailableDate::class;
 
     public function definition()
     {
@@ -19,7 +19,7 @@ class HallUnavailableDateFactory extends Factory
         $dateTime = $faker->dateTimeThisMonth()->format('Y-m-d H:i:s');
 
         return [
-            'hall_id' => rand(1, count(Hall::all())),
+            'vyrtren_id' => rand(1, count(Vyrtren::all())),
             'unavailable_date' => now()
                 ->addDays(rand(1, 30)),
             'created_at' => $dateTime,

@@ -25,8 +25,8 @@ class ReservationTypeSeeder extends Seeder
                 'description' => 'Vyriausio trenerio asistentas'
             ],
             [
-            'name' => 'Vyr. trenerio assistento',
-            'description' => 'Vyriausio trenerio asistentas'
+            'name' => 'Fizinio pasirengimo trenerio',
+            'description' => 'Fizinis pasirengimo treneris trenerio asistentas'
             ]
         ]);
     }

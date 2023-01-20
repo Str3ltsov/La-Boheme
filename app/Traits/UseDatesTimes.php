@@ -3,8 +3,10 @@
 namespace App\Traits;
 
 use App\Helpers\Constants;
-use App\Models\HallUnavailableDate;
-use App\Models\HallUnavailableDateTime;
+use App\Models\FiztrenUnavailableDateTime;
+use App\Models\FiztrenUnavailableDate;
+use App\Models\VyrtrenUnavailableDate;
+use App\Models\VyrtrenUnavailableDateTime;
 use App\Models\VyrtrenassUnavailableDate;
 use App\Models\VyrtrenassUnavailableDateTime;
 use Illuminate\Http\RedirectResponse;
@@ -87,7 +89,7 @@ trait UseDatesTimes {
         $endTimes = [];
 
         if (in_array($startTime, $startTimes)) {
-            if ($startTime < '21:00' && $reservationType == Constants::reservationTypeTable) {
+            if ($startTime < '21:00' && $reservationType == Constants::reservationTypeVyrtren) {
                 $endTimes = array_slice($startTimes, array_search($startTime, $startTimes) + 1, 10);
             }
             else {
@@ -109,43 +111,72 @@ trait UseDatesTimes {
     /*
      * Retrieve unavailable times depending on the date selected
      */
-    private function getTableUnavailableDateTimesArray(): array|RedirectResponse
-    {
-        $tableUnavailableDateTimes = VyrtrenassUnavailableDateTime::select('unavailable_datetime')
-            ->get();
+//    private function getTableUnavailableDateTimesArray(): array|RedirectResponse
+//    {
+//        $vyrtrenUnavailableDateTimes = VyrtrenassUnavailableDateTime::select('unavailable_datetime')
+//            ->get();
+//
+//        if ($vyrtrenUnavailableDateTimes->isEmpty()) {
+//            return redirect()
+//                ->route('livewire.reservation')
+//                ->with('error', __('Failed to get table unavailable date times'));
+//        }
+//
+//        return $vyrtrenUnavailableDateTimes->toArray();
+//    }
+//
+//    private function getHallUnavailableDateTimesArray(): array|RedirectResponse
+//    {
+//        $hallUnavailableDateTimes = HallUnavailableDateTime::select('unavailable_datetime')
+//            ->get();
+//
+//        if ($hallUnavailableDateTimes->isEmpty()) {
+//            return redirect()
+//                ->route('livewire.reservation')
+//                ->with('error', __('Failed to get hall unavailable date times'));
+//        }
+//
+//        return $hallUnavailableDateTimes->toArray();
+//    }
 
-        if ($tableUnavailableDateTimes->isEmpty()) {
+    public function getUnavailableDateTimesArray($type): array|RedirectResponse
+    {
+        $unavailableDateTimes = [];
+        switch ($type) {
+            case Constants::reservationTypeVyrtren:
+                $unavailableDateTimes = VyrtrenUnavailableDateTime::select('unavailable_datetime')
+                    ->get();
+                break;
+
+            case Constants::reservationTypeVyrtrenass:
+                $unavailableDateTimes = VyrtrenassUnavailableDateTime::select('unavailable_datetime')
+                    ->get();
+                break;
+            case Constants::reservationTypeFiztren:
+                $unavailableDateTimes = FiztrenUnavailableDateTime::select('unavailable_datetime')
+                    ->get();
+                break;
+        }
+//        $unavailableDateTimes = VyrtrenassUnavailableDateTime::select('unavailable_datetime')
+//            ->get();
+
+        if ($unavailableDateTimes->isEmpty()) {
             return redirect()
                 ->route('livewire.reservation')
                 ->with('error', __('Failed to get table unavailable date times'));
         }
 
-        return $tableUnavailableDateTimes->toArray();
+        return $unavailableDateTimes->toArray();
     }
-
-    private function getHallUnavailableDateTimesArray(): array|RedirectResponse
-    {
-        $hallUnavailableDateTimes = HallUnavailableDateTime::select('unavailable_datetime')
-            ->get();
-
-        if ($hallUnavailableDateTimes->isEmpty()) {
-            return redirect()
-                ->route('livewire.reservation')
-                ->with('error', __('Failed to get hall unavailable date times'));
-        }
-
-        return $hallUnavailableDateTimes->toArray();
-    }
-
     public function getUnavailableDateTimesByReservationType(int $reservationType): array|RedirectResponse
     {
-        if ($reservationType == Constants::reservationTypeTable) {
-            return $this->getTableUnavailableDateTimesArray();
-        }
-        else if ($reservationType == Constants::reservationTypeHall) {
-            return $this->getHallUnavailableDateTimesArray();
-        }
-
+//        if ($reservationType == Constants::reservationTypeTable) {
+//            return $this->getTableUnavailableDateTimesArray();
+//        }
+//        else if ($reservationType == Constants::reservationTypeHall) {
+//            return $this->getHallUnavailableDateTimesArray();
+//        }
+        return $this->getUnavailableDateTimesArray($reservationType);
         return redirect()
             ->route('livewire.reservation')
             ->with('error', __('Failed to get unavailable date times by reservation type'));
@@ -168,42 +199,67 @@ trait UseDatesTimes {
     /*
      * Retrieve unavailable dates depending on the reservation type selected
      */
-    private function getTableUnavailableDatesArray(): array|RedirectResponse
-    {
-        $tableUnavailableDates = VyrtrenassUnavailableDate::select('unavailable_date')
-            ->get();
+//    private function getTableUnavailableDatesArray(): array|RedirectResponse
+//    {
+//        $tableUnavailableDates = VyrtrenassUnavailableDate::select('unavailable_date')
+//            ->get();
+//
+//        if ($tableUnavailableDates->isEmpty()) {
+//            return redirect()
+//                ->route('livewire.reservation')
+//                ->with('error', __('Failed to get table unavailable dates'));
+//        }
+//
+//        return $tableUnavailableDates->toArray();
+//    }
+//
+//    private function getHallUnavailableDatesArray(): array|RedirectResponse
+//    {
+//        $hallUnavailableDates = HallUnavailableDate::select('unavailable_date')
+//            ->get();
+//
+//        if ($hallUnavailableDates->isEmpty()) {
+//            return redirect()
+//                ->route('livewire.reservation')
+//                ->with('error', __('Failed to get hall unavailable dates'));
+//        }
+//
+//        return $hallUnavailableDates->toArray();
+//    }
 
-        if ($tableUnavailableDates->isEmpty()) {
+    private function getUnavailableDatesArray($type): array|RedirectResponse
+    {
+//        $tableUnavailableDates = VyrtrenassUnavailableDate::select('unavailable_date')
+//            ->get();
+    $unavailableDates = [];
+    switch ($type) {
+
+        case Constants::reservationTypeVyrtren:
+            $unavailableDates = VyrtrenUnavailableDate::select('unavailable_date')
+                ->get();
+            break;
+
+        case Constants::reservationTypeVyrtrenass:
+            $unavailableDates = VyrtrenassUnavailableDate::select('unavailable_date')
+                ->get();
+            break;
+        case Constants::reservationTypeFiztren:
+            $unavailableDates = FiztrenUnavailableDate::select('unavailable_date')
+                ->get();
+            break;
+    }
+        if ($unavailableDates->isEmpty()) {
             return redirect()
                 ->route('livewire.reservation')
                 ->with('error', __('Failed to get table unavailable dates'));
         }
 
-        return $tableUnavailableDates->toArray();
-    }
-
-    private function getHallUnavailableDatesArray(): array|RedirectResponse
-    {
-        $hallUnavailableDates = HallUnavailableDate::select('unavailable_date')
-            ->get();
-
-        if ($hallUnavailableDates->isEmpty()) {
-            return redirect()
-                ->route('livewire.reservation')
-                ->with('error', __('Failed to get hall unavailable dates'));
-        }
-
-        return $hallUnavailableDates->toArray();
+        return $unavailableDates->toArray();
     }
 
     public function getUnavailableDatesByReservationType(int $reservationType): array|RedirectResponse
     {
-        if ($reservationType == Constants::reservationTypeTable) {
-            return $this->getTableUnavailableDatesArray();
-        }
-        else if ($reservationType == Constants::reservationTypeHall) {
-            return $this->getHallUnavailableDatesArray();
-        }
+         return $this->getUnavailableDatesArray($reservationType);
 
         return redirect()
             ->route('livewire.reservation')
