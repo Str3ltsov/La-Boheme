@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Models\HallUnavailableDate;
+use App\Models\VyrtrenUnavailableDate;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateHallUnavailableDateRequest extends FormRequest
+class CreateFiztrenUnavailableDateRequest extends FormRequest
 {
     public function authorize()
     {
@@ -14,6 +14,6 @@ class CreateHallUnavailableDateRequest extends FormRequest
 
     public function rules()
     {
-        return HallUnavailableDate::$rules;
+        return VyrtrenUnavailableDate::$rules;
     }
 }

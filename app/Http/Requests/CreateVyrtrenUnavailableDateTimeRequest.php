@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\VyrtrenUnavailableDateTime;
 use Illuminate\Foundation\Http\FormRequest;
 
-class DeleteTableUnavailableDateRequest extends FormRequest
+class CreateVytrenUnavailableDateTimeRequest extends FormRequest
 {
     public function authorize()
     {
@@ -13,6 +14,6 @@ class DeleteTableUnavailableDateRequest extends FormRequest
 
     public function rules()
     {
-        return ['unavailable_date_id' => 'required|integer'];
+        return VyrtrenUnavailableDateTime::$rules;
     }
 }

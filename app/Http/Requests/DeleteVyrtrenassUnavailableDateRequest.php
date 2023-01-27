@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DeleteTableUnavailableDateTimeRequest extends FormRequest
+class DeleteVyrtrenassUnavailableDateRequest extends FormRequest
 {
     public function authorize()
     {
@@ -13,6 +13,6 @@ class DeleteTableUnavailableDateTimeRequest extends FormRequest
 
     public function rules()
     {
-        return ['unavailable_datetime_id' => 'required|integer'];
+        return ['unavailable_date_id' => 'required|integer'];
     }
 }

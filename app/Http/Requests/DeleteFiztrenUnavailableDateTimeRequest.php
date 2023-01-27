@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Models\HallUnavailableDateTime;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateHallUnavailableDateTimeRequest extends FormRequest
+class DeleteFiztrenUnavailableDateTimeRequest extends FormRequest
 {
     public function authorize()
     {
@@ -14,6 +13,6 @@ class CreateHallUnavailableDateTimeRequest extends FormRequest
 
     public function rules()
     {
-        return HallUnavailableDateTime::$rules;
+        return ['unavailable_datetime_id' => 'required|integer'];
     }
 }

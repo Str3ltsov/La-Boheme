@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DeleteHallUnavailableDateTimeRequest extends FormRequest
+class DeleteVyrtrenassUnavailableDateTimeRequest extends FormRequest
 {
     public function authorize()
     {
