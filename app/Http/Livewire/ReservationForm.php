@@ -54,15 +54,16 @@ class ReservationForm extends Component
     public $question_one_answer;
     public $question_two_answer;
     public $question_three_answer;
-    public $question_four_answer = [];
-    public $question_five_answer;
-    public $question_six_answer;
+    public $question_four_answer;
+//    public $question_four_answer = [];
+//    public $question_five_answer;
+//    public $question_six_answer;
     public $question_one_comment;
     public $question_two_comment;
     public $question_three_comment;
     public $question_four_comment;
-    public $question_five_comment;
-    public $question_six_comment;
+//    public $question_five_comment;
+//    public $question_six_comment;
     /*
      * Step 4 properties
      */
@@ -87,17 +88,17 @@ class ReservationForm extends Component
             'date.required' => 'Nepasirinkote datos',
             'time_from.required' => 'Nepasirinkote pradžios laiko',
             'time_to.required' => 'Nepasirinkote pabaigos laiko',
-            'number_of_people.required' => 'Nenurodėte žmonių skaičiaus',
+//            'number_of_people.required' => 'Nenurodėte žmonių skaičiaus',
 //            'number_of_people.min' => $this->reservation_type == Constants::reservationTypeHall
 //                ? 'Žmonių skaičius turi būti didesnis negu 8'
 //                : 'Žmonių skaičius turi būti bent 1',
-            'number_of_people.max' => 'Žmonių skaičius turi būti mažesnis negu 8',
+//            'number_of_people.max' => 'Žmonių skaičius turi būti mažesnis negu 8',
             'question_one_answer.required' => 'Reikalaujama užpildyti',
             'question_two_answer.required' => 'Reikalaujama užpildyti',
             'question_three_answer.required' => 'Reikalaujama užpildyti',
             'question_four_answer.required' => 'Reikalaujama užpildyti',
-            'question_five_answer.required' => 'Reikalaujama užpildyti',
-            'question_six_answer.required' => 'Reikalaujama užpildyti',
+//            'question_five_answer.required' => 'Reikalaujama užpildyti',
+//            'question_six_answer.required' => 'Reikalaujama užpildyti',
             'client_name.required' => 'Nenurodėte vardo',
             'client_email.required' => 'Nenurodėte el. pašto adreso',
             'client_email.email' => 'Nurodėte negaliojantį el. pašto adreso formatu',
@@ -124,11 +125,11 @@ class ReservationForm extends Component
                 'step' => '1/5',
                 'description' => 'Pasirinkite paslaugos tipą ir datą'
             ],
-//            2 => [
-//                'step' => '2/5',
-//                'description' => 'Pasirinkti laiką ir žmonių skaičių'
-//            ],
             2 => [
+                'step' => '2/5',
+                'description' => 'Pasirinkti laiką ir žmonių skaičių'
+            ],
+            3 => [
                 'step' => '3/5',
                 'description' => $this->chooseDesc($this->reservation_type),
             ],
@@ -136,11 +137,11 @@ class ReservationForm extends Component
                 'step' => '4/6',
                 'description' => 'Pasirinkite jūs aptarnausiantį personalą'
             ],*/
-            3 => [
+            4 => [
                 'step' => '4/5',
                 'description' => 'Užpildykite kontaktinę informaciją'
             ],
-            4 => [
+            5 => [
                 'step' => '5/5',
                 'description' => 'Mano rezervacija'
             ]
@@ -218,20 +219,23 @@ class ReservationForm extends Component
         /*
          * Creating instance of reservation
          */
-        $tables = $this->service->getTables();
-        $halls = $this->service->getHalls();
+        $vyrtren = $this->service->getVyrtren();
+        $vyrtrenass = $this->service->getVyrtrenass();
+        $fiztren = $this->service->getFiztren();
         $startDatetime = $this->combineDateAndTime($this->date, $this->time_from);
         $endDatetime = $this->combineDateAndTime($this->date, $this->time_to);
         $reservation = $this->service->createReservation(
-            $tables,
-            $halls,
+            $vyrtren,
+            $vyrtrenass,
+            $fiztren,
             $startDatetime,
             $endDatetime,
-            $this->number_of_people,
+//            $this->number_of_people,
             $this->reservation_type,
             $client
         );
-
+//        if ($this->reservation_type !== Constants::reservationTypeVyrtren)
+//            unset($answersAndComments[4]);
         /*
          * Creating instances of reservation question answers
          */
@@ -245,12 +249,14 @@ class ReservationForm extends Component
             $this->question_three_comment,
             $this->question_four_answer,
             $this->question_four_comment,
-            $this->question_five_answer,
-            $this->question_five_comment,
-            $this->question_six_answer,
-            $this->question_six_comment,
+//            $this->question_five_answer,
+//            $this->question_five_comment,
+//            $this->question_six_answer,
+//            $this->question_six_comment,
         );
 
+        if ($this->reservation_type !== Constants::reservationTypeVyrtren)
+            unset($answersAndComments[4]);
         $this->service->createReservationQuestionAnswers(
             $reservation,
             $questions,
@@ -270,9 +276,9 @@ class ReservationForm extends Component
         /*
          * Send emails
          */
-        $this->service->sendReservationSentEmail($client);
-        $this->service->sendReservationSentForAdminsEmail($this->adminEmails['info']);
-        $this->service->sendReservationSentForAdminsEmail($this->adminEmails['events']);
+//        $this->service->sendReservationSentEmail($client);
+//        $this->service->sendReservationSentForAdminsEmail($this->adminEmails['info']);
+//        $this->service->sendReservationSentForAdminsEmail($this->adminEmails['events']);
 
         /*
          * Add reservation type cookie

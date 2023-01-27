@@ -32,24 +32,24 @@ align-items-center my-3 text-light fade-in" style="gap: 10px">
         <span class="text-danger fs-5 fade-in">{{ $message }}</span>
         @enderror
     </div>
-    <div class="d-flex flex-column justify-content-center align-items-center w-100 p-2">
-        <input
-            wire:model.lazy="number_of_people" type="number"
-            @if ($reservation_type == \App\Helpers\Constants::reservationTypeTable)
-                min="1"
-                max="8"
-            @else
-                min="9"
-            @endif
-            class="form-control fs-4 bg-transparent text-light py-2 ps-3 input-hover-focus"
-            name="number_of_people" style="border-radius: 15px; min-width: 300px; max-width: 400px;"
-            placeholder="{{ __('Žmonių skaičius') }}"
-            oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"
-        >
-        @error('number_of_people')
-            <span class="text-danger fs-5 fade-in">{{ $message }}</span>
-        @enderror
-    </div>
+{{--    <div class="d-flex flex-column justify-content-center align-items-center w-100 p-2">--}}
+{{--        <input--}}
+{{--            wire:model.lazy="number_of_people" type="number"--}}
+{{--            @if ($reservation_type == \App\Helpers\Constants::reservationTypeVyrtren)--}}
+{{--                min="1"--}}
+{{--                max="8"--}}
+{{--            @else--}}
+{{--                min="9"--}}
+{{--            @endif--}}
+{{--            class="form-control fs-4 bg-transparent text-light py-2 ps-3 input-hover-focus"--}}
+{{--            name="number_of_people" style="border-radius: 15px; min-width: 300px; max-width: 400px;"--}}
+{{--            placeholder="{{ __('Žmonių skaičius') }}"--}}
+{{--            oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"--}}
+{{--        >--}}
+{{--        @error('number_of_people')--}}
+{{--            <span class="text-danger fs-5 fade-in">{{ $message }}</span>--}}
+{{--        @enderror--}}
+{{--    </div>--}}
     <div class="d-flex justify-content-end mt-2 mt-md-4" style="gap: 20px;">
         <button wire:click="goToPreviousStep" type="button" class="fw-bold fs-4 btn-hover-focus"
                 style="background-color: #BBBBBB; border: none; border-radius: 17.5px;

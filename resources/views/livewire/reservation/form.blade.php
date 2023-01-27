@@ -95,7 +95,7 @@
                 'question_two_answer',
                 'question_three_answer',
                 'question_four_answer',
-                'question_five_answer'
+                // 'question_five_answer'
             ];
 
             for (let i = 0; i < radioButtons.length; i++) {

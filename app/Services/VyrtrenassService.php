@@ -2,73 +2,75 @@
 
 namespace App\Services;
 
-use App\Models\Table;
+
+use App\Models\Vyrtren;
+use App\Models\Vyrtrenass;
 use App\Models\VyrtrenassUnavailableDate;
 use App\Models\VyrtrenassUnavailableDateTime;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 
-class TablesService implements TablesServiceInterface
+class VyrtrenassService implements VyrtrenassServiceInterface
 {
-    public function getTables(): Collection|RedirectResponse
+    public function getVyrtrens(): Collection|RedirectResponse
     {
-        $tables = Table::all();
+        $vyrtrenasss = Vyrtrenass::all();
 
-        if ($tables->isEmpty()) {
+        if ($vyrtrenasss->isEmpty()) {
             return redirect()
-                ->route('admin.tables')
-                ->with('error', __('Failed to get tables'));
+                ->route('admin.vyrtrenasss')
+                ->with('error', __('Failed to get vyrtrenasss'));
         }
 
-        return $tables;
+        return $vyrtrenasss;
     }
 
-    public function createTable(): Table|RedirectResponse
+    public function createVyrtrens(): Vyrtrenass|RedirectResponse
     {
-        $table = Table::create([
+        $vyrtrenass = Vyrtrenass::create([
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
-        if ($table->wasRecentlyCreated) {
-            return $table;
+        if ($vyrtrenass->wasRecentlyCreated) {
+            return $vyrtrenass;
         }
         else {
             return redirect()
-                ->route('admin.tables')
-                ->with('error', __('Failed to create a new table'));
+                ->route('admin.vyrtrenasss')
+                ->with('error', __('Failed to create a new vyrtrenass'));
         }
     }
 
-    public function getTableDetails(int $id): Table|RedirectResponse
+    public function getVyrtrenassDetails(int $id): Vyrtrenass|RedirectResponse
     {
-        $table = Table::find($id);
+        $vyrtrenass = Vyrtrenass::find($id);
 
-        if (empty($table)) {
+        if (empty($vyrtrenass)) {
             return redirect()
-                ->route('admin.tables')
-                ->with('error', __('Failed to get table by id'));
+                ->route('admin.vyrtrenasss')
+                ->with('error', __('Failed to get vyrtrenass by id'));
         }
 
-        return $table;
+        return $vyrtrenass;
     }
 
-    public function deleteTable(int $id): int|RedirectResponse
+    public function deleteVyrtrenass(int $id): int|RedirectResponse
     {
-        $table = Table::find($id);
+        $vyrtrenass = Vyrtrenass::find($id);
 
-        if (empty($table)) {
+        if (empty($vyrtrenass)) {
             return redirect()
-                ->route('admin.tables.show')
-                ->with('error', __('Failed to get table by id'));
+                ->route('admin.vyrtrenass.show')
+                ->with('error', __('Failed to get vyrtrenass by id'));
         }
 
-        $table->delete();
+        $vyrtrenass->delete();
 
         return 0;
     }
 
-    public function getTableUnavailableDates(int $id): Collection
+    public function getVyrtrenassUnavailableDates(int $id): Collection
     {
         return VyrtrenassUnavailableDate::select(
             'id',
@@ -76,11 +78,11 @@ class TablesService implements TablesServiceInterface
             'created_at',
             'updated_at'
         )
-            ->where('table_id', $id)
+            ->where('vyrtrenass_id', $id)
             ->get();
     }
 
-    public function getTableUnavailableDateTimes(int $id): Collection
+    public function getVyrtrenassUnavailableDateTimes(int $id): Collection
     {
         return VyrtrenassUnavailableDateTime::select(
             'id',
@@ -88,77 +90,77 @@ class TablesService implements TablesServiceInterface
             'created_at',
             'updated_at'
         )
-            ->where('table_id', $id)
+            ->where('vyrtrenass_id', $id)
             ->get();
     }
 
-    public function createTableUnavailableDate(object $request): VyrtrenassUnavailableDate|RedirectResponse
+    public function createVyrtrenassUnavailableDate(object $request): VyrtrenassUnavailableDate|RedirectResponse
     {
-        $tableUnavailableDate = VyrtrenassUnavailableDate::firstOrCreate([
-            'table_id' => $request->validated('table_id'),
+        $vyrtrenassUnavailableDate = VyrtrenassUnavailableDate::firstOrCreate([
+            'vyrtrenass_id' => $request->validated('vyrtrenass_id'),
             'unavailable_date' => $request->validated('unavailable_date'),
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
-        if ($tableUnavailableDate->wasRecentlyCreated) {
-            return $tableUnavailableDate;
+        if ($vyrtrenassUnavailableDate->wasRecentlyCreated) {
+            return $vyrtrenassUnavailableDate;
         }
         else {
             return redirect()
-                ->route('admin.tables.show')
+                ->route('admin.vyrtrenasss.show')
                 ->with('error', __('Failed to create a new date'));
         }
     }
 
-    public function deleteTableUnavailableDate(object $request): int|RedirectResponse
+    public function deleteVyrtrenassUnavailableDate(object $request): int|RedirectResponse
     {
         $id = $request->validated('unavailable_date_id');
-        $tableUnavailableDate = VyrtrenassUnavailableDate::find($id);
+        $vyrtrenassUnavailableDate = VyrtrenassUnavailableDate::find($id);
 
-        if (empty($tableUnavailableDate)) {
+        if (empty($vyrtrenassUnavailableDate)) {
             return redirect()
                 ->back()
-                ->with('error', __('Failed to get table unavailable date by id'));
+                ->with('error', __('Failed to get vyrtrenass unavailable date by id'));
         }
 
-        $tableUnavailableDate->delete();
+        $vyrtrenassUnavailableDate->delete();
 
         return 0;
     }
 
-    public function createTableUnavailableDateTime(object $request)
+    public function createVyrtrenassUnavailableDateTime(object $request)
     : VyrtrenassUnavailableDateTime|RedirectResponse
     {
-        $tableUnavailableDateTime = VyrtrenassUnavailableDateTime::firstOrCreate([
-            'table_id' => $request->validated('table_id'),
+        $vyrtrenassUnavailableDateTime = VyrtrenassUnavailableDateTime::firstOrCreate([
+            'vyrtrenass_id' => $request->validated('vyrtrenass_id'),
             'unavailable_datetime' => $request->validated('unavailable_datetime'),
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
-        if ($tableUnavailableDateTime->wasRecentlyCreated) {
-            return $tableUnavailableDateTime;
+        if ($vyrtrenassUnavailableDateTime->wasRecentlyCreated) {
+            return $vyrtrenassUnavailableDateTime;
         }
         else {
             return redirect()
-                ->route('admin.tables.show')
+                ->route('admin.vyrtrenasss.show')
                 ->with('error', __('Failed to create a new date time'));
         }
     }
 
-    public function deleteTableUnavailableDateTime(object $request): int|RedirectResponse
+    public function deleteVyrtrenassUnavailableDateTime(object $request): int|RedirectResponse
     {
         $id = $request->validated('unavailable_datetime_id');
-        $tableUnavailableDateTime = VyrtrenassUnavailableDateTime::find($id);
+        $vyrtrenassUnavailableDateTime = VyrtrenassUnavailableDateTime::find($id);
 
-        if (empty($tableUnavailableDateTime)) {
+        if (empty($vyrtrenassUnavailableDateTime)) {
             return redirect()
                 ->back()
-                ->with('error', __('Failed to get table unavailable date time by id'));
+                ->with('error', __('Failed to get vyrtrenass unavailable date time by id'));
         }
 
-        $tableUnavailableDateTime->delete();
+        $vyrtrenassUnavailableDateTime->delete();
 
         return 0;
     }

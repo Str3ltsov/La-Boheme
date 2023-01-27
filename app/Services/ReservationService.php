@@ -7,6 +7,7 @@ use App\Mail\ReservationSentAdminMail;
 use App\Mail\ReservationSentMail;
 use App\Models\Client;
 use App\Models\Employee;
+use App\Models\Fiztren;
 use App\Models\Hall;
 use App\Models\Reservation;
 use App\Models\ReservationEmployee;
@@ -15,6 +16,8 @@ use App\Models\ReservationQuestionAnswer;
 use App\Models\ReservationType;
 use App\Models\Table;
 
+use App\Models\Vyrtren;
+use App\Models\Vyrtrenass;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Mail;
@@ -25,30 +28,30 @@ use Illuminate\Support\Facades\Cookie;
 
 class ReservationService implements ReservationServiceInterface
 {
-    public function getRandomEmployees(): array|RedirectResponse
-    {
-        $waiter = Employee::select('id' ,'name')
-            ->where('employee_type_id', Constants::employeeTypeWaiter)
-            ->inRandomOrder()
-            ->first();
-        $bartender = Employee::select('id' ,'name')
-            ->where('employee_type_id', Constants::employeeTypeBartender)
-            ->inRandomOrder()
-            ->first();
-
-        $randomEmployees = [
-            Constants::employeeTypeWaiter => $waiter,
-            Constants::employeeTypeBartender => $bartender
-        ];
-
-        if (empty($randomEmployees)) {
-            return redirect()
-                ->route('livewire.reservation')
-                ->with('error', __('Nepavyko gauti atsitiktinių darbuotojų'));
-        }
-
-        return $randomEmployees;
-    }
+//    public function getRandomEmployees(): array|RedirectResponse
+//    {
+////        $waiter = Employee::select('id' ,'name')
+////            ->where('employee_type_id', Constants::employeeTypeWaiter)
+////            ->inRandomOrder()
+////            ->first();
+////        $bartender = Employee::select('id' ,'name')
+////            ->where('employee_type_id', Constants::employeeTypeBartender)
+////            ->inRandomOrder()
+////            ->first();
+////
+////        $randomEmployees = [
+////            Constants::employeeTypeWaiter => $waiter,
+////            Constants::employeeTypeBartender => $bartender
+////        ];
+//
+//        if (empty($randomEmployees)) {
+//            return redirect()
+//                ->route('livewire.reservation')
+//                ->with('error', __('Nepavyko gauti atsitiktinių darbuotojų'));
+//        }
+//
+//        return $randomEmployees;
+//    }
 
     public function getReservationTypes(): Collection|RedirectResponse
     {
@@ -73,16 +76,16 @@ class ReservationService implements ReservationServiceInterface
             2 => [
                 'time_from' => ['required'],
                 'time_to' => ['required'],
-                'number_of_people' => $reservationType == Constants::reservationTypeHall ?
-                    ['required', 'numeric', 'min:9'] : ['required', 'numeric', 'min:1', 'max:8']
+//                'number_of_people' => $reservationType == Constants::reservationTypeHall ?
+//                    ['required', 'numeric', 'min:9'] : ['required', 'numeric', 'min:1', 'max:8']
             ],
             3 => [
-                'question_one_answer' => $reservationType == Constants::reservationTypeHall ? ['required'] : [],
-                'question_two_answer' => $reservationType == Constants::reservationTypeHall ? ['required'] : [],
-                'question_three_answer' => $reservationType == Constants::reservationTypeHall ? ['required'] : [],
-                'question_four_answer' => $reservationType == Constants::reservationTypeHall ? ['required'] : [],
-                'question_five_answer' => $reservationType == Constants::reservationTypeHall ? ['required'] : [],
-                'question_six_answer' => $reservationType == Constants::reservationTypeHall ? ['required'] : []
+                'question_one_answer' => ['required'],
+                'question_two_answer' => ['required'],
+                'question_three_answer' => ['required'],
+                'question_four_answer' => $reservationType == Constants::reservationTypeVyrtren ? ['required'] : [],
+//                'question_five_answer' => $reservationType == Constants::reservationTypeVyrtren ? ['required'] : [],
+//                'question_six_answer' => $reservationType == Constants::reservationTypeVyrtren ? ['required'] : []
             ],
             /*4 => [
                 'employee_waiter' => ['required'],
@@ -110,18 +113,18 @@ class ReservationService implements ReservationServiceInterface
         return collect($validationRules)->collapse()->toArray();
     }
 
-    public function getEmployees(): Collection|RedirectResponse
-    {
-        $employees = Employee::all();
-
-        if ($employees->isEmpty()) {
-            return redirect()
-                ->route('livewire.reservation')
-                ->with('error', __('Failed to get employees'));
-        }
-
-        return $employees;
-    }
+//    public function getEmployees(): Collection|RedirectResponse
+//    {
+//        $employees = Employee::all();
+//
+//        if ($employees->isEmpty()) {
+//            return redirect()
+//                ->route('livewire.reservation')
+//                ->with('error', __('Failed to get employees'));
+//        }
+//
+//        return $employees;
+//    }
 
     /*public function getEmployeeNames(int $waiter, int $bartender): array
     {
@@ -156,46 +159,84 @@ class ReservationService implements ReservationServiceInterface
         }
     }
 
-    public function getTables(): Collection|RedirectResponse
+    public function getVyrtren(): Collection|RedirectResponse
     {
-        $tables = Table::select('id')->where('available', true)->get();
+        $tables = Vyrtren::select('id')->where('available', true)->get();
 
         if ($tables->isEmpty()) {
             return redirect()
                 ->route('livewire.reservation')
-                ->with('error', __('Nepavyko gauti stalų'));
+                ->with('error', __('Nepavyko gauti vyr. trenerių'));
         }
 
         return $tables;
     }
 
-    public function getHalls(): Collection|RedirectResponse
+    public function getVyrtrenass(): Collection|RedirectResponse
     {
-        $halls = Hall::select('id')->where('available', true)->get();
+        $tables = Vyrtrenass::select('id')->where('available', true)->get();
 
-        if ($halls->isEmpty()) {
+        if ($tables->isEmpty()) {
             return redirect()
                 ->route('livewire.reservation')
-                ->with('error', __('Nepavyko gauti salių'));
+                ->with('error', __('Nepavyko gauti vyr. trenerių asistentų'));
         }
 
-        return $halls;
+        return $tables;
     }
 
+    public function getFiztren(): Collection|RedirectResponse
+    {
+        $tables = Fiztren::select('id')->where('available', true)->get();
+
+        if ($tables->isEmpty()) {
+            return redirect()
+                ->route('livewire.reservation')
+                ->with('error', __('Nepavyko gauti vyr. trenerių asistentų'));
+        }
+
+        return $tables;
+    }
+
+//    public function getHalls(): Collection|RedirectResponse
+//    {
+//        $halls = Hall::select('id')->where('available', true)->get();
+//
+//        if ($halls->isEmpty()) {
+//            return redirect()
+//                ->route('livewire.reservation')
+//                ->with('error', __('Nepavyko gauti salių'));
+//        }
+//
+//        return $halls;
+//    }
+
     public function createReservation(
-        mixed $tables, mixed $halls, string $startDatetime, string $endDatetime, int $numberOfPeople, int $reservationType, object $client
+        mixed $vyrtren, mixed $vyrtrenass, mixed $fiztren, string $startDatetime, string $endDatetime, int $reservationType, object $client
     ): Reservation|RedirectResponse
     {
-        $randomTable = rand(1, count($tables));
-        $randomHalls = rand(1, count($halls));
+
+
+        $randomVyrtren = rand(1, count($vyrtren));
+        $randomVyrtrenass = rand(1, count($vyrtrenass));
+        $randomFiztren = rand(1, count($fiztren));
+//        $randomHalls = rand(1, count($halls));
+
+//        dd($vyrtren);
+//        dd($reservationType);
+////        dd($randomFiztren);
+//        exit();
+
 
         $reservation = Reservation::create([
             'start_datetime' => $startDatetime,
             'end_datetime' => $endDatetime,
-            'number_of_people' => $numberOfPeople,
             'reservation_type_id' => $reservationType,
-            'table_id' => $reservationType == Constants::reservationTypeTable ? $randomTable : NULL,
-            'hall_id' => $reservationType == Constants::reservationTypeHall ? $randomHalls : NULL,
+            "fiztren_id" => $reservationType == Constants::reservationTypeFiztren ? $randomFiztren : NULL,
+            "vyrtren_id" => $reservationType == Constants::reservationTypeVyrtren ? $randomVyrtren : NULL,
+            "vyrtrenass_id" => $reservationType == Constants::reservationTypeVyrtrenass ? $randomVyrtrenass : NULL,
+
+
             'client_id' => $client->id,
             'reservation_status_id' => Constants::reservationStatusInProgress,
             'created_at' => now(),
@@ -221,10 +262,10 @@ class ReservationService implements ReservationServiceInterface
         mixed $questionThreeComment,
         mixed $questionFourAnswer,
         mixed $questionFourComment,
-        mixed $questionFiveAnswer,
-        mixed $questionFiveComment,
-        mixed $questionSixAnswer,
-        mixed $questionSixComment
+//        mixed $questionFiveAnswer,
+//        mixed $questionFiveComment,
+//        mixed $questionSixAnswer,
+//        mixed $questionSixComment
     ): array|RedirectResponse
     {
         $answersAndComments = [
@@ -244,14 +285,14 @@ class ReservationService implements ReservationServiceInterface
                 'answer' => $questionFourAnswer,
                 'comment' => $questionFourComment
             ],
-            5 => [
-                'answer' => $questionFiveAnswer,
-                'comment' => $questionFiveComment
-            ],
-            6 => [
-                'answer' => $questionSixAnswer,
-                'comment' => $questionSixComment
-            ]
+//            5 => [
+//                'answer' => $questionFiveAnswer,
+//                'comment' => $questionFiveComment
+//            ],
+//            6 => [
+//                'answer' => $questionSixAnswer,
+//                'comment' => $questionSixComment
+//            ]
         ];
 
         if (empty($answersAndComments)) {
@@ -288,15 +329,18 @@ class ReservationService implements ReservationServiceInterface
     public function createReservationQuestionAnswers(object $reservation, mixed $questions, array $answersAndComments)
     : int|RedirectResponse
     {
-        for ($i = 1; $i <= count($questions); $i++) {
+
+//        dd($questions);
+//        exit();
+//        dd($reservation)
+
+
+//        for ($i = 1; $i <= count($questions); $i++) {
+        foreach ($answersAndComments as $i => $v) {
             $reservationQuestionAnswer = ReservationQuestionAnswer::create([
                 'reservation_question_id' => $questions[$i]['id'],
                 'reservation_id' => $reservation->id,
-                'answer' => $i == 4
-                    && $reservation->reservation_type_id == Constants::reservationTypeHall
-                    ? implode(', ', $answersAndComments[$i]['answer'])
-                    : $answersAndComments[$i]['answer']
-                    ?? __('Neatsakė'),
+                'answer' => $answersAndComments[$i]['answer'],
                 'comment' => $answersAndComments[$i]['comment'] ?? NULL,
                 'created_at' => now(),
                 'updated_at' => now()
@@ -308,6 +352,21 @@ class ReservationService implements ReservationServiceInterface
                     ->with('error', __('Nepavyko sukurti rezervacijos klausimo atsakymų'));
             }
         }
+
+//        array:3 [▼ // app/Services/ReservationService.php:328
+//  1 => array:2 [▼
+//    "answer" => "Įgudžių lavinimo trenerio"
+//    "comment" => null
+//  ]
+//  2 => array:2 [▼
+//    "answer" => "5-10"
+//    "comment" => null
+//  ]
+//  3 => array:2 [▼
+//    "answer" => "75000-100000 EUR"
+//    "comment" => null
+//  ]
+//]
 
         return 0;
     }
@@ -351,7 +410,7 @@ class ReservationService implements ReservationServiceInterface
     public function sendReservationSentEmail(object $client): SentMessage|RedirectResponse
     {
         if (class_exists(ReservationSentMail::class)) {
-            return Mail::to($client->email)->send(new ReservationSentMail());
+                Mail::to($client->email)->send(new ReservationSentMail());
         }
 
         return back()

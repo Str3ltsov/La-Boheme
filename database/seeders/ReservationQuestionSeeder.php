@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Helpers\Constants;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -17,55 +18,57 @@ class ReservationQuestionSeeder extends Seeder
     {
         DB::table('reservation_questions')->insert([
             /*
-             * "Staliuko rezervacija" questions.
+             * Vyr tren
              */
             [
-                'question' => 'Vaikiška kėdutė',
-                'reservation_type_id' => 1
+                'question' => 'Kokio amžiaus vyr. trenerio ieškote?',
+                'reservation_type_id' => Constants::reservationTypeVyrtren
             ],
             [
-                'question' => 'Veganai',
-                'reservation_type_id' => 1
+                'question' => 'Kokios patirties vyr. trenerio ieškote?',
+                'reservation_type_id' => Constants::reservationTypeVyrtren
             ],
             [
-                'question' => 'Gliuteno netoleruojantys',
-                'reservation_type_id' => 1
+                'question' => 'Kiek asistentų gali pasirinkti vyr. treneris?',
+                'reservation_type_id' => Constants::reservationTypeVyrtren
             ],
             [
-                'question' => 'Ar reikalinga vaikiška kėdutė?',
-                'reservation_type_id' => 1
+                'question' => 'Koks numatytas metinis biudžetas treneriui?',
+                'reservation_type_id' => Constants::reservationTypeVyrtren
             ],
-            /*[
-                'question' => 'Ar svečių tarpe yra vaikų, kuriems reiktų siūlyti „vaikiškus“ patiekalus?',
-                'reservation_type_id' => 1
-            ],*/
             /*
-             * "Šventės organizavimo paslauga" questions.
+             * Vyr tren ass
              */
+
             [
-                'question' => 'Rezervacijos pobūdis:',
-                'reservation_type_id' => 2
+                'question' => 'Kokio trenerio asistento ieškote?',
+                'reservation_type_id' => Constants::reservationTypeVyrtrenass
             ],
             [
-                'question' => 'Ar meniu turėtų sudaryti 3 patiekalų vakarienė (pirmasis patiekalas, karštasis patiekalas, desertas)?',
-                'reservation_type_id' => 2
+                'question' => 'Kokios patirties trenerio asistento ieškote?',
+                'reservation_type_id' => Constants::reservationTypeVyrtrenass
             ],
             [
-                'question' => 'Pažymėkite renginio tipą',
-                'reservation_type_id' => 2
+                'question' => 'Koks numatytas metinis biudžetas trenerio asistentui?',
+                'reservation_type_id' => Constants::reservationTypeVyrtrenass
+            ],
+            /*
+             * Fiz tren
+             */
+
+            [
+                'question' => 'Kokio fizinio rengimo trenerio ieškote?',
+                'reservation_type_id' => Constants::reservationTypeFiztren
             ],
             [
-                'question' => 'Kokius gėrimus pasiūlyti Jūsų renginiui?',
-                'reservation_type_id' => 2
+                'question' => 'Ar fizinio rengimo treneriui reikės dirbti su jaunimo komandomis?',
+                'reservation_type_id' => Constants::reservationTypeFiztren
             ],
             [
-                'question' => 'Ar svečių tarpe bus veganų ar tam tikrų produktų netoleruojančių žmonių?',
-                'reservation_type_id' => 2
+                'question' => 'Koks numatytas metinis biudžetas treneriui?',
+                'reservation_type_id' => Constants::reservationTypeFiztren
             ],
-            [
-                'question' => 'Ar svečių tarpe yra vaikų, kuriems reiktų siūlyti „vaikiškus“ patiekalus?',
-                'reservation_type_id' => 2
-            ]
+
         ]);
     }
 }

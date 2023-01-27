@@ -14,9 +14,11 @@
                     <div class="d-flex flex-column justify-content-center align-items-start my-3 fs-5">
                         <div class="d-flex flex-column" style="gap: 10px;">
                             <p class="m-0" style="line-height: 2">
-                                @if (session()->get('reservationType') == \App\Helpers\Constants::reservationTypeTable)
+                                @if (session()->get('reservationType') == \App\Helpers\Constants::reservationTypeVyrtren)
                                     {{ __('Netrukus el.paštu gausite rezervacijos patvirtinimą. Jeigu norėtumėte iš anksto paruošto stalo ar suderinti meniu, kreipkitės telefonu +37067354366 arba el. paštu events@laboheme.lt') }}
-                                @elseif (session()->get('reservationType') == \App\Helpers\Constants::reservationTypeHall)
+                                @elseif (session()->get('reservationType') == \App\Helpers\Constants::reservationTypeVyrtrenass)
+                                    {{ __('Ačiū, kad domitės miūsų pasluagomis. Per 1-2 darbo dienas pateiksime Jums pasiūlymą. Toliau kylančius klausimus galėsite derinti telefonu +37067354366 arba el. paštu events@laboheme.lt') }}
+                                @elseif (session()->get('reservationType') == \App\Helpers\Constants::reservationTypeFiztren)
                                     {{ __('Ačiū, kad domitės miūsų pasluagomis. Per 1-2 darbo dienas pateiksime Jums pasiūlymą. Toliau kylančius klausimus galėsite derinti telefonu +37067354366 arba el. paštu events@laboheme.lt') }}
                                 @endif
                             </p>

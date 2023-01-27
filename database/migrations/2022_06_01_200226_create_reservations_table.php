@@ -17,12 +17,12 @@ return new class extends Migration
             $table->id();
             $table->datetime('start_datetime');
             $table->datetime('end_datetime')->nullable(true);
-            $table->integer('number_of_people');
+//            $table->integer('number_of_people');
             $table->double('rating')->nullable(true);
             $table->foreignId('reservation_type_id')->constrained();
-            $table->foreignId("fiztren_id")->references("id")->on("fiztren");
-            $table->foreignId("vyrtren_id")->references("id")->on("vyrtren");
-            $table->foreignId("vyrtrenass_id")->references("id")->on("vyrtrenass");
+            $table->foreignId("fiztren_id")->nullable(true)->references("id")->on("fiztren");
+            $table->foreignId("vyrtren_id")->nullable(true)->references("id")->on("vyrtren");
+            $table->foreignId("vyrtrenass_id")->nullable(true)->references("id")->on("vyrtrenass");
 //            $table->foreignId("vyrtren_id")->constrained();
 //            $table->foreignId("vyrtrenass_id")->constrained();
 

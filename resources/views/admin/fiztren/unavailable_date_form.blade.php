@@ -1,8 +1,8 @@
 {!! Form::open([
-    'route' => ['admin.halls.createUnavailableDate', $hall->id],
+    'route' => ['admin.fiztren.createUnavailableDate', $hall->id],
     'method' => 'post'
     ]) !!}
-    <input type="hidden" name="hall_id" value="{{ $hall->id }}">
+    <input type="hidden" name="fiztren_id" value="{{ $hall->id }}">
     <div class="w-100 d-flex align-items-center my-3">
         <label for="unavailable_date" class="form-label w-25 fs-4">{{ __('Data') }}:</label>
         <input

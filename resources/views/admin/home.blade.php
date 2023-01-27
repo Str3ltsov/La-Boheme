@@ -22,15 +22,20 @@
                            color: #C19F5F; padding: 10px 0; width: 160px; text-decoration: none">
                             {{ __('Reservacijos') }}
                         </a>
-                        <a class="fw-bold fs-3 bg-black bg-opacity-50" href="{{ route('admin.tables') }}"
+                        <a class="fw-bold fs-3 bg-black bg-opacity-50" href="{{ route('admin.vyrtrens') }}"
                            style="border: 1px solid #C19F5F; border-radius: 17.5px;
                            color: #C19F5F; padding: 10px 0; width: 160px; text-decoration: none">
-                            {{ __('Stalai') }}
+                            {{ __('Vyriausi treneriai') }}
                         </a>
-                        <a class="fw-bold fs-3 bg-black bg-opacity-50" href="{{ route('admin.halls') }}"
+                        <a class="fw-bold fs-3 bg-black bg-opacity-50" href="{{ route('admin.vyrtrenasss') }}"
                            style="border: 1px solid #C19F5F; border-radius: 17.5px;
                            color: #C19F5F; padding: 10px 0; width: 160px; text-decoration: none">
-                            {{ __('Salės') }}
+                            {{ __('Vyriausių trenerių asistentai') }}
+                        </a>
+                        <a class="fw-bold fs-3 bg-black bg-opacity-50" href="{{ route('admin.fiztrens') }}"
+                           style="border: 1px solid #C19F5F; border-radius: 17.5px;
+                           color: #C19F5F; padding: 10px 0; width: 160px; text-decoration: none">
+                            {{ __('Fizinio rengimo treneriai') }}
                         </a>
                     </div>
                     <h1>

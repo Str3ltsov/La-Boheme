@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Models\VyrtrenUnavailableDateTime;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateVytrenUnavailableDateTimeRequest extends FormRequest
+class CreateVyrtrenUnavailableDateTimeRequest extends FormRequest
 {
     public function authorize()
     {

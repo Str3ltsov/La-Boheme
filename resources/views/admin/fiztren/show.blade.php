@@ -2,9 +2,10 @@
 
 @section('content')
     <div>
-        <div class="d-flex flex-column justify-content-center align-items-center text-center p-5" style="height: 300px; gap: 10px">
+        <div class="d-flex flex-column justify-content-center align-items-center text-center p-5"
+             style="height: 300px; gap: 10px">
             <h1 class="text-light" id="cormorant">{{ __('Administratoriaus paskyra') }}</h1>
-            <h1 class="text-light" id="cormorant">{{ __('Salės') }}</h1>
+            <h1 class="text-light" id="cormorant">{{ __('Fizinio aktyvumo treneriai') }}</h1>
         </div>
         <img src="/images/grunge-dark-temp.png" alt="grunge-dark-temp"
              style="width: 100%; display: flex; align-items: flex-end">
@@ -18,14 +19,15 @@
                         @include('flash_message')
                     </div>
                     <div class="p-4 w-100">
-                        <div class="d-flex flex-lg-row flex-column justify-content-center align-items-center my-3" style="gap: 15px">
+                        <div class="d-flex flex-lg-row flex-column justify-content-center align-items-center my-3"
+                             style="gap: 15px">
                             <div class="d-flex flex-column w-100 my-3">
                                 <h4>{{ __('Sukurti nepasiekiamą datą') }}</h4>
-                                @include('admin.halls.unavailable_date_form')
+                                @include('admin.fiztren.unavailable_date_form')
                             </div>
                             <div class="d-flex flex-column w-100 my-3">
                                 <h4>{{ __('Sukurti nepasiekiamos datos laiką') }}</h4>
-                                @include('admin.halls.unavailable_datetime_form')
+                                @include('admin.fiztren.unavailable_datetime_form')
                             </div>
                         </div>
                     </div>
@@ -34,21 +36,22 @@
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h4 class="m-1">{{ __('Salės Id') }}: {{ $hall->id ?? '?'}}</h4>
                             <div class="d-flex" style="gap: 10px">
-                                <a class="fw-bold fs-4 text-center btn-hover-focus" href="{{ route('admin.halls') }}"
+                                <a class="fw-bold fs-4 text-center btn-hover-focus" href="{{ route('admin.fiztren') }}"
                                    style="background-color: #C19F5F; border: none; border-radius: 17.5px;
                                color: black; padding: 10px 0; width: 150px; text-decoration: none">
                                     {{ __('Atgal') }}
                                 </a>
                             </div>
                         </div>
-                        <div class="d-flex flex-lg-row flex-column justify-content-center align-items-start my-3" style="gap: 15px">
+                        <div class="d-flex flex-lg-row flex-column justify-content-center align-items-start my-3"
+                             style="gap: 15px">
                             <div class="d-flex flex-column w-100">
                                 <h4 class="m-1">{{ __('Nepasiekiamos datos laikai') }}</h4>
-                                @include('admin.halls.unavailable_dates')
+                                @include('admin.fiztren.unavailable_dates')
                             </div>
                             <div class="d-flex flex-column w-100">
                                 <h4 class="m-1">{{ __('Nepasiekiamos datos laikai') }}</h4>
-                                @include('admin.halls.unavailable_datetimes')
+                                @include('admin.fiztren.unavailable_datetimes')
                             </div>
                         </div>
                     </div>

@@ -16,7 +16,7 @@
                 <td class="w-25" >{{ $unavailable_datetime->updated_at ?? null}}</td>
                 <td class="w-auto">
                     {!! Form::open([
-                        'route' => ['admin.tables.deleteUnavailableDateTime', $table->id],
+                        'route' => ['admin.vyrtrens.deleteUnavailableDateTime', $table->id],
                         'method' => 'delete'
                         ]) !!}
                         {{ Form::hidden('unavailable_datetime_id', $unavailable_datetime->id) }}

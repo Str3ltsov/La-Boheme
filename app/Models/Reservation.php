@@ -20,7 +20,7 @@ class Reservation extends Model
         'reservation_type_id',
         "fiztren_id",
          "vyrtren_id",
-         "vyrtrenass",
+         "vyrtrenass_id",
         'client_id',
         'reservation_status_id',
         'created_at',

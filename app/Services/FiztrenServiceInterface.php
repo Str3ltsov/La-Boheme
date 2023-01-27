@@ -2,22 +2,22 @@
 
 namespace App\Services;
 
-use App\Models\Hall;
-use App\Models\HallUnavailableDate;
-use App\Models\HallUnavailableDateTime;
+use App\Models\Fiztren;
+use App\Models\FiztrenUnavailableDate;
+use App\Models\FiztrenUnavailableDateTime;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 
-interface HallsServiceInterface
+interface FiztrenServiceInterface
 {
-    public function getHalls(): Collection|RedirectResponse;
-    public function createHall(): Hall|RedirectResponse;
-    public function getHallDetails(int $id): Hall|RedirectResponse;
-    public function deleteHall(int $id): int|RedirectResponse;
-    public function getHallUnavailableDates(int $id): Collection|RedirectResponse;
-    public function createHallUnavailableDate(object $request): HallUnavailableDate|RedirectResponse;
-    public function deleteHallUnavailableDate(object $request): int|RedirectResponse;
-    public function getHallUnavailableDateTimes(int $id): Collection|RedirectResponse;
-    public function createHallUnavailableDateTime(object $request): HallUnavailableDateTime|RedirectResponse;
-    public function deleteHallUnavailableDateTime(object $request): int|RedirectResponse;
+    public function getFiztrens(): Collection|RedirectResponse;
+    public function createFiztren(): Fiztren|RedirectResponse;
+    public function getFiztrenDetails(int $id): Fiztren|RedirectResponse;
+    public function deleteFiztren(int $id): int|RedirectResponse;
+    public function getFiztrenUnavailableDates(int $id): Collection|RedirectResponse;
+    public function createFiztrenUnavailableDate(object $request): FiztrenUnavailableDate|RedirectResponse;
+    public function deleteFiztrenUnavailableDate(object $request): int|RedirectResponse;
+    public function getFiztrenUnavailableDateTimes(int $id): Collection|RedirectResponse;
+    public function createFiztrenUnavailableDateTime(object $request): FiztrenUnavailableDateTime|RedirectResponse;
+    public function deleteFiztrenUnavailableDateTime(object $request): int|RedirectResponse;
 }

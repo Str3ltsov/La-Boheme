@@ -2,14 +2,16 @@
 
 namespace App\Providers;
 
-use App\Services\HallsService;
-use App\Services\HallsServiceInterface;
+use App\Services\FiztrenService;
+use App\Services\FiztrenServiceInterface;
 use App\Services\ReservationsService;
 use App\Services\ReservationsServiceInterface;
 use App\Services\ReservationService;
 use App\Services\ReservationServiceInterface;
-use App\Services\TablesService;
-use App\Services\TablesServiceInterface;
+use App\Services\VyrtrenassService;
+use App\Services\VyrtrenassServiceInterface;
+use App\Services\VyrtrenServiceInterface;
+use App\Services\VyrtrenService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -31,12 +33,16 @@ class AppServiceProvider extends ServiceProvider
             ReservationsService::class
         );
         $this->app->bind(
-            TablesServiceInterface::class,
-            TablesService::class
+            VyrtrenassServiceInterface::class,
+            VyrtrenassService::class
         );
         $this->app->bind(
-            HallsServiceInterface::class,
-            HallsService::class
+            FiztrenServiceInterface::class,
+            FiztrenService::class
+        );
+        $this->app->bind(
+            VyrtrenServiceInterface::class,
+            VyrtrenService::class
         );
 
         //Changes public path to htdocs in production

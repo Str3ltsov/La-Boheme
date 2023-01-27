@@ -46,58 +46,83 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.authorization']], fun
             ->name('admin.reservations.updateReservationStatus');
     });
     /*
-     * Tables
+     * Vyrtrenass
      */
-    Route::group(['prefix' => 'tables'], function () {
-        Route::get('/', [Admin\TablesController::class, 'index'])
-            ->name('admin.tables');
-        Route::post('/create', [Admin\TablesController::class, 'create'])
-            ->name('admin.tables.create');
-        Route::get('/{table}', [Admin\TablesController::class, 'show'])
-            ->name('admin.tables.show');
-        Route::delete('/{table}', [Admin\TablesController::class, 'destroy'])
-            ->name('admin.tables.destroy');
+    Route::group(['prefix' => 'vyrtrenass'], function () {
+        Route::get('/', [Admin\VyrtrenassController::class, 'index'])
+            ->name('admin.vyrtrenasss');
+        Route::post('/create', [Admin\VyrtrenassController::class, 'create'])
+            ->name('admin.vyrtrenasss.create');
+        Route::get('/{vyrtrenass}', [Admin\VyrtrenassController::class, 'show'])
+            ->name('admin.vyrtrenasss.show');
+        Route::delete('/{vyrtrenass}', [Admin\VyrtrenassController::class, 'destroy'])
+            ->name('admin.vyrtrenasss.destroy');
         /*
-         * Table unavailable dates
+         * Vyrtrenass unavailable dates
          */
-        Route::post('/{table}/create_unavailable_date', [Admin\TablesController::class, 'createUnavailableDate'])
-            ->name('admin.tables.createUnavailableDate');
-        Route::delete('/{table}/delete_unavailable_date', [Admin\TablesController::class, 'deleteUnavailableDate'])
-            ->name('admin.tables.deleteUnavailableDate');
+        Route::post('/{vyrtrenass}/create_unavailable_date', [Admin\VyrtrenassController::class, 'createUnavailableDate'])
+            ->name('admin.vyrtrenasss.createUnavailableDate');
+        Route::delete('/{vyrtrenass}/delete_unavailable_date', [Admin\VyrtrenassController::class, 'deleteUnavailableDate'])
+            ->name('admin.vyrtrenasss.deleteUnavailableDate');
         /*
-         * Table unavailable date times
+         * Vyrtrenass unavailable date times
          */
-        Route::post('/{table}/create_unavailable_datetime', [Admin\TablesController::class, 'createUnavailableDateTime'])
-            ->name('admin.tables.createUnavailableDateTime');
-        Route::delete('/{table}/delete_unavailable_datetime', [Admin\TablesController::class, 'deleteUnavailableDateTime'])
-            ->name('admin.tables.deleteUnavailableDateTime');
+        Route::post('/{vyrtrenass}/create_unavailable_datetime', [Admin\VyrtrenassController::class, 'createUnavailableDateTime'])
+            ->name('admin.vyrtrenasss.createUnavailableDateTime');
+        Route::delete('/{vyrtrenass}/delete_unavailable_datetime', [Admin\VyrtrenassController::class, 'deleteUnavailableDateTime'])
+            ->name('admin.vyrtrenasss.deleteUnavailableDateTime');
+    });
+
+    Route::group(['prefix' => 'vyrtrens'], function () {
+        Route::get('/', [Admin\VyrtrenController::class, 'index'])
+            ->name('admin.vyrtrens');
+        Route::post('/create', [Admin\VyrtrenController::class, 'create'])
+            ->name('admin.vyrtrens.create');
+        Route::get('/{vyrtren}', [Admin\VyrtrenController::class, 'show'])
+            ->name('admin.vyrtrens.show');
+        Route::delete('/{vyrtren}', [Admin\VyrtrenController::class, 'destroy'])
+            ->name('admin.vyrtrens.destroy');
+        /*
+         * Vytren unavailable dates
+         */
+        Route::post('/{vyrtren}/create_unavailable_date', [Admin\VyrtrenController::class, 'createUnavailableDate'])
+            ->name('admin.vyrtrens.createUnavailableDate');
+        Route::delete('/{vyrtren}/delete_unavailable_date', [Admin\VyrtrenController::class, 'deleteUnavailableDate'])
+            ->name('admin.vyrtrens.deleteUnavailableDate');
+        /*
+         * Vyrtren unavailable date times
+         */
+        Route::post('/{vyrtren}/create_unavailable_datetime', [Admin\VyrtrenController::class, 'createUnavailableDateTime'])
+            ->name('admin.vyrtrens.createUnavailableDateTime');
+        Route::delete('/{vyrtren}/delete_unavailable_datetime', [Admin\VyrtrenController::class, 'deleteUnavailableDateTime'])
+            ->name('admin.vyrtrens.deleteUnavailableDateTime');
     });
     /*
-     * Halls
+     * fiztren
      */
-    Route::group(['prefix' => 'halls'], function () {
-        Route::get('/', [Admin\HallsController::class, 'index'])
-            ->name('admin.halls');
-        Route::post('/create', [Admin\HallsController::class, 'create'])
-            ->name('admin.halls.create');
-        Route::get('/{hall}', [Admin\HallsController::class, 'show'])
-            ->name('admin.halls.show');
-        Route::delete('/{hall}', [Admin\HallsController::class, 'destroy'])
-            ->name('admin.halls.destroy');
+    Route::group(['prefix' => 'fiztren'], function () {
+        Route::get('/', [Admin\FiztrenController::class, 'index'])
+            ->name('admin.fiztren');
+        Route::post('/create', [Admin\FiztrenController::class, 'create'])
+            ->name('admin.fiztren.create');
+        Route::get('/{fiztren}', [Admin\FiztrenController::class, 'show'])
+            ->name('admin.fiztren.show');
+        Route::delete('/{fiztren}', [Admin\FiztrenController::class, 'destroy'])
+            ->name('admin.fiztren.destroy');
         /*
-         * Hall unavailable dates
+         * fiztren unavailable dates
          */
-        Route::post('/{hall}/create_unavailable_date', [Admin\HallsController::class, 'createUnavailableDate'])
-            ->name('admin.halls.createUnavailableDate');
-        Route::delete('/{hall}/delete_unavailable_date', [Admin\HallsController::class, 'deleteUnavailableDate'])
-            ->name('admin.halls.deleteUnavailableDate');
+        Route::post('/{fiztren}/create_unavailable_date', [Admin\FiztrenController::class, 'createUnavailableDate'])
+            ->name('admin.fiztren.createUnavailableDate');
+        Route::delete('/{fiztren}/delete_unavailable_date', [Admin\FiztrenController::class, 'deleteUnavailableDate'])
+            ->name('admin.fiztren.deleteUnavailableDate');
         /*
-         * Hall unavailable date times
+         * fiztren unavailable date times
          */
-        Route::post('/{hall}/create_unavailable_datetime', [Admin\HallsController::class, 'createUnavailableDateTime'])
-            ->name('admin.halls.createUnavailableDateTime');
-        Route::delete('/{hall}/delete_unavailable_datetime', [Admin\HallsController::class, 'deleteUnavailableDateTime'])
-            ->name('admin.halls.deleteUnavailableDateTime');
+        Route::post('/{fiztren}/create_unavailable_datetime', [Admin\FiztrenController::class, 'createUnavailableDateTime'])
+            ->name('admin.fiztren.createUnavailableDateTime');
+        Route::delete('/{fiztren}/delete_unavailable_datetime', [Admin\FiztrenController::class, 'deleteUnavailableDateTime'])
+            ->name('admin.fiztren.deleteUnavailableDateTime');
     });
 });
 

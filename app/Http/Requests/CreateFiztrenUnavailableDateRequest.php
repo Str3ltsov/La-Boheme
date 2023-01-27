@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\FiztrenUnavailableDate;
 use App\Models\VyrtrenUnavailableDate;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -14,6 +15,6 @@ class CreateFiztrenUnavailableDateRequest extends FormRequest
 
     public function rules()
     {
-        return VyrtrenUnavailableDate::$rules;
+        return FiztrenUnavailableDate::$rules;
     }
 }

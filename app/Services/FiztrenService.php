@@ -2,135 +2,135 @@
 
 namespace App\Services;
 
-use App\Models\Hall;
-use App\Models\HallUnavailableDate;
-use App\Models\HallUnavailableDateTime;
+use App\Models\Fiztren;
+use App\Models\FiztrenUnavailableDate;
+use App\Models\FiztrenUnavailableDateTime;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 
-class HallsService implements HallsServiceInterface
+class FiztrenService implements FiztrenServiceInterface
 {
-    public function getHalls(): Collection|RedirectResponse
+    public function getFiztrens(): Collection|RedirectResponse
     {
-        $halls = Hall::all();
+        $Fiztrens = Fiztren::all();
 
-        if ($halls->isEmpty()) {
+        if ($Fiztrens->isEmpty()) {
             return redirect()
-                ->route('admin.halls')
-                ->with('error', __('Failed to get halls'));
+                ->route('admin.fiztren')
+                ->with('error', __('Failed to get Fiztrens'));
         }
 
-        return $halls;
+        return $Fiztrens;
     }
 
-    public function createHall(): Hall|RedirectResponse
+    public function createFiztren(): Fiztren|RedirectResponse
     {
-        $hall = Hall::create([
+        $Fiztren = Fiztren::create([
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
-        if ($hall->wasRecentlyCreated) {
-            return $hall;
+        if ($Fiztren->wasRecentlyCreated) {
+            return $Fiztren;
         }
         else {
             return redirect()
-                ->route('admin.halls')
-                ->with('error', __('Failed to create a new hall'));
+                ->route('admin.fiztren')
+                ->with('error', __('Failed to create a new Fiztren'));
         }
     }
 
-    public function getHallDetails(int $id): Hall|RedirectResponse
+    public function getFiztrenDetails(int $id): Fiztren|RedirectResponse
     {
-        $hall = Hall::find($id);
+        $Fiztren = Fiztren::find($id);
 
-        if (empty($hall)) {
+        if (empty($Fiztren)) {
             return redirect()
-                ->route('admin.halls')
-                ->with('error', __('Failed to get hall by id'));
+                ->route('admin.fiztren')
+                ->with('error', __('Failed to get Fiztren by id'));
         }
 
-        return $hall;
+        return $Fiztren;
     }
 
-    public function deleteHall(int $id): int|RedirectResponse
+    public function deleteFiztren(int $id): int|RedirectResponse
     {
-        $hall = Hall::find($id);
+        $Fiztren = Fiztren::find($id);
 
-        if (empty($hall)) {
+        if (empty($Fiztren)) {
             return redirect()
-                ->route('admin.halls.show')
-                ->with('error', __('Failed to get hall by id'));
+                ->route('admin.fiztren')
+                ->with('error', __('Failed to get Fiztren by id'));
         }
 
-        $hall->delete();
+        $Fiztren->delete();
 
         return 0;
     }
 
-    public function getHallUnavailableDates(int $id): Collection
+    public function getFiztrenUnavailableDates(int $id): Collection
     {
-        return HallUnavailableDate::select(
+        return FiztrenUnavailableDate::select(
             'id',
             'unavailable_date',
             'created_at',
             'updated_at'
         )
-            ->where('hall_id', $id)
+            ->where('fiztren_id', $id)
             ->get();
     }
 
-    public function createHallUnavailableDate(object $request): HallUnavailableDate|RedirectResponse
+    public function createFiztrenUnavailableDate(object $request): FiztrenUnavailableDate|RedirectResponse
     {
-        $hallUnavailableDate = HallUnavailableDate::firstOrCreate([
-            'hall_id' => $request->validated('hall_id'),
+        $FiztrenUnavailableDate = FiztrenUnavailableDate::firstOrCreate([
+            'fiztren_id' => $request->validated('fiztren_id'),
             'unavailable_date' => $request->validated('unavailable_date'),
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
-        if ($hallUnavailableDate->wasRecentlyCreated) {
-            return $hallUnavailableDate;
+        if ($FiztrenUnavailableDate->wasRecentlyCreated) {
+            return $FiztrenUnavailableDate;
         }
         else {
             return redirect()
-                ->route('admin.halls.show')
+                ->route('admin.fiztren.show')
                 ->with('error', __('Failed to create a unavailable new date'));
         }
     }
 
-    public function deleteHallUnavailableDate(object $request): int|RedirectResponse
+    public function deleteFiztrenUnavailableDate(object $request): int|RedirectResponse
     {
         $id = $request->validated('unavailable_date_id');
-        $hallUnavailableDate = HallUnavailableDate::find($id);
+        $FiztrenUnavailableDate = FiztrenUnavailableDate::find($id);
 
-        if (empty($hallUnavailableDate)) {
+        if (empty($FiztrenUnavailableDate)) {
             return redirect()
                 ->back()
-                ->with('error', __('Failed to get hall unavailable date by id'));
+                ->with('error', __('Failed to get Fiztren unavailable date by id'));
         }
 
-        $hallUnavailableDate->delete();
+        $FiztrenUnavailableDate->delete();
 
         return 0;
     }
 
-    public function getHallUnavailableDateTimes(int $id): Collection
+    public function getFiztrenUnavailableDateTimes(int $id): Collection
     {
-        return HallUnavailableDateTime::select(
+        return FiztrenUnavailableDateTime::select(
             'id',
             'unavailable_datetime',
             'created_at',
             'updated_at'
         )
-            ->where('hall_id', $id)
+            ->where('fiztren_id', $id)
             ->get();
     }
 
-    public function createHallUnavailableDateTime(object $request): HallUnavailableDateTime|RedirectResponse
+    public function createFiztrenUnavailableDateTime(object $request): FiztrenUnavailableDateTime|RedirectResponse
     {
-        $tableUnavailableDateTime = HallUnavailableDateTime::firstOrCreate([
-            'hall_id' => $request->validated('hall_id'),
+        $tableUnavailableDateTime = FiztrenUnavailableDateTime::firstOrCreate([
+            'fiztren_id' => $request->validated('fiztren_id'),
             'unavailable_datetime' => $request->validated('unavailable_datetime'),
             'created_at' => now(),
             'updated_at' => now()
@@ -141,23 +141,23 @@ class HallsService implements HallsServiceInterface
         }
         else {
             return redirect()
-                ->route('admin.halls.show')
+                ->route('admin.fiztren.show')
                 ->with('error', __('Failed to create a new unavailable date time'));
         }
     }
 
-    public function deleteHallUnavailableDateTime(object $request): int|RedirectResponse
+    public function deleteFiztrenUnavailableDateTime(object $request): int|RedirectResponse
     {
         $id = $request->validated('unavailable_datetime_id');
-        $hallUnavailableDate = HallUnavailableDateTime::find($id);
+        $FiztrenUnavailableDate = FiztrenUnavailableDateTime::find($id);
 
-        if (empty($hallUnavailableDate)) {
+        if (empty($FiztrenUnavailableDate)) {
             return redirect()
                 ->back()
-                ->with('error', __('Failed to get hall unavailable date time by id'));
+                ->with('error', __('Failed to get Fiztren unavailable date time by id'));
         }
 
-        $hallUnavailableDate->delete();
+        $FiztrenUnavailableDate->delete();
 
         return 0;
     }

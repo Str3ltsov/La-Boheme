@@ -16,12 +16,12 @@
                 <td class="w-25" >{{ $hall->updated_at ?? null}}</td>
                 <td class="w-auto">
                     <div class="d-flex align-items-center" style="gap: 20px">
-                        <a href="{{ route('admin.halls.show', $hall->id) }}" class="fw-bold text-light btn-hover-focus"
+                        <a href="{{ route('admin.fiztren.show', $hall->id) }}" class="fw-bold text-light btn-hover-focus"
                            style="background-color: transparent;
                            color: black; text-decoration: none">
                             <i class="fa-solid fa-eye"></i>
                         </a>
-                        {!! Form::open(['route' => ['admin.halls.destroy', $hall->id], 'method' => 'delete']) !!}
+                        {!! Form::open(['route' => ['admin.fiztren.destroy', $hall->id], 'method' => 'delete']) !!}
                             <button type="submit", class="fw-bold fs-4 text-center text-light btn-hover-focus" style="background-color: transparent;
                                     border: none; text-decoration: none">
                                 <i class="fa-solid fa-trash-can"></i>

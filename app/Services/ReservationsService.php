@@ -22,7 +22,7 @@ class ReservationsService implements ReservationsServiceInterface
             'clients.email',
             'clients.phone_number',
             'reservations.start_datetime',
-            'reservations.number_of_people',
+//            'reservations.number_of_people',
             'reservations.reservation_type_id',
             'reservations.reservation_status_id',
             'reservations.id'
@@ -158,23 +158,23 @@ class ReservationsService implements ReservationsServiceInterface
             'absentStatus' => 'Jūsų paslaugos statusas tapo neatvykimas.'
         ];
 
-        if (class_exists(ReservationStatusUpdateMail::class)) {
-            if ($reservationStatus == Constants::reservationStatusInAccepted) {
-                return Mail::to($client->email)->send(
-                    new ReservationStatusUpdateMail($statusMessage['acceptedStatus'])
-                );
-            }
-            if ($reservationStatus == Constants::reservationStatusInDeclined) {
-                return Mail::to($client->email)->send(
-                    new ReservationStatusUpdateMail($statusMessage['declinedStatus'])
-                );
-            }
-            if ($reservationStatus == Constants::reservationStatusInAbsent) {
-                return Mail::to($client->email)->send(
-                    new ReservationStatusUpdateMail($statusMessage['absentStatus'])
-                );
-            }
-        }
+//        if (class_exists(ReservationStatusUpdateMail::class)) {
+//            if ($reservationStatus == Constants::reservationStatusInAccepted) {
+//                return Mail::to($client->email)->send(
+//                    new ReservationStatusUpdateMail($statusMessage['acceptedStatus'])
+//                );
+//            }
+//            if ($reservationStatus == Constants::reservationStatusInDeclined) {
+//                return Mail::to($client->email)->send(
+//                    new ReservationStatusUpdateMail($statusMessage['declinedStatus'])
+//                );
+//            }
+//            if ($reservationStatus == Constants::reservationStatusInAbsent) {
+//                return Mail::to($client->email)->send(
+//                    new ReservationStatusUpdateMail($statusMessage['absentStatus'])
+//                );
+//            }
+//        }
 
         return back()->with('error', __('Nepavyko išsiųsti laiško'));
     }

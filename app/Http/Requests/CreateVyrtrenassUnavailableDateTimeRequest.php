@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Models\VyrtrenUnavailableDateTime;
+use App\Models\VyrtrenassUnavailableDateTime;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateVytrenassUnavailableDateTimeRequest extends FormRequest
+class CreateVyrtrenassUnavailableDateTimeRequest extends FormRequest
 {
     public function authorize()
     {
@@ -15,5 +15,6 @@ class CreateVytrenassUnavailableDateTimeRequest extends FormRequest
     public function rules()
     {
         return VyrtrenassUnavailableDateTime::$rules;
+//        return VyrtrenassUnavailableDateTime::$rules;
     }
 }

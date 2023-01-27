@@ -1,45 +1,36 @@
 <div class="d-flex flex-column justify-content-center align-items-center
 my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
     <div class="d-flex flex-column w-100 py-3">
-        <p>{{ __('Kokio vyr. trenerio asistento ieškote:') }}</p>
-        <div class="d-flex flex-column mb-2">
-                @error('question_one_answer')
-                <span class="text-danger fs-5">{{ $message }}</span>
-                @enderror
-                <div class="my-1">
-                    <input
-                        wire:model.lazy="question_one_answer"
-                        class="form-check-input me-2"
-                        type="radio"
-                        name="questionOneAnswer"
-                        value="Pagridninio vyr. trenerio asistento"
-                    >
-                    <label class="form-check-label">{{ __('Pagridninio vyr. trenerio asistento') }}</label>
-                </div>
-                <div class="my-1">
-                    <input
-                        wire:model.lazy="question_one_answer"
-                        class="form-check-input me-2"
-                        type="radio"
-                        name="questionOneAnswer"
-                        value="Skauto"
-                    >
-                    <label class="form-check-label">{{ __('Skauto') }}</label>
-                </div>
+        <p>{{ __('Kokios patirties fizinio rengimo trenerio ieškote') }}</p>
+        <div class="d-flex flex-column mb-3">
+            @error('question_one_answer')
+            <span class="text-danger fs-5">{{ $message }}</span>
+            @enderror
             <div class="my-1">
                 <input
                     wire:model.lazy="question_one_answer"
                     class="form-check-input me-2"
                     type="radio"
                     name="questionOneAnswer"
-                    value="Įgudžių lavinimo trenerio"
+                    value="Iki5"
                 >
-                <label class="form-check-label">{{ __('Įgudžių lavinimo trenerio') }}</label>
+                <label class="form-check-label">{{ __('Iki 5 m.') }}</label>
+            </div>
+            <div class="my-1">
+                <input
+                    wire:model.lazy="question_one_answer"
+                    class="form-check-input me-2"
+                    type="radio"
+                    name="questionOneAnswer"
+                    value="virš 5 metų"
+                >
+                <label class="form-check-label">{{ __('virš 5 metų') }}</label>
             </div>
         </div>
     </div>
+
     <div class="d-flex flex-column w-100 py-3">
-        <p>{{ __('Kokios patirties vyr.trenerio asistento ieškote') }}</p>
+        <p>{{ __('Ar fizinio rengimo treneriui reikės dirbti su jaunimo komandomis?') }}</p>
         <div class="d-flex flex-column mb-3">
             @error('question_two_answer')
             <span class="text-danger fs-5">{{ $message }}</span>
@@ -50,9 +41,9 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
                     class="form-check-input me-2"
                     type="radio"
                     name="questionTwoAnswer"
-                    value="Iki5"
+                    value="Taip"
                 >
-                <label class="form-check-label">{{ __('Iki 5 m.') }}</label>
+                <label class="form-check-label">{{ __('Taip') }}</label>
             </div>
             <div class="my-1">
                 <input
@@ -60,25 +51,16 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
                     class="form-check-input me-2"
                     type="radio"
                     name="questionTwoAnswer"
-                    value="5-10"
+                    value="Ne"
                 >
-                <label class="form-check-label">{{ __('5-10 m.') }}</label>
-            </div>
-
-            <div class="my-1">
-                <input
-                    wire:model.lazy="question_two_answer"
-                    class="form-check-input me-2"
-                    type="radio"
-                    name="questionTwoAnswer"
-                    value="virs10"
-                >
-                <label class="form-check-label">{{ __('virš 10 m.') }}</label>
+                <label class="form-check-label">{{ __('Ne') }}</label>
             </div>
         </div>
     </div>
+
     <div class="d-flex flex-column w-100 py-3">
-        <p>{{ __('Koks numatytas metinis biudžėtas treneriuo asistentui?') }}</p>
+{{--        questionTwoAnswer--}}
+        <p>{{ __('Koks numatytas metinis biudžėtas fizinio rengimo treneriui?') }}</p>
         <div class="d-flex flex-column justify-content-center align-items-start">
             <div class="d-flex flex-column mb-2">
                 @error('question_three_answer')
@@ -110,7 +92,7 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
                         class="form-check-input me-2"
                         type="radio"
                         name="questionThreeAnswer"
-                        value="75000-100000 EUR"
+                        value="40000-50000 EUR"
                     >
                     <label class="form-check-label">{{ __('40000-50000 EUR') }}</label>
                 </div>
@@ -120,7 +102,7 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
                         class="form-check-input me-2"
                         type="radio"
                         name="questionThreeAnswer"
-                        value="virš 100000 EUR"
+                        value="virš 50000 EUR"
                     >
                     <label class="form-check-label">{{ __('virš 500000 EUR') }}</label>
                 </div>

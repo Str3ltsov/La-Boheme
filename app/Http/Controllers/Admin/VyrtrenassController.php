@@ -3,25 +3,25 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateTableUnavailableDateRequest;
-use App\Http\Requests\CreateTableUnavailableDateTimeRequest;
-use App\Http\Requests\DeleteTableUnavailableDateRequest;
-use App\Http\Requests\DeleteTableUnavailableDateTimeRequest;
-use App\Services\TablesService;
-use App\Services\TablesServiceInterface;
+use App\Http\Requests\CreateVyrtrenassUnavailableDateRequest;
+use App\Http\Requests\CreateVyrtrenassUnavailableDateTimeRequest;
+use App\Http\Requests\DeleteVyrtrenassUnavailableDateRequest;
+use App\Http\Requests\DeleteVyrtrenassUnavailableDateTimeRequest;
+use App\Services\VyrtrenassService;
+use App\Services\VyrtrenassServiceInterface;
 use App\Traits\UseDatesTimes;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 
-class TablesController extends Controller
+class VyrtrenassController extends Controller
 {
     use useDatesTimes;
 
-    private TablesService $service;
+    private VyrtrenassService $service;
 
-    public function __construct(TablesServiceInterface $service)
+    public function __construct(VyrtrenassServiceInterface $service)
     {
         $this->middleware('auth');
         $this->service = $service;
@@ -29,23 +29,23 @@ class TablesController extends Controller
 
     public function index(): Factory|View|Application
     {
-        return view('admin.tables.index')
-            ->with('tables', $this->service->getTables());
+        return view('admin.vyrtrenass.index')
+            ->with('tables', $this->service->getVyrtrens());
     }
 
     public function show($id): Factory|View|Application
     {
-        return view('admin.tables.show')
+        return view('admin.vyrtrenass.show')
             ->with([
-                'table' => $this->service->getTableDetails($id),
-                'unavailable_dates' => $this->service->getTableUnavailableDates($id),
-                'unavailable_datetimes' => $this->service->getTableUnavailableDateTimes($id)
+                'table' => $this->service->getVyrtrenassDetails($id),
+                'unavailable_dates' => $this->service->getVyrtrenassUnavailableDates($id),
+                'unavailable_datetimes' => $this->service->getVyrtrenassUnavailableDateTimes($id)
             ]);
     }
 
     public function create(): RedirectResponse
     {
-        $this->service->createTable();
+        $this->service->createVyrtrens();
 
         return redirect()
             ->back()
@@ -54,43 +54,44 @@ class TablesController extends Controller
 
     public function destroy($id): RedirectResponse
     {
-        $this->service->deleteTable($id);
+        $this->service->deleteVyrtrenass($id);
 
         return redirect()
-            ->route('admin.tables')
+            ->route('admin.vyrtrenasss')
             ->with('success', __('Successfully deleted table'));
     }
 
-    public function createUnavailableDate(CreateTableUnavailableDateRequest $request): RedirectResponse
+    public function createUnavailableDate(CreateVyrtrenassUnavailableDateRequest $request): RedirectResponse
     {
-        $this->service->createTableUnavailableDate($request);
+
+        $this->service->createVyrtrenassUnavailableDate($request);
 
         return redirect()
             ->back()
             ->with('success', __('Successfully created a new unavailable date'));
     }
 
-    public function deleteUnavailableDate(DeleteTableUnavailableDateRequest $request): RedirectResponse
+    public function deleteUnavailableDate(DeleteVyrtrenassUnavailableDateRequest $request): RedirectResponse
     {
-        $this->service->deleteTableUnavailableDate($request);
+        $this->service->deleteVyrtrenassUnavailableDate($request);
 
         return redirect()
             ->back()
             ->with('success', __('Successfully deleted unavailable date'));
     }
 
-    public function createUnavailableDateTime(CreateTableUnavailableDateTimeRequest $request): RedirectResponse
+    public function createUnavailableDateTime(CreateVyrtrenassUnavailableDateTimeRequest $request): RedirectResponse
     {
-        $this->service->createTableUnavailableDateTime($request);
+        $this->service->createVyrtrenassUnavailableDateTime($request);
 
         return redirect()
             ->back()
             ->with('success', __('Successfully created new unavailable date time'));
     }
 
-    public function deleteUnavailableDateTime(DeleteTableUnavailableDateTimeRequest $request): RedirectResponse
+    public function deleteUnavailableDateTime(DeleteVyrtrenassUnavailableDateTimeRequest $request): RedirectResponse
     {
-        $this->service->deleteTableUnavailableDateTime($request);
+        $this->service->deleteVyrtrenassUnavailableDateTime($request);
 
         return redirect()
             ->back()

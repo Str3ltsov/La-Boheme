@@ -4,7 +4,7 @@
     <div>
         <div class="d-flex flex-column justify-content-center align-items-center text-center p-5" style="height: 300px">
             <p class="fs-2 text-light" id="cormorant">{{ __('Administratoriaus paskyra') }}</p>
-            <p class="fs-2 text-light" id="cormorant">{{ __('Stalai') }}</p>
+            <p class="fs-2 text-light" id="cormorant">{{ __('Vyriausi treneriai') }}</p>
         </div>
         <img src="/images/grunge-dark-temp.png" alt="grunge-dark-temp"
              style="width: 100%; display: flex; align-items: flex-end">
@@ -18,13 +18,13 @@
                         @include('flash_message')
                     </div>
                     <div class="d-flex justify-content-center justify-content-md-end w-100 mb-4">
-                        {!! Form::open(['route' => ['admin.tables.create'], 'method' => 'post']) !!}
+                        {!! Form::open(['route' => ['admin.vyrtrens.create'], 'method' => 'post']) !!}
                             {!! Form::button(__('Sukurti'), ['type' => 'submit', 'class' => 'fw-bold fs-4 text-center btn-hover-focus',
                                 'style' => 'background-color: #C19F5F; border: none; border-radius: 17.5px;
                                 color: black; padding: 10px 0; width: 150px; text-decoration: none']) !!}
                         {!! Form::close() !!}
                     </div>
-                    @include('admin.tables.table')
+                    @include('admin.vyrtrens.table')
                 </div>
             </div>
         </div>
