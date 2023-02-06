@@ -4,7 +4,7 @@
             <div class="row mt-3 pt-5" style="gap: 5em">
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                     <a class="navbar-brand m-0" href="{{ url('/') }}">
-                        <img src="/images/logodidelisbaltas.png" alt="logodidelisbaltas" width="220px">
+                        <img src="/images/logo.png" alt="Logo" width="220">
                     </a>
                     <div class="mt-5" style="color: #C19F5F">
                         <a href="#" class="me-4 text-reset">
@@ -25,33 +25,33 @@
                     <div class="d-flex align-items-center mx-3" style="color: #C19F5F; gap: 10px;">
                         <i class="fa-solid fa-phone-flip fs-5"></i>
                         <div class="d-flex flex-column align-items-start">
-                                <span style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.7em">
-                                    {{ __('Rezervuoti staliuką') }}
-                                </span>
+                            <span style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.7em">
+                                {{ __('Rezervuoti staliuką') }}
+                            </span>
                             <a class="text-decoration-none" href="#">
-                                <span class="text-light">+37065756270</span>
+                                <span class="text-light">+370 686 10246</span>
                             </a>
                         </div>
                     </div>
                     <div class="d-flex align-items-center mx-3" style="color: #C19F5F; gap: 10px;">
                         <i class="fa-solid fa-wine-glass fs-5"></i>
                         <div class="d-flex flex-column align-items-start">
-                                <span style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.7em">
-                                    {{ __('Renginių organizavimas') }}
-                                </span>
+                            <span style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.7em">
+                                {{ __('Renginių organizavimas') }}
+                            </span>
                             <a class="text-decoration-none" href="#">
-                                <span class="text-light">events@laboheme.lt // +37067354366</span>
+                                <span class="text-light">joana@getweb.lt // +370 686 10246</span>
                             </a>
                         </div>
                     </div>
                     <div class="d-flex align-items-center mx-3" style="color: #C19F5F; gap: 10px;">
                         <i class="fa-solid fa-question fs-5"></i>
                         <div class="d-flex flex-column align-items-start">
-                                <span style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.7em">
-                                    {{ __('Klausimai ir pasiūlymai') }}
-                                </span>
+                            <span style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.7em">
+                                {{ __('Klausimai ir pasiūlymai') }}
+                            </span>
                             <a class="text-decoration-none" href="#">
-                                <span class="text-light">info@laboheme.lt</span>
+                                <span class="text-light">joana@getweb.lt</span>
                             </a>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                                     {{ __('Didmeninė ir mažmeninė prekyba gėrimais') }}
                                 </span>
                             <a class="text-decoration-none" href="#">
-                                <span class="text-light">vitalija@laboheme.lt // +37067144035</span>
+                                <span class="text-light">joana@getweb.lt // +370 686 10246</span>
                             </a>
                         </div>
                     </div>

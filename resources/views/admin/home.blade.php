@@ -18,23 +18,19 @@
                     </h1>
                     <div class="d-flex justify-content-center mb-5 flex-wrap w-auto" style="gap: 20px;" id="cormorant">
                         <a class="fw-bold fs-3 bg-black bg-opacity-50" href="{{ route('admin.reservations') }}"
-                           style="border: 1px solid #C19F5F; border-radius: 17.5px;
-                           color: #C19F5F; padding: 10px 0; width: 160px; text-decoration: none">
+                           style="border: 1px solid #C19F5F; border-radius: 5px; color: #C19F5F; padding: 10px 0; width: 160px; text-decoration: none">
                             {{ __('Reservacijos') }}
                         </a>
                         <a class="fw-bold fs-3 bg-black bg-opacity-50" href="{{ route('admin.vyrtrens') }}"
-                           style="border: 1px solid #C19F5F; border-radius: 17.5px;
-                           color: #C19F5F; padding: 10px 0; width: 160px; text-decoration: none">
+                           style="border: 1px solid #C19F5F; border-radius: 5px; color: #C19F5F; padding: 10px 0; width: 160px; text-decoration: none">
                             {{ __('Vyriausi treneriai') }}
                         </a>
                         <a class="fw-bold fs-3 bg-black bg-opacity-50" href="{{ route('admin.vyrtrenasss') }}"
-                           style="border: 1px solid #C19F5F; border-radius: 17.5px;
-                           color: #C19F5F; padding: 10px 0; width: 160px; text-decoration: none">
+                           style="border: 1px solid #C19F5F; border-radius: 5px; color: #C19F5F; padding: 10px 0; width: 160px; text-decoration: none">
                             {{ __('Vyriausių trenerių asistentai') }}
                         </a>
                         <a class="fw-bold fs-3 bg-black bg-opacity-50" href="{{ route('admin.fiztrens') }}"
-                           style="border: 1px solid #C19F5F; border-radius: 17.5px;
-                           color: #C19F5F; padding: 10px 0; width: 160px; text-decoration: none">
+                           style="border: 1px solid #C19F5F; border-radius: 5px; color: #C19F5F; padding: 10px 0; width: 160px; text-decoration: none">
                             {{ __('Fizinio rengimo treneriai') }}
                         </a>
                     </div>
@@ -43,8 +39,7 @@
                     </h1>
                     <a class="fw-bold fs-3 bg-black bg-opacity-50" href="{{ route('logout') }}"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                       style="border: 1px solid #C19F5F; border-radius: 17.5px;
-                           color: #C19F5F; padding: 10px 0; width: 160px; text-decoration: none">
+                       style="border: 1px solid #C19F5F; border-radius: 5px; color: #C19F5F; padding: 10px 0; width: 160px; text-decoration: none">
                         {{ __('Atsijungti') }}
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

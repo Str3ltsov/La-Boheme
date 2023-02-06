@@ -17,8 +17,7 @@
                 <td class="w-auto">
                     <div class="d-flex align-items-center" style="gap: 20px">
                         <a href="{{ route('admin.vyrtrenasss.show', $table->id) }}" class="fw-bold text-light btn-hover-focus"
-                           style="background-color: transparent;
-                           color: black; text-decoration: none">
+                           style="background-color: transparent; color: white; text-decoration: none">
                             <i class="fa-solid fa-eye"></i>
                         </a>
                         {!! Form::open(['route' => ['admin.vyrtrenasss.destroy', $table->id], 'method' => 'delete']) !!}

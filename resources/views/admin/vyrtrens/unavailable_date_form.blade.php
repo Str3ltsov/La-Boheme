@@ -7,7 +7,7 @@
         <label for="unavailable_date" class="form-label w-25">{{ __('Data') }}:</label>
         <input
             type="text" class="form-control fs-4 bg-transparent text-light"
-            style="border-radius: 15px; border-color: #C19F5F"
+            style="border-radius: 5px; border-color: #C19F5F"
             autocomplete="off" name="unavailable_date"
             data-provide="datepicker" data-date-autoclose="true"
             data-date-format="yyyy/mm/dd" data-date-today-highlight="true"
@@ -24,7 +24,7 @@
         {!! Form::button(__('Sukurti'), [
             'type' => 'submit',
             'class' => 'fw-bold fs-4 text-center py-2 px-4 btn-hover-focus',
-            'style' => 'background-color: #C19F5F; border: none; border-radius: 17.5px'
+            'style' => 'background-color: #D3152E; border: none; border-radius: 17.5px'
             ]) !!}
     </div>
 {!! Form::close() !!}

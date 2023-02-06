@@ -1,7 +1,6 @@
 <div>
     <form wire:submit.prevent="submit">
-        <div class="d-flex flex-column justify-content-center"
-             style="background-color: #0F0E0F; min-height: 100vh; padding: 2em">
+        <div class="d-flex flex-column justify-content-center" style="background-color: #1B3253; min-height: 100vh; padding: 2em">
             <div class="d-flex flex-column justify-content-center
             align-items-center bg-transparent p-3 fade-in" id="cormorant">
                 <div class="w-50">
@@ -11,7 +10,7 @@
                     <h1 style="font-size: 3em">{{ __('Rezervuok') }}</h1>
                 </div>
                 <div class="mb-4 mb-md-5">
-                    <img src="{{ asset('images/logodidelisbaltas.png') }}" alt="logo" width="200"/>
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" width="200"/>
                 </div>
                 @if ($currentStep == 1)
                     <div class="d-flex justify-content-center text-center text-light mb-2 mb-md-4">

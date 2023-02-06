@@ -16,14 +16,11 @@
                 <td class="w-25" >{{ $table->updated_at ?? null}}</td>
                 <td class="w-auto">
                     <div class="d-flex align-items-center" style="gap: 20px">
-                        <a href="{{ route('admin.vyrtrens.show', $table->id) }}" class="fw-bold text-light btn-hover-focus"
-                           style="background-color: transparent;
-                           color: black; text-decoration: none">
+                        <a href="{{ route('admin.vyrtrens.show', $table->id) }}" class="fw-bold text-light btn-hover-focus" style="background-color: transparent; color: black; text-decoration: none">
                             <i class="fa-solid fa-eye"></i>
                         </a>
                         {!! Form::open(['route' => ['admin.vyrtrens.destroy', $table->id], 'method' => 'delete']) !!}
-                            <button type="submit", class="fw-bold fs-4 text-center text-light btn-hover-focus" style="background-color: transparent;
-                                        border: none; text-decoration: none">
+                            <button type="submit" class="fw-bold fs-4 text-center text-light btn-hover-focus" style="background-color: transparent; border: none; text-decoration: none">
                                 <i class="fa-solid fa-trash-can"></i>
                             </button>
                         {!! Form::close() !!}

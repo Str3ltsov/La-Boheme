@@ -17,7 +17,7 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
 {{--        </div>--}}
 {{--        <button wire:click="goToNextStep" type="button"--}}
 {{--                class="fw-bold fs-4 @if ($isChecked) d-block @else d-none @endif" id="test_reservation"--}}
-{{--                style="background-color: #C19F5F; border: none; border-radius: 17.5px; color: black; padding: 10px 0; width: 210px">--}}
+{{--                style="background-color: #C19F5F; border: none; border-radius: 5px; color: black; padding: 10px 0; width: 210px">--}}
 {{--            {{ __('Tęsti rezervaciją') }}--}}
 {{--        </button>--}}
 {{--    </div>--}}
@@ -60,7 +60,7 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
 {{--                    @else--}}
 {{--                        d-none--}}
 {{--                    @endif"--}}
-{{--                style="background-color: #C19F5F; border: none; border-radius: 17.5px; color: black; padding: 10px 0; width: 210px">--}}
+{{--                style="background-color: #C19F5F; border: none; border-radius: 5px; color: black; padding: 10px 0; width: 210px">--}}
 {{--            {{ __('Tęsti rezervaciją') }}--}}
 {{--        </button>--}}
         {{--@error('question_one_answer')
@@ -127,7 +127,7 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
 {{--                    @else--}}
 {{--                        d-none--}}
 {{--                    @endif"--}}
-{{--                style="background-color: #C19F5F; border: none; border-radius: 17.5px; color: black; padding: 10px 0; width: 210px">--}}
+{{--                style="background-color: #C19F5F; border: none; border-radius: 5px; color: black; padding: 10px 0; width: 210px">--}}
 {{--            {{ __('Tęsti rezervaciją') }}--}}
 {{--        </button>--}}
         {{--@error('question_two_answer')
@@ -188,7 +188,7 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
 {{--            wire:model.lazy="question_three_comment"--}}
 {{--            rows="4"--}}
 {{--            class="form-control bg-transparent text-light fs-5"--}}
-{{--            style="border-radius: 15px; border-color: #C19F5F"--}}
+{{--            style="border-radius: 5px; border-color: #C19F5F"--}}
 {{--            name="questionThreeComment"--}}
 {{--            placeholder="Papildomi komentarai"--}}
 {{--        ></textarea>--}}
@@ -203,7 +203,7 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
 {{--                    @else--}}
 {{--                        d-none--}}
 {{--                    @endif"--}}
-{{--                style="background-color: #C19F5F; border: none; border-radius: 17.5px; color: black; padding: 10px 0; width: 210px">--}}
+{{--                style="background-color: #C19F5F; border: none; border-radius: 5px; color: black; padding: 10px 0; width: 210px">--}}
 {{--            {{ __('Tęsti rezervaciją') }}--}}
 {{--        </button>--}}
     </div>
@@ -262,7 +262,7 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
 {{--                    type="number"--}}
 {{--                    min="1"--}}
 {{--                    class="form-control bg-transparent text-light fs-5"--}}
-{{--                    style="border-radius: 15px; border-color: #C19F5F; width: 100px; height: 45px"--}}
+{{--                    style="border-radius: 5px; border-color: #C19F5F; width: 100px; height: 45px"--}}
 {{--                    name="questionFourComment"--}}
 {{--                    oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"--}}
 {{--                    onkeydown="return false"--}}
@@ -279,7 +279,7 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
 {{--                    @else--}}
 {{--                        d-none--}}
 {{--                    @endif"--}}
-{{--                    style="background-color: #C19F5F; border: none; border-radius: 17.5px; color: black; padding: 10px 0; width: 210px">--}}
+{{--                    style="background-color: #C19F5F; border: none; border-radius: 5px; color: black; padding: 10px 0; width: 210px">--}}
 {{--                {{ __('Tęsti rezervaciją') }}--}}
 {{--            </button>--}}
         </div>
@@ -318,20 +318,16 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
             wire:model.lazy="question_five_comment"
             rows="4"
             class="form-control bg-transparent text-light fs-5"
-            style="border-radius: 15px; border-color: #C19F5F"
+            style="border-radius: 5px; border-color: #C19F5F"
             name="questionFiveComment"
             placeholder="Nurodykite vaikų kiekį ir patiekalus, jei į klausimą atsakėte taip."
         ></textarea>
     </div>--}}
     <div class="d-flex justify-content-end mt-4" style="gap: 20px;">
-        <button wire:click="goToPreviousStep" type="button" class="fw-bold fs-4"
-                style="background-color: #BBBBBB; border: none; border-radius: 17.5px;
-                color: black; padding: 10px 0; width: 120px">
+        <button wire:click="goToPreviousStep" type="button" class="fw-bold fs-4" style="background-color: #BBBBBB; border: none; border-radius: 5px; color: black; padding: 10px 0; width: 120px">
             {{ __('Atgal') }}
         </button>
-        <button wire:click="goToNextStep" type="button" class="fw-bold fs-4"
-                style="background-color: #C19F5F; border: none; border-radius: 17.5px;
-                color: black; padding: 10px 0; width: 120px" id="goToNextStepButton">
+        <button wire:click="goToNextStep" type="button" class="fw-bold fs-4" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: 120px" id="goToNextStepButton">
             {{ __('Toliau') }}
         </button>
     </div>

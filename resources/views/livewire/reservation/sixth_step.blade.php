@@ -42,14 +42,11 @@
         <span class="text-danger my-2 fade-in">{{ $message }}</span>
     @enderror
     <div class="d-flex flex-column flex-md-row justify-content-center align-items-center mt-5 w-100 fade-in" style="gap: 20px;">
-        <button wire:click="goToPreviousStep" type="button" class="fw-bold fs-4 btn-hover-focus"
-                style="background-color: #BBBBBB; border: none; border-radius: 17.5px;
+        <button wire:click="goToPreviousStep" type="button" class="fw-bold fs-4 btn-hover-focus" style="background-color: #BBBBBB; border: none; border-radius: 5px;
                 color: black; padding: 10px 0; width: clamp(220px, 100%, 230px)">
             {{ __('Atgal') }}
         </button>
-        <button wire:click="submit" type="submit" class="fw-bold fs-4 btn-hover-focus"
-                style="background-color: #C19F5F; border: none; border-radius: 17.5px;
-               color: black; padding: 10px 0; width: clamp(220px, 100%, 230px)">
+        <button wire:click="submit" type="submit" class="fw-bold fs-4 btn-hover-focus" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: clamp(220px, 100%, 230px)">
             {{ __('Pateikti užklausą') }}
         </button>
     </div>

@@ -8,7 +8,7 @@
         <input
             type="datetime-local" name="unavailable_datetime"
             class="form-control fs-4 bg-transparent text-light"
-            style="border-radius: 15px; border-color: #C19F5F"
+            style="border-radius: 5px; border-color: #C19F5F"
             min="{{ now()->format('Y-m-d') }}T12:00" max="{{ now()->addMonths(3)->format('Y-m-d') }}T00:00"
         >
     </div>
@@ -21,7 +21,7 @@
         {!! Form::button(__('Sukurti'), [
             'type' => 'submit',
             'class' => 'fw-bold fs-4 text-center py-2 px-4 btn-hover-focus',
-            'style' => 'background-color: #C19F5F; border: none; border-radius: 17.5px'
+            'style' => 'background-color: #D3152E; border: none; border-radius: 17.5px'
             ]) !!}
     </div>
 {!! Form::close() !!}

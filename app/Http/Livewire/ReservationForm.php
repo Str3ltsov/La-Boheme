@@ -123,11 +123,11 @@ class ReservationForm extends Component
         return [
             1 => [
                 'step' => '1/5',
-                'description' => 'Pasirinkite paslaugos tipą ir datą'
+                'description' => 'Pasirinkite, kokio trenerio ieškote?'
             ],
             2 => [
                 'step' => '2/5',
-                'description' => 'Pasirinkti laiką ir žmonių skaičių'
+                'description' => 'Pasirinkti laiką'
             ],
             3 => [
                 'step' => '3/5',

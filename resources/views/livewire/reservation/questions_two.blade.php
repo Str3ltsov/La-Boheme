@@ -126,14 +126,10 @@ my-3 text-light p-4 p-lg-5" style="font-size: 1.3em; background-color: #151515">
                 </div>
             </div>
     <div class="d-flex justify-content-end mt-4" style="gap: 20px;">
-        <button wire:click="goToPreviousStep" type="button" class="fw-bold fs-4 btn-hover-focus"
-                style="background-color: #BBBBBB; border: none; border-radius: 17.5px;
-                color: black; padding: 10px 0; width: 120px">
+        <button wire:click="goToPreviousStep" type="button" class="fw-bold fs-4 btn-hover-focus" style="background-color: #BBBBBB; border: none; border-radius: 5px; color: black; padding: 10px 0; width: 120px">
             {{ __('Atgal') }}
         </button>
-        <button wire:click="goToNextStep" type="button" class="fw-bold fs-4 btn-hover-focus"
-                style="background-color: #C19F5F; border: none; border-radius: 17.5px;
-                color: black; padding: 10px 0; width: 120px">
+        <button wire:click="goToNextStep" type="button" class="fw-bold fs-4 btn-hover-focus" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: 120px">
             {{ __('Toliau') }}
         </button>
     </div>

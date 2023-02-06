@@ -6,14 +6,10 @@
             <h1 class="text-light" id="cormorant">{{ __('Administratoriaus paskyra') }}</h1>
             <h1 class="text-light" id="cormorant">{{ __('Vyr treneriai') }}</h1>
         </div>
-        <img src="/images/grunge-dark-temp.png" alt="grunge-dark-temp"
-             style="width: 100%; display: flex; align-items: flex-end">
-        <div class="d-flex flex-column justify-content-start"
-             style="background-color: #0F0E0F; min-height: 85vh; padding: 0 2em">
-            <div class="d-flex flex-column justify-content-center
-            align-items-center bg-transparent p-4" id="cormorant">
-                <div class="d-flex flex-column justify-content-center align-items-center my-3 p-4 text-light"
-                     style="font-size: 1.3em; background-color: #151515; width: clamp(400px, 100%, 1200px)">
+        <img src="/images/grunge-dark-temp.png" alt="grunge-dark-temp" style="width: 100%; display: flex; align-items: flex-end">
+        <div class="d-flex flex-column justify-content-start" style="background-color: #1B3253; min-height: 85vh; padding: 0 2em">
+            <div class="d-flex flex-column justify-content-center align-items-center bg-transparent p-4" id="cormorant">
+                <div class="d-flex flex-column justify-content-center align-items-center my-3 p-4 text-light" style="font-size: 1.3em; background-color: #151515; width: clamp(400px, 100%, 1200px)">
                     <div class="w-100">
                         @include('flash_message')
                     </div>
@@ -35,8 +31,7 @@
                             <h4 class="m-1">{{ __('Vyr. trenerio Id') }}: {{ $table->id ?? '?'}}</h4>
                             <div class="d-flex" style="gap: 10px">
                                 <a class="fw-bold fs-4 text-center btn-hover-focus" href="{{ route('admin.vyrtrens') }}"
-                                   style="background-color: #C19F5F; border: none; border-radius: 17.5px;
-                               color: black; padding: 10px 0; width: 150px; text-decoration: none">
+                                   style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: 150px; text-decoration: none">
                                     {{ __('Atgal') }}
                                 </a>
                             </div>
