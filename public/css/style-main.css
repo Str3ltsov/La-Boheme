@@ -1,4 +1,74 @@
+/*------------------------------------------------------------------
+[table of contents]
+
+		* typography.less
+		* common.less
+		* extra.less
+		* overlay.less
+		* header.less
+		* nav.less
+		* topbar.less
+		* inner-header-title.less
+		* vertical-nav.less
+		* menu-full-page.less
+		* boxed-layout.less
+		* form.less
+		* side-push-panel.less
+		* box-hover-effect.less
+		* gallery-isotope.less
+		* slider.less
+		* home.less
+		* about.less
+		* causes.less
+		* volunteer.less
+		* contact.less
+		* event.less
+		* practice-area.less
+		* services.less
+		* job.less
+		* shop.less
+		* blog.less
+		* shortcodes.less
+			* alerts.less
+			* blockquote.less
+			* buttons.less
+			* clients.less
+			* countdown-Timer.less
+			* countdown.less
+			* dividers.less
+			* facebook-disqus-comments.less
+			* faqs.less
+			* flex-slider.less
+			* flip-box.less
+			* font-icons.less
+			* funfacts.less
+			* infinitescroll.less
+			* instagram.less
+			* lightbox.less
+			* map.less
+			* pegination.less
+			* pricing.less
+			* process-steps.less
+			* progress-bar.less
+			* promo.less
+			* section-title.less
+			* separators.less
+			* styled-icons.less
+			* tabs.less
+			* teams.less
+			* testimonials.less
+			* toggles-accordions.less
+			* vertical-timeline.less
+			* working-process.less
+
+	* Footer
+* ===============================================
+*/
+@import "font-awesome.min.css";
+@import "font-awesome-animation.min.css";
+@import "pe-icon-7-stroke.css";
 @import "utility-classes.css";
+@import "flaticon.css";
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800|Droid+Serif:400,400i,700,700i);
 /*
  * typography.less
@@ -29,7 +99,7 @@ body {
   line-height: 1.7;
   color: #808080;
   font-size: 15px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto';
   font-weight: 400;
   background-color: #fff;
   background-attachment: fixed;
@@ -89,10 +159,9 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: 'Droid Serif', sans-serif;
   font-weight: 600;
   line-height: 1.42857143;
-  color: #333333;
+  color: #1A3150;
 }
 h1 small,
 h2 small,
@@ -4661,47 +4730,7 @@ blockquote p {
   position: relative;
   overflow: hidden;
   width: 100%;
-}
-/* -------- Parallax ---------- */
-.parallax {
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: repeat-y;
-  background-position: top center;
-}
-.mobile-parallax {
-  background-size: cover;
-  background-attachment: scroll;
-  background-position: center center;
-}
-.divider .container {
-  padding-top: 60px;
-  padding-bottom: 60px;
-}
-.divider .container.small-padding {
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-.divider .container.extra-padding {
-  padding-top: 180px;
-  padding-bottom: 180px;
-}
-/*
- * Shortcode: Facebook-Disqus-Comments.less
- * -----------------------------------------------
-*/
-.fb-comments,
-.fb_iframe_widget,
-.fb-comments > span,
-.fb_iframe_widget > span,
-.fb-comments > span > iframe,
-.fb_iframe_widget > span > iframe {
-  display: block;
-  margin: 0;
-  width: 100%;
+    background-image: url("../images/bg.png");
 }
 /*
  * Shortcode: faqs.less
@@ -7212,4 +7241,19 @@ body.has-fixed-footer .main-content {
   }
 }
 
-/*# sourceMappingURL=style-main.css.map */
+.chosen {
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: 1px solid #D2D8DD;
+  padding: 20px;
+  margin: 20px 0;
+}
+.chosen label {
+  margin-left: 10px;
+}
+.main_body {
+  background-image: url("../images/trener.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: bottom;
+}

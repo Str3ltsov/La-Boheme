@@ -1,7 +1,5 @@
-<div class="d-flex flex-column justify-content-center align-items-start
-    my-3 px-3 px-lg-5 py-5 fs-4 text-light fade-in" style="font-size: 1.1em; background-color: #151515; max-width: 800px">
+    {{--
     <div>
-        {{--
         <div class="d-flex" style="gap: 10px">
             <span>{{ __('Data') }}:</span>
             <span>{{ $date ?? '-' }}</span>
@@ -22,9 +20,9 @@
             <span>{{ __('Barmenas') }}:</span>
             <span>{{ $employees[\App\Helpers\Constants::employeeTypeBartender]['name'] ?? '-' }}</span>
         </div>
-        --}}
     </div>
-    <div class="d-flex justify-content-center align-items-center fade-in" style="gap: 10px">
+    --}}
+    <div class="pt-20">
         <input
             wire:model.lazy="accept"
             type="checkbox"
@@ -34,14 +32,14 @@
             value="{{ true }}"
         >
         <label for="Accept" class="form-check-label">
-            <span>{{ __('Sutinku su svetainės privatumo politika') }}</span>
-            <span style="color: #C19F5F; cursor: pointer" onclick="window.open('/private_policy', '_blank')">{{ __('Privatumo politika') }}</span>
+            <span>{{ __('Sutinku su svetainės') }}</span>
+            <span style="color: #D3152E; cursor: pointer" onclick="window.open('/private_policy', '_blank')">{{ __('Privatumo politika') }}</span>
         </label>
     </div>
     @error('accept')
-        <span class="text-danger my-2 fade-in">{{ $message }}</span>
+        <span class="text-danger">{{ $message }}</span>
     @enderror
-    <div class="d-flex flex-column flex-md-row justify-content-center align-items-center mt-5 w-100 fade-in" style="gap: 20px;">
+    <div class="pt-20">
         <button wire:click="goToPreviousStep" type="button" class="fw-bold fs-4 btn-hover-focus" style="background-color: #BBBBBB; border: none; border-radius: 5px;
                 color: black; padding: 10px 0; width: clamp(220px, 100%, 230px)">
             {{ __('Atgal') }}
@@ -50,4 +48,3 @@
             {{ __('Pateikti užklausą') }}
         </button>
     </div>
-</div>

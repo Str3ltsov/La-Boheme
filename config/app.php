@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://rezervuok.laboheme.lt'),
+    'url' => env('APP_URL', 'https://rezervuok.recovcenter.com'),
 
     'asset_url' => env('ASSET_URL'),
 
