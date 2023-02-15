@@ -104,4 +104,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.authorization']], fun
 /*
  * Auth
  */
-Auth::routes();
+Auth::routes([
+    'register' => false,
+    'reset' => false,
+    'verify' => false
+]);
