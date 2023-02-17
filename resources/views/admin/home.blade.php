@@ -29,7 +29,7 @@
                            style="border: 1px solid #C19F5F; border-radius: 5px; color: #C19F5F; padding: 10px 0; width: 160px; text-decoration: none">
                             {{ __('Vyriausių trenerių asistentai') }}
                         </a>
-                        <a class="fw-bold fs-3 bg-black bg-opacity-50" href="{{ route('admin.fiztrens') }}"
+                        <a class="fw-bold fs-3 bg-black bg-opacity-50" href="{{ route('admin.fiztren') }}"
                            style="border: 1px solid #C19F5F; border-radius: 5px; color: #C19F5F; padding: 10px 0; width: 160px; text-decoration: none">
                             {{ __('Fizinio rengimo treneriai') }}
                         </a>

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->datetime('start_datetime');
-            $table->datetime('end_datetime')->nullable(true);
+//            $table->datetime('start_datetime')->nullable()->default(null);
+//            $table->datetime('end_datetime')->nullable()->default(null);
 //            $table->integer('number_of_people');
             $table->double('rating')->nullable(true);
             $table->foreignId('reservation_type_id')->constrained();

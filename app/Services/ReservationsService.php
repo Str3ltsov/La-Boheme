@@ -21,7 +21,7 @@ class ReservationsService implements ReservationsServiceInterface
             'clients.name',
             'clients.email',
             'clients.phone_number',
-            'reservations.start_datetime',
+//            'reservations.start_datetime',
 //            'reservations.number_of_people',
             'reservations.reservation_type_id',
             'reservations.reservation_status_id',

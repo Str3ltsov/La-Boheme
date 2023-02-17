@@ -1551,7 +1551,7 @@ a.ui-button:active,
   background-size: cover;
 }
 #app #cormorant {
-  font-family: "Roboto";
+  font-family: "Cormorant", serif;
 }
 #app input[type=date]::-webkit-inner-spin-button,
 #app input[type=date]::-webkit-calendar-picker-indicator,
@@ -1625,11 +1625,11 @@ a.ui-button:active,
   opacity: 0.75;
 }
 #app .input-hover-focus {
-  border: 1px solid #D2D8DD;
+  border: 2px solid #C19F5F;
   transition: border 300ms ease;
 }
 #app .input-hover-focus:hover, #app .input-hover-focus:focus {
-  border: 1px solid #D3152E;
+  border: 2px solid #BBBBBB;
 }
 
 /*!
@@ -1706,7 +1706,7 @@ a.ui-button:active,
 
 body {
   margin: 0;
-  font-family: "Roboto";
+  font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);

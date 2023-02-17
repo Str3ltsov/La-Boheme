@@ -64,11 +64,11 @@
 	* Footer
 * ===============================================
 */
-@import "font-awesome.min.css";
-@import "font-awesome-animation.min.css";
-@import "pe-icon-7-stroke.css";
+/*@import "font-awesome.min.css";*/
+/*@import "font-awesome-animation.min.css";*/
+/*@import "pe-icon-7-stroke.css";*/
 @import "utility-classes.css";
-@import "flaticon.css";
+/*@import "flaticon.css";*/
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800|Droid+Serif:400,400i,700,700i);
 /*
  * typography.less

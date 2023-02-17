@@ -73,13 +73,13 @@ class ReservationService implements ReservationServiceInterface
                 'reservation_type' => ['required'],
                 'date' => ['required', 'date']
             ],
-            2 => [
-                'time_from' => ['required'],
-                'time_to' => ['required'],
+//            2 => [
+//                'time_from' => ['required'],
+//                'time_to' => ['required'],
 //                'number_of_people' => $reservationType == Constants::reservationTypeHall ?
 //                    ['required', 'numeric', 'min:9'] : ['required', 'numeric', 'min:1', 'max:8']
-            ],
-            3 => [
+//            ],
+            2 => [
                 'question_one_answer' => ['required'],
                 'question_two_answer' => ['required'],
                 'question_three_answer' => ['required'],
@@ -91,12 +91,12 @@ class ReservationService implements ReservationServiceInterface
                 'employee_waiter' => ['required'],
                 'employee_bartender' => ['required']
             ],*/
-            4 => [
+            3 => [
                 'client_name' => ['required'],
                 'client_email' => ['required', 'email'],
                 'client_phone_number' => ['required']
             ],
-            5 => ['accept' => ['required']]
+            4 => ['accept' => ['required']]
         ];
 
         if (empty($validationRules)) {
@@ -212,11 +212,13 @@ class ReservationService implements ReservationServiceInterface
 //    }
 
     public function createReservation(
-        mixed $vyrtren, mixed $vyrtrenass, mixed $fiztren, string $startDatetime, string $endDatetime, int $reservationType, object $client
+        mixed $vyrtren,
+        mixed $vyrtrenass,
+        mixed $fiztren,
+        int $reservationType,
+        object $client
     ): Reservation|RedirectResponse
     {
-
-
         $randomVyrtren = rand(1, count($vyrtren));
         $randomVyrtrenass = rand(1, count($vyrtrenass));
         $randomFiztren = rand(1, count($fiztren));
@@ -227,15 +229,11 @@ class ReservationService implements ReservationServiceInterface
 ////        dd($randomFiztren);
 //        exit();
 
-
         $reservation = Reservation::create([
-            'start_datetime' => $startDatetime,
-            'end_datetime' => $endDatetime,
             'reservation_type_id' => $reservationType,
             "fiztren_id" => $reservationType == Constants::reservationTypeFiztren ? $randomFiztren : NULL,
             "vyrtren_id" => $reservationType == Constants::reservationTypeVyrtren ? $randomVyrtren : NULL,
             "vyrtrenass_id" => $reservationType == Constants::reservationTypeVyrtrenass ? $randomVyrtrenass : NULL,
-
 
             'client_id' => $client->id,
             'reservation_status_id' => Constants::reservationStatusInProgress,

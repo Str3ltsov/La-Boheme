@@ -8,17 +8,17 @@
             <h4>{{ $steps[$currentStep]['step'] }} {{ $steps[$currentStep]['description'] }}</h4>
             @if ($currentStep == 1)
                 @include('livewire.reservation.first_step')
+{{--            @elseif ($currentStep == 2)--}}
+{{--                @include('livewire.reservation.second_step')--}}
             @elseif ($currentStep == 2)
-                @include('livewire.reservation.second_step')
-            @elseif ($currentStep == 3)
                 @include('livewire.reservation.third_step')
             {{--
             @elseif($currentStep == 4)
                 @include('livewire.reservation.fourth_step')
             --}}
-            @elseif ($currentStep == 4)
+            @elseif ($currentStep == 3)
                 @include('livewire.reservation.fifth_step')
-            @elseif ($currentStep == 5)
+            @elseif ($currentStep == 4)
                 @include('livewire.reservation.sixth_step')
             @endif
         </form>
@@ -33,7 +33,7 @@
 
         async function fetchUnavailableDates(reservationType) {
             try {
-                const response = await fetch(`{{ env('APP_URL') }}api/v1/unavailable_dates/${reservationType}`)
+                const response = await fetch(`{{ env('APP_URL') }}:8000/api/v1/unavailable_dates/${reservationType}`)
                 const unavailableDates = await response.json();
 
                 showDatePicker();

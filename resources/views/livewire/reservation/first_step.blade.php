@@ -57,7 +57,7 @@
     @enderror
 </div>
 <div>
-    <button wire:click="GoToNextStepAndAddStartTimes" type="button" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: 150px">
+    <button wire:click="goToNextStep" type="button" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: 150px">
         {{ __('Toliau') }}
     </button>
 </div>

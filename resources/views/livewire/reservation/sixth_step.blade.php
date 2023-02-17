@@ -30,6 +30,7 @@
             class="form-check-input"
             style="min-width: 20px"
             value="{{ true }}"
+            required
         >
         <label for="Accept" class="form-check-label">
             <span>{{ __('Sutinku su svetainės') }}</span>

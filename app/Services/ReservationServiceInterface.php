@@ -35,8 +35,8 @@ interface ReservationServiceInterface
         mixed $vyrtren,
         mixed $vyrtrenass,
         mixed $fiztren,
-        string $startDatetime,
-        string $endDatetime,
+//        string $startDatetime,
+//        string $endDatetime,
 //        int $numberOfPeople,
         int $reservationType,
         object $client

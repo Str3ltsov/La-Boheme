@@ -24,8 +24,8 @@ class ReservationForm extends Component
 
     //public array $employees = [];
     public int $currentStep = 1;
-    public array $startTimes = [];
-    public array $endTimes = [];
+//    public array $startTimes = [];
+//    public array $endTimes = [];
     public bool $isChecked = false;
     public array $adminEmails = [
         'info' => 'info@mbm2pries2.lt',
@@ -42,14 +42,14 @@ class ReservationForm extends Component
      */
     public $reservation_type;
     public $date;
+//    /*
+//     * Step 2 properties
+//     */
+//    public $time_from;
+//    public $time_to;
+//    public $number_of_people;
     /*
      * Step 2 properties
-     */
-    public $time_from;
-    public $time_to;
-    public $number_of_people;
-    /*
-     * Step 3 properties
      */
     public $question_one_answer;
     public $question_two_answer;
@@ -65,19 +65,19 @@ class ReservationForm extends Component
 //    public $question_five_comment;
 //    public $question_six_comment;
     /*
-     * Step 4 properties
+     * Step 3 properties
      */
     //public $employee_waiter;
     //public $employee_bartender;
     /*
-     * Step 5 properties
+     * Step 4 properties
      */
     public $client_name;
     public $client_email;
     public $client_phone_number;
     public $client_additional_info;
     /*
-     * Step 6 properties
+     * Step 5 properties
      */
     public $accept;
 
@@ -86,8 +86,8 @@ class ReservationForm extends Component
         return [
             'reservation_type.required' => 'Nepasirinkote paslaugos tipo',
             'date.required' => 'Nepasirinkote datos',
-            'time_from.required' => 'Nepasirinkote pradžios laiko',
-            'time_to.required' => 'Nepasirinkote pabaigos laiko',
+//            'time_from.required' => 'Nepasirinkote pradžios laiko',
+//            'time_to.required' => 'Nepasirinkote pabaigos laiko',
 //            'number_of_people.required' => 'Nenurodėte žmonių skaičiaus',
 //            'number_of_people.min' => $this->reservation_type == Constants::reservationTypeHall
 //                ? 'Žmonių skaičius turi būti didesnis negu 8'
@@ -122,27 +122,27 @@ class ReservationForm extends Component
     {
         return [
             1 => [
-                'step' => '1/5',
+                'step' => '1/4',
                 'description' => 'Pasirinkite, kokio trenerio ieškote?'
             ],
+//            2 => [
+//                'step' => '2/5',
+//                'description' => 'Pasirinkti laiką'
+//            ],
             2 => [
-                'step' => '2/5',
-                'description' => 'Pasirinkti laiką'
-            ],
-            3 => [
-                'step' => '3/5',
+                'step' => '2/4',
                 'description' => $this->chooseDesc($this->reservation_type),
             ],
             /*4 => [
                 'step' => '4/6',
                 'description' => 'Pasirinkite jūs aptarnausiantį personalą'
             ],*/
-            4 => [
-                'step' => '4/5',
+            3 => [
+                'step' => '3/4',
                 'description' => 'Užpildykite kontaktinę informaciją'
             ],
-            5 => [
-                'step' => '5/5',
+            4 => [
+                'step' => '4/4',
                 'description' => 'Mano rezervacija'
             ]
         ];
@@ -174,27 +174,27 @@ class ReservationForm extends Component
         );
     }*/
 
-    public function GoToNextStepAndAddStartTimes()
-    {
-        $this->goToNextStep();
+//    public function GoToNextStepAndAddStartTimes()
+//    {
+//        $this->goToNextStep();
+//
+//        $unavailableDateTimes = $this->getUnavailableDateTimesByReservationType($this->reservation_type);
+//
+//        $this->setAndGetDayOfTheWeek($this->date);
+//
+//        $times = $this->getTimesBasedOnDay();
+//
+//        $this->startTimes = $this->getAvailableTimesByDate($unavailableDateTimes, $this->date, $times);
+//    }
 
-        $unavailableDateTimes = $this->getUnavailableDateTimesByReservationType($this->reservation_type);
-
-        $this->setAndGetDayOfTheWeek($this->date);
-
-        $times = $this->getTimesBasedOnDay();
-
-        $this->startTimes = $this->getAvailableTimesByDate($unavailableDateTimes, $this->date, $times);
-    }
-
-    public function setAndGetEndTimes() {
-
-        $this->endTimes = $this->removeEndTimesBeforeAndAfterStartTime(
-            $this->reservation_type,
-            $this->startTimes,
-            $this->time_from
-        );
-    }
+//    public function setAndGetEndTimes() {
+//
+//        $this->endTimes = $this->removeEndTimesBeforeAndAfterStartTime(
+//            $this->reservation_type,
+//            $this->startTimes,
+//            $this->time_from
+//        );
+//    }
 
     public function submit()
     {
@@ -222,14 +222,14 @@ class ReservationForm extends Component
         $vyrtren = $this->service->getVyrtren();
         $vyrtrenass = $this->service->getVyrtrenass();
         $fiztren = $this->service->getFiztren();
-        $startDatetime = $this->combineDateAndTime($this->date, $this->time_from);
-        $endDatetime = $this->combineDateAndTime($this->date, $this->time_to);
+//        $startDatetime = $this->combineDateAndTime($this->date, $this->time_from);
+//        $endDatetime = $this->combineDateAndTime($this->date, $this->time_to);
         $reservation = $this->service->createReservation(
             $vyrtren,
             $vyrtrenass,
             $fiztren,
-            $startDatetime,
-            $endDatetime,
+//            $startDatetime,
+//            $endDatetime,
 //            $this->number_of_people,
             $this->reservation_type,
             $client

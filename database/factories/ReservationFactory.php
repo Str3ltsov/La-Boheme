@@ -50,15 +50,15 @@ class ReservationFactory extends Factory
     {
         $faker = $this->faker;
         $dateTime = $faker->unique()->dateTimeThisMonth()->format('Y-m-d H:i:s');
-        $startDateTime = $faker->dateTimeBetween($dateTime, 'next Monday +7 days');
-        $endDateTime = $faker->dateTimeBetween(
-            $startDateTime,
-            $startDateTime->format('Y-m-d H:i:s').' +1 days'
-        );
+//        $startDateTime = $faker->dateTimeBetween($dateTime, 'next Monday +7 days');
+//        $endDateTime = $faker->dateTimeBetween(
+//            $startDateTime,
+//            $startDateTime->format('Y-m-d H:i:s').' +1 days'
+//        );
 
         $reservation = [
-            'start_datetime' => $startDateTime,
-            'end_datetime' => $endDateTime,
+//            'start_datetime' => $startDateTime,
+//            'end_datetime' => $endDateTime,
             'rating' => NULL,
             'client_id' => self::$client_id++,
             'reservation_status_id' => rand(1, 4),
