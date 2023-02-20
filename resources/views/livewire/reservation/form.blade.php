@@ -33,7 +33,7 @@
 
         async function fetchUnavailableDates(reservationType) {
             try {
-                const response = await fetch(`{{ env('APP_URL') }}:8000/api/v1/unavailable_dates/${reservationType}`)
+                const response = await fetch(`{{ env('APP_URL') }}api/v1/unavailable_dates/${reservationType}`)
                 const unavailableDates = await response.json();
 
                 showDatePicker();
