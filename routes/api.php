@@ -20,5 +20,7 @@ Route::middleware('auth:sanctum')->get('/admin', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('unavailable_dates', ReservationFormApiController::class)
-    ->only(['show']);
+Route::middleware('cors')->group(function () {
+    Route::apiResource('unavailable_dates', ReservationFormApiController::class)
+        ->only(['show']);
+});

@@ -161,8 +161,8 @@
     <p><strong>Politikos galiojimas ir pakeitimai</strong></p>
     <p>Ši Politika galioja nuo 2023 m. vasario 1 d. Jei pakeisime šią Politiką, paskelbsime jos atnaujintą versiją šiame puslapyje.</p>
 </div>
-<div>
-    <button type="button" class="fw-bold fs-4 btn-hover-focus" onclick="window.location.href = `{{ route('livewire.reservation')}}`" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: 170px">
+<div class="mt-30">
+    <button type="button" class="fw-bold fs-4 btn-hover-focus" onclick="window.close();" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: 170px">
         {{ __('Uždaryti langą') }}
     </button>
 </div>

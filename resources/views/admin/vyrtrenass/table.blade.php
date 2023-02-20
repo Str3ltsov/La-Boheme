@@ -1,4 +1,4 @@
-<div class="table table-responsive">
+<div class="table table-responsive" style="border: 0">
     <table class="table display text-light mb-3" id="tables_table">
         <thead>
         <tr>
@@ -15,15 +15,14 @@
                 <td class="w-25" >{{ $table->created_at ?? null}}</td>
                 <td class="w-25" >{{ $table->updated_at ?? null}}</td>
                 <td class="w-auto">
-                    <div class="d-flex align-items-center" style="gap: 20px">
-                        <a href="{{ route('admin.vyrtrenasss.show', $table->id) }}" class="fw-bold text-light btn-hover-focus"
-                           style="background-color: transparent; color: white; text-decoration: none">
-                            <i class="fa-solid fa-eye"></i>
+                    <div style="display: flex; justify-content: center; align-items: center; width: 100%">
+                        <a href="{{ route('admin.vyrtrenasss.show', $table->id) }}" class="fw-bold btn-hover-focus"
+                           style="background-color: transparent; color: gray; text-decoration: none">
+                            <i class="fa-solid fa-eye text-dark"></i>
                         </a>
-                        {!! Form::open(['route' => ['admin.vyrtrenasss.destroy', $table->id], 'method' => 'delete']) !!}
-                            <button type="submit", class="fw-bold fs-4 text-center text-light btn-hover-focus" style="background-color: transparent;
-                                        border: none; text-decoration: none">
-                                <i class="fa-solid fa-trash-can"></i>
+                        {!! Form::open(['route' => ['admin.vyrtrenasss.destroy', $table->id], 'method' => 'delete', 'class' => 'm-0']) !!}
+                            <button type="submit" class="fw-bold fs-4 text-center btn-hover-focus ml-10" style="background-color: transparent; color: gray; border: none; text-decoration: none">
+                                <i class="fa-solid fa-trash-can text-dark"></i>
                             </button>
                         {!! Form::close() !!}
                     </div>
@@ -37,7 +36,7 @@
         </tbody>
         <tfoot>
         <tr>
-            <th class="w-25" scope="col">{{ __('Id') }}</th>
+            <th class="w-25" scope="col">{{ __('ID') }}</th>
             <th class="w-25" scope="col">{{ __('Sukurtas') }}</th>
             <th class="w-25" scope="col">{{ __('Atnaujintas') }}</th>
             <th class="w-auto" scope="col"></th>

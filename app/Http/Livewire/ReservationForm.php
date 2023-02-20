@@ -228,6 +228,7 @@ class ReservationForm extends Component
             $vyrtren,
             $vyrtrenass,
             $fiztren,
+            $this->date,
 //            $startDatetime,
 //            $endDatetime,
 //            $this->number_of_people,

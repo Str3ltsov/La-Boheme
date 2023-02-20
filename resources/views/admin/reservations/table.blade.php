@@ -1,14 +1,14 @@
-<div class="table table-responsive">
+<div class="table table-responsive w-100" style="border: 0">
     <table class="table display text-light mb-3" id="reservations_table">
         <thead>
             <tr>
-                <th scope="col">{{ __('Vardas') }}</th>
-                <th scope="col">{{ __('El. pastas') }}</th>
-                <th scope="col">{{ __('Telefonas') }}</th>
-                <th scope="col">{{ __('Data ir laikas') }}</th>
-                <th scope="col">{{ __('Zmoniu sk.') }}</th>
-                <th scope="col">{{ __('Patvirtinimas') }}</th>
-                <th scope="col"></th>
+                <th>{{ __('Vardas') }}</th>
+                <th>{{ __('El. pastas') }}</th>
+                <th>{{ __('Telefonas') }}</th>
+                <th>{{ __('Data ir laikas') }}</th>
+                <th>{{ __('Zmoniu sk.') }}</th>
+                <th>{{ __('Patvirtinimas') }}</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -41,13 +41,13 @@
         </tbody>
         <tfoot>
         <tr>
-            <th scope="col">{{ __('Vardas') }}</th>
-            <th scope="col">{{ __('El. pastas') }}</th>
-            <th scope="col">{{ __('Telefonas') }}</th>
-            <th scope="col">{{ __('Data ir laikas') }}</th>
-            <th scope="col">{{ __('Zmoniu sk.') }}</th>
-            <th scope="col">{{ __('Patvirtinimas') }}</th>
-            <th scope="col"></th>
+            <th>{{ __('Vardas') }}</th>
+            <th>{{ __('El. pastas') }}</th>
+            <th>{{ __('Telefonas') }}</th>
+            <th>{{ __('Data ir laikas') }}</th>
+            <th>{{ __('Zmoniu sk.') }}</th>
+            <th>{{ __('Patvirtinimas') }}</th>
+            <th></th>
         </tr>
         </tfoot>
     </table>

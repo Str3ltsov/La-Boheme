@@ -20,9 +20,11 @@ use Illuminate\Support\Facades\Route;
 /*
  * Guest
  */
-Route::redirect('/', '/reservation');
-Route::get('/reservation', ReservationForm::class)->name('livewire.reservation');
-Route::view('/reservation/success', 'reservation_success')->name('reservation.success');
+Route::middleware('cors')->group(function () {
+    Route::redirect('/', '/reservation');
+    Route::get('/reservation', ReservationForm::class)->name('livewire.reservation');
+    Route::view('/reservation/success', 'reservation_success')->name('reservation.success');
+});
 Route::view('/private_policy', 'private_policy')->name('privatePolicy');
 
 /*
@@ -32,8 +34,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.authorization']], fun
     /*
      * Home
      */
-    Route::get('/', [Admin\HomeController::class, 'index'])
-        ->name('admin.home');
+//    Route::get('/', [Admin\HomeController::class, 'index'])
+//        ->name('admin.home');
     /*
      * Reservations
      */

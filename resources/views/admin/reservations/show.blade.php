@@ -1,61 +1,64 @@
 @extends('layouts.app')
 
+@section('divider-text-1')
+    {{ __('Administratoriaus paskyra') }}
+@endsection
+
+@section('divider-text-2')
+    {{ __('Paslaugų užsakymai') }}
+@endsection
+
 @section('content')
-    <div>
-        <div class="d-flex flex-column justify-content-center align-items-center text-center p-5" style="height: 300px">
-            <p class="fs-2 text-light" id="cormorant">{{ __('Administratoriaus paskyra') }}</p>
-            <p class="fs-2 text-light" id="cormorant">{{ __('Paslaugų užsakymai') }}</p>
-        </div>
-        <img src="/images/grunge-dark-temp.png" alt="grunge-dark-temp" style="width: 100%; display: flex; align-items: flex-end">
-        <div class="d-flex flex-column justify-content-start" style="background-color: #1B3253; min-height: 85vh; padding: 0 2em">
+    <div class="container" style="padding-inline: 0">
+        <div class="d-flex flex-column justify-content-start pl-20 pr-20 pr-lg-0 pl-lg-0" style="min-height: 100%;">
             <div class="d-flex flex-column justify-content-center align-items-center bg-transparent" id="cormorant">
-                <div class="d-flex flex-column justify-content-center align-items-start p-5 fs-5 mb-5 text-light" style="font-size: 1.1em; background-color: #151515; width: clamp(300px, 100%, 1200px)">
-                    <div class="d-flex flex-column justify-content-center align-items-start my-3 fs-4 w-100">
-                        <h3 class="text-light">{{ __('Reservacija:') }} {{$reservation->id ?? '?'}}</h3>
-                        <div class="d-flex flex-md-row flex-column my-3 w-100">
-                            <div class="d-flex flex-column w-100 me-3 my-3 my-lg-0">
-                                <h5>{{ __('Paslauga') }}</h5>
+                <div class="d-flex flex-column justify-content-center align-items-start fs-5 text-light" style="font-size: 1.1em; width: 100%">
+                    <div class="d-flex flex-column justify-content-center align-items-start fs-4 w-100">
+                        <h2 class="text-light">{{ __('Reservacija:') }} {{$reservation->id ?? '?'}}</h2>
+                        <div class="d-flex flex-md-row flex-column w-100">
+                            <div class="d-flex flex-column w-100">
+                                <h4 class="">{{ __('Paslauga') }}</h4>
                                 <div class="d-flex flex-column" style="gap: 10px">
                                     <div class="d-flex flex-lg-row flex-column">
-                                        <span style="width: clamp(250px, 100%, 500px); color: #BBBBBB">{{ __('Pradžios data ir  laikas') }}:</span>
-                                        <span style="width: clamp(250px, 100%, 500px)">{{ $reservation->start_datetime ?? '-' }}</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #999">{{ __('Pradžios data ir  laikas') }}:</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #444">{{ $reservation->start_datetime ?? '-' }}</span>
                                     </div>
                                     <div class="d-flex flex-lg-row flex-column">
-                                        <span style="width: clamp(250px, 100%, 500px); color: #BBBBBB">{{ __('Pabaigos data ir laikas') }}:</span>
-                                        <span style="width: clamp(250px, 100%, 500px)">{{ $reservation->end_datetime ?? '-' }}</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #999">{{ __('Pabaigos data ir laikas') }}:</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #444">{{ $reservation->end_datetime ?? '-' }}</span>
                                     </div>
                                     <div class="d-flex flex-lg-row flex-column">
-                                        <span style="width: clamp(250px, 100%, 500px); color: #BBBBBB">{{ __('Žmonių skaičius') }}:</span>
-                                        <span style="width: clamp(250px, 100%, 500px)">{{ $reservation->number_of_people ?? '-' }}</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #999">{{ __('Žmonių skaičius') }}:</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #444">{{ $reservation->number_of_people ?? '-' }}</span>
                                     </div>
                                     <div class="d-flex flex-lg-row flex-column">
-                                        <span style="width: clamp(250px, 100%, 500px); color: #BBBBBB">{{ __('Reservacijos tipas') }}:</span>
-                                        <span style="width: clamp(250px, 100%, 500px)">{{ $reservation->type->name ?? '-' }}</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #999">{{ __('Reservacijos tipas') }}:</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #444">{{ $reservation->type->name ?? '-' }}</span>
                                     </div>
                                     <div class="d-flex flex-lg-row flex-column">
-                                        <span style="width: clamp(250px, 100%, 500px); color: #BBBBBB">{{ __('Statusas') }}:</span>
-                                        <span style="width: clamp(250px, 100%, 500px)">{{ $reservation->status->name ?? '-' }}</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #999">{{ __('Statusas') }}:</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #444">{{ $reservation->status->name ?? '-' }}</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="d-flex flex-column w-100 me-3 my-3 my-lg-0">
-                                <h5>{{ __('Klientas') }}</h5>
+                                <h4>{{ __('Klientas') }}</h4>
                                 <div class="d-flex flex-column" style="gap: 10px">
                                     <div class="d-flex flex-lg-row flex-column">
-                                        <span style="width: clamp(250px, 100%, 500px); color: #BBBBBB">{{ __('Vardas') }}:</span>
-                                        <span style="width: clamp(250px, 100%, 500px)">{{ $reservation->client->name ?? '-' }}</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #999">{{ __('Vardas') }}:</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #444">{{ $reservation->client->name ?? '-' }}</span>
                                     </div>
                                     <div class="d-flex flex-lg-row flex-column">
-                                        <span style="width: clamp(250px, 100%, 500px); color: #BBBBBB">{{ __('El. paštas') }}:</span>
-                                        <span style="width: clamp(250px, 100%, 500px)">{{ $reservation->client->email ?? '-' }}</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #999">{{ __('El. paštas') }}:</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #444">{{ $reservation->client->email ?? '-' }}</span>
                                     </div>
                                     <div class="d-flex flex-lg-row flex-column">
-                                        <span style="width: clamp(250px, 100%, 500px); color: #BBBBBB">{{ __('Telefonas') }}:</span>
-                                        <span style="width: clamp(250px, 100%, 500px)">{{ $reservation->client->phone_number ?? '-' }}</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #999">{{ __('Telefonas') }}:</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #444">{{ $reservation->client->phone_number ?? '-' }}</span>
                                     </div>
                                     <div class="d-flex flex-lg-row flex-column">
-                                        <span style="width: clamp(250px, 100%, 500px); color: #BBBBBB">{{ __('Papildoma informacija') }}:</span>
-                                        <span style="width: clamp(250px, 100%, 500px)">{{ $reservation->client->additional_information ?? '-' }}</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #999">{{ __('Papildoma informacija') }}:</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #444">{{ $reservation->client->additional_information ?? '-' }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -83,13 +86,19 @@
                         </div>
                         <div class="d-flex align-items-baseline my-3 w-100">
                             <div class="d-flex flex-column w-100 me-3">
-                                <h5>{{ __('Klausimų atsakymai') }}</h5>
+                                <h4>{{ __('Klausimų atsakymai') }}</h4>
                                 <div class="d-flex flex-column" style="gap: 20px">
                                     @forelse( $reservationQuestionsAnswers ?? [] as $reservationQuestion )
-                                        <div class="d-flex flex-lg-row flex-column my-3 my-lg-0" style="gap: 20px; word-break: break-word">
-                                            <span style="width: clamp(250px, 100%, 500px); color: #BBBBBB">{{ __($reservationQuestion->question) ?? '-' }} :</span>
-                                            <span style="width: clamp(250px, 100%, 500px)">{{ $reservationQuestion->answer ?? '-' }}</span>
-                                            <span style="width: clamp(250px, 100%, 500px)">{{ $reservationQuestion->comment ?? '-' }}</span>
+                                        <div class="d-flex flex-lg-row flex-column my-3 my-lg-0" style="word-break: break-word">
+                                            <span style="width: clamp(250px, 100%, 500px); color: #999">
+                                                {{ __($reservationQuestion->question) ?? '-' }} :
+                                            </span>
+                                            <span style="width: clamp(250px, 100%, 500px); color: #444; padding-inline: 10px">
+                                                {{ $reservationQuestion->answer ?? '-' }}
+                                            </span>
+                                            <span style="width: clamp(250px, 100%, 500px); color: #444; padding-inline: 10px">
+                                                {{ $reservationQuestion->comment ?? '-' }}
+                                            </span>
                                         </div>
                                     @empty
                                         <span>{{ __('Nerasta rezervavimo klausimų') }}</span>
@@ -98,10 +107,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-center align-items-center w-100 mt-4" style="gap: 20px;">
+                    <div class="d-flex justify-content-center align-items-center w-100 mt-30" style="gap: 20px;">
                         <div class="d-flex justify-content-center align-items-center">
                             <a class="fw-bold fs-4 text-center btn-hover-focus" href="{{ route('admin.reservations') }}"
-                               style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: 150px; text-decoration: none">
+                               style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 30px; width: 150px; text-decoration: none">
                                 {{ __('Atgal') }}
                             </a>
                         </div>

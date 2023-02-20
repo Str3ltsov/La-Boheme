@@ -1,8 +1,16 @@
 @extends('layouts.app')
 
+@section('divider-text-1')
+    {{ __('Administratoriaus paskyra') }}
+@endsection
+
+@section('divider-text-2')
+    {{ __('Paslaugų užsakymai') }}
+@endsection
+
 @section('content')
     <div class="container d-flex justify-content-center align-items-center"
-         style="min-height: 100vh" id="cormorant">
+         style="min-height: 100%" id="cormorant">
         <div class="d-flex justify-content-center align-items-center w-auto">
             <div>
                 <div class="w-100">

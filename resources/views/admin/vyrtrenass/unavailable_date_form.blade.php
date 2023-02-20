@@ -15,16 +15,16 @@
             onchange="this.dispatchEvent(new InputEvent('input'))"
         >
     </div>
-    <div class="d-flex justify-content-end align-items-center mt-2" style="gap: 10px">
-        <button type="reset" class="fw-bold fs-4 text-center py-2 px-4 btn-hover-focus"
-                style="background-color: #BBBBBB; border: none; border-radius: 17.5px"
+    <div class="d-flex justify-content-end align-items-center mt-20">
+        <button type="reset" class="fw-bold fs-4 text-center pl-20 pr-20 pt-5 pb-5 btn-hover-focus"
+                style="background-color: #dfdfdf; border: none; border-radius: 5px"
                 onclick="document.location='{{ redirect()->back() }}'">
             {{ __('Nuvalyti') }}
         </button>
         {!! Form::button(__('Sukurti'), [
             'type' => 'submit',
-            'class' => 'fw-bold fs-4 text-center py-2 px-4 btn-hover-focus',
-            'style' => 'background-color: #D3152E; border: none; border-radius: 17.5px'
+            'class' => 'fw-bold fs-4 text-center pl-20 pr-20 pt-5 pb-5 ml-5 text-white btn-hover-focus',
+            'style' => 'background-color: #D3152E; border: none; border-radius: 5px'
             ]) !!}
     </div>
 {!! Form::close() !!}
