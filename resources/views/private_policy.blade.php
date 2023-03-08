@@ -140,7 +140,7 @@
     <p>Mes atsisakysime tenkinti Jūsų pra&scaron;ymą motyvuotu atsakymu, kai bus nustatytos teisės aktuose nurodytos aplinkybės, apie tai raštu informuodami Jus.</p>
     <p><strong>Kokiais būdais ir kokiais kontaktais galite su mumis susisiekti? </strong></p>
     <p>Visais duomenų tvarkymo klausimais su mumis susisiekti galite šiais būdais:</p>
-    <p>elektroniniu paštu joana@getweb.lt</p>
+    <p>elektroniniu paštu aurimas@amcoachlab.com</p>
     <p>pašto korespondencijos adresas &ndash; Perkūnkiemio g. 13-91, LT-12114 Vilnius</p>
     <p><em>Laišką adresuokite taip: MB "Du prieš du"</em>.</p>
     <p>Mūsų, kaip duomenų valdytojo, rekvizitai:</p>

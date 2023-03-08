@@ -20,18 +20,6 @@
                                 <h4 class="">{{ __('Paslauga') }}</h4>
                                 <div class="d-flex flex-column" style="gap: 10px">
                                     <div class="d-flex flex-lg-row flex-column">
-                                        <span style="width: clamp(250px, 100%, 500px); color: #999">{{ __('Pradžios data ir  laikas') }}:</span>
-                                        <span style="width: clamp(250px, 100%, 500px); color: #444">{{ $reservation->start_datetime ?? '-' }}</span>
-                                    </div>
-                                    <div class="d-flex flex-lg-row flex-column">
-                                        <span style="width: clamp(250px, 100%, 500px); color: #999">{{ __('Pabaigos data ir laikas') }}:</span>
-                                        <span style="width: clamp(250px, 100%, 500px); color: #444">{{ $reservation->end_datetime ?? '-' }}</span>
-                                    </div>
-                                    <div class="d-flex flex-lg-row flex-column">
-                                        <span style="width: clamp(250px, 100%, 500px); color: #999">{{ __('Žmonių skaičius') }}:</span>
-                                        <span style="width: clamp(250px, 100%, 500px); color: #444">{{ $reservation->number_of_people ?? '-' }}</span>
-                                    </div>
-                                    <div class="d-flex flex-lg-row flex-column">
                                         <span style="width: clamp(250px, 100%, 500px); color: #999">{{ __('Reservacijos tipas') }}:</span>
                                         <span style="width: clamp(250px, 100%, 500px); color: #444">{{ $reservation->type->name ?? '-' }}</span>
                                     </div>

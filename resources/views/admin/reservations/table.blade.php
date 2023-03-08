@@ -2,11 +2,10 @@
     <table class="table display text-light mb-3" id="reservations_table">
         <thead>
             <tr>
+                <th>{{ __('Rezervacijos tipas') }}</th>
                 <th>{{ __('Vardas') }}</th>
-                <th>{{ __('El. pastas') }}</th>
+                <th>{{ __('El. paštas') }}</th>
                 <th>{{ __('Telefonas') }}</th>
-                <th>{{ __('Data ir laikas') }}</th>
-                <th>{{ __('Zmoniu sk.') }}</th>
                 <th>{{ __('Patvirtinimas') }}</th>
                 <th></th>
             </tr>
@@ -14,11 +13,10 @@
         <tbody>
             @forelse ($reservations ?? [] as $reservation)
                 <tr id="row_link" data-href='url://'>
+                    <td>{{ $reservation->type->name ?? '-' }}</td>
                     <td>{{ $reservation->name ?? '-' }}</td>
                     <td>{{ $reservation->email ?? '-' }}</td>
                     <td>{{ $reservation->phone_number ?? '-' }}</td>
-                    <td data-class-name="priority">{{ $reservation->start_datetime ?? '-' }}</td>
-                    <td>{{ $reservation->number_of_people ?? '-' }}</td>
                     <td>
                         @if ($reservation->status->id == 1)
                             @include('admin.reservations.form')
@@ -41,11 +39,10 @@
         </tbody>
         <tfoot>
         <tr>
+            <th>{{ __('Rezervacijos tipas') }}</th>
             <th>{{ __('Vardas') }}</th>
-            <th>{{ __('El. pastas') }}</th>
+            <th>{{ __('El. paštas') }}</th>
             <th>{{ __('Telefonas') }}</th>
-            <th>{{ __('Data ir laikas') }}</th>
-            <th>{{ __('Zmoniu sk.') }}</th>
             <th>{{ __('Patvirtinimas') }}</th>
             <th></th>
         </tr>
@@ -68,7 +65,7 @@
                     "lengthMenu": "Rodoma po _MENU_ įrašų",
                     "loadingRecords": "Pakrovimas...",
                     "processing": "Apdorojimas...",
-                    "search": "Paieska: ",
+                    "search": "Paieška: ",
                     "zeroRecords": "Atitinkančių įrašų nerasta",
                     "thousands": ",",
                     "paginate": {

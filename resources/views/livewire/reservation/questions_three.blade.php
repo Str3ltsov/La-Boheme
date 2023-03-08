@@ -1,6 +1,6 @@
 <div>
     <div>
-        <p>{{ __('Kokios patirties fizinio rengimo trenerio ieškote') }}</p>
+        <p>{{ __('Kokios patirties fizinio rengimo trenerio ieškote?') }}</p>
         <div>
             @error('question_one_answer')
             <span class="text-danger">{{ $message }}</span>
@@ -10,18 +10,18 @@
                     wire:model.lazy="question_one_answer"
                     type="radio"
                     name="questionOneAnswer"
-                    value="Iki5"
+                    value="Patirtis iki 5 m."
                 >
-                <label>{{ __('Iki 5 m.') }}</label>
+                <label>{{ __('Patirtis iki 5 m.') }}</label>
             </div>
             <div>
                 <input
                     wire:model.lazy="question_one_answer"
                     type="radio"
                     name="questionOneAnswer"
-                    value="virš 5 metų"
+                    value="Patirtis virš 5 metų"
                 >
-                <label>{{ __('virš 5 metų') }}</label>
+                <label>{{ __('Patirtis virš 5 metų') }}</label>
             </div>
         </div>
     </div>
@@ -64,36 +64,36 @@
                         wire:model.lazy="question_three_answer"
                         type="radio"
                         name="questionThreeAnswer"
-                        value="20000-30000 EUR"
+                        value="20 000 - 30 000 EUR"
                     >
-                    <label>{{ __('20000-30000 EUR') }}</label>
+                    <label>{{ __('20 000 - 30 000 EUR') }}</label>
                 </div>
                 <div>
                     <input
                         wire:model.lazy="question_three_answer"
                         type="radio"
                         name="questionThreeAnswer"
-                        value="30000-40000 EUR"
+                        value="30 000 - 40 000 EUR"
                     >
-                    <label>{{ __('30000-40000 EUR') }}</label>
+                    <label>{{ __('30 000 - 40 000 EUR') }}</label>
                 </div>
                 <div class="my-1">
                     <input
                         wire:model.lazy="question_three_answer"
                         type="radio"
                         name="questionThreeAnswer"
-                        value="40000-50000 EUR"
+                        value="40 000 - 50 000 EUR"
                     >
-                    <label>{{ __('40000-50000 EUR') }}</label>
+                    <label>{{ __('40 000 - 50 000 EUR') }}</label>
                 </div>
                 <div class="my-1">
                     <input
                         wire:model.lazy="question_three_answer"
                         type="radio"
                         name="questionThreeAnswer"
-                        value="virš 50000 EUR"
+                        value="Virš 50 000 EUR"
                     >
-                    <label>{{ __('virš 500000 EUR') }}</label>
+                    <label>{{ __('Virš 50 000 EUR') }}</label>
                 </div>
             </div>
     <div>

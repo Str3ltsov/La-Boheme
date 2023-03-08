@@ -2,70 +2,56 @@
 
 @section('content')
     <div>
-        <div class="d-flex flex-column justify-content-center align-items-center text-center p-5" style="height: 200px">
-            <h1 class="text-light" id="cormorant">{{ __('Prisijungti kaip administratorius') }}</h1>
-        </div>
-        <img src="/images/grunge-dark-temp.png" alt="grunge-dark-temp" style="width: 100%; display: flex; align-items: flex-end">
-        <div class="d-flex flex-column justify-content-start" style="background-color: #1B3253; min-height: 85vh; padding: 0 2em">
-            <div class="d-flex flex-column justify-content-center align-items-center bg-transparent p-4" id="cormorant">
-                <div class="d-flex flex-column justify-content-center align-items-center my-1 fs-5 text-light" style="font-size: 1.1em; width: clamp(300px, 100%, 600px)">
-                    <div class="w-100">
-                        @include('flash_message')
+        <h2 class="mt-0">{{ __('Prisijungti kaip administratorius') }}</h2>
+        <div class="p-20 mt-40" style="background-color: #F6F7F3; border-radius: 10px;">
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <div>
+                    <label for="email">{{ __('El. pašto adresas') }}</label>
+                    <div>
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                           name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
+                           style="border-radius: 5px;">
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
-                    <div class="d-flex flex-column justify-content-center align-items-center my-3 fs-4 w-100">
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
-                            <div class="row mb-3">
-                                <label for="email" class="col-form-label">{{ __('El. pašto adresas') }}</label>
-                                <div>
-                                    <input id="email" type="email" class="form-control fs-4 text-light bg-transparent
-                                       @error('email') is-invalid @enderror"
-                                       name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
-                                       style="border-radius: 5px; border-color: #C19F5F">
-                                    @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="password" class="col-form-label">{{ __('Slaptažodis') }}</label>
-                                <div>
-                                    <input id="password" type="password" class="form-control fs-4 text-light bg-transparent
-                                       @error('password') is-invalid @enderror"
-                                       name="password" required autocomplete="current-password" style="border-radius: 5px; border-color: #C19F5F">
-                                    @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="remember">
-                                            {{ __('Prisimink mane') }}
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center w-100" style="gap: 20px">
-                                <button type="submit" class="fw-bold fs-4 btn-hover-focus col-12" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px;">
-                                    {{ __('Prisijungti') }}
-                                </button>
+                </div>
+                <div>
+                    <label for="password">{{ __('Slaptažodis') }}</label>
+                    <div>
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                           name="password" required autocomplete="current-password" style="border-radius: 5px;">
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <div>
+                            <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                            <label for="remember">
+                                {{ __('Prisimink mane') }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="btn-hover-focus" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px;">
+                        {{ __('Prisijungti') }}
+                    </button>
 {{--                                    @if (Route::has('password.request'))--}}
 {{--                                        <a class="btn btn-link fs-3 p-0 text-start" href="{{ route('password.request') }}" style="color: #C19F5F">--}}
 {{--                                            {{ __('Pamiršai slaptažodį?') }}--}}
 {{--                                        </a>--}}
 {{--                                    @endif--}}
-                            </div>
-                        </form>
-                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 @endsection

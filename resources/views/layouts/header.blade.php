@@ -14,7 +14,7 @@
                             <li class="m-0 pl-10 pr-10">
                                 <a href="javascript:void(0)" class="text-white">
                                     <i class="fa-sharp fa-solid fa-envelope text-theme-colored"></i>
-                                    info@amcoachlab.com
+                                    aurimas@amcoachlab.com
                                 </a>
                             </li>
                         </ul>

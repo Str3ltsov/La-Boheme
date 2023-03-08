@@ -10,7 +10,7 @@
                     wire:model.lazy="question_one_answer"
                     type="radio"
                     name="questionOneAnswer"
-                    value="iki30"
+                    value="Iki 30"
                 >
                 <label class="form-check-label">{{ __('Iki 30 m.') }}</label>
             </div>
@@ -19,14 +19,14 @@
                     wire:model.lazy="question_one_answer"
                     type="radio"
                     name="questionOneAnswer"
-                    value="virs30"
+                    value="Virš 30"
                 >
-                <label>{{ __('Virš 5 metų') }}</label>
+                <label>{{ __('Virš 30 m.') }}</label>
             </div>
         </div>
     </div>
     <div>
-        <p>{{ __('Kokios patirties vyr. trenerio ieškote') }}</p>
+        <p>{{ __('Kokios patirties vyr. trenerio ieškote?') }}</p>
         <div>
             @error('question_two_answer')
             <span class="text-danger">{{ $message }}</span>
@@ -36,36 +36,36 @@
                     wire:model.lazy="question_two_answer"
                     type="radio"
                     name="questionTwoAnswer"
-                    value="Iki5"
+                    value="Patirtis iki 5 m."
                 >
-                <label>{{ __('Iki 5 m.') }}</label>
+                <label>{{ __('Patirtis iki 5 m.') }}</label>
             </div>
             <div class="my-1">
                 <input
                     wire:model.lazy="question_two_answer"
                     type="radio"
                     name="questionTwoAnswer"
-                    value="5-10"
+                    value="Patirtis 5-10 m."
                 >
-                <label>{{ __('5-10 m.') }}</label>
+                <label>{{ __('Patirtis 5-10 m.') }}</label>
             </div>
             <div class="my-1">
                 <input
                     wire:model.lazy="question_two_answer"
                     type="radio"
                     name="questionTwoAnswer"
-                    value="virs10"
+                    value="Patirtis virš 10 m."
                 >
-                <label>{{ __('virš 10 m.') }}</label>
+                <label>{{ __('Patirtis virš 10 m.') }}</label>
             </div>
             <div class="my-1">
                 <input
                     wire:model.lazy="question_two_answer"
                     type="radio"
                     name="questionTwoAnswer"
-                    value="be patirties"
+                    value="Be vyr. trenerio patirties"
                 >
-                <label>{{ __('Be patirties') }}</label>
+                <label>{{ __('Be vyr. trenerio patirties') }}</label>
             </div>
         </div>
     </div>
@@ -107,7 +107,7 @@
                     wire:model.lazy="question_three_answer"
                     type="radio"
                     name="questionThreeAnswer"
-                    value="0"
+                    value="Nei vieno"
                 >
                 <label>{{ __('Nei vieno') }}</label>
             </div>
@@ -125,36 +125,36 @@
                         wire:model.lazy="question_four_answer"
                         type="radio"
                         name="questionFourAnswer"
-                        value="30000-50000 EUR"
+                        value="30 000 - 50 000 EUR"
                     >
-                    <label>{{ __('30000-50000 EUR') }}</label>
+                    <label>{{ __('30 000 - 50 000 EUR') }}</label>
                 </div>
                 <div class="my-1">
                     <input
                         wire:model.lazy="question_four_answer"
                         type="radio"
                         name="questionFourAnswer"
-                        value="50000-75000 EUR"
+                        value="50 000 - 75 000 EUR"
                     >
-                    <label>{{ __('50000-75000 EUR') }}</label>
+                    <label>{{ __('50 000 - 75 000 EUR') }}</label>
                 </div>
                 <div class="my-1">
                     <input
                         wire:model.lazy="question_four_answer"
                         type="radio"
                         name="questionFourAnswer"
-                        value="75000-100000 EUR"
+                        value="75 000 - 100 000 EUR"
                     >
-                    <label>{{ __('75000-100000 EUR') }}</label>
+                    <label>{{ __('75 000 - 10 0000 EUR') }}</label>
                 </div>
                 <div class="my-1">
                     <input
                         wire:model.lazy="question_four_answer"
                         type="radio"
                         name="questionFourAnswer"
-                        value="virš 100000 EUR"
+                        value="virš 100 000 EUR"
                     >
-                    <label>{{ __('virš 100000 EUR') }}</label>
+                    <label>{{ __('virš 100 000 EUR') }}</label>
                 </div>
             </div>
         </div>
