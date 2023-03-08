@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->datetime('start_datetime');
+//            $table->datetime('start_datetime');
 //            $table->datetime('end_datetime')->nullable()->default(null);
 //            $table->integer('number_of_people');
             $table->double('rating')->nullable(true);

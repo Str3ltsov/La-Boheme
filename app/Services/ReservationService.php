@@ -71,7 +71,7 @@ class ReservationService implements ReservationServiceInterface
         $validationRules = [
             1 => [
                 'reservation_type' => ['required'],
-                'date' => ['required', 'date']
+//                'date' => ['required', 'date']
             ],
 //            2 => [
 //                'time_from' => ['required'],
@@ -215,7 +215,7 @@ class ReservationService implements ReservationServiceInterface
         mixed $vyrtren,
         mixed $vyrtrenass,
         mixed $fiztren,
-        string $startDate,
+//        string $startDate,
         int $reservationType,
         object $client
     ): Reservation|RedirectResponse
@@ -235,7 +235,7 @@ class ReservationService implements ReservationServiceInterface
             "fiztren_id" => $reservationType == Constants::reservationTypeFiztren ? $randomFiztren : NULL,
             "vyrtren_id" => $reservationType == Constants::reservationTypeVyrtren ? $randomVyrtren : NULL,
             "vyrtrenass_id" => $reservationType == Constants::reservationTypeVyrtrenass ? $randomVyrtrenass : NULL,
-            'start_datetime' => $startDate,
+//            'start_datetime' => $startDate,
             'client_id' => $client->id,
             'reservation_status_id' => Constants::reservationStatusInProgress,
             'created_at' => now(),

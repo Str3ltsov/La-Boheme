@@ -41,7 +41,7 @@ class ReservationForm extends Component
      * Step 1 properties
      */
     public $reservation_type;
-    public $date;
+//    public $date;
 //    /*
 //     * Step 2 properties
 //     */
@@ -85,7 +85,7 @@ class ReservationForm extends Component
     {
         return [
             'reservation_type.required' => 'Nepasirinkote paslaugos tipo',
-            'date.required' => 'Nepasirinkote datos',
+//            'date.required' => 'Nepasirinkote datos',
 //            'time_from.required' => 'Nepasirinkote pradžios laiko',
 //            'time_to.required' => 'Nepasirinkote pabaigos laiko',
 //            'number_of_people.required' => 'Nenurodėte žmonių skaičiaus',
@@ -228,7 +228,7 @@ class ReservationForm extends Component
             $vyrtren,
             $vyrtrenass,
             $fiztren,
-            $this->date,
+//            $this->date,
 //            $startDatetime,
 //            $endDatetime,
 //            $this->number_of_people,

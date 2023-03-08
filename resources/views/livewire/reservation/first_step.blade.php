@@ -39,23 +39,23 @@
             <p>{{ __('Nerasta rezervavimo tipų') }}</p>
         </div>
 @endforelse
-<div class="mt-10 mb-20">
-    <input
-        wire:model="date" type="text"
-        class="form-control datepicker fs-4 text-light bg-transparent text-center py-2 input-hover-focus fade-in"
-        style="width: 300px; border-radius: 5px;"
-        autocomplete="off"
-        data-provide="datepicker" data-date-autoclose="true"
-        data-date-format="yyyy/mm/dd" data-date-today-highlight="true"
-        id="date_picker" placeholder="{{ __('Pasirinkite datą') }}"
-        onchange="this.dispatchEvent(new InputEvent('input'))"
-        onkeydown="return false"
-        readonly
-    >
-    @error('date')
-        <span class="text-danger fs-5">{{ $message }}</span>
-    @enderror
-</div>
+{{--<div class="mt-10 mb-20">--}}
+{{--    <input--}}
+{{--        wire:model="date" type="text"--}}
+{{--        class="form-control datepicker fs-4 text-light bg-transparent text-center py-2 input-hover-focus fade-in"--}}
+{{--        style="width: 300px; border-radius: 5px;"--}}
+{{--        autocomplete="off"--}}
+{{--        data-provide="datepicker" data-date-autoclose="true"--}}
+{{--        data-date-format="yyyy/mm/dd" data-date-today-highlight="true"--}}
+{{--        id="date_picker" placeholder="{{ __('Pasirinkite datą') }}"--}}
+{{--        onchange="this.dispatchEvent(new InputEvent('input'))"--}}
+{{--        onkeydown="return false"--}}
+{{--        readonly--}}
+{{--    >--}}
+{{--    @error('date')--}}
+{{--        <span class="text-danger fs-5">{{ $message }}</span>--}}
+{{--    @enderror--}}
+{{--</div>--}}
 <div>
     <button wire:click="goToNextStep" type="button" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: 150px">
         {{ __('Toliau') }}
