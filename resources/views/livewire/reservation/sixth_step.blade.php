@@ -34,7 +34,7 @@
         >
         <label for="Accept" class="form-check-label">
             <span>{{ __("I agree with the site's") }}</span>
-            <span style="color: #D3152E; cursor: pointer" onclick="window.open('/private_policy', '_blank')">{{ __('Privacy Policy') }}</span>
+            <span style="color: #D3152E; cursor: pointer" onclick="window.open('/privacy_policy', '_blank')">{{ __('Privacy Policy') }}</span>
         </label>
     </div>
     @error('accept')

@@ -25,7 +25,7 @@ Route::middleware('cors')->group(function () {
     Route::get('/reservation', ReservationForm::class)->name('livewire.reservation');
     Route::view('/reservation/success', 'reservation_success')->name('reservation.success');
 });
-Route::view('/private_policy', 'private_policy')->name('privatePolicy');
+Route::view('/privacy_policy', 'privacy_policy')->name('privacyPolicy');
 
 /*
  * Admin
