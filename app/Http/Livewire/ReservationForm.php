@@ -84,7 +84,7 @@ class ReservationForm extends Component
     protected function messages()
     {
         return [
-            'reservation_type.required' => 'Nepasirinkote paslaugos tipo',
+            'reservation_type.required' => 'Required to fill out',
 //            'date.required' => 'Nepasirinkote datos',
 //            'time_from.required' => 'Nepasirinkote pradžios laiko',
 //            'time_to.required' => 'Nepasirinkote pabaigos laiko',
@@ -93,28 +93,28 @@ class ReservationForm extends Component
 //                ? 'Žmonių skaičius turi būti didesnis negu 8'
 //                : 'Žmonių skaičius turi būti bent 1',
 //            'number_of_people.max' => 'Žmonių skaičius turi būti mažesnis negu 8',
-            'question_one_answer.required' => 'Reikalaujama užpildyti',
-            'question_two_answer.required' => 'Reikalaujama užpildyti',
-            'question_three_answer.required' => 'Reikalaujama užpildyti',
-            'question_four_answer.required' => 'Reikalaujama užpildyti',
+            'question_one_answer.required' => 'Required to fill out',
+            'question_two_answer.required' => 'Required to fill out',
+            'question_three_answer.required' => 'Required to fill out',
+            'question_four_answer.required' => 'Required to fill out',
 //            'question_five_answer.required' => 'Reikalaujama užpildyti',
 //            'question_six_answer.required' => 'Reikalaujama užpildyti',
-            'client_name.required' => 'Nenurodėte vardo',
-            'client_email.required' => 'Nenurodėte el. pašto adreso',
-            'client_email.email' => 'Nurodėte negaliojantį el. pašto adreso formatu',
-            'client_phone_number.required' => 'Nenurodėte telefono numerio',
-            'accept.required' => 'Nepažymėjote, kad sutikote su svetainės privatumo politiką'
+            'client_name.required' => 'Name not specified',
+            'client_email.required' => 'Email not specified',
+            'client_email.email' => 'You have provided an email address with invalid format',
+            'client_phone_number.required' => 'Telephone not specified',
+            'accept.required' => "You have not indicated that you have accepted the site's privacy policy"
         ];
     }
 
     public function chooseDesc($rezType) {
         switch ($rezType){
             case Constants::reservationTypeVyrtren :
-                return 'Padėkite mums geriau išrinkti Jums vyriausią trenerį';
+                return 'Help us choose the best Head Coach for you';
             case Constants::reservationTypeVyrtrenass :
-                return "Padėkite mums geriau išrinkti Jums vyriausio trenerio asistentą";
+                return "Help us choose the best Assistant to the Head Coach for you";
             case Constants::reservationTypeFiztren:
-                return 'Padėkite mums geriau išrinkti Jums fizinio pasirengimo trenerį';;
+                return 'Help us choose the best Physical Training Coach for you';
         }
     }
 
@@ -123,7 +123,7 @@ class ReservationForm extends Component
         return [
             1 => [
                 'step' => '1/4',
-                'description' => 'Pasirinkite, kokio trenerio ieškote?'
+                'description' => 'Choose what coach you are looking for?'
             ],
 //            2 => [
 //                'step' => '2/5',
@@ -139,11 +139,11 @@ class ReservationForm extends Component
             ],*/
             3 => [
                 'step' => '3/4',
-                'description' => 'Užpildykite kontaktinę informaciją'
+                'description' => 'Fill in the contact information'
             ],
             4 => [
                 'step' => '4/4',
-                'description' => 'Mano rezervacija'
+                'description' => 'My reservation'
             ]
         ];
     }
@@ -294,7 +294,7 @@ class ReservationForm extends Component
 
         return redirect()
             ->route('reservation.success')
-            ->with('success', __('Užklausa sėkmingai priimta'));
+            ->with('success', __('Reservation has been successfully accepted'));
     }
 
     public function render()

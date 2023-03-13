@@ -1,5 +1,5 @@
 <div>
-    <h2 class="mt-0">Trenerio rezervacija</h2>
+    <h2 class="mt-0">Coach reservation</h2>
     <div class="p-20 mt-40" style="background-color: #F6F7F3; border-radius: 10px;">
         <form wire:submit.prevent="submit">
             <div class="w-50">

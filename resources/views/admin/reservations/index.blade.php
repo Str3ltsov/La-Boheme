@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('divider-text-1')
-    {{ __('Administratoriaus paskyra') }}
+    {{ __('Admin panel') }}
 @endsection
 
 @section('divider-text-2')
-    {{ __('Paslaugų užsakymai') }}
+    {{ __('Reservations') }}
 @endsection
 
 @section('content')

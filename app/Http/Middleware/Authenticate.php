@@ -15,7 +15,7 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
-            session()->flash('error', __('Neteisėta prieiga prie šio maršruto'));
+            session()->flash('error', __('Unauthorised access to this route'));
             return route('login');
         }
     }

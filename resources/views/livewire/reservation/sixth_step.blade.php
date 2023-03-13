@@ -33,8 +33,8 @@
             required
         >
         <label for="Accept" class="form-check-label">
-            <span>{{ __('Sutinku su svetainės') }}</span>
-            <span style="color: #D3152E; cursor: pointer" onclick="window.open('/private_policy', '_blank')">{{ __('Privatumo politika') }}</span>
+            <span>{{ __("I agree with the site's") }}</span>
+            <span style="color: #D3152E; cursor: pointer" onclick="window.open('/private_policy', '_blank')">{{ __('Privacy Policy') }}</span>
         </label>
     </div>
     @error('accept')
@@ -43,9 +43,9 @@
     <div class="pt-20">
         <button wire:click="goToPreviousStep" type="button" class="fw-bold fs-4 btn-hover-focus" style="background-color: #BBBBBB; border: none; border-radius: 5px;
                 color: black; padding: 10px 0; width: clamp(220px, 100%, 230px)">
-            {{ __('Atgal') }}
+            {{ __('Back') }}
         </button>
         <button wire:click="submit" type="submit" class="fw-bold fs-4 btn-hover-focus" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: clamp(220px, 100%, 230px)">
-            {{ __('Pateikti užklausą') }}
+            {{ __('Submit request') }}
         </button>
     </div>

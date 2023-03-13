@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('divider-text-1')
-    {{ __('Administratoriaus paskyra') }}
+    {{ __('Admin panel') }}
 @endsection
 
 @section('divider-text-2')
-    {{ __('Vyriausi treneriai') }}
+    {{ __('Head coaches') }}
 @endsection
 
 @section('content')
@@ -17,22 +17,22 @@
                         @include('flash_message')
                     </div>
                     <div style="display: flex; justify-content: space-between; align-items: center">
-                        <h3 class="mb-20">{{ __('Vyr. trenerio Id') }}: {{ $table->id ?? '?'}}</h3>
+                        <h3 class="mb-20">{{ __('Head coach') }}: {{ $table->id ?? '?'}}</h3>
                         <div class="d-flex" style="gap: 10px">
                             <a class="fw-bold fs-4 text-center btn-hover-focus" href="{{ route('admin.vyrtrens') }}"
                                style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 25px; width: 150px; text-decoration: none">
-                                {{ __('Atgal') }}
+                                {{ __('Back') }}
                             </a>
                         </div>
                     </div>
                     <div class="p-4 w-100">
                         <div class="d-flex flex-lg-row flex-column justify-content-center align-items-center my-3 fs-4" style="gap: 15px">
                             <div class="d-flex flex-column w-100 mb-30">
-                                <h4>{{ __('Sukurti nepasiekiamą datą') }}</h4>
+                                <h4>{{ __('Add unavailable date') }}</h4>
                                 @include('admin.vyrtrens.unavailable_date_form')
                             </div>
                             <div class="d-flex flex-column w-100">
-                                <h4 class="m-1">{{ __('Nepasiekiamos datos laikai') }}</h4>
+                                <h4 class="m-1">{{ __('Unavailable dates') }}</h4>
                                 @include('admin.vyrtrens.unavailable_dates')
                             </div>
                         </div>
@@ -41,11 +41,11 @@
                     <div class="p-4 w-100">
                         <div class="d-flex flex-lg-row flex-column justify-content-center align-items-start my-3" style="gap: 15px">
                             <div class="d-flex flex-column w-100 mt-50 mb-30">
-                                <h4>{{ __('Sukurti nepasiekiamos datos laiką') }}</h4>
+                                <h4>{{ __('Add unavailable date time') }}</h4>
                                 @include('admin.vyrtrens.unavailable_datetime_form')
                             </div>
                             <div class="d-flex flex-column w-100">
-                                <h4 class="m-1">{{ __('Nepasiekiamos datos laikai') }}</h4>
+                                <h4 class="m-1">{{ __('Unavailable date times') }}</h4>
                                 @include('admin.vyrtrens.unavailable_datetimes')
                             </div>
                         </div>

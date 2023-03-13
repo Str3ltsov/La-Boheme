@@ -17,15 +17,15 @@ class ReservationTypeSeeder extends Seeder
     {
         DB::table('reservation_types')->insert([
             [
-                'name' => 'Vyr. trenerio',
+                'name' => 'Head Coach',
                 'description' => ''
             ],
             [
-                'name' => 'Vyr. trenerio asistento',
+                'name' => 'Assistant to the Head Coach',
                 'description' => ''
             ],
             [
-                'name' => 'Fizinio rengimo trenerio',
+                'name' => 'Physical training coach',
                 'description' => ''
             ]
         ]);

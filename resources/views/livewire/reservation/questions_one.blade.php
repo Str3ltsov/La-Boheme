@@ -1,6 +1,6 @@
 <div>
     <div>
-        <p>{{ __('Kokio amžiaus trenerio ieškote?') }}</p>
+        <p>{{ __('What age coach are you looking for?') }}</p>
         <div>
             @error('question_one_answer')
             <span class="text-danger">{{ $message }}</span>
@@ -10,23 +10,23 @@
                     wire:model.lazy="question_one_answer"
                     type="radio"
                     name="questionOneAnswer"
-                    value="Iki 30"
+                    value="Up to 30 years"
                 >
-                <label class="form-check-label">{{ __('Iki 30 m.') }}</label>
+                <label class="form-check-label">{{ __('Up to 30 years') }}</label>
             </div>
             <div class="my-1">
                 <input
                     wire:model.lazy="question_one_answer"
                     type="radio"
                     name="questionOneAnswer"
-                    value="Virš 30"
+                    value="Over 30 years"
                 >
-                <label>{{ __('Virš 30 m.') }}</label>
+                <label>{{ __('Over 30 years') }}</label>
             </div>
         </div>
     </div>
     <div>
-        <p>{{ __('Kokios patirties vyr. trenerio ieškote?') }}</p>
+        <p>{{ __('What kind of experience are you looking for in a head coach?') }}</p>
         <div>
             @error('question_two_answer')
             <span class="text-danger">{{ $message }}</span>
@@ -36,41 +36,41 @@
                     wire:model.lazy="question_two_answer"
                     type="radio"
                     name="questionTwoAnswer"
-                    value="Patirtis iki 5 m."
+                    value="Experience up to 5 years"
                 >
-                <label>{{ __('Patirtis iki 5 m.') }}</label>
+                <label>{{ __('Experience up to 5 years') }}</label>
             </div>
             <div class="my-1">
                 <input
                     wire:model.lazy="question_two_answer"
                     type="radio"
                     name="questionTwoAnswer"
-                    value="Patirtis 5-10 m."
+                    value="Experience 5 – 10 years"
                 >
-                <label>{{ __('Patirtis 5-10 m.') }}</label>
+                <label>{{ __('Experience 5 – 10 years') }}</label>
             </div>
             <div class="my-1">
                 <input
                     wire:model.lazy="question_two_answer"
                     type="radio"
                     name="questionTwoAnswer"
-                    value="Patirtis virš 10 m."
+                    value="Experience over 10 years"
                 >
-                <label>{{ __('Patirtis virš 10 m.') }}</label>
+                <label>{{ __('Experience over 10 years') }}</label>
             </div>
             <div class="my-1">
                 <input
                     wire:model.lazy="question_two_answer"
                     type="radio"
                     name="questionTwoAnswer"
-                    value="Be vyr. trenerio patirties"
+                    value="Without head couch experience"
                 >
-                <label>{{ __('Be vyr. trenerio patirties') }}</label>
+                <label>{{ __('Without head couch experience') }}</label>
             </div>
         </div>
     </div>
     <div>
-        <p>{{ __('Kiek asistentų gali pasirinkti treneris?') }}</p>
+        <p>{{ __('How many assistants can a coach choose?') }}</p>
         <div>
             @error('question_three_answer')
             <span class="text-danger">{{ $message }}</span>
@@ -107,14 +107,14 @@
                     wire:model.lazy="question_three_answer"
                     type="radio"
                     name="questionThreeAnswer"
-                    value="Nei vieno"
+                    value="None"
                 >
-                <label>{{ __('Nei vieno') }}</label>
+                <label>{{ __('None') }}</label>
             </div>
         </div>
     </div>
     <div>
-        <p>{{ __('Koks numatytas metinis biudžėtas treneriui?') }}</p>
+        <p>{{ __('What is the estimated annual budget for the coach?') }}</p>
         <div>
             <div>
                 @error('question_four_answer')
@@ -152,19 +152,19 @@
                         wire:model.lazy="question_four_answer"
                         type="radio"
                         name="questionFourAnswer"
-                        value="virš 100 000 EUR"
+                        value="Over 100 000 EUR"
                     >
-                    <label>{{ __('virš 100 000 EUR') }}</label>
+                    <label>{{ __('Over 100 000 EUR') }}</label>
                 </div>
             </div>
         </div>
     </div>
     <div class="justify-content-end mt-4">
         <button wire:click="goToPreviousStep" type="button" style="background-color: #BBBBBB; border: none; border-radius: 5px; color: black; padding: 10px 0; width: 120px">
-            {{ __('Atgal') }}
+            {{ __('Back') }}
         </button>
         <button wire:click="goToNextStep" type="button" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: 120px" id="goToNextStepButton">
-            {{ __('Toliau') }}
+            {{ __('Next') }}
         </button>
     </div>
 </div>

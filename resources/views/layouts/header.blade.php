@@ -6,14 +6,14 @@
                     <div class="widget no-border m-0">
                         <ul class="list-inline xs-text-center text-white mt-5 mb-5">
                             <li class="m-0 pl-10 pr-10">
-                                <a href="javascript:void(0)" class="text-white">
-                                    <i class="fa fa-phone text-theme-colored"></i>
+                                <a href="tel:+37068610246" class="text-white">
+                                    <i class="fa fa-phone text-theme-colored mr-1"></i>
                                     +370 686 10246
                                 </a>
                             </li>
                             <li class="m-0 pl-10 pr-10">
-                                <a href="javascript:void(0)" class="text-white">
-                                    <i class="fa-sharp fa-solid fa-envelope text-theme-colored"></i>
+                                <a href="mailto:aurimas@amcoachlab.com" class="text-white">
+                                    <i class="fa-sharp fa-solid fa-envelope text-theme-colored mr-1"></i>
                                     aurimas@amcoachlab.com
                                 </a>
                             </li>
@@ -44,21 +44,21 @@
                     <ul class="menuzord-menu">
                         @if (Str::contains(url()->current(), 'admin'))
                             <li class="@if (Str::contains(url()->current(), 'reservations')) active @endif">
-                                <a href="{{ route('admin.reservations') }}">{{ __('Reservacijos') }}</a>
+                                <a href="{{ route('admin.reservations') }}">{{ __('Reservations') }}</a>
                             </li>
                             <li class="@if (Str::contains(url()->current(), 'vyrtrens')) active @endif">
-                                <a href="{{ route('admin.vyrtrens') }}">{{ __('Vyriausi treneriai') }}</a>
+                                <a href="{{ route('admin.vyrtrens') }}">{{ __('Head coaches') }}</a>
                             </li>
                             <li class="@if (Str::contains(url()->current(), 'vyrtrenasss')) active @endif">
-                                <a href="{{ route('admin.vyrtrenasss') }}">{{ __('Vyriausių trenerių asistentai') }}</a>
+                                <a href="{{ route('admin.vyrtrenasss') }}">{{ __('Head coach assistants') }}</a>
                             </li>
                             <li class="@if (Str::contains(url()->current(), 'fiztren')) active @endif">
-                                <a href="{{ route('admin.fiztren') }}">{{ __('Fizinio rengimo treneriai') }}</a>
+                                <a href="{{ route('admin.fiztren') }}">{{ __('Physical training coaches') }}</a>
                             </li>
                             <li>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    {{ __('Atsijungti') }}
+                                    {{ __('Logout') }}
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none m-0">
                                     @csrf
@@ -66,11 +66,11 @@
                             </li>
                         @else
                             <li class="@if (url()->current() == route('livewire.reservation')) active @endif">
-                                <a href="{{ route('livewire.reservation') }}">{{ __('Trenerio rezervacija') }}</a>
+                                <a href="{{ route('livewire.reservation') }}">{{ __('Coach reservation') }}</a>
                             </li>
                             @if (auth()->check())
                                 <li>
-                                    <a href="{{ route('admin.reservations') }}">{{ __('Administratoriaus paskyra') }}</a>
+                                    <a href="{{ route('admin.reservations') }}">{{ __('Admin panel') }}</a>
                                 </li>
                             @endif
                         @endif

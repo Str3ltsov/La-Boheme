@@ -2,11 +2,11 @@
     <table class="table display text-light mb-3" id="reservations_table">
         <thead>
             <tr>
-                <th>{{ __('Rezervacijos tipas') }}</th>
-                <th>{{ __('Vardas') }}</th>
-                <th>{{ __('El. paštas') }}</th>
-                <th>{{ __('Telefonas') }}</th>
-                <th>{{ __('Patvirtinimas') }}</th>
+                <th>{{ __('Reservation type') }}</th>
+                <th>{{ __('Name') }}</th>
+                <th>{{ __('Email') }}</th>
+                <th>{{ __('Phone') }}</th>
+                <th>{{ __('Confirmation') }}</th>
                 <th></th>
             </tr>
         </thead>
@@ -21,7 +21,13 @@
                         @if ($reservation->status->id == 1)
                             @include('admin.reservations.form')
                         @else
-                            <span>{{ __('Reservacijos statusas yra') }}: {{ $reservation->status->name ?? '-' }}</span>
+                            <span>{{ __('Reservation status') }}:</span>
+                            <span>
+                                @if ($reservation->status->id == 2) {{ __('Approved') }}
+                                @elseif ($reservation->status->id == 3) {{ __('Disapproved') }}
+                                @elseif ($reservation->status->id == 4) {{ __('Absence') }}
+                                @endif
+                            </span>
                         @endif
                     </td>
                     <td>
@@ -33,17 +39,17 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="7">{{ __('Nerasta rezervacijų') }}</td>
+                    <td colspan="7">{{ __('No reservations found') }}</td>
                 </tr>
             @endforelse
         </tbody>
         <tfoot>
         <tr>
-            <th>{{ __('Rezervacijos tipas') }}</th>
-            <th>{{ __('Vardas') }}</th>
-            <th>{{ __('El. paštas') }}</th>
-            <th>{{ __('Telefonas') }}</th>
-            <th>{{ __('Patvirtinimas') }}</th>
+            <th>{{ __('Reservation type') }}</th>
+            <th>{{ __('Name') }}</th>
+            <th>{{ __('Email') }}</th>
+            <th>{{ __('Phone') }}</th>
+            <th>{{ __('Confirmation') }}</th>
             <th></th>
         </tr>
         </tfoot>
@@ -55,26 +61,7 @@
         $(document).ready( function () {
             $('#reservations_table').DataTable({
                 responsive: true,
-                "order": [5, 'asc'],
-                "language": {
-                    "emptyTable": "Lentelėje duomenų nėra",
-                    "info": "Rodoma _START_ iki _END_ po _TOTAL_ įrašų",
-                    "infoEmpty": "Rodoma 0 iki 0 po 0 įrašų",
-                    "infoFiltered": "(filtruojama iš _MAX_ įrašų)",
-                    "infoThousands": ",",
-                    "lengthMenu": "Rodoma po _MENU_ įrašų",
-                    "loadingRecords": "Pakrovimas...",
-                    "processing": "Apdorojimas...",
-                    "search": "Paieška: ",
-                    "zeroRecords": "Atitinkančių įrašų nerasta",
-                    "thousands": ",",
-                    "paginate": {
-                        "first": "Pirmas",
-                        "previous": "Ankstesnis",
-                        "next": "Kitas",
-                        "last": "Paskutinis"
-                    }
-                }
+                "order": [5, 'asc']
             });
         });
     }

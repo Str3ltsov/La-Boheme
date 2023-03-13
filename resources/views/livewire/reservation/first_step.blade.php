@@ -36,7 +36,7 @@
     @enderror
         @empty
         <div class="form-control d-flex flex-column justify-content-center align-items-center">
-            <p>{{ __('Nerasta rezervavimo tipų') }}</p>
+            <p>{{ __('No reservation types found') }}</p>
         </div>
 @endforelse
 {{--<div class="mt-10 mb-20">--}}
@@ -58,6 +58,6 @@
 {{--</div>--}}
 <div>
     <button wire:click="goToNextStep" type="button" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: 150px">
-        {{ __('Toliau') }}
+        {{ __('Next') }}
     </button>
 </div>

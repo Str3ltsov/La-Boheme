@@ -21,19 +21,19 @@ class ReservationQuestionSeeder extends Seeder
              * Vyr tren
              */
             [
-                'question' => 'Kokio amžiaus vyr. trenerio ieškote?',
+                'question' => 'What age coach are you looking for?',
                 'reservation_type_id' => Constants::reservationTypeVyrtren
             ],
             [
-                'question' => 'Kokios patirties vyr. trenerio ieškote?',
+                'question' => 'What kind of experience are you looking for in a head coach?',
                 'reservation_type_id' => Constants::reservationTypeVyrtren
             ],
             [
-                'question' => 'Kiek asistentų gali pasirinkti vyr. treneris?',
+                'question' => 'How many assistants can a coach choose?',
                 'reservation_type_id' => Constants::reservationTypeVyrtren
             ],
             [
-                'question' => 'Koks numatytas metinis biudžetas treneriui?',
+                'question' => 'What is the estimated annual budget for the coach?',
                 'reservation_type_id' => Constants::reservationTypeVyrtren
             ],
             /*
@@ -41,15 +41,15 @@ class ReservationQuestionSeeder extends Seeder
              */
 
             [
-                'question' => 'Kokio trenerio asistento ieškote?',
+                'question' => 'Choose what Assistant to the head coach you are looking for?',
                 'reservation_type_id' => Constants::reservationTypeVyrtrenass
             ],
             [
-                'question' => 'Kokios patirties trenerio asistento ieškote?',
+                'question' => 'What kind of experience are you looking for in a Assistant to the head coach?',
                 'reservation_type_id' => Constants::reservationTypeVyrtrenass
             ],
             [
-                'question' => 'Koks numatytas metinis biudžetas trenerio asistentui?',
+                'question' => 'What is the estimated annual budget for a Assistant to the head coach?',
                 'reservation_type_id' => Constants::reservationTypeVyrtrenass
             ],
             /*
@@ -57,15 +57,15 @@ class ReservationQuestionSeeder extends Seeder
              */
 
             [
-                'question' => 'Kokio fizinio rengimo trenerio ieškote?',
+                'question' => 'What kind of experience are you looking for in a Physical training coach?',
                 'reservation_type_id' => Constants::reservationTypeFiztren
             ],
             [
-                'question' => 'Ar fizinio rengimo treneriui reikės dirbti su jaunimo komandomis?',
+                'question' => 'Will the physical training coach need to work with youth teams?',
                 'reservation_type_id' => Constants::reservationTypeFiztren
             ],
             [
-                'question' => 'Koks numatytas metinis biudžetas treneriui?',
+                'question' => 'What is the estimated annual budget for a Physical training coach?',
                 'reservation_type_id' => Constants::reservationTypeFiztren
             ],
 

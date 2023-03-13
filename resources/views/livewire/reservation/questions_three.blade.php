@@ -1,6 +1,6 @@
 <div>
     <div>
-        <p>{{ __('Kokios patirties fizinio rengimo trenerio ieškote?') }}</p>
+        <p>{{ __('What kind of experience are you looking for in a Physical training coach?') }}</p>
         <div>
             @error('question_one_answer')
             <span class="text-danger">{{ $message }}</span>
@@ -10,23 +10,23 @@
                     wire:model.lazy="question_one_answer"
                     type="radio"
                     name="questionOneAnswer"
-                    value="Patirtis iki 5 m."
+                    value="Experience up to 5 years"
                 >
-                <label>{{ __('Patirtis iki 5 m.') }}</label>
+                <label>{{ __('Experience up to 5 years') }}</label>
             </div>
             <div>
                 <input
                     wire:model.lazy="question_one_answer"
                     type="radio"
                     name="questionOneAnswer"
-                    value="Patirtis virš 5 metų"
+                    value="Experience over 5 years"
                 >
-                <label>{{ __('Patirtis virš 5 metų') }}</label>
+                <label>{{ __('Experience over 5 years') }}</label>
             </div>
         </div>
     </div>
     <div>
-        <p>{{ __('Ar fizinio rengimo treneriui reikės dirbti su jaunimo komandomis?') }}</p>
+        <p>{{ __('Will the physical training coach need to work with youth teams?') }}</p>
         <div>
             @error('question_two_answer')
             <span class="text-danger">{{ $message }}</span>
@@ -36,9 +36,9 @@
                     wire:model.lazy="question_two_answer"
                     type="radio"
                     name="questionTwoAnswer"
-                    value="Taip"
+                    value="Yes"
                 >
-                <label>{{ __('Taip') }}</label>
+                <label>{{ __('Yes') }}</label>
             </div>
             <div>
                 <input
@@ -46,14 +46,14 @@
                     class="form-check-input me-2"
                     type="radio"
                     name="questionTwoAnswer"
-                    value="Ne"
+                    value="No"
                 >
-                <label class="form-check-label">{{ __('Ne') }}</label>
+                <label class="form-check-label">{{ __('No') }}</label>
             </div>
         </div>
     </div>
     <div>
-        <p>{{ __('Koks numatytas metinis biudžėtas fizinio rengimo treneriui?') }}</p>
+        <p>{{ __('What is the estimated annual budget for a Physical training coach?') }}</p>
         <div>
             <div>
                 @error('question_three_answer')
@@ -91,17 +91,17 @@
                         wire:model.lazy="question_three_answer"
                         type="radio"
                         name="questionThreeAnswer"
-                        value="Virš 50 000 EUR"
+                        value="Over 50 000 EUR"
                     >
-                    <label>{{ __('Virš 50 000 EUR') }}</label>
+                    <label>{{ __('Over 50 000 EUR') }}</label>
                 </div>
             </div>
     <div>
         <button wire:click="goToPreviousStep" type="button" class="fw-bold fs-4 btn-hover-focus" style="background-color: #BBBBBB; border: none; border-radius: 5px; color: black; padding: 10px 0; width: 120px">
-            {{ __('Atgal') }}
+            {{ __('Back') }}
         </button>
         <button wire:click="goToNextStep" type="button" class="fw-bold fs-4 btn-hover-focus" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: 120px">
-            {{ __('Toliau') }}
+            {{ __('Next') }}
         </button>
     </div>
 </div>

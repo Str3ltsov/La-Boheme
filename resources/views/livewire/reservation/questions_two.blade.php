@@ -1,6 +1,6 @@
 <div>
     <div>
-        <p>{{ __('Kokio vyr. trenerio asistento ieškote?') }}</p>
+        <p>{{ __('Choose what Assistant to the head coach you are looking for?') }}</p>
         <div>
                 @error('question_one_answer')
                 <span class="text-danger">{{ $message }}</span>
@@ -10,32 +10,32 @@
                         wire:model.lazy="question_one_answer"
                         type="radio"
                         name="questionOneAnswer"
-                        value="Pagrindinio vyr. trenerio asistento"
+                        value="Main Assistant to the head coach"
                     >
-                    <label>{{ __('Pagrindinio vyr. trenerio asistento') }}</label>
+                    <label>{{ __('Main Assistant to the head coach') }}</label>
                 </div>
                 <div>
                     <input
                         wire:model.lazy="question_one_answer"
                         type="radio"
                         name="questionOneAnswer"
-                        value="Skauto"
+                        value="Scout"
                     >
-                    <label>{{ __('Skauto') }}</label>
+                    <label>{{ __('Scout') }}</label>
                 </div>
             <div>
                 <input
                     wire:model.lazy="question_one_answer"
                     type="radio"
                     name="questionOneAnswer"
-                    value="Įgūdžių lavinimo trenerio"
+                    value="Skills development coach"
                 >
-                <label>{{ __('Įgūdžių lavinimo trenerio') }}</label>
+                <label>{{ __('Skills development coach') }}</label>
             </div>
         </div>
     </div>
     <div>
-        <p>{{ __('Kokios patirties vyr. trenerio asistento ieškote?') }}</p>
+        <p>{{ __('What kind of experience are you looking for in a Assistant to the head coach?') }}</p>
         <div>
             @error('question_two_answer')
             <span class="text-danger">{{ $message }}</span>
@@ -45,18 +45,18 @@
                     wire:model.lazy="question_two_answer"
                     type="radio"
                     name="questionTwoAnswer"
-                    value="Patirtis iki 5 m."
+                    value="Experience up to 5 years"
                 >
-                <label>{{ __('Patirtis iki 5 m.') }}</label>
+                <label>{{ __('Experience up to 5 years') }}</label>
             </div>
             <div>
                 <input
                     wire:model.lazy="question_two_answer"
                     type="radio"
                     name="questionTwoAnswer"
-                    value="Patirtis iki 10 m."
+                    value="Experience up to 10 years"
                 >
-                <label>{{ __('Patirtis iki 10 m.') }}</label>
+                <label>{{ __('Experience up to 10 years') }}</label>
             </div>
 
             <div>
@@ -64,14 +64,14 @@
                     wire:model.lazy="question_two_answer"
                     type="radio"
                     name="questionTwoAnswer"
-                    value="Patirtis virš 10 m."
+                    value="Experience over 10 years"
                 >
-                <label>{{ __('Patirtis virš 10 m.') }}</label>
+                <label>{{ __('Experience over 10 years') }}</label>
             </div>
         </div>
     </div>
     <div>
-        <p>{{ __('Koks numatytas metinis biudžetas vyr. trenerio asistentui?') }}</p>
+        <p>{{ __('What is the estimated annual budget for a Assistant to the head coach?') }}</p>
         <div>
             <div>
                 @error('question_three_answer')
@@ -109,17 +109,17 @@
                         wire:model.lazy="question_three_answer"
                         type="radio"
                         name="questionThreeAnswer"
-                        value="virš 50 000 EUR"
+                        value="Over 50 000 EUR"
                     >
-                    <label>{{ __('virš 50 000 EUR') }}</label>
+                    <label>{{ __('Over 50 000 EUR') }}</label>
                 </div>
             </div>
     <div>
         <button wire:click="goToPreviousStep" type="button" class="fw-bold fs-4 btn-hover-focus" style="background-color: #BBBBBB; border: none; border-radius: 5px; color: black; padding: 10px 0; width: 120px">
-            {{ __('Atgal') }}
+            {{ __('Back') }}
         </button>
         <button wire:click="goToNextStep" type="button" class="fw-bold fs-4 btn-hover-focus" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: 120px">
-            {{ __('Toliau') }}
+            {{ __('Next') }}
         </button>
     </div>
 </div>

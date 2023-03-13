@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('divider-text-1')
-    {{ __('Administratoriaus paskyra') }}
+    {{ __('Admin panel') }}
 @endsection
 
 @section('divider-text-2')
-    {{ __('Vyriausi treneriai') }}
+    {{ __('Head coaches') }}
 @endsection
 
 @section('content')
@@ -17,7 +17,7 @@
                         @include('flash_message')
                     </div>
                     {!! Form::open(['route' => ['admin.vyrtrens.create'], 'method' => 'post']) !!}
-                        {!! Form::button(__('Sukurti'), ['type' => 'submit', 'class' => 'fw-bold fs-4 text-center btn-hover-focus mb-30',
+                        {!! Form::button(__('Add New'), ['type' => 'submit', 'class' => 'fw-bold fs-4 text-center btn-hover-focus mb-30',
                             'style' => 'background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 5px 25px; text-decoration: none; float: right']) !!}
                     {!! Form::close() !!}
                     @include('admin.vyrtrens.table')
