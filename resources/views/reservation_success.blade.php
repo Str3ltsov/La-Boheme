@@ -8,18 +8,29 @@
     <div>
         <p class="m-0" style="line-height: 2">
             @if (session()->get('reservationType') == \App\Helpers\Constants::reservationTypeVyrtren)
-                {{ __('Netrukus el. paštu gausite rezervacijos patvirtinimą. Jei turite kokių nors klausimų kreipkitės telefonu +370 686 10246 arba el. paštu aurimas@amcoachlab.com') }}
+                You will receive an email confirmation of your reservation shortly.
+                If you have any questions, please contact us by phone
+                <a href="tel:+37068610246">+370 686 10246</a> or by email
+                <a href="mailto:aurimas@amcoachlab.com">aurimas@amcoachlab.com</a>
             @elseif (session()->get('reservationType') == \App\Helpers\Constants::reservationTypeVyrtrenass)
-                {{ __('Ačiū, kad domitės miūsų paslaugomis. Per 1-2 darbo dienas pateiksime Jums pasiūlymą. Toliau kylančius klausimus galėsite derinti telefonu +370 686 10246 arba el. paštu aurimas@amcoachlab.com') }}
+                Thank you for your interest in our services.
+                We will provide you with an offer within 1-2 working days.
+                Further questions can be addressed to us by phone
+                <a href="tel:+37068610246">+370 686 10246</a> or by email
+                <a href="mailto:aurimas@amcoachlab.com">aurimas@amcoachlab.com</a>
             @elseif (session()->get('reservationType') == \App\Helpers\Constants::reservationTypeFiztren)
-                {{ __('Ačiū, kad domitės miūsų paslaugomis. Per 1-2 darbo dienas pateiksime Jums pasiūlymą. Toliau kylančius klausimus galėsite derinti telefonu +370 686 10246 arba el. paštu aurimas@amcoachlab.com') }}
+                Thank you for your interest in our services.
+                We will provide you with an offer within 1-2 working days.
+                Further questions can be addressed to us by phone
+                <a href="tel:+37068610246">+370 686 10246</a> or by email
+                <a href="mailto:aurimas@amcoachlab.com">aurimas@amcoachlab.com</a>
             @endif
         </p>
     </div>
 </div>
 <div class="pt-20">
     <button type="button" onclick="closeWindow()" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: 170px">
-        {{ __('Uždaryti') }}
+        {{ __('Close') }}
     </button>
 </div>
 @endsection

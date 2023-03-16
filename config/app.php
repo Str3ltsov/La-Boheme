@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Rezervuok - La Boheme'),
+    'name' => env('APP_NAME', 'Coach reservation'),
 
     /*
     |--------------------------------------------------------------------------

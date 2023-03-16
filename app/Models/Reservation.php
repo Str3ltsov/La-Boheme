@@ -13,7 +13,7 @@ class Reservation extends Model
     public $table = 'reservations';
 
     protected $fillable = [
-        'start_datetime',
+//        'start_datetime',
 //        'end_datetime',
 //        'number_of_people',
         'rating',
@@ -28,7 +28,7 @@ class Reservation extends Model
     ];
 
     protected $casts = [
-        'start_datetime' => 'datetime',
+//        'start_datetime' => 'datetime',
 //        'end_datetime' => 'datetime',
 //        'number_of_people' => 'integer',
         'rating' => 'double',
@@ -43,7 +43,7 @@ class Reservation extends Model
     ];
 
     public static array $rules = [
-        'start_datetime' => 'required|date',
+//        'start_datetime' => 'required|date',
 //        'start_datetime' => 'required|date|before:end_datetime',
 //        'end_datetime' => 'required|date|after:start_datetime',
         'number_of_people' => 'required|integer',
