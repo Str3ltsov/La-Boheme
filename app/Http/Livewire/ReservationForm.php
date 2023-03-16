@@ -6,6 +6,7 @@ use App\Helpers\Constants;
 use App\Services\ReservationService;
 use App\Services\ReservationServiceInterface;
 use App\Traits\UseDatesTimes;
+use Illuminate\Database\Eloquent\Collection;
 use \Illuminate\Session\SessionManager;
 use Livewire\Component;
 
@@ -22,11 +23,11 @@ class ReservationForm extends Component
         $this->session = $session;
     }
 
-    //public array $employees = [];
     public int $currentStep = 1;
 //    public array $startTimes = [];
 //    public array $endTimes = [];
     public bool $isChecked = false;
+    public ?Collection $coaches = null;
     public array $adminEmails = [
         'info' => 'info@mbm2pries2.lt',
         'events' => 'events@mbm2pries2.lt'
@@ -67,8 +68,7 @@ class ReservationForm extends Component
     /*
      * Step 3 properties
      */
-    //public $employee_waiter;
-    //public $employee_bartender;
+    public $coach;
     /*
      * Step 4 properties
      */
@@ -99,6 +99,7 @@ class ReservationForm extends Component
             'question_four_answer.required' => 'Required to fill out',
 //            'question_five_answer.required' => 'Reikalaujama užpildyti',
 //            'question_six_answer.required' => 'Reikalaujama užpildyti',
+            'coach.required' => 'Required to fill in',
             'client_name.required' => 'Name not specified',
             'client_email.required' => 'Email not specified',
             'client_email.email' => 'You have provided an email address with invalid format',
@@ -122,7 +123,7 @@ class ReservationForm extends Component
     {
         return [
             1 => [
-                'step' => '1/4',
+                'step' => '1/5',
                 'description' => 'Choose what coach you are looking for?'
             ],
 //            2 => [
@@ -130,19 +131,19 @@ class ReservationForm extends Component
 //                'description' => 'Pasirinkti laiką'
 //            ],
             2 => [
-                'step' => '2/4',
+                'step' => '2/5',
                 'description' => $this->chooseDesc($this->reservation_type),
             ],
-            /*4 => [
-                'step' => '4/6',
-                'description' => 'Pasirinkite jūs aptarnausiantį personalą'
-            ],*/
             3 => [
-                'step' => '3/4',
-                'description' => 'Fill in the contact information'
+                'step' => '3/5',
+                'description' => 'Choose a coach from the list of offers'
             ],
             4 => [
-                'step' => '4/4',
+                'step' => '4/5',
+                'description' => 'Fill in the contact information'
+            ],
+            5 => [
+                'step' => '5/5',
                 'description' => 'My reservation'
             ]
         ];
@@ -161,18 +162,21 @@ class ReservationForm extends Component
         $this->currentStep--;
     }
 
-    /*public array $employeeNames = [];
-
-    public function goToFifthStepWithEmployeeNames()
+    public function goToThirdStepWithTrainers()
     {
         //Going to next step
         $this->goToNextStep();
 
-        //Getting employee names using their ids
-        $this->employeeNames = $this->service->getEmployeeNames(
-            $this->employee_waiter, $this->employee_bartender
-        );
-    }*/
+        //Getting trainers depending on the reservation type
+        if ($this->reservation_type == Constants::reservationTypeVyrtren)
+            $this->coaches = $this->service->getVyrtren();
+
+        if ($this->reservation_type == Constants::reservationTypeVyrtrenass)
+            $this->coaches = $this->service->getVyrtrenass();
+
+        if ($this->reservation_type == Constants::reservationTypeFiztren)
+            $this->coaches = $this->service->getFiztren();
+    }
 
 //    public function GoToNextStepAndAddStartTimes()
 //    {
@@ -225,14 +229,12 @@ class ReservationForm extends Component
 //        $startDatetime = $this->combineDateAndTime($this->date, $this->time_from);
 //        $endDatetime = $this->combineDateAndTime($this->date, $this->time_to);
         $reservation = $this->service->createReservation(
-            $vyrtren,
-            $vyrtrenass,
-            $fiztren,
 //            $this->date,
 //            $startDatetime,
 //            $endDatetime,
 //            $this->number_of_people,
             $this->reservation_type,
+            $this->coach,
             $client
         );
 //        if ($this->reservation_type !== Constants::reservationTypeVyrtren)

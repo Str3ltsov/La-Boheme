@@ -46,11 +46,7 @@
             <div class="container">
                 <div class="section-content">
                     <div class="row">
-                        <div class="col-md-6">
-                            @yield('content')
-                        </div>
-                        <div class="col-md-6">
-                        </div>
+                        @yield('content')
                     </div>
                 </div>
             </div>

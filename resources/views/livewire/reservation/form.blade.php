@@ -1,6 +1,6 @@
 <div>
     <h2 class="mt-0">Coach reservation</h2>
-    <div class="p-20 mt-40" style="background-color: #F6F7F3; border-radius: 10px;">
+    <div class="p-20 mt-40 @if($currentStep == 3) col-12 @else col-md-6 @endif" style="background-color: #F6F7F3; border-radius: 10px;">
         <form wire:submit.prevent="submit">
             <div class="w-50">
                 @include('flash_message')
@@ -12,13 +12,11 @@
 {{--                @include('livewire.reservation.second_step')--}}
             @elseif ($currentStep == 2)
                 @include('livewire.reservation.third_step')
-            {{--
-            @elseif($currentStep == 4)
+            @elseif($currentStep == 3)
                 @include('livewire.reservation.fourth_step')
-            --}}
-            @elseif ($currentStep == 3)
-                @include('livewire.reservation.fifth_step')
             @elseif ($currentStep == 4)
+                @include('livewire.reservation.fifth_step')
+            @elseif ($currentStep == 5)
                 @include('livewire.reservation.sixth_step')
             @endif
         </form>

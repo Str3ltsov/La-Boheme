@@ -18,8 +18,6 @@ interface ReservationServiceInterface
     public function getReservationTypes(): Collection|RedirectResponse;
     public function getValidationRules(mixed $reservationType): array|RedirectResponse;
     public function makeRulesReadableByValidate(array $validationRules): array;
-//    public function getEmployees(): Collection|RedirectResponse;
-    //public function getEmployeeNames(int $waiter, int $bartender): array;
     public function createClient(string $name, string $email, string $phoneNumber, string|null $additionalInfo)
     : Client|RedirectResponse;
 //    public function getTables(): Collection|RedirectResponse;
@@ -32,14 +30,12 @@ interface ReservationServiceInterface
     public function getFiztren(): Collection|RedirectResponse;
 
     public function createReservation(
-        mixed $vyrtren,
-        mixed $vyrtrenass,
-        mixed $fiztren,
 //        string $startDate,
 //        string $startDatetime,
 //        string $endDatetime,
 //        int $numberOfPeople,
         int $reservationType,
+        int $coach,
         object $client
     ): Reservation|RedirectResponse;
     public function getAnswersAndComments(

@@ -3,7 +3,7 @@
 @section('content')
     <div>
         <h2 class="mt-0">{{ __('Login as administrator') }}</h2>
-        <div class="p-20 mt-40" style="background-color: #F6F7F3; border-radius: 10px;">
+        <div class="p-20 mt-40 col-md-6" style="background-color: #F6F7F3; border-radius: 10px;">
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div>

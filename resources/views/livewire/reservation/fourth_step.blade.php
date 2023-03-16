@@ -1,39 +1,38 @@
-<div class="d-flex flex-column justify-content-center h-100">
-    <h4 class="pb-4">{{ __('Paslaugos užsakymas') }}</h4>
-    <div class="card p-4">
-        <div class="d-flex">
-            <h5 class="text-muted me-1">{{ $steps[$currentStep]['step'] }}</h5>
-            <h5>{{ $steps[$currentStep]['description'] }}</h5>
-        </div>
-        <div class="d-flex justify-content-center align-items-start my-3">
-            <div class="d-flex flex-column w-100 me-3" style="gap: 15px">
-                <h5>{{ __('Padavėjai') }}</h5>
-                @forelse ($employees ?? [] as $employee)
-                    @if ($employee->employee_type_id == \App\Helpers\Constants::employeeTypeWaiter)
-                        @include('livewire.reservation.waiters')
-                    @endif
-                @empty
-                    <div class="d-flex flex-column justify-content-center">
-                        <p>{{ __('No bartenders found') }}</p>
-                    </div>
-                @endforelse
-            </div>
-            <div class="d-flex flex-column w-100 me-3" style="gap: 15px">
-                <h5>{{ __('Barmenai') }}</h5>
-                @forelse ($employees ?? [] as $employee)
-                    @if ($employee->employee_type_id == \App\Helpers\Constants::employeeTypeBartender)
-                        @include('livewire.reservation.bartenders')
-                    @endif
-                @empty
-                    <div class="form-control d-flex flex-column justify-content-center align-items-center">
-                        <p>{{ __('No bartenders found') }}</p>
-                    </div>
-                @endforelse
-            </div>
-        </div>
-        <div class="d-flex justify-content-end" style="gap: 10px;">
-            <button wire:click="goToPreviousStep" type="button" class="btn btn-secondary">{{ __('Atgal') }}</button>
-            <button wire:click="goToFifthStepWithEmployeeNames" type="button" class="btn btn-primary">{{ __('Toliau') }}</button>
-        </div>
+<div>
+    <div class="row d-flex flex-wrap mt-30 mb-30">
+        @forelse($coaches as $coach)
+            @include('livewire.reservation.trainer')
+        @empty
+            <span class="text-muted">{{ __('No coaches found') }}</span>
+        @endforelse
+    </div>
+    <div class="justify-content-end mt-4">
+        <button wire:click="goToPreviousStep" type="button" style="background-color: #BBBBBB; border: none; border-radius: 5px; color: black; padding: 10px 0; width: 120px">
+            {{ __('Back') }}
+        </button>
+        <button wire:click="goToNextStep" type="button" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: 120px">
+            {{ __('Next') }}
+        </button>
     </div>
 </div>
+
+<style>
+    input[type="radio"] {
+        background-color: #fff;
+        margin: 0;
+        font: inherit;
+        color: currentColor;
+        width: 1.15em;
+        height: 1.15em;
+        border: 0.15em solid currentColor;
+        border-radius: 50%;
+    }
+</style>
+
+@if ($currentStep == 3)
+    <style>
+        .main_body {
+            background-image: none;
+        }
+    </style>
+@endif

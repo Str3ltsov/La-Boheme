@@ -1,13 +1,13 @@
 @if ($reservation_type == \App\Helpers\Constants::reservationTypeVyrtren)
     <section>
-        @include('livewire.reservation.questions_one')
+        @include('livewire.reservation.questions.questions_one')
     </section>
 @elseif ($reservation_type == \App\Helpers\Constants::reservationTypeVyrtrenass)
     <section>
-        @include('livewire.reservation.questions_two')
+        @include('livewire.reservation.questions.questions_two')
     </section>
 @elseif ($reservation_type == \App\Helpers\Constants::reservationTypeFiztren)
     <section>
-        @include('livewire.reservation.questions_three')
+        @include('livewire.reservation.questions.questions_three')
     </section>
 @endif

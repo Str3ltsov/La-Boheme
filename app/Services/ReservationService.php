@@ -87,16 +87,15 @@ class ReservationService implements ReservationServiceInterface
 //                'question_five_answer' => $reservationType == Constants::reservationTypeVyrtren ? ['required'] : [],
 //                'question_six_answer' => $reservationType == Constants::reservationTypeVyrtren ? ['required'] : []
             ],
-            /*4 => [
-                'employee_waiter' => ['required'],
-                'employee_bartender' => ['required']
-            ],*/
             3 => [
+                'coach' => ['required']
+            ],
+            4 => [
                 'client_name' => ['required'],
                 'client_email' => ['required', 'email'],
                 'client_phone_number' => ['required']
             ],
-            4 => ['accept' => ['required']]
+            5 => ['accept' => ['required']]
         ];
 
         if (empty($validationRules)) {
@@ -112,30 +111,6 @@ class ReservationService implements ReservationServiceInterface
     {
         return collect($validationRules)->collapse()->toArray();
     }
-
-//    public function getEmployees(): Collection|RedirectResponse
-//    {
-//        $employees = Employee::all();
-//
-//        if ($employees->isEmpty()) {
-//            return redirect()
-//                ->route('livewire.reservation')
-//                ->with('error', __('Failed to get employees'));
-//        }
-//
-//        return $employees;
-//    }
-
-    /*public function getEmployeeNames(int $waiter, int $bartender): array
-    {
-        $waiterName = Employee::select('name')->where('id', $waiter)->first();
-        $bartenderName = Employee::select('name')->where('id', $bartender)->first();
-
-        return [
-            $waiter => $waiterName->name,
-            $bartender => $bartenderName->name
-        ];
-    }*/
 
     public function createClient(string $name, string $email, string $phoneNumber, string|null $additionalInfo)
     : Client|RedirectResponse
@@ -161,7 +136,7 @@ class ReservationService implements ReservationServiceInterface
 
     public function getVyrtren(): Collection|RedirectResponse
     {
-        $tables = Vyrtren::select('id')->where('available', true)->get();
+        $tables = Vyrtren::all();
 
         if ($tables->isEmpty()) {
             return redirect()
@@ -174,7 +149,7 @@ class ReservationService implements ReservationServiceInterface
 
     public function getVyrtrenass(): Collection|RedirectResponse
     {
-        $tables = Vyrtrenass::select('id')->where('available', true)->get();
+        $tables = Vyrtrenass::all();
 
         if ($tables->isEmpty()) {
             return redirect()
@@ -187,7 +162,7 @@ class ReservationService implements ReservationServiceInterface
 
     public function getFiztren(): Collection|RedirectResponse
     {
-        $tables = Fiztren::select('id')->where('available', true)->get();
+        $tables = Fiztren::all();
 
         if ($tables->isEmpty()) {
             return redirect()
@@ -212,29 +187,17 @@ class ReservationService implements ReservationServiceInterface
 //    }
 
     public function createReservation(
-        mixed $vyrtren,
-        mixed $vyrtrenass,
-        mixed $fiztren,
 //        string $startDate,
         int $reservationType,
+        int $coach,
         object $client
     ): Reservation|RedirectResponse
     {
-        $randomVyrtren = rand(1, count($vyrtren));
-        $randomVyrtrenass = rand(1, count($vyrtrenass));
-        $randomFiztren = rand(1, count($fiztren));
-//        $randomHalls = rand(1, count($halls));
-
-//        dd($vyrtren);
-//        dd($reservationType);
-////        dd($randomFiztren);
-//        exit();
-
         $reservation = Reservation::create([
             'reservation_type_id' => $reservationType,
-            "fiztren_id" => $reservationType == Constants::reservationTypeFiztren ? $randomFiztren : NULL,
-            "vyrtren_id" => $reservationType == Constants::reservationTypeVyrtren ? $randomVyrtren : NULL,
-            "vyrtrenass_id" => $reservationType == Constants::reservationTypeVyrtrenass ? $randomVyrtrenass : NULL,
+            "fiztren_id" => $reservationType == Constants::reservationTypeFiztren ? $coach : NULL,
+            "vyrtren_id" => $reservationType == Constants::reservationTypeVyrtren ? $coach : NULL,
+            "vyrtrenass_id" => $reservationType == Constants::reservationTypeVyrtrenass ? $coach : NULL,
 //            'start_datetime' => $startDate,
             'client_id' => $client->id,
             'reservation_status_id' => Constants::reservationStatusInProgress,

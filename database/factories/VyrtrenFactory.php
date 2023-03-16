@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Helpers\Constants;
 use App\Models\Vyrtren;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -28,7 +29,10 @@ class VyrtrenFactory extends Factory
         $dateTime = $faker->dateTimeThisMonth()->format('Y-m-d H:i:s');
 
         return [
+            'first_name' => $faker->firstName,
+            'last_name' => $faker->lastName,
             'available' => $faker->boolean(100),
+            'reservation_type_id' => Constants::reservationTypeVyrtren,
             'created_at' => $dateTime,
             'updated_at' => $dateTime
         ];
