@@ -10,7 +10,7 @@ use Illuminate\Mail\SentMessage;
 
 interface ReservationsServiceInterface
 {
-    public function getReservationsWithClients(): Collection|array;
+    public function getReservations(): Collection|array;
     public function getReservationById(int $id): Reservation|RedirectResponse;
     public function getReservationEmployeesByReservationId(int $id): Collection|array;
     public function getReservationQuestionsAnswersByReservationId(int $id): Collection|array;

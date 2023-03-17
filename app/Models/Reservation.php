@@ -63,7 +63,7 @@ class Reservation extends Model
 
     public function vyrtren(): HasOne
     {
-        return $this->hasOne(Virtren::class, 'id', 'vyrtren_id');
+        return $this->hasOne(Vyrtren::class, 'id', 'vyrtren_id');
     }
 
     public function vyrtrenass(): HasOne

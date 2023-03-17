@@ -12,18 +12,30 @@ class Vyrtren extends Model
     public $table = 'vyrtren';
 
     protected $fillable = [
+        'first_name',
+        'last_name',
+        'avatar',
         'available',
+        'reservation_type_id',
         'created_at',
         'updated_at'
     ];
 
     protected $casts = [
+        'first_name' => 'string',
+        'last_name' => 'string',
+        'avatar' => 'string',
         'available' => 'boolean',
+        'reservation_type_id' => 'integer',
         'created_at' => 'datetime',
         'updated_at' => 'datetime'
     ];
 
     public static array $rules = [
+        'first_name' => 'required|string',
+        'last_name' => 'required|string',
+        'avatar' => 'nullable|string',
+        'reservation_type_id' => 'required|integer',
         'available' => 'required|boolean'
     ];
 }

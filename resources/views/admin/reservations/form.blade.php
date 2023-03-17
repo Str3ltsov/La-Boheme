@@ -3,7 +3,7 @@
     'method' => 'put'
     ])!!}
     {{ Form::hidden('reservationId', $reservation->id) }}
-    <div class="d-flex align-items-center" style="gap: 5px">
+    <div style="display: flex; align-items: flex-start; gap: 10px">
         <div>
             {{ Form::label('reservationStatus', __('Approved'), ['class' => 'form-check-label']) }}
             {{ Form::radio('reservationStatus', 2, false, ['class' => 'form-check-input']) }}

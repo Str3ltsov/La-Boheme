@@ -15,25 +15,9 @@ use Illuminate\Mail\SentMessage;
 
 class ReservationsService implements ReservationsServiceInterface
 {
-    public function getReservationsWithClients(): Collection|array
+    public function getReservations(): Collection|array
     {
-        $reservations = Reservation::select(
-            'clients.name',
-            'clients.email',
-            'clients.phone_number',
-//            'reservations.start_datetime',
-//            'reservations.number_of_people',
-            'reservations.reservation_type_id',
-            'reservations.reservation_status_id',
-            'reservations.id'
-        )
-            ->join(
-                'clients',
-                'clients.id',
-                '=',
-                'reservations.client_id'
-            )
-            ->get();
+        $reservations = Reservation::all();
 
         if ($reservations->isEmpty()) {
             return [];

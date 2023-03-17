@@ -24,7 +24,7 @@ class ReservationsController extends Controller
     public function index(): Factory|View|Application
     {
         return view('admin.reservations.index')
-            ->with('reservations', $this->service->getReservationsWithClients());
+            ->with('reservations', $this->service->getReservations());
     }
 
     public function show($id): Factory|View|Application

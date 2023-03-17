@@ -10,7 +10,7 @@
 
 @section('content')
     <div class="container" style="padding-inline: 0">
-        <div class="d-flex flex-column justify-content-start pl-20 pr-20 pr-lg-0 pl-lg-0" style="min-height: 100%;">
+        <div class="d-flex flex-column justify-content-start pl-20 pr-20 pr-lg-0 pl-lg-0 pb-15" style="min-height: 100%;">
             <div class="d-flex flex-column justify-content-center align-items-center bg-transparent" id="cormorant">
                 <div class="d-flex flex-column justify-content-center align-items-start fs-5 text-light" style="font-size: 1.1em; width: 100%">
                     <div class="d-flex flex-column justify-content-center align-items-start fs-4 w-100">
@@ -20,12 +20,24 @@
                                 <h4 class="">{{ __('Service') }}</h4>
                                 <div class="d-flex flex-column" style="gap: 10px">
                                     <div class="d-flex flex-lg-row flex-column">
+                                        <span style="width: clamp(250px, 100%, 500px); color: #999">{{ __('Status') }}:</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #444">{{ $reservation->status->name ?? '-' }}</span>
+                                    </div>
+                                    <div class="d-flex flex-lg-row flex-column">
                                         <span style="width: clamp(250px, 100%, 500px); color: #999">{{ __('Type') }}:</span>
                                         <span style="width: clamp(250px, 100%, 500px); color: #444">{{ $reservation->type->name ?? '-' }}</span>
                                     </div>
                                     <div class="d-flex flex-lg-row flex-column">
-                                        <span style="width: clamp(250px, 100%, 500px); color: #999">{{ __('Status') }}:</span>
-                                        <span style="width: clamp(250px, 100%, 500px); color: #444">{{ $reservation->status->name ?? '-' }}</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #999">{{ __('Coach') }}:</span>
+                                        <span style="width: clamp(250px, 100%, 500px); color: #444">
+                                            @if ($reservation->type->id == \App\Helpers\Constants::reservationTypeVyrtren)
+                                                {{ $reservation->vyrtren->first_name.' '.$reservation->vyrtren->last_name ?? '-' }}
+                                            @elseif ($reservation->type->id == \App\Helpers\Constants::reservationTypeVyrtrenass)
+                                                {{ $reservation->vyrtrenass->first_name.' '.$reservation->vyrtrenass->last_name ?? '-' }}
+                                            @elseif ($reservation->type->id == \App\Helpers\Constants::reservationTypeFiztren)
+                                                {{ $reservation->fiztren->first_name.' '.$reservation->fiztren->last_name ?? '-' }}
+                                            @endif
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +50,9 @@
                                     </div>
                                     <div class="d-flex flex-lg-row flex-column">
                                         <span style="width: clamp(250px, 100%, 500px); color: #999">{{ __('Email') }}:</span>
-                                        <span style="width: clamp(250px, 100%, 500px); color: #444">{{ $reservation->client->email ?? '-' }}</span>
+                                        <a href="mailto:{{ $reservation->client->email }}" style="width: clamp(250px, 100%, 500px); color: #444">
+                                            {{ $reservation->client->email ?? '-' }}
+                                        </a>
                                     </div>
                                     <div class="d-flex flex-lg-row flex-column">
                                         <span style="width: clamp(250px, 100%, 500px); color: #999">{{ __('Phone') }}:</span>
@@ -75,21 +89,21 @@
                         <div class="d-flex align-items-baseline my-3 w-100">
                             <div class="d-flex flex-column w-100 me-3">
                                 <h4>{{ __('Question answers') }}</h4>
-                                <div class="d-flex flex-column" style="gap: 20px">
+                                <div style="display: flex; flex-direction: column; gap: 5px">
                                     @forelse( $reservationQuestionsAnswers ?? [] as $reservationQuestion )
-                                        <div class="d-flex flex-lg-row flex-column my-3 my-lg-0" style="word-break: break-word">
+                                        <div style="display: flex; flex-direction: column">
                                             <span style="width: clamp(250px, 100%, 500px); color: #999">
-                                                {{ __($reservationQuestion->question) ?? '-' }} :
+                                                {{ __($reservationQuestion->question) ?? '-' }}:
                                             </span>
-                                            <span style="width: clamp(250px, 100%, 500px); color: #444; padding-inline: 10px">
+                                            <span style="width: clamp(250px, 100%, 500px); color: #444">
                                                 {{ $reservationQuestion->answer ?? '-' }}
                                             </span>
-                                            <span style="width: clamp(250px, 100%, 500px); color: #444; padding-inline: 10px">
-                                                {{ $reservationQuestion->comment ?? '-' }}
-                                            </span>
+{{--                                            <span style="width: clamp(250px, 100%, 500px); color: #444; padding-inline: 10px">--}}
+{{--                                                {{ $reservationQuestion->comment ?? '-' }}--}}
+{{--                                            </span>--}}
                                         </div>
                                     @empty
-                                        <span>{{ __('Questions answers not found') }}</span>
+                                        <span>{{ __('Question answers not found') }}</span>
                                     @endforelse
                                 </div>
                             </div>
