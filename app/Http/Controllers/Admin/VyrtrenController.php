@@ -53,7 +53,7 @@ class VyrtrenController extends Controller
     public function create(): Factory|View|Application
     {
         return view('admin.vyrtrens.create')
-            ->with('reservationTypes', $this->reservationTypeSelector());
+            ->with('availability', $this->availabilitySelector());
     }
 
     public function store(CreateVyrtrenRequest $request): RedirectResponse

@@ -27,21 +27,27 @@
                     </div>
                     {!! Form::open(['route' => ['vyrtrens.store'], 'method' => 'post', 'class' => 'mt-20', 'enctype' => "multipart/form-data", 'files' => true]) !!}
                         <div class="row">
-                            <div class="form-groum col-md-4 col-xs-6">
+                            <div class="form-groum col-md-3 col-sm-6 col-xs-12 mb-xs-20">
                                 <input type="text" name="first_name" class="form-control"
                                        style="border-radius: 5px;" placeholder="{{ __('First name *') }}">
                                 @error('first_name')
                                 <span class="text-danger mt-1 fs-5 fade-in">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="form-group col-md-4 col-xs-6">
+                            <div class="form-group col-md-3 col-sm-6 col-xs-12">
                                 <input type="text" name="last_name" class="form-control"
                                        style="border-radius: 5px;" placeholder="{{ __('Last name *') }}">
                                 @error('last_name')
                                 <span class="text-danger mt-1 fs-5 fade-in">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="form-group col-md-4 col-xs-12">
+                            <div class="form-group col-md-3 col-sm-6 col-xs-12">
+                                {!! Form::select('available', $availability, null, ['class' => 'form-control custom-select']) !!}
+                                @error('available')
+                                    <span class="text-danger mt-1 fs-5 fade-in">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-3 col-sm-6 col-xs-12">
                                 <div class="custom-file">
                                     {!! Form::file('avatar', ['class' => 'custom-file-input form-control pt-10']) !!}
                                     {!! Form::label('avatar', __('Upload avatar'), ['class' => 'custom-file-label']) !!}
@@ -52,7 +58,6 @@
                             </div>
                             <div class="form-group">
                                 <input type="hidden" name="reservation_type_id" value="{{ \App\Helpers\Constants::reservationTypeVyrtren }}">
-                                <input type="hidden" name="available" value="{{ true }}">
                             </div>
                         </div>
                         {!! Form::button(__('Add New'), ['type' => 'submit', 'class' => 'fw-bold fs-4 text-center btn-hover-focus mt-10 mb-30',
