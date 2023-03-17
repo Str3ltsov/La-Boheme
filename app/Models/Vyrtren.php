@@ -34,7 +34,7 @@ class Vyrtren extends Model
     public static array $rules = [
         'first_name' => 'required|string',
         'last_name' => 'required|string',
-        'avatar' => 'nullable|string',
+        'avatar' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
         'reservation_type_id' => 'required|integer',
         'available' => 'required|boolean'
     ];

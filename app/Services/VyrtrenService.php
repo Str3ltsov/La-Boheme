@@ -24,21 +24,16 @@ class VyrtrenService implements VyrtrenServiceInterface
         return $vyrtrens;
     }
 
-    public function createVyrtren(): Vyrtren|RedirectResponse
+    public function createVyrtren(array $validated, ?string $avatarPath): void
     {
-        $vyrtren = Vyrtren::create([
+        Vyrtren::create([
+            'first_name' => $validated['first_name'],
+            'last_name' => $validated['last_name'],
+            'avatar' => $avatarPath ?? NULL,
+            'reservation_type_id' => $validated['reservation_type_id'],
+            'available' => $validated['available'] ?? true,
             'created_at' => now(),
-            'updated_at' => now()
         ]);
-
-        if ($vyrtren->wasRecentlyCreated) {
-            return $vyrtren;
-        }
-        else {
-            return redirect()
-                ->route('admin.vyrtrens')
-                ->with('error', __('Failed to create a new vyrtren'));
-        }
     }
 
     public function getVyrtrenDetails(int $id): Vyrtren|RedirectResponse
@@ -52,6 +47,16 @@ class VyrtrenService implements VyrtrenServiceInterface
         }
 
         return $vyrtren;
+    }
+
+    public function updateVyrtren(object $headCoach, array $validated, ?string $avatarPath): void
+    {
+        $headCoach->first_name = $validated['first_name'];
+        $headCoach->last_name = $validated['first_name'];
+        $avatarPath && $headCoach->avatar = $avatarPath;
+        $headCoach->available = $validated['available'];
+        $headCoach->updated_at = now();
+        $headCoach->save();
     }
 
     public function deleteVyrtren(int $id): int|RedirectResponse

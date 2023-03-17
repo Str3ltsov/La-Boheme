@@ -14,7 +14,13 @@
             <div class="d-flex flex-column justify-content-center align-items-center bg-transparent" id="cormorant">
                 <div class="d-flex flex-column justify-content-center align-items-start fs-5 text-light" style="font-size: 1.1em; width: 100%">
                     <div class="d-flex flex-column justify-content-center align-items-start fs-4 w-100">
-                        <h2 class="text-light">{{ __('Reservation:') }} {{$reservation->id ?? '?'}}</h2>
+                        <div style="display: flex; justify-content: space-between; align-items: center">
+                            <h2 class="text-light">{{ __('Reservation:') }} {{$reservation->id ?? '?'}}</h2>
+                            <a class="fw-bold fs-4 text-center btn-hover-focus" href="{{ route('admin.reservations') }}"
+                               style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 8px 30px; text-decoration: none">
+                                {{ __('Back') }}
+                            </a>
+                        </div>
                         <div class="d-flex flex-md-row flex-column w-100">
                             <div class="d-flex flex-column w-100">
                                 <h4 class="">{{ __('Service') }}</h4>
@@ -107,14 +113,6 @@
                                     @endforelse
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center align-items-center w-100 mt-30" style="gap: 20px;">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <a class="fw-bold fs-4 text-center btn-hover-focus" href="{{ route('admin.reservations') }}"
-                               style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 30px; width: 150px; text-decoration: none">
-                                {{ __('Back') }}
-                            </a>
                         </div>
                     </div>
                 </div>

@@ -75,15 +75,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.authorization']], fun
             ->name('admin.vyrtrenasss.deleteUnavailableDateTime');
     });
 
+    Route::resource('vyrtrens', Admin\VyrtrenController::class);
     Route::group(['prefix' => 'vyrtrens'], function () {
-        Route::get('/', [Admin\VyrtrenController::class, 'index'])
-            ->name('admin.vyrtrens');
-        Route::post('/create', [Admin\VyrtrenController::class, 'create'])
-            ->name('admin.vyrtrens.create');
-        Route::get('/{vyrtren}', [Admin\VyrtrenController::class, 'show'])
-            ->name('admin.vyrtrens.show');
-        Route::delete('/{vyrtren}', [Admin\VyrtrenController::class, 'destroy'])
-            ->name('admin.vyrtrens.destroy');
         /*
          * Vytren unavailable dates
          */
