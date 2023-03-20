@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Fiztren;
 use App\Models\FiztrenUnavailableDate;
 use App\Models\FiztrenUnavailableDateTime;
+use App\Models\Vyrtren;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 
@@ -23,21 +24,16 @@ class FiztrenService implements FiztrenServiceInterface
         return $Fiztrens;
     }
 
-    public function createFiztren(): Fiztren|RedirectResponse
+    public function createFiztren(array $validated, ?string $avatarPath): void
     {
-        $Fiztren = Fiztren::create([
+        Fiztren::create([
+            'first_name' => $validated['first_name'],
+            'last_name' => $validated['last_name'],
+            'avatar' => $avatarPath ?? NULL,
+            'reservation_type_id' => $validated['reservation_type_id'],
+            'available' => $validated['available'] ?? true,
             'created_at' => now(),
-            'updated_at' => now()
         ]);
-
-        if ($Fiztren->wasRecentlyCreated) {
-            return $Fiztren;
-        }
-        else {
-            return redirect()
-                ->route('admin.fiztren')
-                ->with('error', __('Failed to create a new Fiztren'));
-        }
     }
 
     public function getFiztrenDetails(int $id): Fiztren|RedirectResponse
@@ -51,6 +47,16 @@ class FiztrenService implements FiztrenServiceInterface
         }
 
         return $Fiztren;
+    }
+
+    public function updateFiztren(object $headCoach, array $validated, ?string $avatarPath): void
+    {
+        $headCoach->first_name = $validated['first_name'];
+        $headCoach->last_name = $validated['last_name'];
+        $avatarPath && $headCoach->avatar = $avatarPath;
+        $headCoach->available = $validated['available'];
+        $headCoach->updated_at = now();
+        $headCoach->save();
     }
 
     public function deleteFiztren(int $id): int|RedirectResponse

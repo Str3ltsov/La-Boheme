@@ -16,10 +16,10 @@
                     <div class="w-100">
                         @include('flash_message')
                     </div>
-                    {!! Form::open(['route' => ['admin.fiztren.create'], 'method' => 'post']) !!}
-                        {!! Form::button(__('Add New'), ['type' => 'submit', 'class' => 'fw-bold fs-4 text-center btn-hover-focus mb-30',
-                            'style' => 'background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 5px 25px; text-decoration: none; float: right']) !!}
-                    {!! Form::close() !!}
+                    <a href="{{ route('fiztrens.create') }}" class="fw-bold fs-4 text-center btn-hover-focus mb-30"
+                       style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 5px 25px; text-decoration: none; float: right">
+                        {{ __('Add New') }}
+                    </a>
                     @include('admin.fiztren.table')
                 </div>
             </div>

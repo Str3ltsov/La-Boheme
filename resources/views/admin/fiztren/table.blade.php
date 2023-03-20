@@ -3,27 +3,33 @@
         <thead>
         <tr>
             <th class="w-25" scope="col">{{ __('ID') }}</th>
+            <th class="w-50" scope="col">{{ __('Name') }}</th>
+            <th class="w-25" scope="col">{{ __('Available') }}</th>
             <th class="w-25" scope="col">{{ __('Created') }}</th>
             <th class="w-25" scope="col">{{ __('Updated') }}</th>
             <th class="w-auto" scope="col"></th>
         </tr>
         </thead>
         <tbody>
-        @forelse ($halls ?? [] as $hall)
+        @forelse ($coaches ?? [] as $coach)
             <tr>
-                <td class="w-25" >{{ $hall->id ?? null}}</td>
-                <td class="w-25" >{{ $hall->created_at ?? null}}</td>
-                <td class="w-25" >{{ $hall->updated_at ?? null}}</td>
+                <td class="w-25" >{{ $coach->id }}</td>
+                <td class="w-50" >{{ $coach->first_name.' '.$coach->last_name }}</td>
+                <td class="w-25" >{{ $coach->available ? __('Yes') : __('No') }}</td>
+                <td class="w-25" >{{ $coach->created_at ?? '-' }}</td>
+                <td class="w-25" >{{ $coach->updated_at ?? '-' }}</td>
                 <td class="w-auto">
-                    <div style="display: flex; justify-content: center; align-items: center; width: 100%">
-                        <a href="{{ route('admin.fiztren.show', $hall->id) }}" class="fw-bold btn-hover-focus"
-                           style="background-color: transparent; color: gray; text-decoration: none">
-                            <i class="fa-solid fa-eye text-dark"></i>
+                    <div style="display: flex; justify-content: center; align-items: center; width: 100%; gap: 10px">
+                        <a href="{{ route('fiztrens.show', $coach->id) }}" class="fw-bold btn-hover-focus" style="background-color: transparent; color: gray;; text-decoration: none">
+                            <i class="fa-solid fa-eye text-dark fs-5"></i>
                         </a>
-                        {!! Form::open(['route' => ['admin.fiztren.destroy', $hall->id], 'method' => 'delete', 'class' => 'm-0']) !!}
-                            <button type="submit" class="fw-bold fs-4 text-center text-light btn-hover-focus ml-10" style="background-color: transparent; color: gray; border: none; text-decoration: none">
-                                <i class="fa-solid fa-trash-can text-dark"></i>
-                            </button>
+                        <a href="{{ route('fiztrens.edit', $coach->id) }}" class="fw-bold btn-hover-focus" style="background-color: transparent; color: gray;; text-decoration: none">
+                            <i class="fa-solid fa-pen-to-square text-dark ml-5 fs-5"></i>
+                        </a>
+                        {!! Form::open(['route' => ['fiztrens.destroy', $coach->id], 'method' => 'delete', 'class' => 'm-0']) !!}
+                        <button type="submit" class="fw-bold text-center btn-hover-focus" style="background-color: transparent; color: gray; border: none; text-decoration: none">
+                            <i class="fa-solid fa-trash-can text-dark fs-5"></i>
+                        </button>
                         {!! Form::close() !!}
                     </div>
                 </td>
@@ -36,7 +42,9 @@
         </tbody>
         <tfoot>
         <tr>
-            <th class="w-25" scope="col">{{ __('Id') }}</th>
+            <th class="w-25" scope="col">{{ __('ID') }}</th>
+            <th class="w-50" scope="col">{{ __('Name') }}</th>
+            <th class="w-25" scope="col">{{ __('Available') }}</th>
             <th class="w-25" scope="col">{{ __('Created') }}</th>
             <th class="w-25" scope="col">{{ __('Updated') }}</th>
             <th class="w-auto" scope="col"></th>

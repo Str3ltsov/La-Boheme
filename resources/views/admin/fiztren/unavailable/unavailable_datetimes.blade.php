@@ -16,7 +16,7 @@
                 <td>{{ $unavailable_datetime->updated_at ?? null}}</td>
                 <td>
                     {!! Form::open([
-                        'route' => ['admin.fiztren.deleteUnavailableDateTime', $hall->id],
+                        'route' => ['admin.fiztren.deleteUnavailableDateTime', $coach->id],
                         'method' => 'delete',
                         'style' => 'height: 30px'
                         ]) !!}

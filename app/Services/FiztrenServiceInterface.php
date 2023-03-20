@@ -11,8 +11,9 @@ use Illuminate\Http\RedirectResponse;
 interface FiztrenServiceInterface
 {
     public function getFiztrens(): Collection|RedirectResponse;
-    public function createFiztren(): Fiztren|RedirectResponse;
+    public function createFiztren(array $validated, ?string $avatarPath): void;
     public function getFiztrenDetails(int $id): Fiztren|RedirectResponse;
+    public function updateFiztren(object $headCoach, array $validated, ?string $avatarPath): void;
     public function deleteFiztren(int $id): int|RedirectResponse;
     public function getFiztrenUnavailableDates(int $id): Collection|RedirectResponse;
     public function createFiztrenUnavailableDate(object $request): FiztrenUnavailableDate|RedirectResponse;

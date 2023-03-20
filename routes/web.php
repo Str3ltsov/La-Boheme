@@ -67,7 +67,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.authorization']], fun
         Route::delete('/{vyrtrenass}/delete_unavailable_datetime', [Admin\VyrtrenassController::class, 'deleteUnavailableDateTime'])
             ->name('admin.vyrtrenasss.deleteUnavailableDateTime');
     });
-
+    /*
+     * Vyrtren
+     */
     Route::resource('vyrtrens', Admin\VyrtrenController::class);
     Route::group(['prefix' => 'vyrtrens'], function () {
         /*
@@ -86,17 +88,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.authorization']], fun
             ->name('admin.vyrtrens.deleteUnavailableDateTime');
     });
     /*
-     * fiztren
+     * Fiztren
      */
+    Route::resource('fiztrens', Admin\FiztrenController::class);
     Route::group(['prefix' => 'fiztren'], function () {
-        Route::get('/', [Admin\FiztrenController::class, 'index'])
-            ->name('admin.fiztren');
-        Route::post('/create', [Admin\FiztrenController::class, 'create'])
-            ->name('admin.fiztren.create');
-        Route::get('/{fiztren}', [Admin\FiztrenController::class, 'show'])
-            ->name('admin.fiztren.show');
-        Route::delete('/{fiztren}', [Admin\FiztrenController::class, 'destroy'])
-            ->name('admin.fiztren.destroy');
         /*
          * fiztren unavailable dates
          */
