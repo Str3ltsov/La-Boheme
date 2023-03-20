@@ -60,17 +60,15 @@ class VyrtrenassService implements VyrtrenassServiceInterface
         $headCoach->save();
     }
 
-    public function deleteVyrtrenass(int $id): int|RedirectResponse
+    public function deleteVyrtrenass(object $assistant): int|RedirectResponse
     {
-        $vyrtrenass = Vyrtrenass::find($id);
-
-        if (empty($vyrtrenass)) {
+        if (empty($assistant)) {
             return redirect()
-                ->route('vyrtrenass.show')
-                ->with('error', __('Failed to get vyrtrenass by id'));
+                ->route('vyrtrenass.index')
+                ->with('error', __('Failed to find vyrtrenass'));
         }
 
-        $vyrtrenass->delete();
+        $assistant->delete();
 
         return 0;
     }

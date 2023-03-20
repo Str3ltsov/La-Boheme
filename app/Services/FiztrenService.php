@@ -59,17 +59,15 @@ class FiztrenService implements FiztrenServiceInterface
         $headCoach->save();
     }
 
-    public function deleteFiztren(int $id): int|RedirectResponse
+    public function deleteFiztren(object $psychicalCoach): int|RedirectResponse
     {
-        $Fiztren = Fiztren::find($id);
-
-        if (empty($Fiztren)) {
+        if (empty($psychicalCoach)) {
             return redirect()
-                ->route('admin.fiztren')
-                ->with('error', __('Failed to get Fiztren by id'));
+                ->route('fiztrens.index')
+                ->with('error', __('Failed to find fiztren'));
         }
 
-        $Fiztren->delete();
+        $psychicalCoach->delete();
 
         return 0;
     }

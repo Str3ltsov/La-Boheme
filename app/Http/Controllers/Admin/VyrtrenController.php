@@ -117,7 +117,11 @@ class VyrtrenController extends Controller
 
     public function destroy($id): RedirectResponse
     {
-        $this->service->deleteVyrtren($id);
+        $assistant = $this->service->getVyrtrenDetails($id);
+
+        $this->service->deleteVyrtren($assistant);
+
+        File::delete(public_path($assistant->avatar));
 
         return redirect()
             ->route('vyrtrens.index')

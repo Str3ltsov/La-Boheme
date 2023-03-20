@@ -116,7 +116,11 @@ class FiztrenController extends Controller
 
     public function destroy($id): RedirectResponse
     {
-        $this->service->deleteFiztren($id);
+        $psychicalCoach = $this->service->getFiztrenDetails($id);
+
+        $this->service->deleteFiztren($psychicalCoach);
+
+        File::delete(public_path($psychicalCoach->avatar));
 
         return redirect()
             ->route('fiztrens.index')

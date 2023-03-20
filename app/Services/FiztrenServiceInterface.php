@@ -14,7 +14,7 @@ interface FiztrenServiceInterface
     public function createFiztren(array $validated, ?string $avatarPath): void;
     public function getFiztrenDetails(int $id): Fiztren|RedirectResponse;
     public function updateFiztren(object $headCoach, array $validated, ?string $avatarPath): void;
-    public function deleteFiztren(int $id): int|RedirectResponse;
+    public function deleteFiztren(object $psychicalCoach): int|RedirectResponse;
     public function getFiztrenUnavailableDates(int $id): Collection|RedirectResponse;
     public function createFiztrenUnavailableDate(object $request): FiztrenUnavailableDate|RedirectResponse;
     public function deleteFiztrenUnavailableDate(object $request): int|RedirectResponse;

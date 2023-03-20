@@ -59,17 +59,15 @@ class VyrtrenService implements VyrtrenServiceInterface
         $headCoach->save();
     }
 
-    public function deleteVyrtren(int $id): int|RedirectResponse
+    public function deleteVyrtren(object $headCoach): int|RedirectResponse
     {
-        $vyrtren = Vyrtren::find($id);
-
-        if (empty($vyrtren)) {
+        if (empty($headCoach)) {
             return redirect()
-                ->route('vyrtrens.show')
-                ->with('error', __('Failed to get vyrtren by id'));
+                ->route('vyrtrens.index')
+                ->with('error', __('Failed to find vyrtren'));
         }
 
-        $vyrtren->delete();
+        $headCoach->delete();
 
         return 0;
     }

@@ -27,9 +27,10 @@
                             <i class="fa-solid fa-pen-to-square text-dark ml-5 fs-5"></i>
                         </a>
                         {!! Form::open(['route' => ['fiztrens.destroy', $coach->id], 'method' => 'delete', 'class' => 'm-0']) !!}
-                        <button type="submit" class="fw-bold text-center btn-hover-focus" style="background-color: transparent; color: gray; border: none; text-decoration: none">
-                            <i class="fa-solid fa-trash-can text-dark fs-5"></i>
-                        </button>
+                            <button type="submit" class="fw-bold text-center btn-hover-focus" style="background-color: transparent; color: gray; border: none; text-decoration: none"
+                                onclick="{{ __("return confirm('Are you sure you want to delete this psychical training coach?')") }}">
+                                <i class="fa-solid fa-trash-can text-dark fs-5"></i>
+                            </button>
                         {!! Form::close() !!}
                     </div>
                 </td>

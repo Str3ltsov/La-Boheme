@@ -15,7 +15,7 @@ interface VyrtrenServiceInterface
     public function createVyrtren(array $validated, ?string $avatarPath): void;
     public function getVyrtrenDetails(int $id): Vyrtren|RedirectResponse;
     public function updateVyrtren(object $headCoach, array $validated, ?string $avatarPath): void;
-    public function deleteVyrtren(int $id): int|RedirectResponse;
+    public function deleteVyrtren(object $headCoach): int|RedirectResponse;
     public function getVyrtrenUnavailableDates(int $id): Collection|RedirectResponse;
     public function getVyrtrenUnavailableDateTimes(int $id): Collection|RedirectResponse;
     public function createVyrtrenUnavailableDate(object $request): VyrtrenUnavailableDate|RedirectResponse;

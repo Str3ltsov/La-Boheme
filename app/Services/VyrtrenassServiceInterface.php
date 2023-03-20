@@ -15,7 +15,7 @@ interface VyrtrenassServiceInterface
     public function createVyrtrenass(array $validated, ?string $avatarPath): void;
     public function getVyrtrenassDetails(int $id): Vyrtrenass|RedirectResponse;
     public function updateVyrtrenass(object $headCoach, array $validated, ?string $avatarPath): void;
-    public function deleteVyrtrenass(int $id): int|RedirectResponse;
+    public function deleteVyrtrenass(object $assistant): int|RedirectResponse;
     public function getVyrtrenassUnavailableDates(int $id): Collection|RedirectResponse;
     public function getVyrtrenassUnavailableDateTimes(int $id): Collection|RedirectResponse;
     public function createVyrtrenassUnavailableDate(object $request): VyrtrenassUnavailableDate|RedirectResponse;
