@@ -3,27 +3,33 @@
         <thead>
         <tr>
             <th class="w-25" scope="col">{{ __('ID') }}</th>
+            <th class="w-50" scope="col">{{ __('Name') }}</th>
+            <th class="w-25" scope="col">{{ __('Available') }}</th>
             <th class="w-25" scope="col">{{ __('Created') }}</th>
             <th class="w-25" scope="col">{{ __('Updated') }}</th>
             <th class="w-auto" scope="col"></th>
         </tr>
         </thead>
         <tbody>
-        @forelse ($tables ?? [] as $table)
+        @forelse ($assistants ?? [] as $assistant)
             <tr>
-                <td class="w-25" >{{ $table->id ?? null}}</td>
-                <td class="w-25" >{{ $table->created_at ?? null}}</td>
-                <td class="w-25" >{{ $table->updated_at ?? null}}</td>
+                <td class="w-25" >{{ $assistant->id }}</td>
+                <td class="w-50" >{{ $assistant->first_name.' '.$assistant->last_name }}</td>
+                <td class="w-25" >{{ $assistant->available ? __('Yes') : __('No') }}</td>
+                <td class="w-25" >{{ $assistant->created_at ?? '-' }}</td>
+                <td class="w-25" >{{ $assistant->updated_at ?? '-' }}</td>
                 <td class="w-auto">
-                    <div style="display: flex; justify-content: center; align-items: center; width: 100%">
-                        <a href="{{ route('admin.vyrtrenasss.show', $table->id) }}" class="fw-bold btn-hover-focus"
-                           style="background-color: transparent; color: gray; text-decoration: none">
-                            <i class="fa-solid fa-eye text-dark"></i>
+                    <div style="display: flex; justify-content: center; align-items: center; width: 100%; gap: 10px">
+                        <a href="{{ route('vyrtrenasss.show', $assistant->id) }}" class="fw-bold btn-hover-focus" style="background-color: transparent; color: gray;; text-decoration: none">
+                            <i class="fa-solid fa-eye text-dark fs-5"></i>
                         </a>
-                        {!! Form::open(['route' => ['admin.vyrtrenasss.destroy', $table->id], 'method' => 'delete', 'class' => 'm-0']) !!}
-                            <button type="submit" class="fw-bold fs-4 text-center btn-hover-focus ml-10" style="background-color: transparent; color: gray; border: none; text-decoration: none">
-                                <i class="fa-solid fa-trash-can text-dark"></i>
-                            </button>
+                        <a href="{{ route('vyrtrenasss.edit', $assistant->id) }}" class="fw-bold btn-hover-focus" style="background-color: transparent; color: gray;; text-decoration: none">
+                            <i class="fa-solid fa-pen-to-square text-dark ml-5 fs-5"></i>
+                        </a>
+                        {!! Form::open(['route' => ['vyrtrenasss.destroy', $assistant->id], 'method' => 'delete', 'class' => 'm-0']) !!}
+                        <button type="submit" class="fw-bold text-center btn-hover-focus" style="background-color: transparent; color: gray; border: none; text-decoration: none">
+                            <i class="fa-solid fa-trash-can text-dark fs-5"></i>
+                        </button>
                         {!! Form::close() !!}
                     </div>
                 </td>
@@ -37,6 +43,8 @@
         <tfoot>
         <tr>
             <th class="w-25" scope="col">{{ __('ID') }}</th>
+            <th class="w-50" scope="col">{{ __('Name') }}</th>
+            <th class="w-25" scope="col">{{ __('Available') }}</th>
             <th class="w-25" scope="col">{{ __('Created') }}</th>
             <th class="w-25" scope="col">{{ __('Updated') }}</th>
             <th class="w-auto" scope="col"></th>

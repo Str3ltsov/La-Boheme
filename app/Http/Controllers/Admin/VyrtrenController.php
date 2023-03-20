@@ -120,8 +120,8 @@ class VyrtrenController extends Controller
         $this->service->deleteVyrtren($id);
 
         return redirect()
-            ->route('admin.vyrtrens')
-            ->with('success', __('Successfully deleted table'));
+            ->route('vyrtrens.index')
+            ->with('success', __('Successfully deleted head coach'));
     }
 
     public function createUnavailableDate(CreateVyrtrenUnavailableDateRequest $request): RedirectResponse

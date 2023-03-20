@@ -50,15 +50,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.authorization']], fun
     /*
      * Vyrtrenass
      */
+    Route::resource('vyrtrenasss', Admin\VyrtrenassController::class);
     Route::group(['prefix' => 'vyrtrenass'], function () {
-        Route::get('/', [Admin\VyrtrenassController::class, 'index'])
-            ->name('admin.vyrtrenasss');
-        Route::post('/create', [Admin\VyrtrenassController::class, 'create'])
-            ->name('admin.vyrtrenasss.create');
-        Route::get('/{vyrtrenass}', [Admin\VyrtrenassController::class, 'show'])
-            ->name('admin.vyrtrenasss.show');
-        Route::delete('/{vyrtrenass}', [Admin\VyrtrenassController::class, 'destroy'])
-            ->name('admin.vyrtrenasss.destroy');
         /*
          * Vyrtrenass unavailable dates
          */

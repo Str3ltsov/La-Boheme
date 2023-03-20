@@ -1,8 +1,8 @@
 {!! Form::open([
-    'route' => ['admin.vyrtrenasss.createUnavailableDate', $table->id],
+    'route' => ['admin.vyrtrenasss.createUnavailableDate', $assistant->id],
     'method' => 'post'
     ]) !!}
-    <input type="hidden" name="vyrtrenass_id" value="{{ $table->id }}">
+    <input type="hidden" name="vyrtrenass_id" value="{{ $assistant->id }}">
     <div class="w-100 d-flex align-items-center my-3">
         <label for="unavailable_date" class="form-label w-25">{{ __('Data') }}:</label>
         <input

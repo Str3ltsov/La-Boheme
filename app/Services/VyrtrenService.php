@@ -52,7 +52,7 @@ class VyrtrenService implements VyrtrenServiceInterface
     public function updateVyrtren(object $headCoach, array $validated, ?string $avatarPath): void
     {
         $headCoach->first_name = $validated['first_name'];
-        $headCoach->last_name = $validated['first_name'];
+        $headCoach->last_name = $validated['last_name'];
         $avatarPath && $headCoach->avatar = $avatarPath;
         $headCoach->available = $validated['available'];
         $headCoach->updated_at = now();
@@ -65,7 +65,7 @@ class VyrtrenService implements VyrtrenServiceInterface
 
         if (empty($vyrtren)) {
             return redirect()
-                ->route('admin.vyrtren.show')
+                ->route('vyrtrens.show')
                 ->with('error', __('Failed to get vyrtren by id'));
         }
 

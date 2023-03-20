@@ -5,7 +5,7 @@
 @endsection
 
 @section('divider-text-2')
-    {{ __('Head coaches') }}
+    {{ __('Head coach assistants') }}
 @endsection
 
 @section('content')
@@ -19,13 +19,13 @@
                     <div style="display: flex; justify-content: space-between; align-items: center">
                         <h3 class="mb-20 pl-0">{{ __('Add new head coach') }}</h3>
                         <div class="d-flex" style="gap: 10px">
-                            <a class="fw-bold fs-4 text-center btn-hover-focus" href="{{ route('vyrtrens.index') }}"
+                            <a class="fw-bold fs-4 text-center btn-hover-focus" href="{{ route('vyrtrenasss.index') }}"
                                style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 25px; width: 150px; text-decoration: none">
                                 {{ __('Back') }}
                             </a>
                         </div>
                     </div>
-                    {!! Form::open(['route' => ['vyrtrens.store'], 'method' => 'post', 'class' => 'mt-20', 'enctype' => "multipart/form-data", 'files' => true]) !!}
+                    {!! Form::open(['route' => ['vyrtrenasss.store'], 'method' => 'post', 'class' => 'mt-20', 'enctype' => "multipart/form-data", 'files' => true]) !!}
                         <div class="row">
                             <div class="form-groum col-md-3 col-sm-6 col-xs-12 mb-xs-20">
                                 <input type="text" name="first_name" class="form-control"
@@ -52,11 +52,11 @@
                                     {!! Form::file('avatar', ['class' => 'custom-file-input form-control pt-10']) !!}
                                 </div>
                                 @error('avatar')
-                                <span class="text-danger mt-1 fs-5 fade-in">{{ $message }}</span>
+                                    <span class="text-danger mt-1 fs-5 fade-in">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input type="hidden" name="reservation_type_id" value="{{ \App\Helpers\Constants::reservationTypeVyrtren }}">
+                                <input type="hidden" name="reservation_type_id" value="{{ \App\Helpers\Constants::reservationTypeVyrtrenass }}">
                             </div>
                         </div>
                         {!! Form::button(__('Add New'), ['type' => 'submit', 'class' => 'fw-bold fs-4 text-center btn-hover-focus mt-10 mb-30',

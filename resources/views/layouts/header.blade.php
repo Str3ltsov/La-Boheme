@@ -50,7 +50,7 @@
                                 <a href="{{ route('vyrtrens.index') }}">{{ __('Head coaches') }}</a>
                             </li>
                             <li class="@if (Str::contains(url()->current(), 'vyrtrenasss')) active @endif">
-                                <a href="{{ route('admin.vyrtrenasss') }}">{{ __('Head coach assistants') }}</a>
+                                <a href="{{ route('vyrtrenasss.index') }}">{{ __('Head coach assistants') }}</a>
                             </li>
                             <li class="@if (Str::contains(url()->current(), 'fiztren')) active @endif">
                                 <a href="{{ route('admin.fiztren') }}">{{ __('Physical training coaches') }}</a>

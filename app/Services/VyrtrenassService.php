@@ -25,21 +25,16 @@ class VyrtrenassService implements VyrtrenassServiceInterface
         return $vyrtrenasss;
     }
 
-    public function createVyrtrens(): Vyrtrenass|RedirectResponse
+    public function createVyrtrenass(array $validated, ?string $avatarPath): void
     {
-        $vyrtrenass = Vyrtrenass::create([
+        Vyrtrenass::create([
+            'first_name' => $validated['first_name'],
+            'last_name' => $validated['last_name'],
+            'avatar' => $avatarPath ?? NULL,
+            'reservation_type_id' => $validated['reservation_type_id'],
+            'available' => $validated['available'] ?? true,
             'created_at' => now(),
-            'updated_at' => now()
         ]);
-
-        if ($vyrtrenass->wasRecentlyCreated) {
-            return $vyrtrenass;
-        }
-        else {
-            return redirect()
-                ->route('admin.vyrtrenasss')
-                ->with('error', __('Failed to create a new vyrtrenass'));
-        }
     }
 
     public function getVyrtrenassDetails(int $id): Vyrtrenass|RedirectResponse
@@ -55,13 +50,23 @@ class VyrtrenassService implements VyrtrenassServiceInterface
         return $vyrtrenass;
     }
 
+    public function updateVyrtrenass(object $headCoach, array $validated, ?string $avatarPath): void
+    {
+        $headCoach->first_name = $validated['first_name'];
+        $headCoach->last_name = $validated['last_name'];
+        $avatarPath && $headCoach->avatar = $avatarPath;
+        $headCoach->available = $validated['available'];
+        $headCoach->updated_at = now();
+        $headCoach->save();
+    }
+
     public function deleteVyrtrenass(int $id): int|RedirectResponse
     {
         $vyrtrenass = Vyrtrenass::find($id);
 
         if (empty($vyrtrenass)) {
             return redirect()
-                ->route('admin.vyrtrenass.show')
+                ->route('vyrtrenass.show')
                 ->with('error', __('Failed to get vyrtrenass by id'));
         }
 
