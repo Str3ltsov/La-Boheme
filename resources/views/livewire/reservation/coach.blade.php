@@ -40,7 +40,7 @@
             <label class="text-muted">{{ $coach->first_name.' '.$coach->last_name.' '.__('(užimtas)') }}</label>
         @endif
     </div>
-    @error('trainer')
+    @error('coach')
         <span class="text-danger mt-10 ml-30">{{ $message }}</span>
     @enderror
 </label>

@@ -1,11 +1,11 @@
 <div>
-    <h2 class="mt-0">Coach reservation</h2>
+    <h2 class="mt-0 pl-0 pr-0 pl-xs-20 pr-xs-20">Coach reservation</h2>
     <div class="p-20 mt-40 @if($currentStep == 3) col-12 @else col-md-6 @endif" style="background-color: #F6F7F3; border-radius: 10px;">
         <form wire:submit.prevent="submit">
             <div class="w-50">
                 @include('flash_message')
             </div>
-            <h4>{{ $steps[$currentStep]['step'] }} {{ $steps[$currentStep]['description'] }}</h4>
+            <h4 class="pb-10">{{ $steps[$currentStep]['step'] }} {{ $steps[$currentStep]['description'] }}</h4>
             @if ($currentStep == 1)
                 @include('livewire.reservation.first_step')
 {{--            @elseif ($currentStep == 2)--}}
@@ -25,45 +25,45 @@
 
 @push('scripts')
     <script>
-        $(() => {
-            $('#date_picker').hide();
-        });
+        {{--$(() => {--}}
+        {{--    $('#date_picker').hide();--}}
+        {{--});--}}
 
-        async function fetchUnavailableDates(reservationType) {
-            try {
-                const response = await fetch(`{{ env('APP_URL') }}api/v1/unavailable_dates/${reservationType}`)
-                const unavailableDates = await response.json();
+        {{--async function fetchUnavailableDates(reservationType) {--}}
+        {{--    try {--}}
+        {{--        const response = await fetch(`{{ env('APP_URL') }}api/v1/unavailable_dates/${reservationType}`)--}}
+        {{--        const unavailableDates = await response.json();--}}
 
-                showDatePicker();
-                getDatePickerWithUnavailableDates(unavailableDates);
-            }
-            catch ({ status, message }) {
-                console.log(`
-                    Status: ${status}\n
-                    Message: ${message}
-                `);
-            }
-        }
+        {{--        showDatePicker();--}}
+        {{--        getDatePickerWithUnavailableDates(unavailableDates);--}}
+        {{--    }--}}
+        {{--    catch ({ status, message }) {--}}
+        {{--        console.log(`--}}
+        {{--            Status: ${status}\n--}}
+        {{--            Message: ${message}--}}
+        {{--        `);--}}
+        {{--    }--}}
+        {{--}--}}
 
-        function showDatePicker() {
-            if ($('#reservation_type').is(':checked')) $('#date_picker').show();
-        }
+        {{--function showDatePicker() {--}}
+        {{--    if ($('#reservation_type').is(':checked')) $('#date_picker').show();--}}
+        {{--}--}}
 
-        function getDatePickerWithUnavailableDates(unavailableDates) {
-            $(() => {
-                $('#date_picker').datepicker({
-                    showButtonPanel: true,
-                    minDate: '{{ now()->toDateString() }}',
-                    maxDate: '+3M',
-                    dateFormat: 'yy-mm-dd',
-                    beforeShowDay: date => {
-                        $(".ui-datepicker").css('font-size', 21);
-                        const dateToString = jQuery.datepicker.formatDate('yy-mm-dd', date);
-                        return [unavailableDates.indexOf(dateToString) === -1]
-                    }
-                });
-            });
-        }
+        {{--function getDatePickerWithUnavailableDates(unavailableDates) {--}}
+        {{--    $(() => {--}}
+        {{--        $('#date_picker').datepicker({--}}
+        {{--            showButtonPanel: true,--}}
+        {{--            minDate: '{{ now()->toDateString() }}',--}}
+        {{--            maxDate: '+3M',--}}
+        {{--            dateFormat: 'yy-mm-dd',--}}
+        {{--            beforeShowDay: date => {--}}
+        {{--                $(".ui-datepicker").css('font-size', 21);--}}
+        {{--                const dateToString = jQuery.datepicker.formatDate('yy-mm-dd', date);--}}
+        {{--                return [unavailableDates.indexOf(dateToString) === -1]--}}
+        {{--            }--}}
+        {{--        });--}}
+        {{--    });--}}
+        {{--}--}}
 
         function checkAllQuestions() {
             const checkbox = document.querySelector('input[name="checkAllQuestionCheckbox"]');

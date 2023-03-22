@@ -1,18 +1,18 @@
 <header id="header" class="header">
     <div class="header-top bg-blue-111 sm-text-center p-0">
         <div class="container">
-            <div class="row">
+            <div class="row" style="height: 45px">
                 <div class="col-md-6">
                     <div class="widget no-border m-0">
-                        <ul class="list-inline xs-text-center text-white mt-5 mb-5">
+                        <ul class="list-inline xs-text-center text-white mt-10 mb-10">
                             <li class="m-0 pl-10 pr-10">
-                                <a href="tel:+37068610246" class="text-white">
+                                <a href="tel:+37068610246" class="topbar-link">
                                     <i class="fa fa-phone text-theme-colored mr-1"></i>
                                     +370 686 10246
                                 </a>
                             </li>
                             <li class="m-0 pl-10 pr-10">
-                                <a href="mailto:aurimas@amcoachlab.com" class="text-white">
+                                <a href="mailto:aurimas@amcoachlab.com" class="topbar-link">
                                     <i class="fa-sharp fa-solid fa-envelope text-theme-colored mr-1"></i>
                                     aurimas@amcoachlab.com
                                 </a>
@@ -80,3 +80,15 @@
         </div>
     </div>
 </header>
+
+<style>
+    .topbar-link {
+        color: white;
+        transition: color 300ms ease;
+    }
+
+    .topbar-link:hover,
+    .topbar-link:focus {
+        color: red;
+    }
+</style>

@@ -1,16 +1,18 @@
 <div>
     <div class="row d-flex flex-wrap mt-30 mb-30">
         @forelse($coaches as $coach)
-            @include('livewire.reservation.trainer')
+            @include('livewire.reservation.coach')
         @empty
             <span class="text-muted">{{ __('No coaches found') }}</span>
         @endforelse
     </div>
     <div class="justify-content-end mt-4">
-        <button wire:click="goToPreviousStep" type="button" style="background-color: #BBBBBB; border: none; border-radius: 5px; color: black; padding: 10px 0; width: 120px">
+        <button wire:click="goToPreviousStep" type="button"
+                style="background-color: #BBBBBB; border: none; border-radius: 5px; color: black; padding: 10px 0; width: 120px">
             {{ __('Back') }}
         </button>
-        <button wire:click="goToNextStep" type="button" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: 120px">
+        <button wire:click="goToNextStep" type="button"
+                style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: 120px">
             {{ __('Next') }}
         </button>
     </div>

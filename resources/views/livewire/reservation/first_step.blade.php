@@ -20,19 +20,21 @@
 
 @forelse ($reservationTypes ?? [] as $reservationType)
     <div class="chosen">
-        <input
-            wire:model.lazy="reservation_type"
-            class="form-check-input me-3"
-            type="radio"
-            name="reservation_type"
-            id="reservation_type"
-            value="{{ $reservationType->id }}"
-            onclick="fetchUnavailableDates({{ $reservationType->id }})"
-        >
-        <label>{{ __($reservationType->name) }}</label>
+        <label class="m-0 ml-5">
+            <input
+                wire:model.lazy="reservation_type"
+                class="form-check-input mr-10"
+                type="radio"
+                name="reservation_type"
+                id="reservation_type"
+                value="{{ $reservationType->id }}"
+{{--                onclick="fetchUnavailableDates({{ $reservationType->id }})"--}}
+            >
+            {{ __($reservationType->name) }}
+        </label>
     </div>
     @error('reservation_type')
-    <span class="text-danger fs-5">{{ $message }}</span>
+        <span class="text-danger fs-5">{{ $message }}</span>
     @enderror
         @empty
         <div class="form-control d-flex flex-column justify-content-center align-items-center">
@@ -57,7 +59,7 @@
 {{--    @enderror--}}
 {{--</div>--}}
 <div>
-    <button wire:click="goToNextStep" type="button" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: 150px">
+    <button wire:click="goToNextStep" type="button" class="mt-15" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: 150px">
         {{ __('Next') }}
     </button>
 </div>

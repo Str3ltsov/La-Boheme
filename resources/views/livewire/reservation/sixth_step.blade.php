@@ -22,7 +22,7 @@
         </div>
     </div>
     --}}
-    <div class="pt-20">
+    <div class="pt-10">
         <input
             wire:model.lazy="accept"
             type="checkbox"
@@ -40,7 +40,7 @@
     @error('accept')
         <span class="text-danger">{{ $message }}</span>
     @enderror
-    <div class="pt-20">
+    <div class="pt-30">
         <button wire:click="goToPreviousStep" type="button" class="fw-bold fs-4 btn-hover-focus" style="background-color: #BBBBBB; border: none; border-radius: 5px;
                 color: black; padding: 10px 0; width: clamp(220px, 100%, 230px)">
             {{ __('Back') }}

@@ -2,8 +2,8 @@
 
 @section('content')
     <div>
-        <h2 class="mt-0">{{ __('Login as administrator') }}</h2>
-        <div class="p-20 mt-40 col-md-6" style="background-color: #F6F7F3; border-radius: 10px;">
+        <h2 class="mt-0 pr-0 pl-0 pr-xs-20 pl-xs-20">{{ __('Login as administrator') }}</h2>
+        <div class="p-20 mt-40 col-md-5 col-sm-7" style="background-color: #F6F7F3; border-radius: 10px;">
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div>
-                    <button type="submit" class="btn-hover-focus" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px;">
+                    <button type="submit" class="btn-hover-focus" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 30px;">
                         {{ __('Login') }}
                     </button>
 {{--                                    @if (Route::has('password.request'))--}}

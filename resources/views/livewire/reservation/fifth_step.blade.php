@@ -48,7 +48,7 @@
             placeholder="{{ __('Additional information') }}"
         ></textarea>
     </div>
-    <div class="pt-20">
+    <div class="pt-30">
         <button wire:click="goToPreviousStep" type="button" class="fw-bold fs-4 btn-hover-focus" style="background-color: #BBBBBB; border: none; border-radius: 5px; color: black; padding: 10px 0; width: 120px">
             {{ __('Back') }}
         </button>

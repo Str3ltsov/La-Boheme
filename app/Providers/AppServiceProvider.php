@@ -23,6 +23,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        //Change public path to htdocs
+//        $this->app->bind('path.public', function() {
+//           return base_path('public_html/rezervuok/public');
+//        });
+
         //Binding interfaces with service classes
         $this->app->bind(
             ReservationServiceInterface::class,
