@@ -16,6 +16,7 @@ class Fiztren extends Model
         'last_name',
         'avatar',
         'available',
+        'cv',
         'reservation_type_id',
         'created_at',
         'updated_at'
@@ -25,6 +26,7 @@ class Fiztren extends Model
         'first_name' => 'string',
         'last_name' => 'string',
         'avatar' => 'string',
+        'cv' => 'string',
         'available' => 'boolean',
         'reservation_type_id' => 'integer',
         'created_at' => 'datetime',
@@ -34,7 +36,8 @@ class Fiztren extends Model
     public static array $rules = [
         'first_name' => 'required|string',
         'last_name' => 'required|string',
-        'avatar' => 'nullable|string',
+        'avatar' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
+        'cv' => 'nullable|mimes:pdf',
         'reservation_type_id' => 'required|integer',
         'available' => 'required|boolean'
     ];

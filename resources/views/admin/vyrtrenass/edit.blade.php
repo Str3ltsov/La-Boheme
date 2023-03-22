@@ -27,31 +27,41 @@
                     </div>
                     {!! Form::model($assistant, ['route' => ['vyrtrenasss.update', $assistant->id], 'method' => 'patch', 'class' => 'mt-20', 'enctype' => "multipart/form-data", 'files' => true]) !!}
                     <div class="row">
-                        <div class="form-groum col-md-3 col-sm-6 col-xs-12 mb-xs-20">
+                        <div class="form-groum col-sm-4 col-xs-12 mb-xs-20">
                             <input type="text" name="first_name" class="form-control"
                                    style="border-radius: 5px;" placeholder="{{ __('First name *') }}" value="{{ $assistant->first_name }}">
                             @error('first_name')
                                 <span class="text-danger mt-1 fs-5 fade-in">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="form-group col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group col-sm-4 col-xs-12">
                             <input type="text" name="last_name" class="form-control"
                                    style="border-radius: 5px;" placeholder="{{ __('Last name *') }}" value="{{ $assistant->last_name }}">
                             @error('last_name')
                                 <span class="text-danger mt-1 fs-5 fade-in">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="form-group col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group col-sm-4 col-xs-12">
                             {!! Form::select('available', $availability, null, ['class' => 'form-control custom-select']) !!}
                             @error('available')
                                 <span class="text-danger mt-1 fs-5 fade-in">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="form-group col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group col-sm-6 col-xs-12">
                             <div class="custom-file">
-                                {!! Form::file('avatar', ['class' => 'custom-file-input form-control pt-10 d-none']) !!}
+                                {!! Form::label('avatar', __('Upload profile picture (jpg, jpeg, png)'), ['style' => 'font-size: .9rem']) !!}
+                                {!! Form::file('avatar', ['class' => 'custom-file-input form-control pt-10']) !!}
                             </div>
                             @error('avatar')
+                                <span class="text-danger mt-1 fs-5 fade-in">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group col-sm-6 col-xs-12">
+                            <div class="custom-file">
+                                {!! Form::label('avatar', __('Upload CV (pdf)'), ['style' => 'font-size: .9rem']) !!}
+                                {!! Form::file('cv', ['class' => 'custom-file-input form-control pt-10']) !!}
+                            </div>
+                            @error('cv')
                                 <span class="text-danger mt-1 fs-5 fade-in">{{ $message }}</span>
                             @enderror
                         </div>

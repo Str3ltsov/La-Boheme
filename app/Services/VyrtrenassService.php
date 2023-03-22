@@ -12,25 +12,18 @@ use Illuminate\Http\RedirectResponse;
 
 class VyrtrenassService implements VyrtrenassServiceInterface
 {
-    public function getVyrtrens(): Collection|RedirectResponse
+    public function getVyrtrens(): Collection
     {
-        $vyrtrenasss = Vyrtrenass::all();
-
-        if ($vyrtrenasss->isEmpty()) {
-            return redirect()
-                ->route('admin.vyrtrenasss')
-                ->with('error', __('Failed to get vyrtrenasss'));
-        }
-
-        return $vyrtrenasss;
+        return Vyrtrenass::all();
     }
 
-    public function createVyrtrenass(array $validated, ?string $avatarPath): void
+    public function createVyrtrenass(array $validated, ?string $avatarPath, ?string $cvPath): void
     {
         Vyrtrenass::create([
             'first_name' => $validated['first_name'],
             'last_name' => $validated['last_name'],
             'avatar' => $avatarPath ?? NULL,
+            'cv' => $cvPath ?? NULL,
             'reservation_type_id' => $validated['reservation_type_id'],
             'available' => $validated['available'] ?? true,
             'created_at' => now(),
@@ -50,14 +43,15 @@ class VyrtrenassService implements VyrtrenassServiceInterface
         return $vyrtrenass;
     }
 
-    public function updateVyrtrenass(object $headCoach, array $validated, ?string $avatarPath): void
+    public function updateVyrtrenass(object $assistantCoach, array $validated, ?string $avatarPath, ?string $cvPath): void
     {
-        $headCoach->first_name = $validated['first_name'];
-        $headCoach->last_name = $validated['last_name'];
-        $avatarPath && $headCoach->avatar = $avatarPath;
-        $headCoach->available = $validated['available'];
-        $headCoach->updated_at = now();
-        $headCoach->save();
+        $assistantCoach->first_name = $validated['first_name'];
+        $assistantCoach->last_name = $validated['last_name'];
+        $avatarPath && $assistantCoach->avatar = $avatarPath;
+        $cvPath && $assistantCoach->avatar = $cvPath;
+        $assistantCoach->available = $validated['available'];
+        $assistantCoach->updated_at = now();
+        $assistantCoach->save();
     }
 
     public function deleteVyrtrenass(object $assistant): int|RedirectResponse

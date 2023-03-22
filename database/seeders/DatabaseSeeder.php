@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             ReservationTypeSeeder::class,
             FiztrenSeeder::class,
-
             VyrtrenSeeder::class,
             VyrtrenassSeeder::class,
             FiztrenUnavailableDateSeeder::class,
@@ -27,7 +26,7 @@ class DatabaseSeeder extends Seeder
             VyrtrenUnavailableDateTimeSeeder::class,
             VyrtrenassUnavailableDateSeeder::class,
             VyrtrenassUnavailableDateTimeSeeder::class,
-            ClientSeeder::class,
+//            ClientSeeder::class,
             ReservationStatusSeeder::class,
             //ReservationSeeder::class,
             ReservationQuestionSeeder::class,

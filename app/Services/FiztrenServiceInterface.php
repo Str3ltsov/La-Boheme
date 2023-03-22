@@ -10,10 +10,10 @@ use Illuminate\Http\RedirectResponse;
 
 interface FiztrenServiceInterface
 {
-    public function getFiztrens(): Collection|RedirectResponse;
-    public function createFiztren(array $validated, ?string $avatarPath): void;
+    public function getFiztrens(): Collection;
+    public function createFiztren(array $validated, ?string $avatarPath, ?string $cvPath): void;
     public function getFiztrenDetails(int $id): Fiztren|RedirectResponse;
-    public function updateFiztren(object $headCoach, array $validated, ?string $avatarPath): void;
+    public function updateFiztren(object $psychicalCoach, array $validated, ?string $avatarPath, ?string $cvPath): void;
     public function deleteFiztren(object $psychicalCoach): int|RedirectResponse;
     public function getFiztrenUnavailableDates(int $id): Collection|RedirectResponse;
     public function createFiztrenUnavailableDate(object $request): FiztrenUnavailableDate|RedirectResponse;

@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateVyrTrenRequest;
+use App\Http\Requests\CreateVyrtrenRequest;
 use App\Http\Requests\CreateVyrtrenUnavailableDateRequest;
 use App\Http\Requests\CreateVyrtrenUnavailableDateTimeRequest;
 use App\Http\Requests\DeleteVyrtrenUnavailableDateRequest;
 use App\Http\Requests\DeleteVyrtrenUnavailableDateTimeRequest;
 use App\Http\Requests\UpdateVyrtrenRequest;
-use App\Models\Vyrtren;
-use App\Services\VyrtrenassService;
 use App\Services\VyrtrenService;
 use App\Services\VyrtrenServiceInterface;
 use App\Traits\Selectors;
@@ -62,6 +60,7 @@ class VyrtrenController extends Controller
 
         try {
             $avatarPath = null;
+            $cvPath = null;
 
             if ($validated['avatar']) {
                 $avatarName = time().'.'.$validated['avatar']->getClientOriginalExtension();
@@ -69,7 +68,13 @@ class VyrtrenController extends Controller
                 $avatarPath = '/images/avatars/'.$avatarName;
             }
 
-            $this->service->createVyrtren($validated, $avatarPath);
+            if ($validated['cv']) {
+                $cvName = time().'.'.$validated['cv']->getClientOriginalExtension();
+                $validated['cv']->move(public_path('/documents/cvs'), $cvName);
+                $cvPath = '/documents/cvs/'.$cvName;
+            }
+
+            $this->service->createVyrtren($validated, $avatarPath, $cvPath);
 
             return redirect()
                 ->route('vyrtrens.index')
@@ -96,6 +101,7 @@ class VyrtrenController extends Controller
         try {
             $headCoach = $this->service->getVyrtrenDetails($id);
             $avatarPath = null;
+            $cvPath = null;
 
             if (isset($validated['avatar'])) {
                 File::delete(public_path($headCoach->avatar));
@@ -104,7 +110,14 @@ class VyrtrenController extends Controller
                 $avatarPath = '/images/avatars/'.$avatarName;
             }
 
-            $this->service->updateVyrtren($headCoach, $validated, $avatarPath);
+            if (isset($validated['cv'])) {
+                File::delete(public_path($headCoach->cv));
+                $cvName = time().'.'.$validated['cv']->getClientOriginalExtension();
+                $validated['cv']->move(public_path('/documents/cvs'), $cvName);
+                $cvPath = '/documents/cvs/'.$cvName;
+            }
+
+            $this->service->updateVyrtren($headCoach, $validated, $avatarPath, $cvPath);
 
             return redirect()
                 ->route('vyrtrens.index')
@@ -122,6 +135,7 @@ class VyrtrenController extends Controller
         $this->service->deleteVyrtren($assistant);
 
         File::delete(public_path($assistant->avatar));
+        File::delete(public_path($assistant->cv));
 
         return redirect()
             ->route('vyrtrens.index')

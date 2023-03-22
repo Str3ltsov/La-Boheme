@@ -7257,3 +7257,19 @@ body.has-fixed-footer .main-content {
   background-attachment: fixed;
   background-position: bottom;
 }
+
+@media (width > 720px) {
+    .coach-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+@media (width < 720px) {
+    .coach-header {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 40px;
+    }
+}

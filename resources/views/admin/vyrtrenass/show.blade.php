@@ -18,9 +18,15 @@
                     <div class="w-100">
                         @include('flash_message')
                     </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center">
+                    <div class="coach-header">
                         <h3 class="mb-20">{{ __('Head coach assistant') }}: {{ $assistant->id ?? '?'}}</h3>
                         <div style="display: flex; gap: 12px">
+                            @if ($assistant->cv)
+                                <a class="fw-bold fs-4 text-center btn-hover-focus" href="{{ asset($assistant->cv) }}"
+                                   target="_blank" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 8px 30px;; text-decoration: none">
+                                    {{ __('View CV') }}
+                                </a>
+                            @endif
                             <a class="fw-bold fs-4 text-center btn-hover-focus"
                                href="{{ route('vyrtrenasss.edit', $assistant->id) }}"
                                style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 8px 30px;; text-decoration: none">
@@ -39,7 +45,7 @@
                                 <img
                                     src="@if ($assistant->avatar) {{ asset($assistant->avatar) }} @else {{ asset('images/avatars/no_avatar.png') }} @endif"
                                     alt="{{ $assistant->first_name.' '.$assistant->last_name }}"
-                                    style="width: 110px; height: 110px; border-radius: 55px">
+                                    style="width: 110px; height: 110px; border-radius: 55px; ; object-fit: cover">
                             </div>
                             <div class="d-flex flex-column" style="gap: 10px">
                                 <div class="d-flex flex-lg-row flex-column">

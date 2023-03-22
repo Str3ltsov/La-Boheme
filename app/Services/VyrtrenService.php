@@ -11,25 +11,18 @@ use Illuminate\Http\RedirectResponse;
 
 class VyrtrenService implements VyrtrenServiceInterface
 {
-    public function getVyrtrens(): Collection|RedirectResponse
+    public function getVyrtrens(): Collection
     {
-        $vyrtrens = Vyrtren::all();
-
-        if ($vyrtrens->isEmpty()) {
-            return redirect()
-                ->route('admin.vyrtrens')
-                ->with('error', __('Failed to get vyrtrens'));
-        }
-
-        return $vyrtrens;
+        return Vyrtren::all();
     }
 
-    public function createVyrtren(array $validated, ?string $avatarPath): void
+    public function createVyrtren(array $validated, ?string $avatarPath, ?string $cvPath): void
     {
         Vyrtren::create([
             'first_name' => $validated['first_name'],
             'last_name' => $validated['last_name'],
             'avatar' => $avatarPath ?? NULL,
+            'cv' => $cvPath ?? NULL,
             'reservation_type_id' => $validated['reservation_type_id'],
             'available' => $validated['available'] ?? true,
             'created_at' => now(),
@@ -49,11 +42,12 @@ class VyrtrenService implements VyrtrenServiceInterface
         return $vyrtren;
     }
 
-    public function updateVyrtren(object $headCoach, array $validated, ?string $avatarPath): void
+    public function updateVyrtren(object $headCoach, array $validated, ?string $avatarPath, ?string $cvPath): void
     {
         $headCoach->first_name = $validated['first_name'];
         $headCoach->last_name = $validated['last_name'];
         $avatarPath && $headCoach->avatar = $avatarPath;
+        $cvPath && $headCoach->cv = $cvPath;
         $headCoach->available = $validated['available'];
         $headCoach->updated_at = now();
         $headCoach->save();

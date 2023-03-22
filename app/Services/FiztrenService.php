@@ -11,25 +11,18 @@ use Illuminate\Http\RedirectResponse;
 
 class FiztrenService implements FiztrenServiceInterface
 {
-    public function getFiztrens(): Collection|RedirectResponse
+    public function getFiztrens(): Collection
     {
-        $Fiztrens = Fiztren::all();
-
-        if ($Fiztrens->isEmpty()) {
-            return redirect()
-                ->route('admin.fiztren')
-                ->with('error', __('Failed to get Fiztrens'));
-        }
-
-        return $Fiztrens;
+        return Fiztren::all();
     }
 
-    public function createFiztren(array $validated, ?string $avatarPath): void
+    public function createFiztren(array $validated, ?string $avatarPath, ?string $cvPath): void
     {
         Fiztren::create([
             'first_name' => $validated['first_name'],
             'last_name' => $validated['last_name'],
             'avatar' => $avatarPath ?? NULL,
+            'cv' => $cvPath ?? NULL,
             'reservation_type_id' => $validated['reservation_type_id'],
             'available' => $validated['available'] ?? true,
             'created_at' => now(),
@@ -49,14 +42,15 @@ class FiztrenService implements FiztrenServiceInterface
         return $Fiztren;
     }
 
-    public function updateFiztren(object $headCoach, array $validated, ?string $avatarPath): void
+    public function updateFiztren(object $psychicalCoach, array $validated, ?string $avatarPath, ?string $cvPath): void
     {
-        $headCoach->first_name = $validated['first_name'];
-        $headCoach->last_name = $validated['last_name'];
-        $avatarPath && $headCoach->avatar = $avatarPath;
-        $headCoach->available = $validated['available'];
-        $headCoach->updated_at = now();
-        $headCoach->save();
+        $psychicalCoach->first_name = $validated['first_name'];
+        $psychicalCoach->last_name = $validated['last_name'];
+        $avatarPath && $psychicalCoach->avatar = $avatarPath;
+        $cvPath && $psychicalCoach->cv = $cvPath;
+        $psychicalCoach->available = $validated['available'];
+        $psychicalCoach->updated_at = now();
+        $psychicalCoach->save();
     }
 
     public function deleteFiztren(object $psychicalCoach): int|RedirectResponse

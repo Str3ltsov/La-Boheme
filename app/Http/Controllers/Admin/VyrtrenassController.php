@@ -60,6 +60,7 @@ class VyrtrenassController extends Controller
 
         try {
             $avatarPath = null;
+            $cvPath = null;
 
             if ($validated['avatar']) {
                 $avatarName = time().'.'.$validated['avatar']->getClientOriginalExtension();
@@ -67,7 +68,13 @@ class VyrtrenassController extends Controller
                 $avatarPath = '/images/avatars/'.$avatarName;
             }
 
-            $this->service->createVyrtrenass($validated, $avatarPath);
+            if ($validated['cv']) {
+                $cvName = time().'.'.$validated['cv']->getClientOriginalExtension();
+                $validated['cv']->move(public_path('/documents/cvs'), $cvName);
+                $cvPath = '/documents/cvs/'.$cvName;
+            }
+
+            $this->service->createVyrtrenass($validated, $avatarPath, $cvPath);
 
             return redirect()
                 ->route('vyrtrenasss.index')
@@ -92,17 +99,25 @@ class VyrtrenassController extends Controller
         $validated = $request->validated();
 
         try {
-            $headCoach = $this->service->getVyrtrenassDetails($id);
+            $assistantCoach = $this->service->getVyrtrenassDetails($id);
             $avatarPath = null;
+            $cvPath = null;
 
             if (isset($validated['avatar'])) {
-                File::delete(public_path($headCoach->avatar));
+                File::delete(public_path($assistantCoach->avatar));
                 $avatarName = time().'.'.$validated['avatar']->getClientOriginalExtension();
                 $validated['avatar']->move(public_path('/images/avatars'), $avatarName);
                 $avatarPath = '/images/avatars/'.$avatarName;
             }
 
-            $this->service->updateVyrtrenass($headCoach, $validated, $avatarPath);
+            if (isset($validated['cv'])) {
+                File::delete(public_path($assistantCoach->cv));
+                $cvName = time().'.'.$validated['cv']->getClientOriginalExtension();
+                $validated['cv']->move(public_path('/documents/cvs'), $cvName);
+                $cvPath = '/documents/cvs/'.$cvName;
+            }
+
+            $this->service->updateVyrtrenass($assistantCoach, $validated, $avatarPath, $cvPath);
 
             return redirect()
                 ->route('vyrtrenasss.index')

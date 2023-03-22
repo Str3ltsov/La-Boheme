@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('avatar')->nullable();
+            $table->string('cv')->nullable();
             $table->boolean('available')->default(true);
             $table->foreignId('reservation_type_id')->constrained('reservation_types');
             $table->timestamps();

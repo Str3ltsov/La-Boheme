@@ -9,7 +9,6 @@ use App\Http\Requests\CreateVyrtrenRequest;
 use App\Http\Requests\DeleteFiztrenUnavailableDateRequest;
 use App\Http\Requests\DeleteFiztrenUnavailableDateTimeRequest;
 use App\Http\Requests\UpdateVyrtrenRequest;
-use App\Models\FiztrenUnavailableDate;
 use App\Services\FiztrenService;
 use App\Services\FiztrenServiceInterface;
 use App\Traits\Selectors;
@@ -61,6 +60,7 @@ class FiztrenController extends Controller
 
         try {
             $avatarPath = null;
+            $cvPath = null;
 
             if ($validated['avatar']) {
                 $avatarName = time().'.'.$validated['avatar']->getClientOriginalExtension();
@@ -68,7 +68,13 @@ class FiztrenController extends Controller
                 $avatarPath = '/images/avatars/'.$avatarName;
             }
 
-            $this->service->createFiztren($validated, $avatarPath);
+            if ($validated['cv']) {
+                $cvName = time().'.'.$validated['cv']->getClientOriginalExtension();
+                $validated['cv']->move(public_path('/documents/cvs'), $cvName);
+                $cvPath = '/documents/cvs/'.$cvName;
+            }
+
+            $this->service->createFiztren($validated, $avatarPath, $cvPath);
 
             return redirect()
                 ->route('fiztrens.index')
@@ -95,6 +101,7 @@ class FiztrenController extends Controller
         try {
             $psychicalCoach = $this->service->getFiztrenDetails($id);
             $avatarPath = null;
+            $cvPath = null;
 
             if (isset($validated['avatar'])) {
                 File::delete(public_path($psychicalCoach->avatar));
@@ -103,7 +110,14 @@ class FiztrenController extends Controller
                 $avatarPath = '/images/avatars/'.$avatarName;
             }
 
-            $this->service->updateFiztren($psychicalCoach, $validated, $avatarPath);
+            if (isset($validated['cv'])) {
+                File::delete(public_path($psychicalCoach->cv));
+                $cvName = time().'.'.$validated['cv']->getClientOriginalExtension();
+                $validated['cv']->move(public_path('/documents/cvs'), $cvName);
+                $cvPath = '/documents/cvs/'.$cvName;
+            }
+
+            $this->service->updateFiztren($psychicalCoach, $validated, $avatarPath, $cvPath);
 
             return redirect()
                 ->route('fiztrens.index')

@@ -18,9 +18,15 @@
                     <div class="w-100">
                         @include('flash_message')
                     </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center">
+                    <div class="coach-header">
                         <h3 class="mb-20">{{ __('Head coach') }}: {{ $coach->id ?? '?'}}</h3>
                         <div style="display: flex; gap: 12px">
+                            @if ($coach->cv)
+                                <a class="fw-bold fs-4 text-center btn-hover-focus" href="{{ asset($coach->cv) }}"
+                                   target="_blank" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 8px 30px;; text-decoration: none">
+                                    {{ __('View CV') }}
+                                </a>
+                            @endif
                             <a class="fw-bold fs-4 text-center btn-hover-focus" href="{{ route('vyrtrens.edit', $coach->id) }}"
                                style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 8px 30px;; text-decoration: none">
                                 {{ __('Edit') }}
@@ -36,7 +42,7 @@
                         <div style="display: flex; gap: 20px">
                             <div>
                                 <img src="@if ($coach->avatar) {{ asset($coach->avatar) }} @else {{ asset('images/avatars/no_avatar.png') }} @endif"
-                                     alt="{{ $coach->first_name.' '.$coach->last_name }}" style="width: 110px; height: 110px; border-radius: 55px" >
+                                     alt="{{ $coach->first_name.' '.$coach->last_name }}" style="width: 110px; height: 110px; border-radius: 55px; ; object-fit: cover" >
                             </div>
                             <div class="d-flex flex-column" style="gap: 10px">
                                 <div class="d-flex flex-lg-row flex-column">

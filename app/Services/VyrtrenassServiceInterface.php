@@ -11,10 +11,10 @@ use Illuminate\Http\RedirectResponse;
 
 interface VyrtrenassServiceInterface
 {
-    public function getVyrtrens(): Collection|RedirectResponse;
-    public function createVyrtrenass(array $validated, ?string $avatarPath): void;
+    public function getVyrtrens(): Collection;
+    public function createVyrtrenass(array $validated, ?string $avatarPath, ?string $cvPath): void;
     public function getVyrtrenassDetails(int $id): Vyrtrenass|RedirectResponse;
-    public function updateVyrtrenass(object $headCoach, array $validated, ?string $avatarPath): void;
+    public function updateVyrtrenass(object $assistantCoach, array $validated, ?string $avatarPath, ?string $cvPath): void;
     public function deleteVyrtrenass(object $assistant): int|RedirectResponse;
     public function getVyrtrenassUnavailableDates(int $id): Collection|RedirectResponse;
     public function getVyrtrenassUnavailableDateTimes(int $id): Collection|RedirectResponse;
