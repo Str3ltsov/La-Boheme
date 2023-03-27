@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin;
 use App\Http\Livewire\ReservationForm;
+use App\Http\Controllers\ReviewController;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,8 +23,14 @@ use Illuminate\Support\Facades\Route;
  */
 Route::middleware('cors')->group(function () {
     Route::redirect('/', '/reservation');
-    Route::get('/reservation', ReservationForm::class)->name('livewire.reservation');
-    Route::view('/reservation/success', 'reservation_success')->name('reservation.success');
+    Route::get('/reservation', ReservationForm::class)
+        ->name('livewire.reservation');
+    Route::view('/reservation/success', 'reservation_success')
+        ->name('reservation.success');
+    Route::get('/reservation/review/{id}', [ReviewController::class, 'reservationReview'])
+        ->name('reservationReview');
+    Route::put('/reservation/review/{id}', [ReviewController::class, 'reservationReviewSave'])
+        ->name('reservationReviewSave');
 });
 Route::view('/privacy_policy', 'privacy_policy')->name('privacyPolicy');
 
