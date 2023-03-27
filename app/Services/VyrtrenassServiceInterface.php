@@ -23,4 +23,6 @@ interface VyrtrenassServiceInterface
     public function createVyrtrenassUnavailableDateTime(object $request)
     : VyrtrenassUnavailableDateTime|RedirectResponse;
     public function deleteVyrtrenassUnavailableDateTime(object $request): int|RedirectResponse;
+    public function addAverageRatingToAssistants(object $assistants): void;
+    public function addAverageRatingToAssistant(object $assistant): void;
 }

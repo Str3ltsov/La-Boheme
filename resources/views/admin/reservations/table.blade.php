@@ -6,6 +6,7 @@
                 <th>{{ __('Email') }}</th>
                 <th>{{ __('Phone') }}</th>
                 <th>{{ __('Coach') }}</th>
+                <th>{{ __('Rating') }}</th>
                 <th>{{ __('Date') }}</th>
                 <th>{{ __('Confirmation') }}</th>
                 <th></th>
@@ -30,7 +31,19 @@
                             {{ $reservation->fiztren->first_name.' '.$reservation->fiztren->last_name }}
                         @endif
                     </td>
-                    <td>{{ $reservation->created_at ? $reservation->created_at->format('Y-m-d') : '-' }}</td>
+                    <td>
+                        <div style="display: flex; align-items: center">
+                            <span>{{ $reservation->rating ?? 0 }}</span>
+                            <span>/</span>
+                            <span>5</span>
+                            @if ($reservation->rating > 0)
+                                <i class="fa-solid fa-star ml-5" style="color: #f8ae00"></i>
+                            @else
+                                <i class="fa-regular fa-star ml-5" style="color: #f8ae00"></i>
+                            @endif
+                        </div>
+                    </td>
+                    <td style="min-width: 90px">{{ $reservation->created_at ? $reservation->created_at->format('Y-m-d') : '-' }}</td>
                     <td style="min-width: 410px">
                         @if ($reservation->status->id == \App\Helpers\Constants::reservationStatusInProgress)
                             @include('admin.reservations.form')
@@ -88,7 +101,7 @@
         $(document).ready( function () {
             $('#reservations_table').DataTable({
                 responsive: true,
-                "order": [5, 'asc']
+                "order": [6, 'asc']
             });
         });
     }

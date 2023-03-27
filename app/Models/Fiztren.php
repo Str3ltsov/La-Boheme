@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Fiztren extends Model
 {
@@ -41,4 +42,9 @@ class Fiztren extends Model
         'reservation_type_id' => 'required|integer',
         'available' => 'required|boolean'
     ];
+
+    public function reservations(): HasMany
+    {
+        return $this->HasMany(Reservation::class, 'fiztren_id', 'id');
+    }
 }

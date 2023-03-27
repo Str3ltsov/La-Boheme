@@ -34,15 +34,23 @@ class VyrtrenassController extends Controller
 
     public function index(): Factory|View|Application
     {
+        $assistants = $this->service->getVyrtrens();
+
+        $this->service->addAverageRatingToAssistants($assistants);
+
         return view('admin.vyrtrenass.index')
-            ->with('assistants', $this->service->getVyrtrens());
+            ->with('assistants', $assistants);
     }
 
     public function show($id): Factory|View|Application
     {
+        $assistant = $this->service->getVyrtrenassDetails($id);
+
+        $this->service->addAverageRatingToAssistant($assistant);
+
         return view('admin.vyrtrenass.show')
             ->with([
-                'assistant' => $this->service->getVyrtrenassDetails($id),
+                'assistant' => $assistant,
                 'unavailable_dates' => $this->service->getVyrtrenassUnavailableDates($id),
                 'unavailable_datetimes' => $this->service->getVyrtrenassUnavailableDateTimes($id)
             ]);

@@ -34,15 +34,23 @@ class VyrtrenController extends Controller
 
     public function index(): Factory|View|Application
     {
+        $headCoaches = $this->service->getVyrtrens();
+
+        $this->service->addAverageRatingToHeadCoaches($headCoaches);
+
         return view('admin.vyrtrens.index')
-            ->with('coaches', $this->service->getVyrtrens());
+            ->with('coaches', $headCoaches);
     }
 
     public function show($id): Factory|View|Application
     {
+        $headCoach = $this->service->getVyrtrenDetails($id);
+
+        $this->service->addAverageRatingToHeadCoach($headCoach);
+
         return view('admin.vyrtrens.show')
             ->with([
-                'coach' => $this->service->getVyrtrenDetails($id),
+                'coach' => $headCoach,
                 'unavailable_dates' => $this->service->getVyrtrenUnavailableDates($id),
                 'unavailable_datetimes' => $this->service->getVyrtrenUnavailableDateTimes($id)
             ]);

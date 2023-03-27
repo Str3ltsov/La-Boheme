@@ -159,4 +159,28 @@ class FiztrenService implements FiztrenServiceInterface
 
         return 0;
     }
+
+    public function addAverageRatingToPsyhicalCoaches(object $psychicalCoaches): void
+    {
+        foreach ($psychicalCoaches as $psychicalCoach) {
+            $averageRating = 0;
+
+            foreach ($psychicalCoach->reservations as $reservation) {
+                $averageRating += $reservation->rating;
+            }
+
+            $psychicalCoach->averageRating = $averageRating;
+        }
+    }
+
+    public function addAverageRatingToPsychicalCoach(object $psychicalCoach): void
+    {
+        $averageRating = 0;
+
+        foreach ($psychicalCoach->reservations as $reservation) {
+            $averageRating += $reservation->rating;
+        }
+
+        $psychicalCoach->averageRating = $averageRating;
+    }
 }

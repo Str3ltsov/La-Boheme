@@ -21,4 +21,6 @@ interface FiztrenServiceInterface
     public function getFiztrenUnavailableDateTimes(int $id): Collection|RedirectResponse;
     public function createFiztrenUnavailableDateTime(object $request): FiztrenUnavailableDateTime|RedirectResponse;
     public function deleteFiztrenUnavailableDateTime(object $request): int|RedirectResponse;
+    public function addAverageRatingToPsyhicalCoaches(object $psychicalCoaches): void;
+    public function addAverageRatingToPsychicalCoach(object $psychicalCoach): void;
 }

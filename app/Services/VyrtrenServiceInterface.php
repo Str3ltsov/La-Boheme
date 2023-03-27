@@ -23,4 +23,6 @@ interface VyrtrenServiceInterface
     public function createVyrtrenUnavailableDateTime(object $request)
     : VyrtrenUnavailableDateTime|RedirectResponse;
     public function deleteVyrtrenUnavailableDateTime(object $request): int|RedirectResponse;
+    public function addAverageRatingToHeadCoaches(object $headCoaches): void;
+    public function addAverageRatingToHeadCoach(object $headCoach): void;
 }

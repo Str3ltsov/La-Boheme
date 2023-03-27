@@ -45,6 +45,17 @@
                                             @endif
                                         </span>
                                     </div>
+                                    <div style="display: flex; align-items: center">
+                                        <span style="color: #999">{{ __('Rating') }}:</span>
+                                        <span class="ml-5" style="color: #222">{{ $reservation->rating ?? 0 }}</span>
+                                        <span style="color: #222">/</span>
+                                        <span style="color: #222">5</span>
+                                        @if ($reservation->rating > 0)
+                                            <i class="fa-solid fa-star ml-5" style="color: #f8ae00"></i>
+                                        @else
+                                            <i class="fa-regular fa-star ml-5" style="color: #f8ae00"></i>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                             <div class="d-flex flex-column w-100 me-3 my-3 my-lg-0">

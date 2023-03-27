@@ -50,6 +50,17 @@
                                     <span style="width: clamp(250px, 100%, 500px); color: #999">{{ __('Name') }}:</span>
                                     <span style="width: clamp(250px, 100%, 500px); color: #444">{{ $coach->first_name.' '.$coach->last_name ?? '-' }}</span>
                                 </div>
+                                <div style="display: flex; align-items: center">
+                                    <span style="color: #999">{{ __('Rating') }}:</span>
+                                    <span class="ml-5" style="color: #222">{{ round($coach->averageRating, 2) ?? 0 }}</span>
+                                    <span style="color: #222">/</span>
+                                    <span style="color: #222">5</span>
+                                    @if ($coach->averageRating > 0)
+                                        <i class="fa-solid fa-star ml-5" style="color: #f8ae00"></i>
+                                    @else
+                                        <i class="fa-regular fa-star ml-5" style="color: #f8ae00"></i>
+                                    @endif
+                                </div>
                                 <div class="d-flex flex-lg-row flex-column">
                                     <span style="width: clamp(250px, 100%, 500px); color: #999">{{ __('Available') }}:</span>
                                     <span style="width: clamp(250px, 100%, 500px); color: #444">{{ $coach->available ? __('Yes') : __('No') }}</span>

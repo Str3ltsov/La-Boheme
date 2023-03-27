@@ -34,15 +34,23 @@ class FiztrenController extends Controller
 
     public function index(): Factory|View|Application
     {
+        $psychicalCoach = $this->service->getFiztrens();
+
+        $this->service->addAverageRatingToPsyhicalCoaches($psychicalCoach);
+
         return view('admin.fiztren.index')
-            ->with('coaches', $this->service->getFiztrens());
+            ->with('coaches', $psychicalCoach);
     }
 
     public function show($id): Factory|View|Application
     {
+        $psychicalCoach = $this->service->getFiztrenDetails($id);
+
+        $this->service->addAverageRatingToPsychicalCoach($psychicalCoach);
+
         return view('admin.fiztren.show')
             ->with([
-                'coach' => $this->service->getFiztrenDetails($id),
+                'coach' => $psychicalCoach,
                 'unavailable_dates' => $this->service->getFiztrenUnavailableDates($id),
                 'unavailable_datetimes' => $this->service->getFiztrenUnavailableDateTimes($id)
             ]);

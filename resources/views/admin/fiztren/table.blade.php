@@ -4,6 +4,7 @@
         <tr>
             <th class="w-25" scope="col">{{ __('ID') }}</th>
             <th class="w-50" scope="col">{{ __('Name') }}</th>
+            <th class="w-25" scope="col">{{ __('Rating') }}</th>
             <th class="w-25" scope="col">{{ __('Available') }}</th>
             <th class="w-25" scope="col">{{ __('Created') }}</th>
             <th class="w-25" scope="col">{{ __('Updated') }}</th>
@@ -15,6 +16,18 @@
             <tr>
                 <td class="w-25" >{{ $coach->id }}</td>
                 <td class="w-50" >{{ $coach->first_name.' '.$coach->last_name }}</td>
+                <td class="w-25">
+                    <div style="display: flex; align-items: center">
+                        <span>{{ round($coach->averageRating, 2) ?? 0 }}</span>
+                        <span>/</span>
+                        <span>5</span>
+                        @if ($coach->averageRating > 0)
+                            <i class="fa-solid fa-star ml-5" style="color: #f8ae00"></i>
+                        @else
+                            <i class="fa-regular fa-star ml-5" style="color: #f8ae00"></i>
+                        @endif
+                    </div>
+                </td>
                 <td class="w-25" >{{ $coach->available ? __('Yes') : __('No') }}</td>
                 <td class="w-25" >{{ $coach->created_at ?? '-' }}</td>
                 <td class="w-25" >{{ $coach->updated_at ?? '-' }}</td>
@@ -45,6 +58,7 @@
         <tr>
             <th class="w-25" scope="col">{{ __('ID') }}</th>
             <th class="w-50" scope="col">{{ __('Name') }}</th>
+            <th class="w-25" scope="col">{{ __('Rating') }}</th>
             <th class="w-25" scope="col">{{ __('Available') }}</th>
             <th class="w-25" scope="col">{{ __('Created') }}</th>
             <th class="w-25" scope="col">{{ __('Updated') }}</th>

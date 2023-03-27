@@ -165,4 +165,28 @@ class VyrtrenService implements VyrtrenServiceInterface
 
         return 0;
     }
+
+    public function addAverageRatingToHeadCoaches(object $headCoaches): void
+    {
+        foreach ($headCoaches as $headCoach) {
+            $averageRating = 0;
+
+            foreach ($headCoach->reservations as $reservation) {
+                $averageRating += $reservation->rating;
+            }
+
+            $headCoach->averageRating = $averageRating;
+        }
+    }
+
+    public function addAverageRatingToHeadCoach(object $headCoach): void
+    {
+        $averageRating = 0;
+
+        foreach ($headCoach->reservations as $reservation) {
+            $averageRating += $reservation->rating;
+        }
+
+        $headCoach->averageRating = $averageRating;
+    }
 }

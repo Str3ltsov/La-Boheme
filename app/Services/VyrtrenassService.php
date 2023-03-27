@@ -161,4 +161,28 @@ class VyrtrenassService implements VyrtrenassServiceInterface
 
         return 0;
     }
+
+    public function addAverageRatingToAssistants(object $assistants): void
+    {
+        foreach ($assistants as $assistant) {
+            $averageRating = 0;
+
+            foreach ($assistant->reservations as $reservation) {
+                $averageRating += $reservation->rating;
+            }
+
+            $assistant->averageRating = $averageRating;
+        }
+    }
+
+    public function addAverageRatingToAssistant(object $assistant): void
+    {
+        $averageRating = 0;
+
+        foreach ($assistant->reservations as $reservation) {
+            $averageRating += $reservation->rating;
+        }
+
+        $assistant->averageRating = $averageRating;
+    }
 }
