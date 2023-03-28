@@ -21,16 +21,21 @@ class ReviewController extends Controller
         $this->service = $service;
     }
 
-    public function reservationReview(int $id): View|Factory|Redirector|RedirectResponse|Application
+    public function reservationReview(int $id, Request $request): View|Factory|Redirector|RedirectResponse|Application
     {
         $reservation = $this->service->getReservationById($id);
+        $token = $this->service->getReservationReviewToken($id);
 
-        if (!$reservation->rating)
-            return view('review.index')
-                ->with('reservation', $this->service->getReservationById($id));
-        else
-            return redirect('/reservation')
-                ->with('info', __('You have already reviewed this reservation'));
+        if ($request->query()['token'] == $token) {
+            if (!$reservation->rating)
+                return view('review.index')
+                    ->with('reservation', $this->service->getReservationById($id));
+            else
+                return redirect('/reservation')
+                    ->with('info', __('You have already reviewed this reservation'));
+        }
+
+        abort(404);
     }
 
     public function reservationReviewSave(int $id, Request $request): Redirector|RedirectResponse|Application
@@ -41,6 +46,8 @@ class ReviewController extends Controller
             $reservation = $this->service->getReservationById($id);
             $reservation->rating = $validated['rating'] ?? NULL;
             $reservation->save();
+
+            $this->service->deleteReservationReviewToken($id);
 
             return redirect('/reservation')
                 ->with('success', __('Thank you for submitting your review'));

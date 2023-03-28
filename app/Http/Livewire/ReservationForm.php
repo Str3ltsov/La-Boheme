@@ -267,14 +267,10 @@ class ReservationForm extends Component
         );
 
         /*
-         * Creating instances of reservation employees
+         * Create unique reservation review token for client to be able to review.
          */
-        /*$chosenEmployees = $this->service->getChosenEmployees(
-            $this->employee_waiter,
-            $this->employee_bartender
-        );*/
-
-        //$this->service->createReservationEmployees($reservation, $this->employees);
+        $this->service->createReservationReviewToken($reservation->id);
+        $token = $this->service->getReservationReviewToken($reservation->id);
 
         /*
          * Send emails
@@ -282,6 +278,7 @@ class ReservationForm extends Component
 //        $this->service->sendReservationSentEmail($client);
 //        $this->service->sendReservationSentForAdminsEmail($this->adminEmails['info']);
 //        $this->service->sendReservationSentForAdminsEmail($this->adminEmails['events']);
+//        $this->service->sendReservationReviewEmail($this->client_email, $reservation->id, $token);
 
         /*
          * Add reservation type cookie

@@ -4,10 +4,9 @@
 <div class="w-100">
     @include('flash_message')
 </div>
-<div>
-    <h1>{{ __('Privacy Policy') }}</h1>
-    <h3><strong>{{ __('COMPANY PROCESSED PERSONAL DATA SECURITY POLICY') }}</strong></h3>
-    <p>&nbsp;</p>
+<h2 class="mt-0 pl-0 pr-0 pl-xs-20 pr-xs-20">{{ __('Privacy Policy') }}</h2>
+<h4><strong>{{ __('COMPANY PROCESSED PERSONAL DATA SECURITY POLICY') }}</strong></h4>
+<div class="p-20 mt-40" style="background-color: #F6F7F3; border-radius: 10px;">
     <p>When reserving <a class="0" download="0" href="https://rezervuok.recovcenter.com" rel="noopener noreferrer nofollow" target="_blank" title="0">https://rezervuok.recovcenter.com</a> site, you trust MB "Du vres du" (hereinafter - the Company or us) with your personal data and give us the right to process them in the scope, methods and purposes provided for in this Policy (hereinafter - the Policy). You also provide your data by giving us your feedback.</p>
     <p><strong>If you do not agree with this Policy or its individual terms, we will unfortunately not be able to provide you with the opportunity to use all or any of the i&scaron; Services provided by the company (hereinafter &ndash; Services)</strong>.</p>
     <p>In this Policy you will find all the information, what kind of data we collect and process, what we use it for, how long we keep it, etc. This information is important, so we hope you read it carefully.</p>
@@ -160,11 +159,17 @@
     <p>We also use the services of Facebook and other online advertising providers. You can read about the privacy policies of these service providers, the data collected and the personal data protection measures applied in the privacy policies of the aforementioned service providers. You can find more information about how it works, as well as information about how you can object to the display of such advertisements or the use of such data, in the information provided by the aforementioned service providers &ndash;&nbsp;<a class="0" download="0" href ="https://www.facebook.com/policies/ads" rel="noopener noreferrer nofollow" target="_blank" title="0">https://www.facebook.com/policies/ads</a >.</p>
     <p><strong>Policy validity and changes</strong></p>
     <p>This Policy is valid from 2023. February 1 If we change this Policy, we will post the updated version on this page.</p>
+    <div class="mt-30">
+        <button type="button" class="fw-bold fs-4 btn-hover-focus" onclick="window.close();" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: 170px">
+            {{ __('Close') }}
+        </button>
+    </div>
 </div>
-<div class="mt-30">
-    <button type="button" class="fw-bold fs-4 btn-hover-focus" onclick="window.close();" style="background-color: #D3152E; border: none; border-radius: 5px; color: white; padding: 10px 0; width: 170px">
-        {{ __('Close') }}
-    </button>
-</div>
+
+<style>
+    .main_body {
+        background-image: none;
+    }
+</style>
 @endsection
 

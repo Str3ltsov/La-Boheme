@@ -19,4 +19,6 @@ interface ReservationsServiceInterface
     public function updateReservationStatus(int $reservationStatus, int $reservationId): void;
     public function getClientEmailFromReservation(int $reservationId): Client|RedirectResponse;
     public function sendReservationStatusUpdateEmail(object $client, int $reservationStatus): SentMessage|RedirectResponse;
+    public function getReservationReviewToken(int $id): ?string;
+    public function deleteReservationReviewToken(int $id): void;
 }

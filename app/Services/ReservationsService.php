@@ -10,8 +10,10 @@ use App\Models\Reservation;
 use App\Models\ReservationQuestion;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Mail\SentMessage;
+use function Symfony\Component\Translation\t;
 
 class ReservationsService implements ReservationsServiceInterface
 {
@@ -161,5 +163,20 @@ class ReservationsService implements ReservationsServiceInterface
 //        }
 
         return back()->with('error', __('Nepavyko išsiųsti laiško'));
+    }
+
+    public function getReservationReviewToken(int $id): ?string
+    {
+        return DB::table('reservation_review_tokens')
+            ->where('reservation_id', '=', $id)
+            ->get()
+            ->value('token');
+    }
+
+    public function deleteReservationReviewToken(int $id): void
+    {
+        DB::table('reservation_review_tokens')
+            ->where('reservation_id', '=', $id)
+            ->delete();
     }
 }

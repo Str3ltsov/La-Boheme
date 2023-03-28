@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Helpers\Constants;
+use App\Mail\ReservationReviewMail;
 use App\Mail\ReservationSentAdminMail;
 use App\Mail\ReservationSentMail;
 use App\Models\Client;
@@ -20,11 +21,13 @@ use App\Models\Vyrtren;
 use App\Models\Vyrtrenass;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Mail\SentMessage;
 use Illuminate\Http\Response;
 
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Str;
 
 class ReservationService implements ReservationServiceInterface
 {
@@ -386,5 +389,31 @@ class ReservationService implements ReservationServiceInterface
         }
 
         return back()->with('error', __('Nepavyko išsiųsti laiško el. adresui').' '.$email);
+    }
+
+    public function createReservationReviewToken(int $reservationId): void
+    {
+        DB::table('reservation_review_tokens')
+            ->insert([
+                'reservation_id' => $reservationId,
+                'token' => Str::random(30)
+            ]);
+    }
+
+    public function getReservationReviewToken(int $reservationId): string
+    {
+        return DB::table('reservation_review_tokens')
+            ->where('reservation_id', '=', $reservationId)
+            ->get()
+            ->value('token');
+    }
+
+    public function sendReservationReviewEmail(string $email, int $reservationId, string $token): void
+    {
+        $link = env('APP_URL')."/reservation/review/$reservationId?token=$token";
+
+        if (class_exists(ReservationReviewMail::class)) {
+            Mail::to($email)->send(new ReservationReviewMail($link));
+        }
     }
 }

@@ -59,4 +59,7 @@ interface ReservationServiceInterface
     public function createReservationEmployees(object $reservation, array $chosenEmployees): int|RedirectResponse;
     public function sendReservationSentEmail(object $client): SentMessage|RedirectResponse;
     public function sendReservationSentForAdminsEmail(string $email): SentMessage|RedirectResponse;
+    public function createReservationReviewToken(int $reservationId): void;
+    public function getReservationReviewToken(int $reservationId): string;
+    public function sendReservationReviewEmail(string $email, int $reservationId, string $token): void;
 }
