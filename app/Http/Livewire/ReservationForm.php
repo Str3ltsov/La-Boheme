@@ -286,14 +286,18 @@ class ReservationForm extends Component
         $this->session->put('reservationType', $this->reservation_type);
 
         /*
+         * Session data for initial payment
+         */
+        session()->put('appPayOrderId', $reservation->id);
+        session()->put('appPayAmount', 200);
+
+        /*
          * Resetting
          */
         $this->reset();
         $this->resetValidation();
 
-        return redirect()
-            ->route('reservation.success')
-            ->with('success', __('Reservation has been successfully accepted'));
+        return redirect(route('redirectToPay'));
     }
 
     public function render()
@@ -303,8 +307,7 @@ class ReservationForm extends Component
             ->section('content')
             ->with([
                 'steps' => $this->steps(),
-                'reservationTypes' => $this->service->getReservationTypes(),
-                //'employees' => $this->employees
+                'reservationTypes' => $this->service->getReservationTypes()
             ]);
     }
 }

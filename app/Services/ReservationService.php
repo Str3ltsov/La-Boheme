@@ -203,7 +203,7 @@ class ReservationService implements ReservationServiceInterface
             "vyrtrenass_id" => $reservationType == Constants::reservationTypeVyrtrenass ? $coach : NULL,
 //            'start_datetime' => $startDate,
             'client_id' => $client->id,
-            'reservation_status_id' => Constants::reservationStatusInProgress,
+            'reservation_status_id' => Constants::reservationStatusInDeclined,
             'created_at' => now(),
             'updated_at' => now()
         ]);

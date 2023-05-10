@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\PayController;
 use App\Http\Controllers\Admin;
-use App\Http\Livewire\ReservationForm;
 use App\Http\Controllers\ReviewController;
-
+use App\Http\Livewire\ReservationForm;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +31,12 @@ Route::middleware('cors')->group(function () {
         ->name('reservationReview');
     Route::put('/reservation/review/{id}', [ReviewController::class, 'reservationReviewSave'])
         ->name('reservationReviewSave');
+    Route::get('pay', [PayController::class, 'redirectToPay'])->name('redirectToPay');
+    Route::post('pay', [PayController::class, 'index'])->name('pay');
+    Route::get('pay/accept/{id}', [PayController::class, 'accept'])->where('id', '[0-9]+')->name('payAccept');
+    Route::get('pay/cancel/{id}', [PayController::class, 'cancel'])->where('id', '[0-9]+')->name('payCancel');
+    Route::get('pay/callback/{id}', [PayController::class, 'callback'])->where('id', '[0-9]+')->name('payCallback');
+    Route::get('download_invoice/{id}', [PayController::class, 'downloadInvoice'])->name('downloadInvoice');
 });
 Route::view('/privacy_policy', 'privacy_policy')->name('privacyPolicy');
 
@@ -124,4 +130,3 @@ Auth::routes([
     'reset' => false,
     'verify' => false
 ]);
-
